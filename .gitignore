@@ -1,0 +1,11 @@
+auto-save-list
+.cask/*
+/eshell/history
+/eshell/lastdir
+projectile.cache
+projectile-bookmarks.eld
+ac-comphist.dat
+places
+newsticker
+/auto/
+/backups
