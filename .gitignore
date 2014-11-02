@@ -9,3 +9,5 @@ places
 newsticker
 /auto/
 /backups
+temp/
+var/
