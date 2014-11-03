@@ -11,3 +11,7 @@ newsticker
 /backups
 tmp/
 var/
+.saves/
+.mc-lists.el
+.org-id-locations
+recentf
