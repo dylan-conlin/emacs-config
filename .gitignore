@@ -15,3 +15,6 @@ var/
 .mc-lists.el
 .org-id-locations
 recentf
+.session
+helm-adaptive-history
+elpa
