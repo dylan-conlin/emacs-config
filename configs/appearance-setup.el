@@ -8,7 +8,22 @@
 (set-face-attribute 'default nil :family "monaco" :height 120)
 
 ;; only show bad whitespace
-(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+(setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
+
+;; face
+;; Enable all visualizations which use special faces. This element has a special meaning: if it is absent from the list, none of the other visualizations take effect except space-mark, tab-mark, and newline-mark.
+;; trailing
+;; Highlight trailing whitespace.
+;; tabs
+;; Highlight tab characters.
+;; spaces
+;; Highlight space and non-breaking space characters.
+;; lines
+;; Highlight lines longer than 80 lines. To change the column limit, customize the variable whitespace-line-column.
+;; newline
+;; Highlight newlines.
+;; empty
+;; Highlight empty lines.
 
 ;; undo-tree
 ;; (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
@@ -37,7 +52,7 @@
 ;; helm
 (setq helm-buffer-max-length 30)
 
- 
+
 (setq dired-details-propagate-flag t)
 (setq redisplay-dont-pause t)
 (setq scroll-margin 5)
@@ -60,4 +75,5 @@
 (setq evil-insert-state-cursor '("red" bar))
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
+
 (provide 'appearance-setup)

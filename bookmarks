@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("sites"
+(("org-refile-last-stored"
+ (filename . "~/Dropbox/org/code.org")
+ (front-context-string . "** brew program ")
+ (rear-context-string . " the black bar.\n")
+ (position . 45963))
+("sites"
  (filename . "~/drive/sites/")
  (front-context-string . ".projectile\n  dr")
  (rear-context-string . "35 Sep  3 15:34 ")
@@ -23,12 +28,12 @@
  (rear-context-string)
  (position . 1))
 ("shortstack.org"
- (filename . "~/drive/org/shortstack.org")
+ (filename . "~/Dropbox/org/shortstack.org")
  (front-context-string . "* Shortstack\n** ")
  (rear-context-string)
  (position . 1))
 ("todo.org"
- (filename . "~/drive/org/todo.org")
+ (filename . "~/Dropbox/org/todo.org")
  (front-context-string . "** TODO share li")
  (rear-context-string . " foursquare bug\n")
  (position . 107844))
@@ -38,10 +43,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/drive/org/notes.org")
- (front-context-string . "** if we do not ")
- (rear-context-string . "1-01 Sat 21:50]\n")
- (position . 198033))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** superfly     ")
+ (rear-context-string . "1-01 Sat 21:52]\n")
+ (position . 194573))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -78,12 +83,12 @@
  (rear-context-string . "92 Sep  6 16:48 ")
  (position . 261))
 ("notes.org"
- (filename . "~/drive/org/notes.org")
+ (filename . "~/Dropbox/org/notes.org")
  (front-context-string . "* Notes\n** expla")
  (rear-context-string)
  (position . 1))
 ("org"
- (filename . "~/drive/org/")
+ (filename . "~/Dropbox/org")
  (front-context-string)
  (rear-context-string . "8:59 vimium.org\n")
  (position . 1546))

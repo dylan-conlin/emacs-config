@@ -1,3 +1,4 @@
+(require 'helm-projectile)
 (require 'helm-cmd-t)
 
 (defun my-helm-do-ag ()

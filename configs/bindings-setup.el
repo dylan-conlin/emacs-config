@@ -79,6 +79,9 @@
 (global-set-key (kbd "C-S-n") 'org-move-subtree-down)
 (global-set-key (kbd "C-S-p") 'org-move-subtree-up)
 (global-set-key (kbd "C-c c") 'org-capture)
+(define-key org-mode-map "\C-cp" 'org-mobile-pull)
+(define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
+
 
 (define-key dcon-minor-mode-map (kbd "C-x C-n") 'flycheck-tip-cycle)
 (define-key dcon-minor-mode-map (kbd "C-x C-p") 'flycheck-tip-cycle-reverse)
