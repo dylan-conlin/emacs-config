@@ -28,5 +28,7 @@
           :buffer "*project-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))
 
-(helm-adaptive-mode t)
+(setq helm-adaptive-mode t)
+(setq helm-quick-update t)
+
 (provide 'helm-setup)
