@@ -1,4 +1,13 @@
+;; guide key config
+(setq guide-key/recursive-key-sequence-flag t)
+(setq guide-key/guide-key-sequence '(("C-x p") ("M-r")))
+(setq guide-key/popup-window-position 'bottom)
+(setq guide-key/idle-delay 0.1)
+(setq ns-pop-up-frames nil)
+
+
 ;; my custom bindings!
+
 ;; a minor mode for all my "override" key bindings:
 (defvar dcon-minor-mode-map (make-keymap) "dcon-minor-mode keymap.")
 (define-minor-mode dcon-minor-mode
@@ -95,15 +104,15 @@
 ;;           '(lambda () (define-key haml-mode-map "\M-'" 'haml-comment-dwim)))
 
 (add-hook 'web-mode-hook
-          '(lambda () (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end))
-          '(lambda () (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment))
-          )
+	  '(lambda () (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end))
+	  '(lambda () (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment))
+	  )
 
 (add-hook 'web-mode-hook
-          '(lambda () (define-key web-mode-map (kbd "C-M-b")
-                        '(lambda () (interactive)
-                           (backward-char 1)
-                           (web-mode-element-beginning)))))
+	  '(lambda () (define-key web-mode-map (kbd "C-M-b")
+			'(lambda () (interactive)
+			   (backward-char 1)
+			   (web-mode-element-beginning)))))
 
 (define-key dcon-minor-mode-map (kbd "M-i") 'helm-swoop)
 (define-key dcon-minor-mode-map (kbd "M-I") 'helm-swoop-back-to-last-point)

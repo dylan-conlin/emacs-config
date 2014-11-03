@@ -78,7 +78,7 @@
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(show-paren-delay 0.125)
  '(show-paren-mode t)
- '(slack-token "xoxp-2151144447-2151498120-2155203918-21ecbe")
+ '(slack-token (getenv "SLACK_TOKEN"))
  '(sml/active-background-color "#34495e")
  '(sml/active-foreground-color "#ecf0f1")
  '(sml/inactive-background-color "#dfe4ea")

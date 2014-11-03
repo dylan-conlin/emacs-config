@@ -77,11 +77,5 @@
 (winner-mode 1)
 (edit-server-start)
 
-(setq guide-key/recursive-key-sequence-flag t)
-(setq guide-key/guide-key-sequence '(("C-x p") ("M-r")))
-(setq guide-key/popup-window-position 'bottom)
-(setq guide-key/idle-delay 0.1)
-(setq ns-pop-up-frames nil)
-
 ;; default landing file after startup
 (find-file "~/.emacs.d/init.el")
