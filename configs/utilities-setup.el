@@ -219,12 +219,12 @@ With a prefix arg set to real value of current selection."
 (defun my-tail ()
   (interactive)
   (cond ((my-project-is "shortstack-server")
-	 (itail (f-join (my-git-root) "log" "development.log")))
-	((my-project-is "shortstack")
-	 (itail (f-join (my-git-root) "log" "development.log")))
-	((my-project-is "shortstack-designer")
-	 (itail (f-join (my-git-root) "log" "development.log")))
-	((message "please specify a log file for this project in the my-tail function"))))
+         (itail (f-join (my-git-root) "log" "development.log")))
+        ((my-project-is "shortstack")
+         (itail (f-join (my-git-root) "log" "development.log")))
+        ((my-project-is "shortstack-designer")
+         (itail (f-join (my-git-root) "log" "development.log")))
+        ((message "please specify a log file for this project in the my-tail function"))))
 
 (defun my-project-is (project-name)
   "returns t if project-name matches the project's git root folder name"
@@ -238,7 +238,7 @@ With a prefix arg set to real value of current selection."
 (defun copy-mac-app-id (beg end)
   (interactive "r")
   (let* ((region (get-region beg end))
-	 (app-id (shell-command-to-string (s-concat "osascript -e 'id of app" "\""region"\"'"))))
+         (app-id (shell-command-to-string (s-concat "osascript -e 'id of app" "\""region"\"'"))))
     (kill-new app-id)
     (message app-id)))
 
@@ -254,8 +254,8 @@ With a prefix arg set to real value of current selection."
 (defun stream-movie (beg end)
   (interactive "r")
   (let* ((region (get-region beg end))
-	 (magnet (shell-command-to-string
-		  (s-concat "node /Users/dylanconlin/drive/side-sites/kickass/index.js " "\""region"\""))))
+         (magnet (shell-command-to-string
+                  (s-concat "node /Users/dylanconlin/drive/side-sites/kickass/index.js " "\""region"\""))))
     (async-shell-command (s-concat "peerflix " "\""magnet"\" --vlc"))))
 
 ;; the central park five 2012
@@ -292,6 +292,22 @@ end tell"
     #'(lambda (url status script)
         ;; comes back with quotes which we strip off
         (insert (subseq url 1 (1- (length url)))))))
+
+(defun untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Including indent-buffer, which should not be called automatically on save."
+  (interactive)
+  (untabify-buffer)
+  (delete-trailing-whitespace)
+  (indent-buffer))
 
 
 (provide 'utilities-setup)

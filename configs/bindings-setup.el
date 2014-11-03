@@ -162,6 +162,8 @@
 ;; Create scratch buffer
 (global-set-key (kbd "C-c b") 'create-scratch-buffer)
 
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
+
 (define-key dcon-minor-mode-map (kbd "C-x g") 'browse-file-on-github)
 
 (global-set-key (kbd "C-/") 'undo-tree-undo)
