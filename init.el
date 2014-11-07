@@ -45,6 +45,7 @@
 (require 'mode-lists-setup)
 (require 'evil-search-highlight-persist)
 (require 'org-setup)
+
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
 (add-to-list 'load-path "/usr/local/bin/markdown")
