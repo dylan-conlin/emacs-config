@@ -1,3 +1,15 @@
+(defun do-nvm-use (version)
+  (interactive "sVersion: ")
+  (nvm-use version)
+  (exec-path-from-shell-copy-env "PATH"))
+
+(defun run-node (cwd)
+  (interactive "DDirectory: ")
+  (unless (executable-find "node")
+    (call-interactively 'do-nvm-use))
+  (let ((default-directory cwd))
+    (pop-to-buffer (make-comint (format "node-repl-%s" cwd) "node" nil "--interactive"))))
+
 (defun kill-current-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
@@ -13,7 +25,7 @@
   (if (equal major-mode 'dired-mode)
       (dired-single-buffer "..")
     (go-to-dired)))
-    
+
 (defun copy-full-path-to-kill-ring ()
   "copy buffer's full path to kill ring"
   (interactive)
@@ -145,18 +157,43 @@ With a prefix arg set to real value of current selection."
     (kill-new (car (last (s-split ":    " (car (last (s-slice-at ": +?" str)))))))
     (helm-set-pattern str)))
 
-(defun open-line-below ()
-  (interactive)
-  (end-of-line)
-  (newline)
-  (indent-for-tab-command))
+;; (defun open-line-below ()
+;;   (interactive)
+;;   (end-of-line)
+;;   (newline)
+;;   (indent-for-tab-command))
+
+;; (defun open-line-above ()
+;;   (interactive)
+;;   (beginning-of-line)
+;;   (newline)
+;;   (forward-line -1)
+;;   (indent-to (previous-nonblank-indent-value)))
+
 
 (defun open-line-above ()
+  "Insert a newline above the current line and put point at beginning."
   (interactive)
-  (beginning-of-line)
+  (unless (bolp)
+    (beginning-of-line))
   (newline)
   (forward-line -1)
-  (indent-to (previous-nonblank-indent-value)))
+  (indent-according-to-mode))
+
+(defun open-line-below ()
+  "Insert a newline below the current line and put point at beginning."
+  (interactive)
+  (unless (eolp)
+    (end-of-line))
+  (newline-and-indent))
+
+(defun vi-open-line (&optional abovep)
+  "Insert a newline below the current line and put point at beginning.
+With a prefix argument, insert a newline above the current line."
+  (interactive "P")
+  (if abovep
+      (vi-open-line-above)
+    (vi-open-line-below)))
 
 (defun previous-nonblank-indent-value ()
   "Return the indentation level of the previous non-blank line."
@@ -171,7 +208,7 @@ With a prefix arg set to real value of current selection."
 
 (defun view-on-github (start end)
   (interactive "r")
-  (browse-url 
+  (browse-url
    (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1")))
 
 (defun get-region (beg end)
@@ -188,6 +225,7 @@ With a prefix arg set to real value of current selection."
   (vc-git-root default-directory))
 
 (defun csv-to-org-table ()
+  (interactive)
   (if (equal "csv" (f-ext buffer-file-name))
       (org-table-convert-region (point-min) (point-max))))
 
@@ -213,7 +251,7 @@ With a prefix arg set to real value of current selection."
   (interactive)
   (shell-command "karabiner reloadxml"))
 
-;; how to map over list in elisp  
+;; how to map over list in elisp
 ;; (mapcar (lambda (arg) (s-concat "dog " arg))  '("lover" "hater"))
 
 (defun my-tail ()
@@ -283,15 +321,13 @@ With a prefix arg set to real value of current selection."
 ;;   (interactive "P")
 ;;   )
 (defun yank-chrome-url ()
- "Yank current URL from Chrome"
+  "Yank current URL from Chrome"
   (interactive)
   (require 'apples-mode)
-  (apples-do-applescript "tell application \"Google Chrome\"
- get URL of active tab of first window
-end tell"
-    #'(lambda (url status script)
-        ;; comes back with quotes which we strip off
-        (insert (subseq url 1 (1- (length url)))))))
+  (apples-do-applescript "tell application \"Google Chrome\" get URL of active tab of first window end tell"
+                         #'(lambda (url status script)
+                             ;; comes back with quotes which we strip off
+                             (insert (subseq url 1 (1- (length url)))))))
 
 (defun untabify-buffer ()
   (interactive)
@@ -309,5 +345,34 @@ Including indent-buffer, which should not be called automatically on save."
   (delete-trailing-whitespace)
   (indent-buffer))
 
+;; Roughly speaking, the after macro specifies code to run when the specified feature
+;; (e.g., python in the above examples) loads from the file. If the feature is already
+;; loaded the code runs immediately.
+
+;; e.g.
+;; Normally if you want something to load after a feature (package) loads you do something like,
+
+;; (eval-after-load 'python
+;;   (progn
+;;     (message "python has been loaded")
+;;     (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+;;     (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
+;; and using the after macro just cleans things up a bit,
+
+;; (after `python
+;;   (message "python has been loaded")
+;;   (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+;;   (local-set-key (kbd "M-p") 'flymake-goto-prev-error))
+
+(if (fboundp 'with-eval-after-load)
+    (defmacro after (feature &rest body)
+      "After FEATURE is loaded, evaluate BODY."
+      (declare (indent defun))
+      `(with-eval-after-load ,feature ,@body))
+  (defmacro after (feature &rest body)
+    "After FEATURE is loaded, evaluate BODY."
+    (declare (indent defun))
+    `(eval-after-load ,feature
+       '(progn ,@body))))
 
 (provide 'utilities-setup)

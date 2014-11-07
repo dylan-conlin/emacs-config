@@ -30,5 +30,7 @@
 
 (setq helm-adaptive-mode t)
 (setq helm-quick-update t)
+(setq helm-bookmark-show-location t)
+
 
 (provide 'helm-setup)

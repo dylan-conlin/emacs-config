@@ -9,7 +9,7 @@
 (setq org-startup-indented t)
 (setq org-hide-leading-starts t)
 
-;; behavior settings			 
+;; behavior settings
 (setq org-use-fast-todo-selection t)
 
 ;; setup org path
@@ -18,15 +18,15 @@
 
 ;; setup files agenda is aware of
 (setq org-agenda-files '("~/Dropbox/org/code.org"
-			 "~/Dropbox/org/notes.org"
-			 "~/Dropbox/org/shortstack.org"
-			 "~/Dropbox/org/todo.org"))
+                         "~/Dropbox/org/notes.org"
+                         "~/Dropbox/org/shortstack.org"
+                         "~/Dropbox/org/todo.org"))
 
 
 (setq org-capture-templates
       '(
         ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
-        ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")        
+        ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")
         ;; ("e" "Email" entry (file+headline "~/Dropbox/org/emails.org" "Emails") "* %^{title} %^g \n %? \n%U")
         ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
         ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
@@ -60,13 +60,13 @@
         (run-with-idle-timer
          (* 1 secs) nil 'org-mobile-push)))
 
-;; After saving files, start an idle timer after which we are going to push 
-(add-hook 'after-save-hook 
-	  (lambda () 
-	    (if (or (eq major-mode 'org-mode) (eq major-mode 'org-agenda-mode))
-		(dolist (file (org-mobile-files-alist))
-		  (if (string= (expand-file-name (car file)) (buffer-file-name))
-		      (org-mobile-push-with-delay 10))))))
+;; After saving files, start an idle timer after which we are going to push
+(add-hook 'after-save-hook
+          (lambda ()
+            (if (or (eq major-mode 'org-mode) (eq major-mode 'org-agenda-mode))
+                (dolist (file (org-mobile-files-alist))
+                  (if (string= (expand-file-name (car file)) (buffer-file-name))
+                      (org-mobile-push-with-delay 10))))))
 
 ;; Run after midnight each day (or each morning upon wakeup?).
 (run-at-time "00:01" 86400 '(lambda () (org-mobile-push-with-delay 1)))

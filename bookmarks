@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Dropbox/org/code.org")
- (front-context-string . "** brew program ")
- (rear-context-string . " the black bar.\n")
- (position . 45963))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** TODO vimium c")
+ (rear-context-string . "2014-11-03 Mon]\n")
+ (position . 195525))
 ("sites"
  (filename . "~/drive/sites/")
  (front-context-string . ".projectile\n  dr")
@@ -43,10 +43,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** superfly     ")
- (rear-context-string . "1-01 Sat 21:52]\n")
- (position . 194573))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO export a")
+ (rear-context-string . "1-04 Tue 10:18]\n")
+ (position . 9981))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

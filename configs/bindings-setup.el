@@ -5,7 +5,6 @@
 (setq guide-key/idle-delay 0.1)
 (setq ns-pop-up-frames nil)
 
-
 ;; my custom bindings!
 
 ;; a minor mode for all my "override" key bindings:
@@ -104,9 +103,9 @@
 ;;           '(lambda () (define-key haml-mode-map "\M-'" 'haml-comment-dwim)))
 
 (add-hook 'web-mode-hook
-	  '(lambda () (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end))
-	  '(lambda () (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment))
-	  )
+	  '(lambda ()
+	     (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end)
+	     (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment)))
 
 (add-hook 'web-mode-hook
 	  '(lambda () (define-key web-mode-map (kbd "C-M-b")
@@ -152,8 +151,8 @@
 ;; (key-chord-define-global "o " "_")
 ;; (key-chord-define-global "i " "-")
 
-(key-chord-define-global "ww" 'text-scale-increase)
-(key-chord-define-global "qq" 'text-scale-decrease)
+(key-chord-define-global "++" 'text-scale-increase)
+(key-chord-define-global "__" 'text-scale-decrease)
 (key-chord-define-global "aa" '(lambda () (interactive) (text-scale-set 0)))
 
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
@@ -200,23 +199,45 @@
 (define-key dcon-minor-mode-map (kbd "M-T") 'my-tail)
 (define-key dcon-minor-mode-map (kbd "C-c m") 'view-echo-area-messages)
 
-;; evil mode stuff
+(add-hook 'evil-mode-hook
+	  '(lambda ()
+	     ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+	     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
+	     (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
+	     (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
+	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
+	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
+	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
+	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
+	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+	     (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
-;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
-;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-;; (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
-;; (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-;; (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
+	     (global-set-key [escape] 'evil-exit-emacs-state)
 
-;;(define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
-;; (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
+	     ))
+
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+
+
+
 
 (global-set-key (kbd "s-/") 'winner-undo)
 (global-set-key (kbd "s-.") 'winner-redo)
+
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 (provide 'bindings-setup)

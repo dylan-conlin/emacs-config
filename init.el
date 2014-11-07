@@ -27,28 +27,24 @@
 
 ;; need to be required first to enable
 ;; my custom setups
-(require 'repository-root)
-(require 'itail)
 (require 'rainbow-mode)
 (require 'point-undo)
 (require 'dired-details+)
+(require 'itail)
 
 ;; require custom configs
+(require 'repository-root)
 (require 'utilities-setup)
 (require 'helm-setup)
+(require 'dash-setup)
 (require 'autocomplete-setup)
 (require 'appearance-setup)
 (require 'mac-setup)
-(require 'org-mobile)
 (require 'bindings-setup)
 (require 'hooks-setup)
-(require 'coffee-setup)
-(require 'node-setup)
 (require 'mode-lists-setup)
-(require 'dash-setup)
-(require 'eshell-setup)
+(require 'evil-search-highlight-persist)
 (require 'org-setup)
-
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
 (add-to-list 'load-path "/usr/local/bin/markdown")
@@ -61,21 +57,60 @@
       kept-old-versions 2
       version-control t)
 
-;; enable useful modes
-(projectile-global-mode 1)
-(undo-tree-mode 1)
-(delete-selection-mode 1)
+;; enable useful custom configs on demand
+(after 'projectile
+  (projectile-global-mode 1))
+
+(after "undo-tree-autoloads"
+  (global-undo-tree-mode t)
+  (setq undo-tree-visualizer-relative-timestamps t)
+  (setq undo-tree-visualizer-timestamps t))
+
+
+(after 'eshell-mode
+  (require 'eshell-setup))
+
+(after 'coffee-mode
+  (require 'coffee-setup))
+
+;; (undo-tree-mode 1)
+(helm-mode 1)
+;; (delete-selection-mode 1)
 (smartparens-global-mode 1)
-(global-whitespace-mode 1)
+;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
 (win-switch-mode 1)
-(helm-mode 1)
 (auto-indent-mode 1)
 (yas-global-mode 1)
 (guide-key-mode 1)
 (key-chord-mode 1)
 (winner-mode 1)
 (edit-server-start)
+(global-color-identifiers-mode)
+
+(after 'flycheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+  (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
+  (setq flycheck-standard-error-navigation nil))
+
+;; setup evil mode
+(evil-mode 1)
+(global-evil-surround-mode 1)
+(global-evil-search-highlight-persist t)
+(setq evil-leader/in-all-states 1)
+(evil-leader-mode 1)
+(evil-leader/set-leader ",")
+(evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+
+;; (when (display-graphic-p (selected-frame)
+;;   (eval-after-load 'flycheck
+;;     '(custom-set-variables
+;;       '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))))
 
 ;; default landing file after startup
 (find-file "~/.emacs.d/init.el")
+
+(setq save-place-file "~/.emacs.d/saveplace")
+(setq-default save-place t)
+(require 'saveplace)
