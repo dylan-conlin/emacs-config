@@ -1,6 +1,5 @@
 ;; theme
 (load-theme 'lush t)
-
 (powerline-vim-theme)
 
 ;; font
@@ -73,4 +72,6 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
+;; helm
+(setq helm-highlight-current-line )
 (provide 'appearance-setup)

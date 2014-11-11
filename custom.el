@@ -54,6 +54,8 @@
  '(helm-truncate-lines t)
  '(ido-ubiquitous-fallback-completing-read-function (quote completing-read-default))
  '(isearch-lazy-highlight t)
+ '(js2-missing-semi-one-line-override t)
+ '(js2-strict-missing-semi-warning nil)
  '(lazy-highlight-initial-delay 0)
  '(magit-completing-read-function (quote magit-builtin-completing-read))
  '(newsticker-url-list
@@ -112,4 +114,8 @@
  '(helm-lisp-show-completion ((t (:foreground "OrangeRed2"))))
  '(helm-selection-line ((t (:background "lightgray"))))
  '(helm-source-header ((t (:weight bold :height 1.1 :family "Sans Serif"))))
- '(sp-pair-overlay-face ((t (:inherit highlight :background "pink")))))
+ '(magit-item-highlight ((t (:background "gray11"))))
+ '(org-done ((t (:foreground "Green" :weight bold))))
+ '(org-level-2 ((t (:foreground "DarkOliveGreen1"))))
+ '(org-special-keyword ((t (:foreground "gray28"))))
+ '(org-todo ((t (:foreground "red" :weight ultra-bold)))))

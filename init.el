@@ -31,7 +31,8 @@
 (require 'point-undo)
 (require 'dired-details+)
 (require 'itail)
-
+(require 'popwin)
+(require 'evil-org)
 ;; require custom configs
 (require 'repository-root)
 (require 'utilities-setup)
@@ -87,7 +88,7 @@
 (key-chord-mode 1)
 (winner-mode 1)
 (edit-server-start)
-(global-color-identifiers-mode)
+;; (global-color-identifiers-mode)
 
 (after 'flycheck
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
