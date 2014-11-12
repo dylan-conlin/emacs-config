@@ -112,13 +112,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil :underline nil))))
- '(evil-search-highlight-persist-highlight-face ((t (:background "LightGreen" :foreground "black"))))
  '(helm-M-x-key ((t (:foreground "Magenta" :weight extra-bold))))
  '(helm-lisp-show-completion ((t (:foreground "OrangeRed2"))))
- '(helm-selection-line ((t (:background "lightgray"))))
+ '(helm-selection-line ((t (:background "lightpink"))))
  '(helm-source-header ((t (:weight bold :height 1.1 :family "Sans Serif"))))
- '(magit-item-highlight ((t (:background "gray11"))))
- '(org-done ((t (:foreground "Green" :weight bold))))
- '(org-level-2 ((t (:foreground "DarkOliveGreen1"))))
- '(org-special-keyword ((t (:foreground "gray28"))))
- '(org-todo ((t (:foreground "red" :weight ultra-bold)))))
+ '(magit-item-highlight ((t (:background "lightgray")))))

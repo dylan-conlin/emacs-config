@@ -15,10 +15,6 @@
 (server-start)
 (put 'narrow-to-region 'disabled nil)
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
 ;; this can't be moved any lower for some reason.
 (require 'org-mobile)
 
@@ -46,6 +42,10 @@
 (require 'mode-lists-setup)
 (require 'evil-search-highlight-persist)
 (require 'org-setup)
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")

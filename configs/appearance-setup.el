@@ -1,5 +1,5 @@
 ;; theme
-(load-theme 'lush t)
+;; (load-theme 'stekene-light t)
 (powerline-vim-theme)
 
 ;; font
