@@ -32,7 +32,7 @@
 (require 'dired-details+)
 (require 'itail)
 (require 'popwin)
-(require 'evil-org)
+
 ;; require custom configs
 (require 'repository-root)
 (require 'utilities-setup)

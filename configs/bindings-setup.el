@@ -87,6 +87,7 @@
 (global-set-key (kbd "C-S-n") 'org-move-subtree-down)
 (global-set-key (kbd "C-S-p") 'org-move-subtree-up)
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-capture-goto-last-stored)
 (define-key org-mode-map "\C-cp" 'org-mobile-pull)
 (define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
 
