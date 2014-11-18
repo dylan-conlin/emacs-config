@@ -18,9 +18,11 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 (dcon-minor-mode 1)
 
+;; remove keybinding
+(global-set-key (kbd "s-q") nil)
+
 ;; -----------------------------------------------------------------------------------------------------
 ;; helm bindings
-
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x a") 'helm-apropos)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -232,9 +234,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       (setq deactivate-mark  t)
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
-
-
-
 
 (global-set-key (kbd "s-/") 'winner-undo)
 (global-set-key (kbd "s-.") 'winner-redo)

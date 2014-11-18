@@ -1,7 +1,3 @@
-;; theme
-;; (load-theme 'stekene-light t)
-(powerline-vim-theme)
-
 ;; font
 (set-face-attribute 'default nil :family "monaco" :height 120)
 
@@ -13,9 +9,13 @@
 (push '("*git-gutter+-diff*" :height 0.3 :position bottom :noselect t) popwin:special-display-config)
 
 ;; modeline
-(sml/setup t)
+;; (sml/setup t)
 
-;; (sml/apply-theme 'respectful)
+(require 'smart-mode-line)
+(sml/setup)
+(setq sml/shorten-directory t)
+(sml/apply-theme 'respectful)
+
 (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-server/" ":SERVER:") t)
@@ -72,6 +72,7 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
-;; helm
-(setq helm-highlight-current-line )
+;; add newline to file on save
+(setq require-final-newline t)
+
 (provide 'appearance-setup)

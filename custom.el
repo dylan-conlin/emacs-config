@@ -17,7 +17,7 @@
  '(custom-enabled-themes (quote (sanityinc-solarized-light)))
  '(custom-safe-themes
    (quote
-    ("5ea20171762b3f9682fbf507ee4b4018ce7b6cc65415fa99799a125f112b2cdb" "b21bf64c01dc3a34bc56fff9310d2382aa47ba6bc3e0f4a7f5af857cd03a7ef7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "1011be33e9843afd22d8d26b031fbbb59036b1ce537d0b250347c19e1bd959d0" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "609a1521b4983dc1e1cc64fe57fe2fffd256e9058c95b8fc6bfae479ab8b0af3" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default)))
+    ("28590b1f3a827a16ec1f025b20c025a6e63b56b6c4223851c224c2e6cd1c1775" "5ea20171762b3f9682fbf507ee4b4018ce7b6cc65415fa99799a125f112b2cdb" "b21bf64c01dc3a34bc56fff9310d2382aa47ba6bc3e0f4a7f5af857cd03a7ef7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "1011be33e9843afd22d8d26b031fbbb59036b1ce537d0b250347c19e1bd959d0" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "609a1521b4983dc1e1cc64fe57fe2fffd256e9058c95b8fc6bfae479ab8b0af3" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default)))
  '(dired-dwim-target t)
  '(erc-track-position-in-mode-line t t)
  '(eshell-cd-shows-directory nil)
@@ -81,11 +81,6 @@
  '(show-paren-delay 0.125)
  '(show-paren-mode t)
  '(slack-token (getenv "SLACK_TOKEN"))
- '(sml/active-background-color "#34495e")
- '(sml/active-foreground-color "#ecf0f1")
- '(sml/inactive-background-color "#dfe4ea")
- '(sml/inactive-foreground-color "#34495e")
- '(sml/mode-width (quote right))
  '(sp-show-pair-delay 0)
  '(sp-show-pair-from-inside t)
  '(vc-annotate-background "#ecf0f1")
@@ -112,6 +107,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil :underline nil))))
+ '(font-lock-comment-face ((t (:foreground "gray70"))))
  '(helm-M-x-key ((t (:foreground "Magenta" :weight extra-bold))))
  '(helm-lisp-show-completion ((t (:foreground "OrangeRed2"))))
  '(helm-selection-line ((t (:background "lightpink"))))

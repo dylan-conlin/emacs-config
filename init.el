@@ -40,7 +40,7 @@
 (require 'bindings-setup)
 (require 'hooks-setup)
 (require 'mode-lists-setup)
-(require 'evil-search-highlight-persist)
+;; (require 'evil-search-highlight-persist)
 (require 'org-setup)
 
 ;; Keep emacs Custom-settings in separate file
@@ -77,7 +77,7 @@
 
 ;; (undo-tree-mode 1)
 (helm-mode 1)
-;; (delete-selection-mode 1)
+(delete-selection-mode 1)
 (smartparens-global-mode 1)
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
@@ -96,14 +96,14 @@
   (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
   (setq flycheck-standard-error-navigation nil))
 
-;; setup evil mode
-(evil-mode 1)
-(global-evil-surround-mode 1)
-(global-evil-search-highlight-persist t)
-(setq evil-leader/in-all-states 1)
-(evil-leader-mode 1)
-(evil-leader/set-leader ",")
-(evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+;; ;; setup evil mode
+;; (evil-mode 1)
+;; (global-evil-surround-mode 1)
+;; (global-evil-search-highlight-persist t)
+;; (setq evil-leader/in-all-states 1)
+;; (evil-leader-mode 1)
+;; (evil-leader/set-leader ",")
+;; (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
 
 ;; (when (display-graphic-p (selected-frame)
 ;;   (eval-after-load 'flycheck
@@ -111,6 +111,10 @@
 ;;       '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))))
 
 ;; default landing file after startup
+(setq popwin:close-popup-window-timer-interval 0.05)
+(setq display-buffer-function 'popwin:display-buffer)
+(push '("*git-gutter:diff*" :height 10 :position bottom :noselect 1) popwin:special-display-config)
+
 (find-file "~/.emacs.d/init.el")
 
 (setq save-place-file "~/.emacs.d/saveplace")

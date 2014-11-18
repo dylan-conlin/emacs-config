@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO web hook")
- (rear-context-string . "1-10 Mon 21:53]\n")
- (position . 10501))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** idea Business")
+ (rear-context-string . "1-14 Fri 21:03]\n")
+ (position . 196591))
 ("sites"
  (filename . "~/drive/sites/")
  (front-context-string . ".projectile\n  dr")
@@ -43,10 +43,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO product ")
- (rear-context-string . "1-11 Tue 10:19]\n")
- (position . 10478))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** montage comic")
+ (rear-context-string . "1-11 Tue 21:13]\n")
+ (position . 196008))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -68,7 +68,7 @@
  (rear-context-string)
  (position . 1))
 ("node"
- (filename . "~/drive/side-sites/node/")
+ (filename . "~/drive/side-sites/node-projects")
  (front-context-string . "Appointments\n  d")
  (rear-context-string . "42 Sep 10 18:36 ")
  (position . 262))
