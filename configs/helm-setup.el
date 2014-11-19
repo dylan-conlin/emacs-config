@@ -10,9 +10,9 @@
   (interactive)
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
-        (helm :sources '(helm-source-ls-git-status
-			 helm-source-ls-git
-			 helm-source-bookmarks)
+        (helm :sources '(helm-c-source-ls-git-status
+			 helm-c-source-ls-git
+			 helm-source-pp-bookmarks)
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))
     (helm-projectless-search)))
@@ -22,7 +22,7 @@
   (interactive)
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-		     helm-source-bookmarks
+		     helm-source-pp-bookmarks
                      helm-source-ido-virtual-buffers)
           :buffer "*project-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))

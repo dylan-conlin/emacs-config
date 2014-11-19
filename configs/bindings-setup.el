@@ -27,7 +27,7 @@
 (global-set-key (kbd "C-x a") 'helm-apropos)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-k") 'helm-project-search)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'helm-projectless-search)
 ;; (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "M-K") 'my-helm-do-ag)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
