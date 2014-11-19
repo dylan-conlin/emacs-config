@@ -24,8 +24,6 @@
           (lambda ()
             (yas-minor-mode nil)))
 
-;; (csv-to-org-table)
-
 (add-hook 'haml-mode-hook
           (lambda ()
             ;; Preferred comment style

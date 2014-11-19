@@ -211,7 +211,7 @@
 	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
 	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
 	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+	     (define-key key-translation-map (kbd "M-g") (kbd "<escape>"))
 	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
 	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
 	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -219,9 +219,7 @@
 	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-
 	     (global-set-key [escape] 'evil-exit-emacs-state)
-
 	     ))
 
 ;; esc quits
