@@ -1,3 +1,6 @@
+;; theme
+;; (load-theme 'solarized-light t)
+
 ;; font
 (set-face-attribute 'default nil :family "monaco" :height 120)
 
@@ -8,13 +11,10 @@
 (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
 (push '("*git-gutter+-diff*" :height 0.3 :position bottom :noselect t) popwin:special-display-config)
 
-;; modeline
-;; (sml/setup t)
-
-(require 'smart-mode-line)
 (sml/setup)
+
 (setq sml/shorten-directory t)
-(sml/apply-theme 'respectful)
+;; (sml/apply-theme 'light)
 
 (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)

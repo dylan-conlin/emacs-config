@@ -10,8 +10,8 @@
   (interactive)
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
-        (helm :sources '(helm-c-source-ls-git-status
-			 helm-c-source-ls-git
+        (helm :sources '(helm-source-projectile-buffers-list
+			 helm-source-projectile-files-list
 			 helm-source-pp-bookmarks)
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))

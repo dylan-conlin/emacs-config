@@ -231,7 +231,7 @@ With a prefix argument, insert a newline above the current line."
 
 (defun shortstack-startup ()
   (interactive)
-  (shell-command "osascript /Users/dylanconlin/drive/side-sites/work-environment-setup/work-environment-setup.applescript"))
+  (shell-command (s-concat "osascript " user-emacs-directory "applescripts/work-environment-setup.applescript")))
 
 (defun itunes-star-song ()
   (interactive)
@@ -374,5 +374,25 @@ Including indent-buffer, which should not be called automatically on save."
     (declare (indent defun))
     `(eval-after-load ,feature
        '(progn ,@body))))
+
+(defun open-in-iterm ()
+  (interactive)
+  (kill-new (s-concat "cd " (shell-quote-argument (f-full (s-trim (first (s-match " .*" (pwd)))))) "\r"))
+  (shell-command (s-concat "osascript " user-emacs-directory "applescripts/open-iterm.applescript")))
+
+(defun clipboard-youtube-mp3 ()
+  (interactive)
+  (with-temp-buffer
+    (insert "hello")
+    (clipboard-kill-region (point-min) (point-max)))
+  (shell-command (s-concat "youtube-dl --extract-audio --audio-format mp3 " )))
+
+
+(defun email-friends (subject body recipient)
+  ;; in sSubject, the s stands for string. in \nsBody, the \n indicated multiple interactive args are expected.
+  (interactive "sSubject: \nsBody: \nsTo: ")
+  ;; (shell-quote-argument) should always go inside s-concat.
+  (shell-command (s-concat "coffee ~/drive/side-sites/node-projects/emailer/mailer.coffee " (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
+
 
 (provide 'utilities-setup)

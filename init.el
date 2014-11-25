@@ -36,11 +36,12 @@
 (require 'dash-setup)
 (require 'autocomplete-setup)
 (require 'appearance-setup)
+
 (require 'mac-setup)
 (require 'bindings-setup)
 (require 'hooks-setup)
 (require 'mode-lists-setup)
-;; (require 'evil-search-highlight-persist)
+(require 'evil-search-highlight-persist)
 (require 'org-setup)
 
 ;; Keep emacs Custom-settings in separate file
@@ -96,14 +97,14 @@
   (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
   (setq flycheck-standard-error-navigation nil))
 
-;; ;; setup evil mode
-;; (evil-mode 1)
-;; (global-evil-surround-mode 1)
-;; (global-evil-search-highlight-persist t)
-;; (setq evil-leader/in-all-states 1)
-;; (evil-leader-mode 1)
-;; (evil-leader/set-leader ",")
-;; (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+;; setup evil mode
+(evil-mode 1)
+(global-evil-surround-mode 1)
+(global-evil-search-highlight-persist t)
+(setq evil-leader/in-all-states 1)
+(evil-leader-mode 1)
+(evil-leader/set-leader ",")
+(evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
 
 ;; (when (display-graphic-p (selected-frame)
 ;;   (eval-after-load 'flycheck
@@ -119,4 +120,5 @@
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
+
 (require 'saveplace)

@@ -175,7 +175,7 @@
 (global-set-key (kbd "M-`") 'other-frame)
 (global-set-key (kbd "C-x C-v") 'global-visual-line-mode)
 
-(global-set-key (kbd "C-x C-t") '(lambda () "DOCSTRING" (interactive) (start-eshell-in-split-window)))
+(global-set-key (kbd "C-x C-t") 'open-in-iterm)
 
 (global-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
 (global-set-key (kbd "C-<left>" ) 'sp-backward-slurp-sexp)
@@ -204,14 +204,14 @@
 
 (add-hook 'evil-mode-hook
 	  '(lambda ()
-	     ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+	     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 	     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 	     (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
 	     (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
 	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
 	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
 	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-	     (define-key key-translation-map (kbd "M-g") (kbd "<escape>"))
+	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
 	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
 	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
 	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)

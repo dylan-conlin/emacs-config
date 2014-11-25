@@ -13,6 +13,11 @@
  '(battery-mode-line-format " %p" t)
  '(blink-cursor-interval 0.25)
  '(coffee-tab-width 2)
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
  '(cursor-in-non-selected-windows nil)
  '(custom-enabled-themes (quote (sanityinc-solarized-light)))
  '(custom-safe-themes
@@ -58,12 +63,36 @@
  '(helm-mode t)
  '(helm-quick-update t)
  '(helm-truncate-lines t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (quote
+    (("#eee8d5" . 0)
+     ("#B4C342" . 20)
+     ("#69CABF" . 30)
+     ("#69B7F0" . 50)
+     ("#DEB542" . 60)
+     ("#F2804F" . 70)
+     ("#F771AC" . 85)
+     ("#eee8d5" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(ido-ubiquitous-fallback-completing-read-function (quote completing-read-default))
  '(isearch-lazy-highlight t)
  '(js2-missing-semi-one-line-override t)
  '(js2-strict-missing-semi-warning nil)
  '(lazy-highlight-initial-delay 0)
  '(magit-completing-read-function (quote magit-builtin-completing-read))
+ '(magit-diff-use-overlays nil)
  '(newsticker-url-list
    (quote
     (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
@@ -85,8 +114,11 @@
  '(show-paren-delay 0.125)
  '(show-paren-mode t)
  '(slack-token (getenv "SLACK_TOKEN"))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(sp-show-pair-delay 0)
  '(sp-show-pair-from-inside t)
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
  '(vc-annotate-background "#ecf0f1")
  '(vc-annotate-color-map
    (quote
@@ -103,6 +135,9 @@
      (330 . "#2492db")
      (360 . "#0a74b9"))))
  '(vc-annotate-very-old-color "#0a74b9")
+ '(weechat-color-list
+   (quote
+    (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
  '(whitespace-line-column 120))
 
 (custom-set-faces
