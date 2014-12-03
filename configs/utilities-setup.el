@@ -172,20 +172,47 @@ With a prefix arg set to real value of current selection."
 
 
 (defun open-line-above ()
-  "Insert a newline above the current line and put point at beginning."
+  "Open a line above the line the point is at.
+Then move to that line and indent according to mode"
   (interactive)
-  (unless (bolp)
-    (beginning-of-line))
-  (newline)
-  (forward-line -1)
-  (indent-according-to-mode))
+  (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
+         (let ((column
+                (save-excursion
+                  (back-to-indentation)
+                  (current-column))))
+           (move-beginning-of-line 1)
+           (newline)
+           (forward-line -1)
+           (move-to-column column t)))
+        (t
+         (move-beginning-of-line 1)
+         (newline)
+         (forward-line -1)
+         (indent-according-to-mode))))
 
 (defun open-line-below ()
-  "Insert a newline below the current line and put point at beginning."
+  "Open a line below the line the point is at.
+Then move to that line and indent according to mode"
   (interactive)
-  (unless (eolp)
-    (end-of-line))
-  (newline-and-indent))
+  (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
+         (let ((column
+                (save-excursion
+                  (back-to-indentation)
+                  (current-column))))
+           (move-end-of-line 1)
+           (newline)
+           (move-to-column column t)))
+        (t
+         (move-end-of-line 1)
+         (newline)
+         (indent-according-to-mode))))
+
+(defun my-kill-line ()
+  (interactive)
+  (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
+	 (kill-whole-line)
+	 (back-to-indentation))
+	((kill-line))))
 
 (defun vi-open-line (&optional abovep)
   "Insert a newline below the current line and put point at beginning.
@@ -392,7 +419,8 @@ Including indent-buffer, which should not be called automatically on save."
   ;; in sSubject, the s stands for string. in \nsBody, the \n indicated multiple interactive args are expected.
   (interactive "sSubject: \nsBody: \nsTo: ")
   ;; (shell-quote-argument) should always go inside s-concat.
-  (shell-command (s-concat "coffee ~/drive/side-sites/node-projects/emailer/mailer.coffee " (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
-
+  (shell-command
+   (s-concat "coffee ~/drive/side-sites/node-projects/emailer/mailer.coffee "
+	     (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
 
 (provide 'utilities-setup)

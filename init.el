@@ -98,13 +98,13 @@
   (setq flycheck-standard-error-navigation nil))
 
 ;; setup evil mode
-(evil-mode 1)
-(global-evil-surround-mode 1)
-(global-evil-search-highlight-persist t)
-(setq evil-leader/in-all-states 1)
-(evil-leader-mode 1)
-(evil-leader/set-leader ",")
-(evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
+;; (evil-mode 1)
+;; (global-evil-surround-mode 1)
+;; (global-evil-search-highlight-persist t)
+;; (setq evil-leader/in-all-states 1)
+;; (evil-leader-mode 1)
+;; (evil-leader/set-leader ",")
+;; (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
 
 ;; (when (display-graphic-p (selected-frame)
 ;;   (eval-after-load 'flycheck
@@ -115,6 +115,9 @@
 (setq popwin:close-popup-window-timer-interval 0.05)
 (setq display-buffer-function 'popwin:display-buffer)
 (push '("*git-gutter:diff*" :height 10 :position bottom :noselect 1) popwin:special-display-config)
+
+;; disable scss-mode from compiling on save
+(setq scss-compile-at-save nil)
 
 (find-file "~/.emacs.d/init.el")
 

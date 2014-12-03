@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** idea Business")
- (rear-context-string . "1-14 Fri 21:03]\n")
- (position . 196591))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** thievery corp")
+ (rear-context-string . "1-25 Tue 18:11]\n")
+ (position . 14092))
 ("sites"
  (filename . "~/drive/sites/")
  (front-context-string . ".projectile\n  dr")
@@ -43,10 +43,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** montage comic")
- (rear-context-string . "1-11 Tue 21:13]\n")
- (position . 196008))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO i get li")
+ (rear-context-string . "2-02 Tue 14:24]\n")
+ (position . 17879))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -58,7 +58,7 @@
  (rear-context-string . "20 Oct 21 08:36 ")
  (position . 255))
 ("coffee.coffee"
- (filename . "~/coffee.coffee")
+ (filename . "~")
  (front-context-string)
  (rear-context-string . "console.log \"hi\"")
  (position . 25))

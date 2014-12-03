@@ -1,5 +1,5 @@
 ;; theme
-;; (load-theme 'solarized-light t)
+(load-theme 'espresso t)
 
 ;; font
 (set-face-attribute 'default nil :family "monaco" :height 120)
@@ -11,8 +11,8 @@
 (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
 (push '("*git-gutter+-diff*" :height 0.3 :position bottom :noselect t) popwin:special-display-config)
 
+(setq sml/no-confirm-load-theme t)
 (sml/setup)
-
 (setq sml/shorten-directory t)
 ;; (sml/apply-theme 'light)
 
@@ -74,5 +74,5 @@
 
 ;; add newline to file on save
 (setq require-final-newline t)
-
+(set-face-attribute 'region nil :background "#666")
 (provide 'appearance-setup)

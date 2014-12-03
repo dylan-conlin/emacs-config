@@ -3,7 +3,6 @@
 (require 'org-crypt)
 (require 'gnus-async)
 
-
 ;; prettier appearance settings
 (setq org-log-done t)
 (setq org-startup-indented t)
@@ -20,7 +19,8 @@
 (setq org-agenda-files '("~/Dropbox/org/code.org"
                          "~/Dropbox/org/notes.org"
                          "~/Dropbox/org/shortstack.org"
-                         "~/Dropbox/org/todo.org"))
+                         "~/Dropbox/org/journal.org"
+			 "~/Dropbox/org/todo.org"))
 
 
 (setq org-capture-templates
@@ -29,6 +29,7 @@
         ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")
         ;; ("e" "Email" entry (file+headline "~/Dropbox/org/emails.org" "Emails") "* %^{title} %^g \n %? \n%U")
         ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
+	("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
         ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
         ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")))
 

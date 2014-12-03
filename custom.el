@@ -14,6 +14,7 @@
  '(blink-cursor-interval 0.25)
  '(coffee-tab-width 2)
  '(compilation-message-face (quote default))
+ '(css-indent-offset 2)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
@@ -93,6 +94,7 @@
  '(lazy-highlight-initial-delay 0)
  '(magit-completing-read-function (quote magit-builtin-completing-read))
  '(magit-diff-use-overlays nil)
+ '(magit-use-overlays nil)
  '(newsticker-url-list
    (quote
     (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
@@ -102,6 +104,7 @@
  '(org-default-notes-file "~/Dropbox/org/notes.org")
  '(org-directory "~/Dropbox/org/")
  '(org-from-is-user-regexp "\\<Dylan Conlin\\>")
+ '(org-journal-dir "~/Dropbox/org/journal/")
  '(org-log-done t)
  '(org-mobile-directory "~/Dropbox/Apps/MobileOrg")
  '(org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
@@ -111,6 +114,7 @@
  '(projectile-enable-caching t)
  '(projectile-global-mode t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
+ '(scss-compile-at-save nil t)
  '(show-paren-delay 0.125)
  '(show-paren-mode t)
  '(slack-token (getenv "SLACK_TOKEN"))
@@ -147,6 +151,8 @@
  ;; If there is more than one, they won't work right.
  '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil :underline nil))))
  '(font-lock-comment-face ((t (:foreground "gray70"))))
+ '(font-lock-type-face ((t (:foreground "blue"))))
+ '(font-lock-variable-name-face ((t (:foreground "green4"))))
  '(helm-M-x-key ((t (:foreground "Magenta" :weight extra-bold))))
  '(helm-lisp-show-completion ((t (:foreground "OrangeRed2"))))
  '(helm-ls-git-deleted-and-staged-face ((t (:foreground "purple"))))
@@ -156,4 +162,4 @@
  '(helm-ls-git-untracked-face ((t (:foreground "magenta"))))
  '(helm-selection-line ((t (:background "lightpink"))))
  '(helm-source-header ((t (:weight bold :height 1.1 :family "Sans Serif"))))
- '(magit-item-highlight ((t (:background "lightgray")))))
+ '(magit-item-highlight ((t (:inherit nil)))))
