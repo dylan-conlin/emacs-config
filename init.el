@@ -35,18 +35,19 @@
 (require 'helm-setup)
 (require 'dash-setup)
 (require 'autocomplete-setup)
-(require 'appearance-setup)
 
 (require 'mac-setup)
 (require 'bindings-setup)
 (require 'hooks-setup)
 (require 'mode-lists-setup)
-(require 'evil-search-highlight-persist)
+;; (require 'evil-search-highlight-persist)
 (require 'org-setup)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+
+(require 'appearance-setup)
 
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
@@ -82,6 +83,7 @@
 (smartparens-global-mode 1)
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
+(drag-stuff-global-mode 1)
 (win-switch-mode 1)
 (auto-indent-mode 1)
 (yas-global-mode 1)
@@ -114,7 +116,6 @@
 ;; default landing file after startup
 (setq popwin:close-popup-window-timer-interval 0.05)
 (setq display-buffer-function 'popwin:display-buffer)
-(push '("*git-gutter:diff*" :height 10 :position bottom :noselect 1) popwin:special-display-config)
 
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)

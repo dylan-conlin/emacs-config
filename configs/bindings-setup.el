@@ -29,6 +29,7 @@
 (global-set-key (kbd "M-k") 'helm-project-search)
 (global-set-key (kbd "C-x b") 'helm-projectless-search)
 (global-set-key (kbd "C-k") 'my-kill-line)
+(global-set-key (kbd "M-l") 'open-line-below)
 (global-set-key (kbd "M-K") 'my-helm-do-ag)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -139,7 +140,10 @@
 (define-key dcon-minor-mode-map (kbd "C-S-K") 'enlarge-window)
 (define-key dcon-minor-mode-map (kbd "C-S-J") 'shrink-window)
 
+(key-chord-define-global "df" 'drag-stuff-up)
+(key-chord-define-global "jk" 'drag-stuff-down)
 (key-chord-define-global "fj" 'ace-jump-word-mode)
+
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode-pop-mark)
 
 (global-set-key (kbd "C-x C-o") 'open-dir-in-finder)

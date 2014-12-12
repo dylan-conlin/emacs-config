@@ -1,5 +1,5 @@
 ;; theme
-(load-theme 'espresso t)
+(load-theme 'obsidian t)
 
 ;; font
 (set-face-attribute 'default nil :family "monaco" :height 120)
@@ -7,14 +7,10 @@
 ;; only show bad whitespace
 (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
 
-;; undo-tree
-(push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
-(push '("*git-gutter+-diff*" :height 0.3 :position bottom :noselect t) popwin:special-display-config)
-
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 (setq sml/shorten-directory t)
-;; (sml/apply-theme 'light)
+(sml/apply-theme 'light)
 
 (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
@@ -44,6 +40,7 @@
 
 ;; cursor
 (blink-cursor-mode 1)
+(set-cursor-color 'green)
 
 ;; helm
 (setq helm-buffer-max-length 30)
@@ -74,5 +71,5 @@
 
 ;; add newline to file on save
 (setq require-final-newline t)
-(set-face-attribute 'region nil :background "#666")
+;; (set-face-attribute 'region nil :background "#666")
 (provide 'appearance-setup)

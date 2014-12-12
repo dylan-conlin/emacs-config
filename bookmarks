@@ -2,7 +2,27 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
+(("soulseek"
+ (filename . "~/Soulseek Downloads/complete/")
+ (front-context-string . "Rhadow meets NTF")
+ (rear-context-string . "02 Dec 10 19:04 ")
+ (position . 282))
+("server"
+ (filename . "~/drive/sites/shortstack-server/")
+ (front-context-string . "clean.gems\n  drw")
+ (rear-context-string . "39 Sep  3 09:35 ")
+ (position . 1345))
+("shortstack"
+ (filename . "~/drive/sites/shortstack/")
+ (front-context-string . ".ruby-gemset\n  -")
+ (rear-context-string . "19 Sep  2 12:10 ")
+ (position . 667))
+("designer"
+ (filename . "~/drive/sites/shortstack-designer/")
+ (front-context-string . "app\n  drwxr-xr-x")
+ (rear-context-string . "72 Oct 20 21:44 ")
+ (position . 1580))
+("org-refile-last-stored"
  (filename . "~/Dropbox/org/todo.org")
  (front-context-string . "** thievery corp")
  (rear-context-string . "1-25 Tue 18:11]\n")
@@ -44,9 +64,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO i get li")
- (rear-context-string . "2-02 Tue 14:24]\n")
- (position . 17879))
+ (front-context-string . "** TODO inherent")
+ (rear-context-string . "2-02 Tue 15:24]\n")
+ (position . 18047))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
