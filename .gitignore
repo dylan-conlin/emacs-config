@@ -20,3 +20,6 @@ helm-adaptive-history
 elpa
 saveplace
 /url
+.last-package-update-day
+.sx/
+emms/

@@ -209,10 +209,20 @@ Then move to that line and indent according to mode"
 
 (defun my-kill-line ()
   (interactive)
-  (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
-	 (kill-whole-line)
-	 (back-to-indentation))
-	((kill-line))))
+  ;; (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
+
+  (kill-line)
+  (delete-horizontal-space)
+  )
+
+(defun only-whitespace-before-cursor? ()
+  (interactive)
+  (if (looking-back "^\s*")
+      (progn
+	(message "yes")
+	t)
+    (message "no")
+    nil))
 
 (defun vi-open-line (&optional abovep)
   "Insert a newline below the current line and put point at beginning.
@@ -232,6 +242,20 @@ With a prefix argument, insert a newline above the current line."
       (progn
         (while (and (looking-at "^[ \t]*$") (not (bobp))) (forward-line -1))
         (current-indentation)))))
+
+(defun new-line-dwim ()
+  (interactive)
+  (let ((break-open-pair (or (and (looking-back "{" 1) (looking-at "}"))
+                             (and (looking-back ">" 1) (looking-at "<"))
+                             (and (looking-back "(" 1) (looking-at ")"))
+                             (and (looking-back "\\[" 1) (looking-at "\\]")))))
+    (newline)
+    (when break-open-pair
+      (save-excursion
+        (newline)
+        (indent-for-tab-command)))
+    (indent-for-tab-command)))
+
 
 (defun view-on-github (start end)
   (interactive "r")
@@ -422,5 +446,40 @@ Including indent-buffer, which should not be called automatically on save."
   (shell-command
    (s-concat "coffee ~/drive/side-sites/node-projects/emailer/mailer.coffee "
 	     (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
+
+
+(defun char-upcase-p (letter)
+  "returns true if char is upcase"
+  (eq letter (upcase letter)))
+
+(defun capitalize-word-toggle ()
+  (interactive)
+  (let ((start
+	 (car (save-excursion
+		(backward-word)
+		(bounds-of-thing-at-point 'symbol)))))
+    (if start
+	(save-excursion
+	  (goto-char start)
+	  (funcall
+	   (if (char-upcase-p (char-after))
+	       'downcase-region
+	     'upcase-region)
+	   start (1+ start)))
+      (capitalize-word -1))))
+
+
+(defun hue-lights-are-on-p ()
+  (s-matches-p "on" (shell-command-to-string "hue lights 2")))
+
+(defun hue-lights-toggle ()
+  (interactive)
+  (if (hue-lights-are-on-p)
+      (shell-command "hue lights all off")
+    (shell-command "hue lights all on")))
+
+
+
+
 
 (provide 'utilities-setup)

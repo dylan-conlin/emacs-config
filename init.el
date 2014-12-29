@@ -12,8 +12,11 @@
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
 (require 'pallet)
+(pallet-mode t)
 (server-start)
 (put 'narrow-to-region 'disabled nil)
+
+(add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
 
 ;; this can't be moved any lower for some reason.
 (require 'org-mobile)
@@ -42,7 +45,7 @@
 (require 'mode-lists-setup)
 ;; (require 'evil-search-highlight-persist)
 (require 'org-setup)
-
+(require 'queue-0.1.1)
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
@@ -70,9 +73,10 @@
   (setq undo-tree-visualizer-relative-timestamps t)
   (setq undo-tree-visualizer-timestamps t))
 
+(require 'eshell-setup)
 
-(after 'eshell-mode
-  (require 'eshell-setup))
+;; (after 'eshell-mode
+;;   (require 'eshell-setup))
 
 (after 'coffee-mode
   (require 'coffee-setup))
@@ -120,9 +124,79 @@
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
 
+(require 'let-alist)
+(add-to-list 'load-path "~/.emacs.d/configs/sx")
+(require 'sx-load)
+
 (find-file "~/.emacs.d/init.el")
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(require 'emms-setup)
+(require 'emms-player-vlc)
+(emms-all)
+
+(emms-default-players)
+(require 'emms-browser)
+(require 'emms-history)
+(emms-history-load)
+
+(require 'emms-info-libtag)
+(setq emms-info-functions '(emms-info-libtag))
+
+(require 'emms-mark)
+(setq emms-source-file-default-directory "~/Soulseek Downloads/complete")
+
+(define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
+
+(defun fg-emms-track-description (track)
+  "Return a somewhat nice track description."
+  (let ((artist (emms-track-get track 'info-artist))
+        (year (emms-track-get track 'info-year))
+        (album (emms-track-get track 'info-album))
+        (tracknumber (emms-track-get track 'info-tracknumber))
+        (title (emms-track-get track 'info-title)))
+    (cond
+     ((or artist title)
+      (concat
+       (format-as-column 6  0  (format "% 3d" (string-to-number tracknumber)))
+       (format-as-column 30 30 title)
+       (format-as-column 30 30 artist)
+       (format-as-column 30 30 album)
+       (format-as-column 30 30 year)
+       ))
+     (t
+      (emms-track-simple-description track)))))
+
+(defun emms-mode-line-playlist-current ()
+  "Format the currently playing song."
+  (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
+	(artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
+    (format emms-mode-line-format (concat track " - " artist))))
+
+
+
+(message "hi there %s" "dylan")
+
+(defun format-as-column (width right-padding field)
+  (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
+
+
+(setq emms-track-description-function 'fg-emms-track-description)
+
+(require 'auto-package-update)
+(setq auto-package-update-interval 7)
+(auto-package-update-maybe)
+(global-subword-mode 1)
+(setenv "NODE_NO_READLINE" "1")
+
+(setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require"))
+(require 'dired-sort)
 
 (require 'saveplace)

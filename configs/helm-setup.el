@@ -22,10 +22,10 @@
   (interactive)
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-		     helm-source-pp-bookmarks
-                     helm-source-ido-virtual-buffers)
-          :buffer "*project-search*"
+		     helm-source-bookmarks)
+          :buffer "*project(less)-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))
+
 
 (setq helm-adaptive-mode t)
 (setq helm-quick-update t)

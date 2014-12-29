@@ -1,0 +1,3 @@
+[submodule "configs/sx"]
+	path = configs/sx
+	url = https://github.com/vermiculus/sx.el.git

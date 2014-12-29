@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("soulseek"
+(("soulseek-complete"
+ (filename . "~/Soulseek Downloads/complete/")
+ (front-context-string . "2006 - late nigh")
+ (rear-context-string . "02 Dec 18 10:36 ")
+ (position . 323))
+("soulseek"
  (filename . "~/Soulseek Downloads/complete/")
  (front-context-string . "Rhadow meets NTF")
  (rear-context-string . "02 Dec 10 19:04 ")
@@ -64,9 +69,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO inherent")
- (rear-context-string . "2-02 Tue 15:24]\n")
- (position . 18047))
+ (front-context-string . "** TODO google a")
+ (rear-context-string . "2-16 Tue 09:54]\n")
+ (position . 18389))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

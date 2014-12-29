@@ -1,9 +1,11 @@
 ;; guide key config
+(guide-key-mode 1)
 (setq guide-key/recursive-key-sequence-flag t)
-(setq guide-key/guide-key-sequence '(("C-x p") ("M-r")))
+(setq guide-key/guide-key-sequence '("C-x p" "M-r" "M-d"))
 (setq guide-key/popup-window-position 'bottom)
-(setq guide-key/idle-delay 0.1)
-(setq ns-pop-up-frames nil)
+(setq guide-key/idle-delay 0)
+
+;; (setq ns-pop-up-frames nil)
 
 ;; my custom bindings!
 
@@ -24,10 +26,14 @@
 ;; -----------------------------------------------------------------------------------------------------
 ;; helm bindings
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x l") 'helm-ls-git-ls)
 (global-set-key (kbd "C-x a") 'helm-apropos)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-k") 'helm-project-search)
 (global-set-key (kbd "C-x b") 'helm-projectless-search)
+
+
+
 (global-set-key (kbd "C-k") 'my-kill-line)
 (global-set-key (kbd "M-l") 'open-line-below)
 (global-set-key (kbd "M-K") 'my-helm-do-ag)
@@ -103,6 +109,8 @@
 
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
+
+
 ;; (add-hook 'haml-mode-hook
 ;;           '(lambda () (define-key haml-mode-map "\M-'" 'haml-comment-dwim)))
 
@@ -133,20 +141,27 @@
 (define-key dcon-minor-mode-map (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
 (define-key dcon-minor-mode-map (kbd "C-c a") 'org-agenda)
-;; (define-key dcon-minor-mode-map (kbd "C-}") 'enlarge-window-horizontally)
-;; (define-key dcon-minor-mode-map (kbd "C-{") 'shrink-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-}") 'enlarge-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-{") 'shrink-window-horizontally)
 (define-key dcon-minor-mode-map (kbd "C-S-L") 'enlarge-window-horizontally)
 (define-key dcon-minor-mode-map (kbd "C-S-H") 'shrink-window-horizontally)
 (define-key dcon-minor-mode-map (kbd "C-S-K") 'enlarge-window)
 (define-key dcon-minor-mode-map (kbd "C-S-J") 'shrink-window)
 
-(key-chord-define-global "df" 'drag-stuff-up)
-(key-chord-define-global "jk" 'drag-stuff-down)
+;; (key-chord-define-global "df" 'drag-stuff-up)
+;; (key-chord-define-global "jk" 'drag-stuff-down)
 (key-chord-define-global "fj" 'ace-jump-word-mode)
+(key-chord-define-global "jl" 'ace-jump-line-mode)
 
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode-pop-mark)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(define-key global-map (kbd "C-c SPC") 'rectangle-mark-mode)
 
 (global-set-key (kbd "C-x C-o") 'open-dir-in-finder)
+(global-set-key (kbd "C-z") 'capitalize-word-toggle)
+
+
+(global-set-key (kbd "C-<up>") 'ac-quick-help-scroll-up)
+(global-set-key (kbd "C-<down>") 'ac-quick-help-scroll-down)
 
 (global-set-key (kbd "M-e") 'web-mode-fold-or-unfold)
 
@@ -198,10 +213,13 @@
 (define-key ac-menu-map (kbd "C-p") 'ac-previous)
 
 ;; guide key
+(define-key dcon-minor-mode-map (kbd "C-x p h") 'hue-lights-toggle)
+(define-key dcon-minor-mode-map (kbd "C-x p c") 'customize)
 (define-key dcon-minor-mode-map (kbd "C-x p d") 'projectile-find-dir)
 (define-key dcon-minor-mode-map (kbd "C-x p i") 'projectile-invalidate-cache)
 (define-key dcon-minor-mode-map (kbd "C-x p l") 'package-list-packages)
 (define-key dcon-minor-mode-map (kbd "C-x p p") 'projectile-purge-file-from-cache)
+(define-key dcon-minor-mode-map (kbd "C-x p e") 'emms)
 (define-key dcon-minor-mode-map (kbd "C-o") 'open-line-above)
 (define-key dcon-minor-mode-map (kbd "M-T") 'my-tail)
 (define-key dcon-minor-mode-map (kbd "C-c m") 'view-echo-area-messages)
@@ -240,6 +258,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key (kbd "s-/") 'winner-undo)
 (global-set-key (kbd "s-.") 'winner-redo)
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
+(define-key global-map (kbd "RET") 'new-line-dwim)
+
+;; emms
+(global-set-key (kbd "C-x p a") 'emms-add-dired)
 
 (provide 'bindings-setup)

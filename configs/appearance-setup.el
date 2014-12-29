@@ -1,12 +1,13 @@
 ;; theme
-(load-theme 'obsidian t)
+(load-theme 'flatui t)
 
-;; font
-(set-face-attribute 'default nil :family "monaco" :height 120)
+;; rainbow delimiters
+(rainbow-delimiters-mode 1)
 
 ;; only show bad whitespace
 (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
 
+;; smart-mode-line
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 (setq sml/shorten-directory t)
@@ -17,7 +18,7 @@
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-server/" ":SERVER:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-designer/" ":DESIGNER:") t)
 
-(diminish 'visual-line-mode)
+(after 'visual-line '(diminish 'visual-line-mode))
 (after 'paredit '(diminish 'paredit-mode))
 (after 'tagedit '(diminish 'tagedit-mode))
 (after 'skewer-mode '(diminish 'skewer-mode))
@@ -40,12 +41,10 @@
 
 ;; cursor
 (blink-cursor-mode 1)
-(set-cursor-color 'green)
+(set-cursor-color 'purple)
 
 ;; helm
 (setq helm-buffer-max-length 30)
-
-;; mustang, lush
 (setq dired-details-propagate-flag t)
 (setq redisplay-dont-pause t)
 (setq scroll-margin 5)
@@ -71,5 +70,13 @@
 
 ;; add newline to file on save
 (setq require-final-newline t)
-;; (set-face-attribute 'region nil :background "#666")
+
+;; background color
+(set-background-color "white")
+
+;; font color and size
+(set-face-attribute 'default nil :family "monaco" :height 120)
+;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150)
+
+
 (provide 'appearance-setup)
