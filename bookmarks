@@ -83,10 +83,10 @@
  (rear-context-string . "20 Oct 21 08:36 ")
  (position . 255))
 ("coffee.coffee"
- (filename . "~")
- (front-context-string)
- (rear-context-string . "console.log \"hi\"")
- (position . 25))
+ (filename . "~/coffee.coffee")
+ (front-context-string . "console.log \"888")
+ (rear-context-string . "og dog.greet3()\n")
+ (position . 260))
 ("javascript.js"
  (filename . "~/javascript.js")
  (front-context-string . "var badQuotes = ")

@@ -1,5 +1,5 @@
 ;; theme
-(load-theme 'flatui t)
+;; (load-theme 'none t)
 
 ;; rainbow delimiters
 (rainbow-delimiters-mode 1)
@@ -11,7 +11,7 @@
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 (setq sml/shorten-directory t)
-(sml/apply-theme 'light)
+;; (sml/apply-theme 'dark)
 
 (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
@@ -41,7 +41,6 @@
 
 ;; cursor
 (blink-cursor-mode 1)
-(set-cursor-color 'purple)
 
 ;; helm
 (setq helm-buffer-max-length 30)
@@ -71,12 +70,27 @@
 ;; add newline to file on save
 (setq require-final-newline t)
 
-;; background color
-(set-background-color "white")
+;; ;; background color
+;; (set-background-color "white")
 
 ;; font color and size
 (set-face-attribute 'default nil :family "monaco" :height 120)
 ;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150)
+
+;; (set-cursor-color 'purple)
+;;removed from custom.el
+;; '(dired-directory ((t (:inherit font-lock-function-name-face :foreground "purple" :weight extra-bold))))
+ ;; '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil))))
+ ;; '(helm-M-x-key ((t (:foreground "purple"))))
+ ;; '(helm-lisp-show-completion ((t (:background "DarkSlateGray" :foreground "white"))))
+ ;; '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
+ ;; '(helm-selection ((t (:inverse-video t))))
+
+ ;; '(mode-line-inactive ((t (:background "white" :foreground "grey20" :inverse-video nil :box (:line-width -1 :style released-button)))))
+ ;; '(show-paren-match ((t (:background "lightPink1" :foreground "black"))))
+
+(setq indicate-empty-lines t)
+(setq show-trailing-whitespace t)
 
 
 (provide 'appearance-setup)

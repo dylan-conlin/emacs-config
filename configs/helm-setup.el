@@ -20,11 +20,14 @@
 (defun helm-projectless-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
+  (unless helm-source-buffers-list
+    (setq helm-source-buffers-list
+	  (helm-make-source "Buffers" 'helm-source-buffers)))
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-		     helm-source-bookmarks)
-          :buffer "*project(less)-search*"
-          :prompt (projectile-prepend-project-name "pattern: "))))
+		     helm-source-pp-bookmarks)
+		     :buffer "*project(less)-search*"
+		     :prompt (projectile-prepend-project-name "pattern: "))))
 
 
 (setq helm-adaptive-mode t)

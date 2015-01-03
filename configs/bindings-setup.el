@@ -34,7 +34,7 @@
 
 
 
-(global-set-key (kbd "C-k") 'my-kill-line)
+(global-set-key (kbd "C-k") 'kill-line)
 (global-set-key (kbd "M-l") 'open-line-below)
 (global-set-key (kbd "M-K") 'my-helm-do-ag)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -168,6 +168,10 @@
 
 (global-set-key (kbd "C-x y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-b") 'helm-bookmarks)
+
+(global-set-key (kbd "s-p") 'helm-scroll-other-window-down)
+(global-set-key (kbd "s-n") 'helm-scroll-other-window)
+
 (key-chord-define-global "wj" 'calculator)
 ;; (key-chord-define-global "l " "=")
 ;; (key-chord-define-global "o " "_")
@@ -215,6 +219,7 @@
 ;; guide key
 (define-key dcon-minor-mode-map (kbd "C-x p h") 'hue-lights-toggle)
 (define-key dcon-minor-mode-map (kbd "C-x p c") 'customize)
+(define-key dcon-minor-mode-map (kbd "C-x p f") 'customize-face)
 (define-key dcon-minor-mode-map (kbd "C-x p d") 'projectile-find-dir)
 (define-key dcon-minor-mode-map (kbd "C-x p i") 'projectile-invalidate-cache)
 (define-key dcon-minor-mode-map (kbd "C-x p l") 'package-list-packages)

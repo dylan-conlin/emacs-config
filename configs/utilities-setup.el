@@ -211,9 +211,7 @@ Then move to that line and indent according to mode"
   (interactive)
   ;; (cond ((or (eq major-mode 'coffee-mode) (eq major-mode 'feature-mode))
 
-  (kill-line)
-  (delete-horizontal-space)
-  )
+  (kill-line))
 
 (defun only-whitespace-before-cursor? ()
   (interactive)
@@ -480,6 +478,17 @@ Including indent-buffer, which should not be called automatically on save."
 
 
 
-
+(dolist (command '(yank yank-pop))
+  (eval `(defadvice ,command (after indent-region activate)
+	   (and (not current-prefix-arg)
+		(member major-mode '(emacs-lisp-mode lisp-mode
+						     clojure-mode    scheme-mode
+						     haskell-mode    ruby-mode
+						     rspec-mode      python-mode
+						     c-mode          c++-mode
+						     objc-mode       latex-mode
+						     plain-tex-mode js2-mode))
+		(let ((mark-even-if-inactive transient-mark-mode))
+		  (indent-region (region-beginning) (region-end) nil))))))
 
 (provide 'utilities-setup)

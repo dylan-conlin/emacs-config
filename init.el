@@ -87,7 +87,7 @@
 (smartparens-global-mode 1)
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
-(drag-stuff-global-mode 1)
+;; (drag-stuff-global-mode 1)
 (win-switch-mode 1)
 (auto-indent-mode 1)
 (yas-global-mode 1)
@@ -97,11 +97,16 @@
 (edit-server-start)
 ;; (global-color-identifiers-mode)
 
-(after 'flycheck
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
-  (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
-  (setq flycheck-standard-error-navigation nil))
+;; (after 'flycheck
+;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;   (setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+;;   (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
+;;   (setq flycheck-standard-error-navigation nil))
+
+;; (when (display-graphic-p (selected-frame)
+;;   (eval-after-load 'flycheck
+;;     '(custom-set-variables
+;;       '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))))
 
 ;; setup evil mode
 ;; (evil-mode 1)
@@ -111,11 +116,6 @@
 ;; (evil-leader-mode 1)
 ;; (evil-leader/set-leader ",")
 ;; (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
-
-;; (when (display-graphic-p (selected-frame)
-;;   (eval-after-load 'flycheck
-;;     '(custom-set-variables
-;;       '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))))
 
 ;; default landing file after startup
 (setq popwin:close-popup-window-timer-interval 0.05)
@@ -135,6 +135,10 @@
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (require 'emms-setup)
+(emms-standard)
+(emms-default-players)
+(require 'emms-player-mpd)
+(add-to-list 'emms-player-list 'emms-player-mpd)
 (require 'emms-player-vlc)
 (emms-all)
 
@@ -182,8 +186,6 @@
 
 
 
-(message "hi there %s" "dylan")
-
 (defun format-as-column (width right-padding field)
   (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
 
@@ -196,7 +198,8 @@
 (global-subword-mode 1)
 (setenv "NODE_NO_READLINE" "1")
 
-(setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require"))
+(setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require" "setInterval" "setTimeout"))
 (require 'dired-sort)
+
 
 (require 'saveplace)
