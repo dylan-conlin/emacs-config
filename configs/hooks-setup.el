@@ -27,5 +27,7 @@
 
 ;; Switch the eimp minor mode on for all image-mode buffers
 (add-hook 'image-mode-hook 'eimp-mode)
+(add-hook 'coffee-mode-hook 'flycheck-mode 1)
+
 
 (provide 'hooks-setup)

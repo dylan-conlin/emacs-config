@@ -8,6 +8,7 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
+
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
@@ -87,7 +88,7 @@
 (smartparens-global-mode 1)
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
-;; (drag-stuff-global-mode 1)
+(drag-stuff-global-mode 1)
 (win-switch-mode 1)
 (auto-indent-mode 1)
 (yas-global-mode 1)
@@ -151,7 +152,8 @@
 (setq emms-info-functions '(emms-info-libtag))
 
 (require 'emms-mark)
-(setq emms-source-file-default-directory "~/Soulseek Downloads/complete")
+
+(setq emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
 
 (define-emms-simple-player mplayer '(file url)
       (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"

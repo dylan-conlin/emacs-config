@@ -33,7 +33,6 @@
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))
  '(emms-playlist-update-track-function (quote emms-playlist-mode-update-track-function))
  '(emms-seek-seconds 15)
- '(emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
  '(emms-track-description-function (quote fg-emms-track-description))
  '(erc-track-position-in-mode-line t t)
  '(eshell-cd-shows-directory nil)
@@ -58,6 +57,9 @@
  '(helm-adaptive-mode t nil (helm-adaptive))
  '(helm-always-two-windows t)
  '(helm-bookmark-show-location t)
+ '(helm-boring-buffer-regexp-list
+   (quote
+    ("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*Minibuf" "\\*project(less)-search" "\\*project-search" "\\*magit-process")))
  '(helm-buffer-details-flag t)
  '(helm-buffer-max-length 30)
  '(helm-completing-read-handlers-alist

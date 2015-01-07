@@ -491,4 +491,11 @@ Including indent-buffer, which should not be called automatically on save."
 		(let ((mark-even-if-inactive transient-mark-mode))
 		  (indent-region (region-beginning) (region-end) nil))))))
 
+(defun start-eshell-in-split-window (&optional initial-command)
+  "start eshell in split window. you can feed it an optional initial command"
+  (interactive)
+  (split-window-below-and-move-there-dammit)
+  (eshell))
+
+
 (provide 'utilities-setup)

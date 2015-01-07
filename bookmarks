@@ -68,10 +68,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO google a")
- (rear-context-string . "2-16 Tue 09:54]\n")
- (position . 18389))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** js stuff     ")
+ (rear-context-string . "QwU3iReG7R1iARY\n")
+ (position . 207984))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

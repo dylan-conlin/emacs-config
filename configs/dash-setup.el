@@ -6,13 +6,13 @@
 
 (defun javascript-doc ()
   (interactive)
-  (setq-local helm-dash-docsets '("JavaScript" "JQuery" "UnderscoreJS" "Jasmine"))) ;; add NodeJS
+  (setq-local helm-dash-docsets '("JavaScript" "JQuery" "UnderscoreJS" "Jasmine" "NodeJS")))
 
 (add-hook 'js2-mode-hook 'javascript-doc)
 
 (defun coffee-doc ()
   (interactive)
-  (setq-local helm-dash-docsets '("CoffeeScript" "KnockoutJS" "UnderscoreJS" "Jasmine")))
+  (setq-local helm-dash-docsets '("CoffeeScript" "KnockoutJS" "UnderscoreJS" "Jasmine" "NodeJS")))
 
 (add-hook 'coffee-mode-hook 'coffee-doc)
 

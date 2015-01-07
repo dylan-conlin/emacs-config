@@ -31,7 +31,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-k") 'helm-project-search)
 (global-set-key (kbd "C-x b") 'helm-projectless-search)
-
+(global-set-key (kbd "C-x p s") 'start-eshell-in-split-window)
 
 
 (global-set-key (kbd "C-k") 'kill-line)
@@ -80,6 +80,10 @@
 (global-set-key (kbd "H-d") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-designer")))
 (global-set-key (kbd "H-a") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-admin")))
 (global-set-key (kbd "H-e") '(lambda () (interactive) (find-file "~/.emacs.d")))
+
+
+(define-key dcon-minor-mode-map (kbd "H-n") 'drag-stuff-down)
+(define-key dcon-minor-mode-map (kbd "H-p") 'drag-stuff-up)
 
 (define-key dcon-minor-mode-map (kbd "M-/") 'point-undo)
 (define-key dcon-minor-mode-map (kbd "M-.") 'point-redo)
