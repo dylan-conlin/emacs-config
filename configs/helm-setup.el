@@ -8,9 +8,13 @@
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
+  (unless helm-source-ls-git-status
+    (setq helm-source-ls-git-status
+  	  (helm-make-source "Status" 'helm-source-ls-git-status)))
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
         (helm :sources '(helm-source-projectile-buffers-list
+			 helm-source-ls-git-status
 			 helm-source-projectile-files-list
 			 helm-source-pp-bookmarks)
               :buffer "*project-search*"

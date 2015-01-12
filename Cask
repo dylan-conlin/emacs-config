@@ -115,6 +115,7 @@
 (depends-on "molokai-theme")
 (depends-on "monochrome-theme")
 (depends-on "monokai-theme")
+(depends-on "multi-eshell")
 (depends-on "multiple-cursors")
 (depends-on "mustang-theme")
 (depends-on "naquadah-theme")

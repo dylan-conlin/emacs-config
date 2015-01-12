@@ -495,7 +495,7 @@ Including indent-buffer, which should not be called automatically on save."
   "start eshell in split window. you can feed it an optional initial command"
   (interactive)
   (split-window-below-and-move-there-dammit)
-  (eshell))
+  (multi-eshell 1))
 
 
 (provide 'utilities-setup)

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("soulseek-complete"
+(("secret-links.org"
+ (filename . "~/Dropbox/org/secret-links.org")
+ (front-context-string)
+ (rear-context-string . "20398891/ :porn:")
+ (position . 111))
+("soulseek-complete"
  (filename . "~/Soulseek Downloads/complete/")
  (front-context-string . "2006 - late nigh")
  (rear-context-string . "02 Dec 18 10:36 ")

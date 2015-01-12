@@ -1,5 +1,5 @@
 ;; theme
-;; (load-theme 'none t)
+;; (load-theme 'granger t)
 
 ;; rainbow delimiters
 (rainbow-delimiters-mode 1)

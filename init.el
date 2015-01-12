@@ -44,6 +44,7 @@
 (require 'bindings-setup)
 (require 'hooks-setup)
 (require 'mode-lists-setup)
+
 ;; (require 'evil-search-highlight-persist)
 (require 'org-setup)
 (require 'queue-0.1.1)
@@ -186,11 +187,8 @@
 	(artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
     (format emms-mode-line-format (concat track " - " artist))))
 
-
-
 (defun format-as-column (width right-padding field)
   (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
-
 
 (setq emms-track-description-function 'fg-emms-track-description)
 
@@ -202,6 +200,5 @@
 
 (setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require" "setInterval" "setTimeout"))
 (require 'dired-sort)
-
 
 (require 'saveplace)
