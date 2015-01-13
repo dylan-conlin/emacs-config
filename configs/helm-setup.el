@@ -1,5 +1,7 @@
+(require 'helm-config)
 (require 'helm-projectile)
 (require 'helm-cmd-t)
+(require 'helm-ls-git)
 
 (defun my-helm-do-ag ()
   (interactive)
@@ -8,9 +10,12 @@
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
-  (unless helm-source-ls-git-status
+  (unless (and helm-source-ls-git-status
+               helm-source-ls-git)
     (setq helm-source-ls-git-status
-  	  (helm-make-source "Status" 'helm-source-ls-git-status)))
+          (helm-make-source "Git status" 'helm-ls-git-status-source
+            :fuzzy-match helm-ls-git-fuzzy-match)
+          helm-source-ls-git))
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
         (helm :sources '(helm-source-projectile-buffers-list
