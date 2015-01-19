@@ -137,7 +137,7 @@ Assumes that the frame is only split into two."
 (defun browse-file-on-github ()
   (interactive)
   (when buffer-file-name
-    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "master" (file-relative-name buffer-file-name (f-join "~/drive/sites" (git-root-dir-only)))) (line-number-on-github)))))
+    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/drive/sites" (git-root-dir-only)))) (line-number-on-github)))))
 
 (defun replace-smart-quotes (beg end)
   "Replace 'smart quotes' in buffer or region with ascii quotes."
@@ -497,5 +497,55 @@ Including indent-buffer, which should not be called automatically on save."
   (split-window-below-and-move-there-dammit)
   (multi-eshell 1))
 
+
+(defun fg-emms-track-description (track)
+  "Return a somewhat nice track description."
+  (let ((artist (emms-track-get track 'info-artist))
+        (year (emms-track-get track 'info-year))
+        (album (emms-track-get track 'info-album))
+        (tracknumber (emms-track-get track 'info-tracknumber))
+        (title (emms-track-get track 'info-title)))
+    (cond
+     ((or artist title)
+      (concat
+       (format-as-column 6  0  (format "% 3d" (string-to-number tracknumber)))
+       (format-as-column 30 30 title)
+       (format-as-column 30 30 artist)
+       (format-as-column 30 30 album)
+       (format-as-column 30 30 year)
+       ))
+     (t
+      (emms-track-simple-description track)))))
+
+(defun emms-mode-line-playlist-current ()
+  "Format the currently playing song."
+  (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
+	(artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
+    (format emms-mode-line-format (concat track " - " artist))))
+
+(defun format-as-column (width right-padding field)
+  (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
+
+(defun soulseek-clean ()
+  (interactive)
+  (let ((songs (soulseek-songs)))
+    (mapcar (lambda (f) (f-move f (soulseek-new-dir f))) songs)
+    (message "successfully moved (%s) songs"(length songs))))
+
+
+(defun soulseek-new-dir (song)
+  (s-concat "/Users/dylanconlin/Soulseek Downloads/soulseek-songs/" (f-filename song)))
+
+(defun soulseek-songs ()
+  (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun ruby-test-run-command (command)
+  (let ((shell-file-name "/bin/bash")
+	(default-directory (or (ruby-test-rails-root filename)
+			       (ruby-test-ruby-root filename)
+			       default-directory)))
+    (compilation-start command t)))
 
 (provide 'utilities-setup)

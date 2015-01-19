@@ -30,7 +30,9 @@
 (global-set-key (kbd "C-x a") 'helm-apropos)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-k") 'helm-project-search)
+(global-set-key (kbd "M-l") 'helm-projectile)
 (global-set-key (kbd "C-x b") 'helm-projectless-search)
+
 (global-set-key (kbd "C-x p s") 'start-eshell-in-split-window)
 
 
@@ -43,14 +45,30 @@
 (define-key dcon-minor-mode-map (kbd "C-x t") 'helm-imenu)
 
 ;; window management
-(define-key dcon-minor-mode-map (kbd "M-o") 'win-switch-next-window)
-(define-key dcon-minor-mode-map (kbd "M-O") 'win-switch-previous-window)
-
+(define-key dcon-minor-mode-map (kbd "C-x o") 'other-window)
+(global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-0") 'delete-window)
-(global-set-key (kbd "C-x k") 'kill-current-buffer)
-(global-set-key (kbd "C-x S-K") '(lambda () (interactive) (kill-current-buffer)(delete-window)))
 (global-set-key (kbd "s-4") 'windows-swap)
 (global-set-key (kbd "s-5") 'windows-flip)
+(define-key dcon-minor-mode-map (kbd "s-1") 'delete-other-windows)
+(define-key dcon-minor-mode-map (kbd "s-2") 'split-window-below-and-move-there-dammit)
+(define-key dcon-minor-mode-map (kbd "C-x 2") 'split-window-below-and-move-there-dammit)
+(define-key dcon-minor-mode-map (kbd "s-3") 'split-window-right-and-move-there-dammit)
+(define-key dcon-minor-mode-map (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+
+(define-key dcon-minor-mode-map (kbd "C-}") 'enlarge-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-{") 'shrink-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-S-L") 'enlarge-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-S-H") 'shrink-window-horizontally)
+(define-key dcon-minor-mode-map (kbd "C-S-K") 'enlarge-window)
+(define-key dcon-minor-mode-map (kbd "C-S-J") 'shrink-window)
+
+(global-set-key (kbd "s-p") 'helm-scroll-other-window-down)
+(global-set-key (kbd "s-n") 'helm-scroll-other-window)
+
+
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
+(global-set-key (kbd "C-x S-K") '(lambda () (interactive) (kill-current-buffer)(delete-window)))
 
 ;; utilities
 (global-set-key (kbd "C-c h") 'describe-key)
@@ -79,8 +97,8 @@
 (global-set-key (kbd "H-r") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-server")))
 (global-set-key (kbd "H-d") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-designer")))
 (global-set-key (kbd "H-a") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-admin")))
+(global-set-key (kbd "H-i") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-api")))
 (global-set-key (kbd "H-e") '(lambda () (interactive) (find-file "~/.emacs.d")))
-
 
 (define-key dcon-minor-mode-map (kbd "H-n") 'drag-stuff-down)
 (define-key dcon-minor-mode-map (kbd "H-p") 'drag-stuff-up)
@@ -138,19 +156,8 @@
 (define-key dcon-minor-mode-map (kbd "s-p") 'mc/mark-previous-like-this)
 (define-key dcon-minor-mode-map (kbd "s-P") 'mc/unmark-previous-like-this)
 
-(define-key dcon-minor-mode-map (kbd "s-1") 'delete-other-windows)
-(define-key dcon-minor-mode-map (kbd "s-2") 'split-window-below-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "C-x 2") 'split-window-below-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "s-3") 'split-window-right-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
 (define-key dcon-minor-mode-map (kbd "C-c a") 'org-agenda)
-(define-key dcon-minor-mode-map (kbd "C-}") 'enlarge-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-{") 'shrink-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-L") 'enlarge-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-H") 'shrink-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-K") 'enlarge-window)
-(define-key dcon-minor-mode-map (kbd "C-S-J") 'shrink-window)
 
 ;; (key-chord-define-global "df" 'drag-stuff-up)
 ;; (key-chord-define-global "jk" 'drag-stuff-down)
@@ -166,24 +173,16 @@
 
 (global-set-key (kbd "C-<up>") 'ac-quick-help-scroll-up)
 (global-set-key (kbd "C-<down>") 'ac-quick-help-scroll-down)
-
 (global-set-key (kbd "M-e") 'web-mode-fold-or-unfold)
 
+(key-chord-define-global "fw" 'ruby-test-run)
+(key-chord-define-global "gw" 'ruby-test-run-at-point)
 
 (global-set-key (kbd "C-x y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-b") 'helm-bookmarks)
 
-(global-set-key (kbd "s-p") 'helm-scroll-other-window-down)
-(global-set-key (kbd "s-n") 'helm-scroll-other-window)
 
 (key-chord-define-global "wj" 'calculator)
-;; (key-chord-define-global "l " "=")
-;; (key-chord-define-global "o " "_")
-;; (key-chord-define-global "i " "-")
-
-(key-chord-define-global "++" 'text-scale-increase)
-(key-chord-define-global "__" 'text-scale-decrease)
-(key-chord-define-global "aa" '(lambda () (interactive) (text-scale-set 0)))
 
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") 'delete-frame)

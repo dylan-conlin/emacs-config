@@ -160,24 +160,16 @@
  '(weechat-color-list
    (quote
     (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
- '(whitespace-line-column 120))
+ '(whitespace-line-column 120)
+ '(win-switch-feedback-background-color "green"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-button ((t (:background "orange" :foreground "#245361" :box (:line-width 1 :color "silver" :style released-button)))))
- '(font-lock-comment-face ((t (:foreground "gray"))))
- '(font-lock-constant-face ((t (:foreground "DarkOrange1"))))
- '(font-lock-function-name-face ((t (:foreground "Blue1" :weight ultra-bold))))
- '(font-lock-keyword-face ((t (:foreground "blue violet" :weight bold))))
- '(font-lock-string-face ((t (:foreground "VioletRed3"))))
- '(font-lock-type-face ((t (:foreground "ForestGreen" :weight extra-bold))))
- '(font-lock-variable-name-face ((t (:foreground "blue"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "gray"))))
+ '(font-lock-comment-face ((t (:background "white" :foreground "gray" :slant italic))))
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
  '(helm-source-header ((t (:foreground "gray" :underline nil :weight bold :height 1.3 :family "Sans Serif"))))
- '(js2-external-variable ((t (:foreground "red" :underline t))))
- '(magit-item-highlight ((t (:distant-foreground "gray99" :foreground "black" :weight ultra-bold))))
- '(region ((t (:background "LightCyan1" :distant-foreground "ns_selection_fg_color"))))
- '(sp-pair-overlay-face ((t nil))))
+ '(region ((t (:background "plum1")))))

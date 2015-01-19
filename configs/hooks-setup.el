@@ -29,5 +29,13 @@
 (add-hook 'image-mode-hook 'eimp-mode)
 (add-hook 'coffee-mode-hook 'flycheck-mode 1)
 
+(add-hook 'shell-mode-hook 'coffee-comint-filter nil t)
+
+(defun coffee-comint-filter (string)
+  (ansi-color-apply
+   (replace-regexp-in-string "\x1b\\[.[GJK]" "" string)))
+
+
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (provide 'hooks-setup)

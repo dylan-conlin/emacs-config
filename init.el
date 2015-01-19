@@ -8,7 +8,6 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
-
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
@@ -52,8 +51,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-(require 'appearance-setup)
-
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
 (add-to-list 'load-path "/usr/local/bin/markdown")
@@ -86,7 +83,7 @@
 ;; (undo-tree-mode 1)
 (helm-mode 1)
 (delete-selection-mode 1)
-(smartparens-global-mode 1)
+;; (smartparens-global-mode 1)
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
 (drag-stuff-global-mode 1)
@@ -122,12 +119,14 @@
 ;; default landing file after startup
 (setq popwin:close-popup-window-timer-interval 0.05)
 (setq display-buffer-function 'popwin:display-buffer)
+(push '("*compilation*" :height 40) popwin:special-display-config)
 
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
 
 (require 'let-alist)
 (add-to-list 'load-path "~/.emacs.d/configs/sx")
+(add-to-list 'load-path "~/.emacs.d/configs/node-resolver/node-resolver.el")
 (require 'sx-load)
 
 (find-file "~/.emacs.d/init.el")
@@ -162,34 +161,6 @@
                     ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
       "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
 
-(defun fg-emms-track-description (track)
-  "Return a somewhat nice track description."
-  (let ((artist (emms-track-get track 'info-artist))
-        (year (emms-track-get track 'info-year))
-        (album (emms-track-get track 'info-album))
-        (tracknumber (emms-track-get track 'info-tracknumber))
-        (title (emms-track-get track 'info-title)))
-    (cond
-     ((or artist title)
-      (concat
-       (format-as-column 6  0  (format "% 3d" (string-to-number tracknumber)))
-       (format-as-column 30 30 title)
-       (format-as-column 30 30 artist)
-       (format-as-column 30 30 album)
-       (format-as-column 30 30 year)
-       ))
-     (t
-      (emms-track-simple-description track)))))
-
-(defun emms-mode-line-playlist-current ()
-  "Format the currently playing song."
-  (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
-	(artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
-    (format emms-mode-line-format (concat track " - " artist))))
-
-(defun format-as-column (width right-padding field)
-  (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
-
 (setq emms-track-description-function 'fg-emms-track-description)
 
 (require 'auto-package-update)
@@ -201,4 +172,8 @@
 (setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require" "setInterval" "setTimeout"))
 (require 'dired-sort)
 
+(require 'appearance-setup)
 (require 'saveplace)
+(global-dummyparens-mode)
+
+(elmacro-mode)

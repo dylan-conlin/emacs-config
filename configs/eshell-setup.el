@@ -60,6 +60,10 @@
 ;; (add-hook 'eshell-mode-hook
 ;;           (function
 ;;            (lambda ()
+
 ;;              (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))))
+
+(defadvice shell (before advice-utf-shell activate)
+  (set-default-coding-systems 'utf-8))
 
 (provide 'eshell-setup)

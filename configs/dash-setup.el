@@ -12,7 +12,7 @@
 
 (defun coffee-doc ()
   (interactive)
-  (setq-local helm-dash-docsets '("CoffeeScript" "KnockoutJS" "UnderscoreJS" "Jasmine" "NodeJS")))
+  (setq-local helm-dash-docsets '("JavaScript" "CoffeeScript" "KnockoutJS" "UnderscoreJS" "Jasmine" "NodeJS")))
 
 (add-hook 'coffee-mode-hook 'coffee-doc)
 

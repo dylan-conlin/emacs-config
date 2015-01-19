@@ -43,50 +43,50 @@
         ("~/Dropbox/org/blogs.org" . (:level . 1))))
 
 
-;; mobile-org sync
+;; ;; mobile-org sync
 
-;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;; ;; Set to the name of the file where new notes will be stored
+;; (setq org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
+;; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
-;; from https://gist.github.com/3111823 ASYNC org mobile push...
-;; Define a timer variable
-(defvar org-mobile-push-timer nil)
+;; ;; from https://gist.github.com/3111823 ASYNC org mobile push...
+;; ;; Define a timer variable
+;; (defvar org-mobile-push-timer nil)
 
-;; Push to mobile when the idle timer runs out
-(defun org-mobile-push-with-delay (secs)
-  (when org-mobile-push-timer
-    (cancel-timer org-mobile-push-timer))
-  (setq org-mobile-push-timer
-        (run-with-idle-timer
-         (* 1 secs) nil 'org-mobile-push)))
+;; ;; Push to mobile when the idle timer runs out
+;; (defun org-mobile-push-with-delay (secs)
+;;   (when org-mobile-push-timer
+;;     (cancel-timer org-mobile-push-timer))
+;;   (setq org-mobile-push-timer
+;;         (run-with-idle-timer
+;;          (* 1 secs) nil 'org-mobile-push)))
 
-;; After saving files, start an idle timer after which we are going to push
-(add-hook 'after-save-hook
-          (lambda ()
-            (if (or (eq major-mode 'org-mode) (eq major-mode 'org-agenda-mode))
-                (dolist (file (org-mobile-files-alist))
-                  (if (string= (expand-file-name (car file)) (buffer-file-name))
-                      (org-mobile-push-with-delay 10))))))
+;; ;; After saving files, start an idle timer after which we are going to push
+;; (add-hook 'after-save-hook
+;;           (lambda ()
+;;             (if (or (eq major-mode 'org-mode) (eq major-mode 'org-agenda-mode))
+;;                 (dolist (file (org-mobile-files-alist))
+;;                   (if (string= (expand-file-name (car file)) (buffer-file-name))
+;;                       (org-mobile-push-with-delay 10))))))
 
-;; Run after midnight each day (or each morning upon wakeup?).
-(run-at-time "00:01" 86400 '(lambda () (org-mobile-push-with-delay 1)))
+;; ;; Run after midnight each day (or each morning upon wakeup?).
+;; (run-at-time "00:01" 86400 '(lambda () (org-mobile-push-with-delay 1)))
 
-;; Run 1 minute after launch, and once a day after that.
-(run-at-time "1 min" 86400 '(lambda () (org-mobile-push-with-delay 1)))
+;; ;; Run 1 minute after launch, and once a day after that.
+;; (run-at-time "1 min" 86400 '(lambda () (org-mobile-push-with-delay 1)))
 
-;; watch index.org for changes, and then call org-mobile-pull
-;; http://stackoverflow.com/questions/3456782/emacs-lisp-how-to-monitor-changes-of-a-file-directory
-(defun install-monitor (file secs)
-  (run-with-timer
-   1 secs
-   (lambda (f p)
-     (unless (< p (second (time-since (elt (file-attributes f) 5))))
-       (org-mobile-pull)))
-   file secs))
+;; ;; watch index.org for changes, and then call org-mobile-pull
+;; ;; http://stackoverflow.com/questions/3456782/emacs-lisp-how-to-monitor-changes-of-a-file-directory
+;; (defun install-monitor (file secs)
+;;   (run-with-timer
+;;    1 secs
+;;    (lambda (f p)
+;;      (unless (< p (second (time-since (elt (file-attributes f) 5))))
+;;        (org-mobile-pull)))
+;;    file secs))
 
-(defvar monitor-timer (install-monitor (concat org-mobile-directory "/mobileorg.org") 30)
-  "Check if file changed every 30 s.")
+;; (defvar monitor-timer (install-monitor (concat org-mobile-directory "/mobileorg.org") 30)
+;;   "Check if file changed every 30 s.")
 
 
 (provide 'org-setup)

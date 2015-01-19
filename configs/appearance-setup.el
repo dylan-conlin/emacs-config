@@ -1,5 +1,5 @@
 ;; theme
-;; (load-theme 'granger t)
+(load-theme 'espresso t)
 
 ;; rainbow delimiters
 (rainbow-delimiters-mode 1)
@@ -11,7 +11,7 @@
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 (setq sml/shorten-directory t)
-;; (sml/apply-theme 'dark)
+(sml/apply-theme 'light)
 
 (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
@@ -41,7 +41,7 @@
 
 ;; cursor
 (blink-cursor-mode 1)
-
+(set-cursor-color "forestGreen")
 ;; helm
 (setq helm-buffer-max-length 30)
 (setq dired-details-propagate-flag t)
