@@ -38,4 +38,6 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 (provide 'hooks-setup)

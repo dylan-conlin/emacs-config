@@ -11,6 +11,11 @@
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
+(require 'req-package)
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
 (require 'pallet)
 (pallet-mode t)
 (server-start)
@@ -47,13 +52,15 @@
 ;; (require 'evil-search-highlight-persist)
 (require 'org-setup)
 (require 'queue-0.1.1)
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(require 'dired-sort)
+(require 'appearance-setup)
+(require 'saveplace)
+(require 'smartparens-config)
 
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
 (add-to-list 'load-path "/usr/local/bin/markdown")
+(add-to-list 'load-path "~/.emacs.d/configs/sx")
 
 ;; group backup files together to prevent clutter
 (setq backup-directory-alist '(("." . "~/.emacs.d/.saves")))
@@ -64,22 +71,24 @@
       version-control t)
 
 ;; enable useful custom configs on demand
-(after 'projectile
-  (projectile-global-mode 1))
 
-(after "undo-tree-autoloads"
-  (global-undo-tree-mode t)
-  (setq undo-tree-visualizer-relative-timestamps t)
-  (setq undo-tree-visualizer-timestamps t))
+(projectile-global-mode 1)
+
+
+(global-undo-tree-mode t)
+(setq undo-tree-visualizer-relative-timestamps t)
+(setq undo-tree-visualizer-timestamps t)
 
 (require 'eshell-setup)
 
 ;; (after 'eshell-mode
 ;;   (require 'eshell-setup))
 
-(after 'coffee-mode
-  (require 'coffee-setup))
 
+(require 'coffee-setup)
+
+(require 'emms-configuration)
+(require 'auto-package-update)
 ;; (undo-tree-mode 1)
 (helm-mode 1)
 (delete-selection-mode 1)
@@ -96,26 +105,6 @@
 (edit-server-start)
 ;; (global-color-identifiers-mode)
 
-;; (after 'flycheck
-;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;;   (setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
-;;   (setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
-;;   (setq flycheck-standard-error-navigation nil))
-
-;; (when (display-graphic-p (selected-frame)
-;;   (eval-after-load 'flycheck
-;;     '(custom-set-variables
-;;       '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))))
-
-;; setup evil mode
-;; (evil-mode 1)
-;; (global-evil-surround-mode 1)
-;; (global-evil-search-highlight-persist t)
-;; (setq evil-leader/in-all-states 1)
-;; (evil-leader-mode 1)
-;; (evil-leader/set-leader ",")
-;; (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
-
 ;; default landing file after startup
 (setq popwin:close-popup-window-timer-interval 0.05)
 (setq display-buffer-function 'popwin:display-buffer)
@@ -125,55 +114,20 @@
 (setq scss-compile-at-save nil)
 
 (require 'let-alist)
-(add-to-list 'load-path "~/.emacs.d/configs/sx")
-(add-to-list 'load-path "~/.emacs.d/configs/node-resolver/node-resolver.el")
 (require 'sx-load)
 
 (find-file "~/.emacs.d/init.el")
 
 (setq save-place-file "~/.emacs.d/saveplace")
+
 (setq-default save-place t)
-
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
-(require 'emms-player-mpd)
-(add-to-list 'emms-player-list 'emms-player-mpd)
-(require 'emms-player-vlc)
-(emms-all)
 
-(emms-default-players)
-(require 'emms-browser)
-(require 'emms-history)
-(emms-history-load)
-
-(require 'emms-info-libtag)
-(setq emms-info-functions '(emms-info-libtag))
-
-(require 'emms-mark)
-
-(setq emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
-
-(define-emms-simple-player mplayer '(file url)
-      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
-                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
-                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
-      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
-
-(setq emms-track-description-function 'fg-emms-track-description)
-
-(require 'auto-package-update)
 (setq auto-package-update-interval 7)
 (auto-package-update-maybe)
 (global-subword-mode 1)
 (setenv "NODE_NO_READLINE" "1")
 
-(setq js2-global-externs '("$" "window" "tab_config" "jQuery" "_" "SST" "FB" "Modernizr" "localStorage" "require" "setInterval" "setTimeout"))
-(require 'dired-sort)
-
-(require 'appearance-setup)
-(require 'saveplace)
-(global-dummyparens-mode)
+(smartparens-global-mode)
 
 (elmacro-mode)

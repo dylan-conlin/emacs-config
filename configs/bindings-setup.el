@@ -32,9 +32,8 @@
 (global-set-key (kbd "M-k") 'helm-project-search)
 (global-set-key (kbd "M-l") 'helm-projectile)
 (global-set-key (kbd "C-x b") 'helm-projectless-search)
-
 (global-set-key (kbd "C-x p s") 'start-eshell-in-split-window)
-
+(global-set-key (kbd "C-x p p") 'persp-switch)
 
 (global-set-key (kbd "C-k") 'kill-line)
 (global-set-key (kbd "M-l") 'open-line-below)
@@ -45,6 +44,7 @@
 (define-key dcon-minor-mode-map (kbd "C-x t") 'helm-imenu)
 
 ;; window management
+(global-set-key (kbd "C-x p p") 'popwin:stick-popup-window)
 (define-key dcon-minor-mode-map (kbd "C-x o") 'other-window)
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-0") 'delete-window)
@@ -155,7 +155,7 @@
 (define-key dcon-minor-mode-map (kbd "s-N") 'mc/unmark-next-like-this)
 (define-key dcon-minor-mode-map (kbd "s-p") 'mc/mark-previous-like-this)
 (define-key dcon-minor-mode-map (kbd "s-P") 'mc/unmark-previous-like-this)
-
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 
 (define-key dcon-minor-mode-map (kbd "C-c a") 'org-agenda)
 
@@ -226,7 +226,6 @@
 (define-key dcon-minor-mode-map (kbd "C-x p d") 'projectile-find-dir)
 (define-key dcon-minor-mode-map (kbd "C-x p i") 'projectile-invalidate-cache)
 (define-key dcon-minor-mode-map (kbd "C-x p l") 'package-list-packages)
-(define-key dcon-minor-mode-map (kbd "C-x p p") 'projectile-purge-file-from-cache)
 (define-key dcon-minor-mode-map (kbd "C-x p e") 'emms)
 (define-key dcon-minor-mode-map (kbd "C-o") 'open-line-above)
 (define-key dcon-minor-mode-map (kbd "M-T") 'my-tail)

@@ -171,5 +171,6 @@
  '(font-lock-comment-delimiter-face ((t (:foreground "gray"))))
  '(font-lock-comment-face ((t (:background "white" :foreground "gray" :slant italic))))
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
+ '(helm-selection-line ((t (:underline t))))
  '(helm-source-header ((t (:foreground "gray" :underline nil :weight bold :height 1.3 :family "Sans Serif"))))
  '(region ((t (:background "plum1")))))

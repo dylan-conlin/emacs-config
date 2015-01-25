@@ -526,26 +526,39 @@ Including indent-buffer, which should not be called automatically on save."
 (defun format-as-column (width right-padding field)
   (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
 
-(defun soulseek-clean ()
+(defun soulseek-playlist ()
   (interactive)
-  (let ((songs (soulseek-songs)))
-    (mapcar (lambda (f) (f-move f (soulseek-new-dir f))) songs)
-    (message "successfully moved (%s) songs"(length songs))))
+  (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
+    (emms-playlist-current-clear)
+    (-map (lambda (song) (emms-add-file song)) songs)
+    (emms)))
 
+(defun move-song-to-new-dir (s)
+  (f-move s (soulseek-new-dir s)))
 
 (defun soulseek-new-dir (song)
   (s-concat "/Users/dylanconlin/Soulseek Downloads/soulseek-songs/" (f-filename song)))
 
-(defun soulseek-songs ()
-  (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t))
+(defun emms-soulseek ()
+  (interactive)
+  (emms-add-directory "~/Soulseek Downloads/soulseek-songs/")
+  (emms))
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq correct-ruby-is-active nil)
 
-(defun ruby-test-run-command (command)
-  (let ((shell-file-name "/bin/bash")
-	(default-directory (or (ruby-test-rails-root filename)
-			       (ruby-test-ruby-root filename)
-			       default-directory)))
-    (compilation-start command t)))
+(defadvice ruby-test-run-command (around ruby-test-run-command-around)
+  "Use BASH shell for running the specs because of ZSH issues."
+  (let ((shell-file-name "/bin/bash"))
+    (unless correct-ruby-is-active
+      (if (fboundp 'rvm-activate-corresponding-ruby)
+	  (rvm-activate-corresponding-ruby)))
+      (setq correct-ruby-is-active t)
+      ad-do-it))
+
+(ad-activate 'ruby-test-run-command)
+
 
 (provide 'utilities-setup)

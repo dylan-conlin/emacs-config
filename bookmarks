@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("secret-links.org"
+(("shortstack-api"
+ (filename . "~/drive/sites/shortstack-api/")
+ (front-context-string . "lib\n  drwxr-xr-x")
+ (rear-context-string . "70 Jan 15 17:00 ")
+ (position . 1458))
+("utilities-setup.el"
+ (filename . "~/drive/dotfiles/.emacs.d/configs/utilities-setup.el")
+ (front-context-string . "\n\n;; (eval-after")
+ (rear-context-string . " something like,")
+ (position . 12468))
+("secret-links.org"
  (filename . "~/Dropbox/org/secret-links.org")
  (front-context-string)
  (rear-context-string . "20398891/ :porn:")
@@ -74,9 +84,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** js stuff     ")
- (rear-context-string . "QwU3iReG7R1iARY\n")
- (position . 207984))
+ (front-context-string . "** my google ana")
+ (rear-context-string . "1-21 Wed 17:05]\n")
+ (position . 210562))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
