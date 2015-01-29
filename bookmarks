@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("shortstack-api"
+(("appearance-setup.el"
+ (filename . "~/.emacs.d/configs/appearance-setup.el")
+ (front-context-string . ";; theme\n(load-t")
+ (rear-context-string)
+ (position . 1))
+("shortstack-api"
  (filename . "~/drive/sites/shortstack-api/")
  (front-context-string . "lib\n  drwxr-xr-x")
  (rear-context-string . "70 Jan 15 17:00 ")
@@ -49,9 +54,9 @@
  (position . 14092))
 ("sites"
  (filename . "~/drive/sites/")
- (front-context-string . ".projectile\n  dr")
- (rear-context-string . "35 Sep  3 15:34 ")
- (position . 252))
+ (front-context-string)
+ (rear-context-string . ":13 ss-frontend\n")
+ (position . 1204))
 ("bindings-setup.el"
  (filename . "~/drive/dotfiles/.emacs.d/configs/bindings-setup.el")
  (front-context-string . "\n\n;; (define-key")
@@ -84,9 +89,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** my google ana")
- (rear-context-string . "1-21 Wed 17:05]\n")
- (position . 210562))
+ (front-context-string . "** simple math c")
+ (rear-context-string . "1-27 Tue 16:27]\n")
+ (position . 211251))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

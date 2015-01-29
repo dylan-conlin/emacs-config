@@ -217,8 +217,8 @@ Then move to that line and indent according to mode"
   (interactive)
   (if (looking-back "^\s*")
       (progn
-	(message "yes")
-	t)
+        (message "yes")
+        t)
     (message "no")
     nil))
 
@@ -443,7 +443,7 @@ Including indent-buffer, which should not be called automatically on save."
   ;; (shell-quote-argument) should always go inside s-concat.
   (shell-command
    (s-concat "coffee ~/drive/side-sites/node-projects/emailer/mailer.coffee "
-	     (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
+             (shell-quote-argument subject) " " (shell-quote-argument body) " " (shell-quote-argument recipient))))
 
 
 (defun char-upcase-p (letter)
@@ -453,17 +453,17 @@ Including indent-buffer, which should not be called automatically on save."
 (defun capitalize-word-toggle ()
   (interactive)
   (let ((start
-	 (car (save-excursion
-		(backward-word)
-		(bounds-of-thing-at-point 'symbol)))))
+         (car (save-excursion
+                (backward-word)
+                (bounds-of-thing-at-point 'symbol)))))
     (if start
-	(save-excursion
-	  (goto-char start)
-	  (funcall
-	   (if (char-upcase-p (char-after))
-	       'downcase-region
-	     'upcase-region)
-	   start (1+ start)))
+        (save-excursion
+          (goto-char start)
+          (funcall
+           (if (char-upcase-p (char-after))
+               'downcase-region
+             'upcase-region)
+           start (1+ start)))
       (capitalize-word -1))))
 
 
@@ -480,16 +480,16 @@ Including indent-buffer, which should not be called automatically on save."
 
 (dolist (command '(yank yank-pop))
   (eval `(defadvice ,command (after indent-region activate)
-	   (and (not current-prefix-arg)
-		(member major-mode '(emacs-lisp-mode lisp-mode
-						     clojure-mode    scheme-mode
-						     haskell-mode    ruby-mode
-						     rspec-mode      python-mode
-						     c-mode          c++-mode
-						     objc-mode       latex-mode
-						     plain-tex-mode js2-mode))
-		(let ((mark-even-if-inactive transient-mark-mode))
-		  (indent-region (region-beginning) (region-end) nil))))))
+           (and (not current-prefix-arg)
+                (member major-mode '(emacs-lisp-mode lisp-mode
+                                                     clojure-mode    scheme-mode
+                                                     haskell-mode    ruby-mode
+                                                     rspec-mode      python-mode
+                                                     c-mode          c++-mode
+                                                     objc-mode       latex-mode
+                                                     plain-tex-mode js2-mode))
+                (let ((mark-even-if-inactive transient-mark-mode))
+                  (indent-region (region-beginning) (region-end) nil))))))
 
 (defun start-eshell-in-split-window (&optional initial-command)
   "start eshell in split window. you can feed it an optional initial command"
@@ -520,7 +520,7 @@ Including indent-buffer, which should not be called automatically on save."
 (defun emms-mode-line-playlist-current ()
   "Format the currently playing song."
   (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
-	(artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
+        (artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
     (format emms-mode-line-format (concat track " - " artist))))
 
 (defun format-as-column (width right-padding field)
@@ -554,11 +554,15 @@ Including indent-buffer, which should not be called automatically on save."
   (let ((shell-file-name "/bin/bash"))
     (unless correct-ruby-is-active
       (if (fboundp 'rvm-activate-corresponding-ruby)
-	  (rvm-activate-corresponding-ruby)))
-      (setq correct-ruby-is-active t)
-      ad-do-it))
+          (rvm-activate-corresponding-ruby)))
+    (setq correct-ruby-is-active t)
+    ad-do-it))
 
 (ad-activate 'ruby-test-run-command)
 
+(defun squash-whitespace ()
+  (interactive)
+  (save-excursion
+    (let ((beg (point))) (evil-forward-word-begin) (delete-region beg (point)))))
 
 (provide 'utilities-setup)

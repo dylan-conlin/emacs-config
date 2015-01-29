@@ -11,7 +11,7 @@
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
-(require 'req-package)
+
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
@@ -36,7 +36,7 @@
 (require 'dired-details+)
 (require 'itail)
 (require 'popwin)
-
+(require 'bind-key)
 ;; require custom configs
 (require 'repository-root)
 (require 'utilities-setup)
@@ -53,7 +53,7 @@
 (require 'org-setup)
 (require 'queue-0.1.1)
 (require 'dired-sort)
-(require 'appearance-setup)
+
 (require 'saveplace)
 (require 'smartparens-config)
 
@@ -80,15 +80,10 @@
 (setq undo-tree-visualizer-timestamps t)
 
 (require 'eshell-setup)
-
-;; (after 'eshell-mode
-;;   (require 'eshell-setup))
-
-
 (require 'coffee-setup)
-
 (require 'emms-configuration)
 (require 'auto-package-update)
+
 ;; (undo-tree-mode 1)
 (helm-mode 1)
 (delete-selection-mode 1)
@@ -102,21 +97,19 @@
 (guide-key-mode 1)
 (key-chord-mode 1)
 (winner-mode 1)
-(edit-server-start)
 ;; (global-color-identifiers-mode)
 
 ;; default landing file after startup
 (setq popwin:close-popup-window-timer-interval 0.05)
 (setq display-buffer-function 'popwin:display-buffer)
 (push '("*compilation*" :height 40) popwin:special-display-config)
+(push '("*help*" :width 0.5 :position right) popwin:special-display-config)
 
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
 
 (require 'let-alist)
 (require 'sx-load)
-
-(find-file "~/.emacs.d/init.el")
 
 (setq save-place-file "~/.emacs.d/saveplace")
 
@@ -131,3 +124,8 @@
 (smartparens-global-mode)
 
 (elmacro-mode)
+(require 'appearance-setup)
+
+(setq indicate-empty-lines t)
+(setq show-trailing-whitespace t)
+(find-file "~/.emacs.d/init.el")

@@ -6,7 +6,6 @@
 (setq guide-key/idle-delay 0)
 
 ;; (setq ns-pop-up-frames nil)
-
 ;; my custom bindings!
 
 ;; a minor mode for all my "override" key bindings:
@@ -21,121 +20,114 @@
 (dcon-minor-mode 1)
 
 ;; remove keybinding
-(global-set-key (kbd "s-q") nil)
+(bind-key "s-q" nil)
 
-;; -----------------------------------------------------------------------------------------------------
 ;; helm bindings
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x l") 'helm-ls-git-ls)
-(global-set-key (kbd "C-x a") 'helm-apropos)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-k") 'helm-project-search)
-(global-set-key (kbd "M-l") 'helm-projectile)
-(global-set-key (kbd "C-x b") 'helm-projectless-search)
-(global-set-key (kbd "C-x p s") 'start-eshell-in-split-window)
-(global-set-key (kbd "C-x p p") 'persp-switch)
+(bind-key "C-x C-f" 'helm-find-files)
+(bind-key "C-x l" 'helm-ls-git-ls)
+(bind-key "C-x a" 'helm-apropos)
+(bind-key "M-x" 'helm-M-x)
+(bind-key "M-k" 'helm-project-search)
+(bind-key "M-l" 'helm-projectile)
+(bind-key "C-x b" 'helm-projectless-search)
+(bind-key "C-x p s" 'start-eshell-in-split-window)
+(bind-key "C-x p v" (lambda () (interactive) (browse-url "chrome-extension://ihlenndgcmojhcghmfjfneahoeklbjjh/pages/options.html")))
 
-(global-set-key (kbd "C-k") 'kill-line)
-(global-set-key (kbd "M-l") 'open-line-below)
-(global-set-key (kbd "M-K") 'my-helm-do-ag)
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)
-(define-key dcon-minor-mode-map (kbd "C-x t") 'helm-imenu)
+
+(bind-key "C-k" 'kill-line)
+(bind-key "M-l" 'open-line-below)
+(bind-key "M-K" 'my-helm-do-ag)
+(bind-key "C-s" 'isearch-forward-regexp)
+(bind-key "C-r" 'isearch-backward-regexp)
+(bind-key "C-i" 'helm-execute-persistent-action)
+(bind-key "C-x t" 'helm-imenu)
 
 ;; window management
-(global-set-key (kbd "C-x p p") 'popwin:stick-popup-window)
-(define-key dcon-minor-mode-map (kbd "C-x o") 'other-window)
-(global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "M-0") 'delete-window)
-(global-set-key (kbd "s-4") 'windows-swap)
-(global-set-key (kbd "s-5") 'windows-flip)
-(define-key dcon-minor-mode-map (kbd "s-1") 'delete-other-windows)
-(define-key dcon-minor-mode-map (kbd "s-2") 'split-window-below-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "C-x 2") 'split-window-below-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "s-3") 'split-window-right-and-move-there-dammit)
-(define-key dcon-minor-mode-map (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+(bind-key "s-e" 'split-window-below-and-move-there-dammit)
+(bind-key "s-r" 'split-window-right-and-move-there-dammit)
+(bind-key "s-w" 'delete-window)
 
-(define-key dcon-minor-mode-map (kbd "C-}") 'enlarge-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-{") 'shrink-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-L") 'enlarge-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-H") 'shrink-window-horizontally)
-(define-key dcon-minor-mode-map (kbd "C-S-K") 'enlarge-window)
-(define-key dcon-minor-mode-map (kbd "C-S-J") 'shrink-window)
+(bind-key "C-x p p" 'popwin:stick-popup-window)
+(bind-key "C-x o" 'other-window)
+(bind-key "M-o" 'other-window)
+(bind-key "M-0" 'delete-window)
+(bind-key "s-4" 'windows-swap)
+(bind-key "s-5" 'windows-flip)
 
-(global-set-key (kbd "s-p") 'helm-scroll-other-window-down)
-(global-set-key (kbd "s-n") 'helm-scroll-other-window)
+(bind-key "s-1" 'delete-other-windows)
+(bind-key "s-2" 'split-window-below-and-move-there-dammit)
+(bind-key "C-x 2" 'split-window-below-and-move-there-dammit)
+(bind-key "s-3" 'split-window-right-and-move-there-dammit)
+(bind-key "C-x 3" 'split-window-right-and-move-there-dammit)
+
+(bind-key "C-}" 'enlarge-window-horizontally)
+(bind-key "C-{" 'shrink-window-horizontally)
+(bind-key "C-S-L" 'enlarge-window-horizontally)
+(bind-key "C-S-H" 'shrink-window-horizontally)
+(bind-key "C-S-K" 'enlarge-window)
+(bind-key "C-S-J" 'shrink-window)
+
+(bind-key "s-p" 'helm-scroll-other-window-down)
+(bind-key "s-n" 'helm-scroll-other-window)
 
 
-(global-set-key (kbd "C-x k") 'kill-current-buffer)
-(global-set-key (kbd "C-x S-K") '(lambda () (interactive) (kill-current-buffer)(delete-window)))
+(bind-key "C-x k" 'kill-current-buffer)
+(bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
 
 ;; utilities
-(global-set-key (kbd "C-c h") 'describe-key)
-(global-set-key (kbd "C-c z") 'copy-full-path-to-kill-ring)
-(global-set-key (kbd "C-c C-k") 'eval-buffer)
+(bind-key "C-c h" 'describe-key)
+(bind-key "C-c z" 'copy-full-path-to-kill-ring)
+(bind-key "C-c C-k" 'eval-buffer)
 
 ;; general text editing
-(global-set-key (kbd "C-h") 'backward-delete-char-untabify)
-(define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
-(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+(bind-key "C-h" 'backward-delete-char-untabify)
+(bind-key "C-M-h" 'kill-whole-line)
+(bind-key "C-j" 'er/expand-region)
 
-(global-set-key (kbd "C-q") 'backward-kill-word)
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
+(bind-key "C-q" 'backward-kill-word)
+(bind-key "M-p" 'backward-paragraph)
+(bind-key "M-n" 'forward-paragraph)
 (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "C-c p") (kbd "<f2>"))
 
 ;; magit
-(global-set-key (kbd "s-SPC") 'magit-status)
+(bind-key "s-SPC" 'magit-status)
 
 ;; directory shortcuts
-(global-set-key (kbd "C-,") 'dired-up)
-(global-set-key (kbd "H-h") '(lambda () (interactive) (find-file "~/")))
-(global-set-key (kbd "H-s") '(lambda () (interactive) (find-file "~/drive/sites/shortstack")))
-(global-set-key (kbd "H-r") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-server")))
-(global-set-key (kbd "H-d") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-designer")))
-(global-set-key (kbd "H-a") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-admin")))
-(global-set-key (kbd "H-i") '(lambda () (interactive) (find-file "~/drive/sites/shortstack-api")))
-(global-set-key (kbd "H-e") '(lambda () (interactive) (find-file "~/.emacs.d")))
+(bind-key "C-," 'dired-up)
+(bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
+(bind-key "H-s" '(lambda () (interactive) (find-file "~/drive/sites/shortstack")))
+(bind-key "H-r" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-server")))
+(bind-key "H-d" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-designer")))
+(bind-key "H-a" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-admin")))
+(bind-key "H-i" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-api")))
+(bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d")))
 
-(define-key dcon-minor-mode-map (kbd "H-n") 'drag-stuff-down)
-(define-key dcon-minor-mode-map (kbd "H-p") 'drag-stuff-up)
+(bind-key "H-n" 'drag-stuff-down)
+(bind-key "H-p" 'drag-stuff-up)
 
-(define-key dcon-minor-mode-map (kbd "M-/") 'point-undo)
-(define-key dcon-minor-mode-map (kbd "M-.") 'point-redo)
-(define-key dcon-minor-mode-map (kbd "C-x C-u") 'reopen-last-closed-buffer)
-(define-key dcon-minor-mode-map (kbd "M-P") 'package-install)
-(define-key dcon-minor-mode-map (kbd "C-M-P") 'package-list-packages)
-(define-key dcon-minor-mode-map (kbd "M-C-p") 'helm-eshell-history)
-(define-key dcon-minor-mode-map (kbd "C-c f") 'helm-dash)
-(define-key dcon-minor-mode-map (kbd "C-x f") 'helm-recentf)
-(define-key dcon-minor-mode-map (kbd "M-s s") 'scroll-bar-mode)
-(define-key dcon-minor-mode-map (kbd "M-j") 'helm-resume)
-(define-key dcon-minor-mode-map (kbd "C-x n") 'make-frame)
+(bind-key "M-/" 'point-undo)
+(bind-key "M-." 'point-redo)
+(bind-key "C-x C-u" 'reopen-last-closed-buffer)
+(bind-key "M-P" 'helm-list-elisp-packages)
+(bind-key "M-C-p" 'helm-eshell-history)
+(bind-key "C-c f" 'helm-dash)
+(bind-key "C-x f" 'helm-recentf)
+(bind-key "M-s s" 'scroll-bar-mode)
+(bind-key "M-j" 'helm-resume)
+(bind-key "C-x n" 'make-frame)
 
-(global-set-key (kbd "C-S-n") 'org-move-subtree-down)
-(global-set-key (kbd "C-S-p") 'org-move-subtree-up)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c l") 'org-capture-goto-last-stored)
+(bind-key "C-S-n" 'org-move-subtree-down)
+(bind-key "C-c c" 'org-capture)
+(bind-key "C-c l" 'org-capture-goto-last-stored)
 (define-key org-mode-map "\C-cp" 'org-mobile-pull)
 (define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
 
 
-(define-key dcon-minor-mode-map (kbd "C-x C-n") 'flycheck-tip-cycle)
-(define-key dcon-minor-mode-map (kbd "C-x C-p") 'flycheck-tip-cycle-reverse)
-
-;; (define-key dcon-minor-mode-map (kbd "s-N") 'move-text-down)
-;; (define-key dcon-minor-mode-map (kbd "s-P") 'move-text-up)
-
-(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
-
-
-
-;; (add-hook 'haml-mode-hook
-;;           '(lambda () (define-key haml-mode-map "\M-'" 'haml-comment-dwim)))
-
+(bind-key "C-x C-n" 'flycheck-tip-cycle)
+(bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
+(bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 (add-hook 'web-mode-hook
 	  '(lambda ()
 	     (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end)
@@ -147,89 +139,85 @@
 			   (backward-char 1)
 			   (web-mode-element-beginning)))))
 
-(define-key dcon-minor-mode-map (kbd "M-i") 'helm-swoop)
-(define-key dcon-minor-mode-map (kbd "M-I") 'helm-swoop-back-to-last-point)
+(bind-key "M-i" 'helm-swoop)
+(bind-key "M-I" 'helm-swoop-back-to-last-point)
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
 
-(define-key dcon-minor-mode-map (kbd "s-n") 'mc/mark-next-like-this)
-(define-key dcon-minor-mode-map (kbd "s-N") 'mc/unmark-next-like-this)
-(define-key dcon-minor-mode-map (kbd "s-p") 'mc/mark-previous-like-this)
-(define-key dcon-minor-mode-map (kbd "s-P") 'mc/unmark-previous-like-this)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(bind-key "s-n" 'mc/mark-next-like-this)
+(bind-key "s-N" 'mc/unmark-next-like-this)
+(bind-key "s-p" 'mc/mark-previous-like-this)
+(bind-key "s-P" 'mc/unmark-previous-like-this)
+(bind-key "C-S-c C-S-c" 'mc/edit-lines)
 
-(define-key dcon-minor-mode-map (kbd "C-c a") 'org-agenda)
+(bind-key "C-c a" 'org-agenda)
 
-;; (key-chord-define-global "df" 'drag-stuff-up)
-;; (key-chord-define-global "jk" 'drag-stuff-down)
 (key-chord-define-global "fj" 'ace-jump-word-mode)
 (key-chord-define-global "jl" 'ace-jump-line-mode)
 
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-(define-key global-map (kbd "C-c SPC") 'rectangle-mark-mode)
+(bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
+(bind-key "C-c SPC" 'rectangle-mark-mode)
 
-(global-set-key (kbd "C-x C-o") 'open-dir-in-finder)
-(global-set-key (kbd "C-z") 'capitalize-word-toggle)
-
-
-(global-set-key (kbd "C-<up>") 'ac-quick-help-scroll-up)
-(global-set-key (kbd "C-<down>") 'ac-quick-help-scroll-down)
-(global-set-key (kbd "M-e") 'web-mode-fold-or-unfold)
+(bind-key "C-x C-o" 'open-dir-in-finder)
+(bind-key "C-z" 'capitalize-word-toggle)
+(bind-key "C-<up>" 'ac-quick-help-scroll-up)
+(bind-key "C-<down>" 'ac-quick-help-scroll-down)
+(bind-key "M-e" 'web-mode-fold-or-unfold)
 
 (key-chord-define-global "fw" 'ruby-test-run)
 (key-chord-define-global "gw" 'ruby-test-run-at-point)
 
-(global-set-key (kbd "C-x y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-b") 'helm-bookmarks)
+(bind-key "C-x y" 'helm-show-kill-ring)
+(bind-key "C-x C-b" 'helm-bookmarks)
 
 
 (key-chord-define-global "wj" 'calculator)
 
-(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-x C-c") 'delete-frame)
+(bind-key "C-x r q" 'save-buffers-kill-terminal)
+(bind-key "C-x C-c" 'delete-frame)
 
 ;; Create scratch buffer
-(global-set-key (kbd "C-c b") 'create-scratch-buffer)
+(bind-key "C-c b" 'create-scratch-buffer)
 
-(global-set-key (kbd "C-c n") 'cleanup-buffer)
+(bind-key "C-c n" 'cleanup-buffer)
 
-(define-key dcon-minor-mode-map (kbd "C-x g") 'browse-file-on-github)
+(bind-key "C-x g" 'browse-file-on-github)
 
-(global-set-key (kbd "C-/") 'undo-tree-undo)
-(global-set-key (kbd "C-.") 'undo-tree-redo)
-(global-set-key (kbd "C-x u") 'undo-tree-visualize)
-(global-set-key (kbd "C-c o") 'other-frame)
-(global-set-key (kbd "M-`") 'other-frame)
-(global-set-key (kbd "C-x C-v") 'global-visual-line-mode)
+(bind-key "C-/" 'undo-tree-undo)
+(bind-key "C-." 'undo-tree-redo)
+(bind-key "C-x u" 'undo-tree-visualize)
+(bind-key "C-c o" 'other-frame)
+(bind-key "M-`" 'other-frame)
+(bind-key "C-x C-v" 'global-visual-line-mode)
 
-(global-set-key (kbd "C-x C-t") 'open-in-iterm)
+(bind-key "C-x C-t" 'open-in-iterm)
 
-(global-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
-(global-set-key (kbd "C-<left>" ) 'sp-backward-slurp-sexp)
-(global-set-key (kbd "C-S-<left>") 'sp-forward-barf-sexp)
-(global-set-key (kbd "C-S-<right>") 'sp-backward-barf-sexp)
-(global-set-key (kbd "M-<delete>") 'sp-unwrap-sexp)
+(bind-key "C-<right>" 'sp-forward-slurp-sexp)
+(bind-key "C-<left>" 'sp-backward-slurp-sexp)
+(bind-key "C-S-<left>" 'sp-forward-barf-sexp)
+(bind-key "C-S-<right>" 'sp-backward-barf-sexp)
+(bind-key "M-<delete>" 'sp-unwrap-sexp)
 
 ;; git-gutter
-(define-key dcon-minor-mode-map (kbd "M-r n") 'git-gutter+-next-hunk)
-(define-key dcon-minor-mode-map (kbd "M-r p") 'git-gutter+-previous-hunk)
-(define-key dcon-minor-mode-map (kbd "M-r d") 'git-gutter+-popup-hunk)
-(define-key dcon-minor-mode-map (kbd "M-r r") 'git-gutter+-revert-hunk)
+(global-set-key (kbd "C-c x n") 'git-gutter+-next-hunk)
+(global-set-key (kbd "C-c x p") 'git-gutter+-previous-hunk)
+(global-set-key (kbd "C-c x d") 'git-gutter+-popup-hunk)
+(global-set-key (kbd "C-c x r") 'git-gutter+-revert-hunk)
 
 ;; auto-complete settings
-(define-key ac-menu-map (kbd "C-n") 'ac-next)
-(define-key ac-menu-map (kbd "C-p") 'ac-previous)
+(bind-key "C-n" 'ac-next ac-menu-map)
+(bind-key "C-p" 'ac-previous ac-menu-map)
 
 ;; guide key
-(define-key dcon-minor-mode-map (kbd "C-x p h") 'hue-lights-toggle)
-(define-key dcon-minor-mode-map (kbd "C-x p c") 'customize)
-(define-key dcon-minor-mode-map (kbd "C-x p f") 'customize-face)
-(define-key dcon-minor-mode-map (kbd "C-x p d") 'projectile-find-dir)
-(define-key dcon-minor-mode-map (kbd "C-x p i") 'projectile-invalidate-cache)
-(define-key dcon-minor-mode-map (kbd "C-x p l") 'package-list-packages)
-(define-key dcon-minor-mode-map (kbd "C-x p e") 'emms)
-(define-key dcon-minor-mode-map (kbd "C-o") 'open-line-above)
-(define-key dcon-minor-mode-map (kbd "M-T") 'my-tail)
-(define-key dcon-minor-mode-map (kbd "C-c m") 'view-echo-area-messages)
+(bind-key "C-x p h" 'hue-lights-toggle)
+(bind-key "C-x p c" 'customize)
+(bind-key "C-x p f" 'customize-face)
+(bind-key "C-x p d" 'projectile-find-dir)
+(bind-key "C-x p i" 'projectile-invalidate-cache)
+(bind-key "C-x p l" 'package-list-packages)
+(bind-key "C-x p e" 'emms)
+(bind-key "C-o" 'open-line-above)
+(bind-key "M-T" 'my-tail)
+(bind-key "C-c m" 'view-echo-area-messages)
 
 (add-hook 'evil-mode-hook
 	  '(lambda ()
@@ -248,7 +236,7 @@
 	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-	     (global-set-key [escape] 'evil-exit-emacs-state)
+	     (bind-key [escape] 'evil-exit-emacs-state)
 	     ))
 
 ;; esc quits
@@ -262,12 +250,36 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
-(global-set-key (kbd "s-/") 'winner-undo)
-(global-set-key (kbd "s-.") 'winner-redo)
+(bind-key "s-/" 'winner-undo)
+(bind-key "s-." 'winner-redo)
 
-(define-key global-map (kbd "RET") 'new-line-dwim)
+(bind-key "RET" 'new-line-dwim)
 
 ;; emms
-(global-set-key (kbd "C-x p a") 'emms-add-dired)
+(bind-key "C-x p a" 'emms-add-dired)
+(bind-key "C-x w c" 'to-coffee)
+(bind-key "C-x w j" 'to-javascript)
+
+;; If you have lots of keybindings set in your .emacs file, it can be hard to know which
+;; ones you haven't set yet -- and which may now be overriding some new default in
+;; a new Emacs version. This module aims to solve that problem.
+
+(bind-key "C-x p w" 'ispell)
+
+;; If you want the keybinding to override all minor modes that may also bind the same key, use the bind-key* form:
+;; (bind-key* "<C-return>" 'other-window)
+
+;; If you want to rebind a key only for a particular mode, use:
+(bind-key* "C-," 'dired-up)
+
+;; To unbind a key within a keymap (for example, to stop your favorite major mode from
+;; changing a binding that you don't want to override everywhere), use unbind-key:
+
+;; (unbind-key "C-c x" some-other-mode-map)
+
+;; After Emacs loads, you can see a summary of all your personal keybindings currently in effect with this command:
+;; M-x describe-personal-keybindings
+;; It will tell you if you've overriden a default keybinding, and what that default was.
+;; Also, it will tell you if the key was rebound after your binding it with bind-key, and what it was rebound it to.
 
 (provide 'bindings-setup)

@@ -2,10 +2,11 @@
 (require 'helm-projectile)
 (require 'helm-cmd-t)
 (require 'helm-ls-git)
+(require 'helm-bind-key)
 
 (defun my-helm-do-ag ()
   (interactive)
-  (helm-do-ag (projectile-project-root)))
+  (helm-do-ag (my-git-root)))
 
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
@@ -21,7 +22,7 @@
         (helm :sources '(helm-source-projectile-buffers-list
 			 helm-source-ls-git-status
 			 helm-source-projectile-files-list
-			 helm-source-pp-bookmarks)
+			 helm-source-bookmarks)
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))
     (helm-projectless-search)))
@@ -34,7 +35,7 @@
 	  (helm-make-source "Buffers" 'helm-source-buffers)))
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-		     helm-source-pp-bookmarks)
+		     helm-source-bookmarks)
 		     :buffer "*project(less)-search*"
 		     :prompt (projectile-prepend-project-name "pattern: "))))
 

@@ -1,8 +1,5 @@
 ;; theme
-(load-theme 'espresso t)
-
-;; rainbow delimiters
-;; (rainbow-delimiters-mode 1)
+(load-theme 'gandalf t)
 
 ;; only show bad whitespace
 (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
@@ -10,38 +7,16 @@
 ;; smart-mode-line
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
-(setq sml/shorten-directory t)
-(sml/apply-theme 'light)
 
-(add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
-(add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
-(add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-server/" ":SERVER:") t)
-(add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-designer/" ":DESIGNER:") t)
-
-;; (after 'visual-line '(diminish 'visual-line-mode))
-;; (after 'paredit '(diminish 'paredit-mode))
-;; (after 'tagedit '(diminish 'tagedit-mode))
-;; (after 'skewer-mode '(diminish 'skewer-mode))
-;; (after 'skewer-css '(diminish 'skewer-css-mode))
-;; (after 'skewer-html '(diminish 'skewer-html-mode))
-;; (after 'guide-key '(diminish 'guide-key-mode))
-;; (after 'autopair (diminish 'autopair-mode))
-;; (after 'undo-tree (diminish 'undo-tree-mode))
-;; (after 'auto-complete (diminish 'auto-complete-mode))
-;; (after 'projectile (diminish 'projectile-mode))
-;; (after 'yasnippet (diminish 'yas-minor-mode))
-;; (after 'guide-key (diminish 'guide-key-mode))
-;; (after 'eldoc (diminish 'eldoc-mode))
-;; (after 'smartparens (diminish 'smartparens-mode))
-;; (after 'company (diminish 'company-mode))
-;; (after 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
-;; (after 'git-gutter+ (diminish 'git-gutter+-mode))
-;; (after 'magit (diminish 'magit-auto-revert-mode))
-;; (after 'color-identifiers-mode (diminish 'color-identifiers-mode))
+;; (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
+;; (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
+;; (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-server/" ":SERVER:") t)
+;; (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack-designer/" ":DESIGNER:") t)
 
 ;; cursor
 (blink-cursor-mode 1)
-(set-cursor-color "forestGreen")
+(set-cursor-color "red")
+
 ;; helm
 (setq helm-buffer-max-length 30)
 (setq dired-details-propagate-flag t)
@@ -72,25 +47,26 @@
 
 ;; ;; background color
 ;; (set-background-color "white")
-
+;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150)
 ;; font color and size
 (set-face-attribute 'default nil :family "monaco" :height 120)
-;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150)
 
-;; (set-cursor-color 'purple)
-;;removed from custom.el
-;; '(dired-directory ((t (:inherit font-lock-function-name-face :foreground "purple" :weight extra-bold))))
- ;; '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil))))
- ;; '(helm-M-x-key ((t (:foreground "purple"))))
- ;; '(helm-lisp-show-completion ((t (:background "DarkSlateGray" :foreground "white"))))
- ;; '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
- ;; '(helm-selection ((t (:inverse-video t))))
+;; region highlight color
+(set-face-attribute 'region nil :background "gray40")
 
- ;; '(mode-line-inactive ((t (:background "white" :foreground "grey20" :inverse-video nil :box (:line-width -1 :style released-button)))))
- ;; '(show-paren-match ((t (:background "lightPink1" :foreground "black"))))
+;; region highlight color
+(set-face-attribute 'region nil :background "gray40")
 
-(setq indicate-empty-lines t)
-(setq show-trailing-whitespace t)
+(set-face-attribute 'helm-selection nil :background "gray" :foreground "black")
 
+;; (set-face-attribute 'helm-selection-line t :underline t)
+
+'(helm-selection-line ((t (:underline t))))
+
+;; rainbow delimiters
+(rainbow-delimiters-mode 1)
+
+;; (set-face-attribute 'magit-section-title nil :background "gray80")
+(set-face-foreground 'font-lock-comment-face "gray70")
 
 (provide 'appearance-setup)

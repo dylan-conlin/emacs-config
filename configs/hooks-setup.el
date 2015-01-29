@@ -40,4 +40,9 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+(defun disable-magit-highlight-in-buffer ()
+  (face-remap-add-relative 'magit-item-highlight '()))
+(add-hook 'magit-status-mode-hook 'disable-magit-highlight-in-buffer)
+
+
 (provide 'hooks-setup)

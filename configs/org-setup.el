@@ -88,5 +88,8 @@
 ;; (defvar monitor-timer (install-monitor (concat org-mobile-directory "/mobileorg.org") 30)
 ;;   "Check if file changed every 30 s.")
 
+(defun my-org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries 'org-archive-subtree "/DONE" 'file))
 
 (provide 'org-setup)
