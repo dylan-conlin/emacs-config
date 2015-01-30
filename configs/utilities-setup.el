@@ -565,4 +565,23 @@ Including indent-buffer, which should not be called automatically on save."
   (save-excursion
     (let ((beg (point))) (evil-forward-word-begin) (delete-region beg (point)))))
 
+
+(defun cache-last-open-file ()
+  (interactive "P")
+  (let ((current-file-path (if (equal major-mode 'dired-mode)
+			       default-directory
+			     (expand-file-name buffer-file-name user-emacs-directory)))
+        (cache-path (concat user-emacs-directory ".last-opened-file")))
+    (f-write current-file-path 'utf-8  cache-path)))
+
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(defun open-last-visited-file ()
+  (interactive "P")
+  (find-file (get-string-from-file (expand-file-name ".last-opened-file" user-emacs-directory))))
+
 (provide 'utilities-setup)

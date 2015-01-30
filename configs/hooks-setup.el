@@ -9,13 +9,9 @@
 	    (flyspell-lazy-mode 1)
             (flyspell-mode 1)))
 
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (yas-minor-mode nil)))
+(add-hook 'eshell-mode-hook (lambda () (yas-minor-mode nil)))
 
-(add-hook 'haml-mode-hook
-          (lambda ()
-            ;; Preferred comment style
+(add-hook 'haml-mode-hook (lambda ()
             (setq comment-start "-# "
                   comment-end "")))
 
@@ -37,12 +33,12 @@
 
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(defun disable-magit-highlight-in-buffer ()
-  (face-remap-add-relative 'magit-item-highlight '()))
-(add-hook 'magit-status-mode-hook 'disable-magit-highlight-in-buffer)
+(add-hook 'magit-status-mode-hook
+	  (lambda () (face-remap-add-relative 'magit-item-highlight '())))
+
+(add-hook 'kill-emacs-hook 'cache-last-open-file)
 
 
 (provide 'hooks-setup)

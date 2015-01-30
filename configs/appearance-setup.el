@@ -45,28 +45,22 @@
 ;; add newline to file on save
 (setq require-final-newline t)
 
-;; ;; background color
-;; (set-background-color "white")
-;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150)
 ;; font color and size
 (set-face-attribute 'default nil :family "monaco" :height 120)
-
-;; region highlight color
-(set-face-attribute 'region nil :background "gray40")
-
-;; region highlight color
-(set-face-attribute 'region nil :background "gray40")
-
-(set-face-attribute 'helm-selection nil :background "gray" :foreground "black")
-
-;; (set-face-attribute 'helm-selection-line t :underline t)
-
-'(helm-selection-line ((t (:underline t))))
 
 ;; rainbow delimiters
 (rainbow-delimiters-mode 1)
 
-;; (set-face-attribute 'magit-section-title nil :background "gray80")
-(set-face-foreground 'font-lock-comment-face "gray70")
+;; faces
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; region highlight color
+(set-face-attribute 'region nil :background "lightblue")
+(set-face-attribute 'helm-selection nil :background "lightgreen")
+(set-face-foreground 'font-lock-comment-face "gray65")
+(set-face-attribute 'show-paren-match nil :background "purple" :foreground "yellow")
+(set-face-attribute 'isearch nil :foreground "yellow" :background "deep pink")
+(set-face-attribute 'isearch-lazy-highlight-face nil :foreground "black" :background "lightblue")
+(set-face-attribute 'rainbow-delimiters-unmatched-face nil :background nil :foreground "red")
 
 (provide 'appearance-setup)

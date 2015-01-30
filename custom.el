@@ -10,7 +10,7 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(ansi-term-color-vector
-   [unspecified "#151718" "#CE4045" "#9FCA56" "#DCCD69" "#55B5DB" "#A074C4" "#55B5DB" "#D4D7D6"])
+   [unspecified "#151718" "#CE4045" "#9FCA56" "#DCCD69" "#55B5DB" "#A074C4" "#55B5DB" "#D4D7D6"] t)
  '(auto-image-file-mode t)
  '(battery-mode-line-format " %p" t)
  '(blink-cursor-interval 0.25)
@@ -60,6 +60,7 @@
  '(helm-M-x-reverse-history nil)
  '(helm-adaptive-history-file "~/.emacs.d/helm-adaptive-history")
  '(helm-adaptive-mode t nil (helm-adaptive))
+ '(helm-ag-fuzzy-match t)
  '(helm-always-two-windows t)
  '(helm-bookmark-show-location t)
  '(helm-boring-buffer-regexp-list
@@ -187,9 +188,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
- '(helm-selection ((t (:background "gray70"))))
- '(helm-selection-line ((t (:underline t))))
+ '(helm-selection ((t (:background "light green"))))
+ '(helm-selection-line ((t (:background "lightblue" :underline t))))
  '(helm-source-header ((t (:foreground "gray" :underline nil :weight bold :height 1.3 :family "Sans Serif"))))
+ '(isearch ((t (:background "deep pink" :foreground "yellow"))))
  '(magit-item-highlight ((t nil)))
  '(magit-section-title ((t (:background "gray"))))
  '(region ((t (:background "plum1"))))

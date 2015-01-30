@@ -1,5 +1,5 @@
+(menu-bar-mode 1)
 ;; remove menus, tool-bars, scroll bars, splash-screen, and startup-message
-(menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode)
@@ -91,7 +91,7 @@
 ;; (global-whitespace-mode 1)
 (global-git-gutter+-mode 1)
 (drag-stuff-global-mode 1)
-(win-switch-mode 1)
+;; (win-switch-mode 1)
 (auto-indent-mode 1)
 (yas-global-mode 1)
 (guide-key-mode 1)
@@ -128,4 +128,5 @@
 
 (setq indicate-empty-lines t)
 (setq show-trailing-whitespace t)
-(find-file "~/.emacs.d/init.el")
+
+(open-last-visited-file)

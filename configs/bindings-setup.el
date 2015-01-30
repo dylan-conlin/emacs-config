@@ -81,7 +81,7 @@
 
 ;; general text editing
 (bind-key "C-h" 'backward-delete-char-untabify)
-(bind-key "C-M-h" 'kill-whole-line)
+(bind-key* "C-M-h" 'kill-whole-line)
 (bind-key "C-j" 'er/expand-region)
 
 (bind-key "C-q" 'backward-kill-word)
@@ -158,7 +158,7 @@
 (bind-key "C-c SPC" 'rectangle-mark-mode)
 
 (bind-key "C-x C-o" 'open-dir-in-finder)
-(bind-key "C-z" 'capitalize-word-toggle)
+(bind-key "M-z" 'capitalize-word-toggle)
 (bind-key "C-<up>" 'ac-quick-help-scroll-up)
 (bind-key "C-<down>" 'ac-quick-help-scroll-down)
 (bind-key "M-e" 'web-mode-fold-or-unfold)
@@ -219,36 +219,36 @@
 (bind-key "M-T" 'my-tail)
 (bind-key "C-c m" 'view-echo-area-messages)
 
-(add-hook 'evil-mode-hook
-	  '(lambda ()
-	     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-	     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
-	     (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-	     (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
-	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
-	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
-	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
-	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
-	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-	     (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-	     (bind-key [escape] 'evil-exit-emacs-state)
-	     ))
+;; (add-hook 'evil-mode-hook
+;; 	  '(lambda ()
+;; 	     ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+;; 	     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
+;; 	     (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
+;; 	     (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
+;; 	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
+;; 	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
+;; 	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+;; 	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+;; 	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; 	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
+;; 	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;; 	     (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;; 	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;; 	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;; 	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; 	     (bind-key [escape] 'evil-exit-emacs-state)
+;; 	     ))
 
-;; esc quits
-(defun minibuffer-keyboard-quit ()
-  "Abort recursive edit.
-In Delete Selection mode, if the mark is active, just deactivate it;
-then it takes a second \\[keyboard-quit] to abort the minibuffer."
-  (interactive)
-  (if (and delete-selection-mode transient-mark-mode mark-active)
-      (setq deactivate-mark  t)
-    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-    (abort-recursive-edit)))
+;; ;; esc quits
+;; (defun minibuffer-keyboard-quit ()
+;;   "Abort recursive edit.
+;; In Delete Selection mode, if the mark is active, just deactivate it;
+;; then it takes a second \\[keyboard-quit] to abort the minibuffer."
+;;   (interactive)
+;;   (if (and delete-selection-mode transient-mark-mode mark-active)
+;;       (setq deactivate-mark  t)
+;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;     (abort-recursive-edit)))
 
 (bind-key "s-/" 'winner-undo)
 (bind-key "s-." 'winner-redo)
