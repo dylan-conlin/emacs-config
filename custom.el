@@ -21,8 +21,7 @@
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(cursor-in-non-selected-windows nil)
- '(cursor-type (quote bar))
+ '(cursor-in-non-selected-windows t)
  '(custom-enabled-themes (quote (smart-mode-line-light)))
  '(custom-safe-themes
    (quote
@@ -61,6 +60,7 @@
  '(helm-adaptive-history-file "~/.emacs.d/helm-adaptive-history")
  '(helm-adaptive-mode t nil (helm-adaptive))
  '(helm-ag-fuzzy-match t)
+ '(helm-ag-source-type (quote one-line))
  '(helm-always-two-windows t)
  '(helm-bookmark-show-location t)
  '(helm-boring-buffer-regexp-list
@@ -187,6 +187,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
  '(helm-selection ((t (:background "light green"))))
  '(helm-selection-line ((t (:background "lightblue" :underline t))))
@@ -194,5 +195,6 @@
  '(isearch ((t (:background "deep pink" :foreground "yellow"))))
  '(magit-item-highlight ((t nil)))
  '(magit-section-title ((t (:background "gray"))))
+ '(mode-line ((t (:background "light green" :foreground "black" :inverse-video nil))))
  '(region ((t (:background "plum1"))))
- '(show-paren-match ((t (:background "green1")))))
+ '(show-paren-match ((t (:foreground "red" :weight extra-bold)))))

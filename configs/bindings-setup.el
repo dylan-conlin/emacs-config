@@ -47,6 +47,8 @@
 (bind-key "s-r" 'split-window-right-and-move-there-dammit)
 (bind-key "s-w" 'delete-window)
 
+(key-chord-define-global "jl" 'fixup-whitespace)
+
 (bind-key "C-x p p" 'popwin:stick-popup-window)
 (bind-key "C-x o" 'other-window)
 (bind-key "M-o" 'other-window)
@@ -171,6 +173,7 @@
 
 
 (key-chord-define-global "wj" 'calculator)
+(key-chord-define-global "jk" (lambda () (interactive) (switch-to-buffer (other-buffer))))
 
 (bind-key "C-x r q" 'save-buffers-kill-terminal)
 (bind-key "C-x C-c" 'delete-frame)
@@ -216,8 +219,14 @@
 (bind-key "C-x p l" 'package-list-packages)
 (bind-key "C-x p e" 'emms)
 (bind-key "C-o" 'open-line-above)
+
+(bind-key "M-a" 'mark-whole-buffer)
 (bind-key "M-T" 'my-tail)
 (bind-key "C-c m" 'view-echo-area-messages)
+
+(bind-key "s-=" 'text-scale-increase)
+(bind-key "s--" 'text-scale-decrease)
+(bind-key "s-0" (lambda () (interactive) (text-scale-set 0)))
 
 ;; (add-hook 'evil-mode-hook
 ;; 	  '(lambda ()

@@ -4,9 +4,9 @@
 ;; only show bad whitespace
 (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
 
-;; smart-mode-line
-(setq sml/no-confirm-load-theme t)
-(sml/setup)
+;; ;; smart-mode-line
+;; (setq sml/no-confirm-load-theme t)
+;; (sml/setup)
 
 ;; (add-to-list 'sml/replacer-regexp-list '("^~/.emacs.d/" ":EMACS:") t)
 ;; (add-to-list 'sml/replacer-regexp-list '("^~/drive/sites/shortstack/" ":STACK:") t)
@@ -15,7 +15,7 @@
 
 ;; cursor
 (blink-cursor-mode 1)
-(set-cursor-color "red")
+
 
 ;; helm
 (setq helm-buffer-max-length 30)
@@ -46,7 +46,7 @@
 (setq require-final-newline t)
 
 ;; font color and size
-(set-face-attribute 'default nil :family "monaco" :height 120)
+(set-face-attribute 'default nil :family "monaco" :height 110)
 
 ;; rainbow delimiters
 (rainbow-delimiters-mode 1)
@@ -55,12 +55,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; region highlight color
+(set-cursor-color "purple")
 (set-face-attribute 'region nil :background "lightblue")
 (set-face-attribute 'helm-selection nil :background "lightgreen")
 (set-face-foreground 'font-lock-comment-face "gray65")
-(set-face-attribute 'show-paren-match nil :background "purple" :foreground "yellow")
+(set-face-attribute 'show-paren-match nil :background "red" :foreground "white")
 (set-face-attribute 'isearch nil :foreground "yellow" :background "deep pink")
 (set-face-attribute 'isearch-lazy-highlight-face nil :foreground "black" :background "lightblue")
 (set-face-attribute 'rainbow-delimiters-unmatched-face nil :background nil :foreground "red")
+(set-face-attribute 'mode-line nil :background "light green" :foreground "purple")
 
 (provide 'appearance-setup)

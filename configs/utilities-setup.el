@@ -269,6 +269,15 @@ With a prefix argument, insert a newline above the current line."
       (buffer-substring-no-properties beg end)
     "xxx"))
 
+(defun find-git-root (&optional dir)
+  (interactive)
+  (unless dir (setq dir (f-dirname (buffer-file-name))))
+  (let ((parent (f-parent dir)))
+    (unless (f-root? parent)
+      (if (f-exists? (f-expand ".git" dir))
+          dir
+        (find-git-root parent)))))
+
 (defun my-git-root ()
   (interactive)
   (vc-git-root default-directory))
@@ -583,5 +592,29 @@ Including indent-buffer, which should not be called automatically on save."
 (defun open-last-visited-file ()
   (interactive "P")
   (find-file (get-string-from-file (expand-file-name ".last-opened-file" user-emacs-directory))))
+
+(defun point-at-beginning-of-word? ()
+  (interactive)
+  (and (looking-at "[a-zA-z]") (looking-back " " 1)))
+
+(defun log-ruby ()
+  (interactive)
+
+  ;; go to beginning of word
+  (while (not (point-at-beginning-of-word?))
+    (backward-char 1))
+
+  (er/mark-symbol)
+
+  )
+
+(defun wrap-markup-region (start end)
+  "Insert a markup <b></b> around a region."
+  (interactive "r")
+  (let ((region (get-region beg end))
+  (save-excursion
+    (goto-char end) (insert "}\"")
+    (goto-char start) (insert "var: \"#{")
+    ))))
 
 (provide 'utilities-setup)

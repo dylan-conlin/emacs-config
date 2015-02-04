@@ -37,6 +37,7 @@
 (depends-on "color-theme-solarized")
 (depends-on "colorsarenice-theme")
 (depends-on "crontab-mode")
+(depends-on "cursor-chg")
 (depends-on "cus-edit+")
 (depends-on "cyberpunk-theme")
 (depends-on "dakrone-theme")
