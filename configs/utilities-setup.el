@@ -1,3 +1,5 @@
+(require 'f)
+
 (defun do-nvm-use (version)
   (interactive "sVersion: ")
   (nvm-use version)
@@ -597,17 +599,16 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (and (looking-at "[a-zA-z]") (looking-back " " 1)))
 
-(defun log-ruby ()
+(defun my-mark-word ()
   (interactive)
-
   ;; go to beginning of word
   (while (not (point-at-beginning-of-word?))
     (backward-char 1))
-
-  (er/mark-symbol)
-
+  
   )
 
+
+      
 (defun wrap-markup-region (start end)
   "Insert a markup <b></b> around a region."
   (interactive "r")
@@ -616,5 +617,24 @@ Including indent-buffer, which should not be called automatically on save."
     (goto-char end) (insert "}\"")
     (goto-char start) (insert "var: \"#{")
     ))))
+
+(defun to-haml ()
+  "run html2haml on current buffer"
+  (interactive)
+  (setf filename buffer-file-name)
+  (setf newfilename (concat
+		     (car (split-string filename "\\.")) ".html.haml"))
+  (save-buffer)
+  (shell-command (concat
+		  "html2haml " filename " > " newfilename))
+  (kill-buffer (current-buffer))
+  (delete-file filename)
+  (find-file newfilename))
+
+;; the the frame title to the current buffer name
+(setq frame-title-format
+      '((:eval
+	 (if (buffer-file-name)
+	   (abbreviate-file-name (buffer-file-name)) "%b"))))
 
 (provide 'utilities-setup)

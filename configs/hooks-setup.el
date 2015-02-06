@@ -18,7 +18,7 @@
 (add-hook 'prog-mode-hook 'line-number-mode t)
 (add-hook 'prog-mode-hook 'column-number-mode t)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
 ;; Switch the eimp minor mode on for all image-mode buffers

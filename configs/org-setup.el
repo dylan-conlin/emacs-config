@@ -29,9 +29,11 @@
         ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")
         ;; ("e" "Email" entry (file+headline "~/Dropbox/org/emails.org" "Emails") "* %^{title} %^g \n %? \n%U")
         ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
+	("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
 	("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
         ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
-        ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")))
+        ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
+	))
 
 
 (setq org-refile-targets
@@ -39,6 +41,7 @@
         ("~/Dropbox/org/notes.org" . (:level . 1))
         ("~/Dropbox/org/todo.org" . (:level . 1))
         ("~/Dropbox/org/shortstack.org" . (:level . 1))
+	("~/Dropbox/org/secrets.org" . (:level . 1))
         ("~/Dropbox/org/code.org" . (:level . 1))
         ("~/Dropbox/org/blogs.org" . (:level . 1))))
 

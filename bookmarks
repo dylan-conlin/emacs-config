@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("appearance-setup.el"
+((".keysnail.coffee"
+ (filename . "~/drive/dotfiles/keysnail-config/.keysnail.coffee")
+ (front-context-string . "# ==============")
+ (rear-context-string)
+ (position . 1))
+("appearance-setup.el"
  (filename . "~/.emacs.d/configs/appearance-setup.el")
  (front-context-string . ";; theme\n(load-t")
  (rear-context-string)
@@ -48,10 +53,10 @@
  (rear-context-string . "72 Oct 20 21:44 ")
  (position . 1580))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** thievery corp")
- (rear-context-string . "1-25 Tue 18:11]\n")
- (position . 14092))
+ (filename . "~/Dropbox/org/secrets.org")
+ (front-context-string . "** evolution sec")
+ (rear-context-string . "n agora exited.\n")
+ (position . 22905))
 ("sites"
  (filename . "~/drive/sites/")
  (front-context-string)
@@ -67,11 +72,6 @@
  (front-context-string . "ations/Postgres.")
  (rear-context-string . "TH=$PATH:/Applic")
  (position . 5463))
-(".keysnail.js"
- (filename . "~/drive/dotfiles/keysnail-config/.keysnail.js")
- (front-context-string . "// =============")
- (rear-context-string)
- (position . 1))
 ("shortstack.org"
  (filename . "~/Dropbox/org/shortstack.org")
  (front-context-string . "* Shortstack\n** ")
@@ -89,9 +89,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** pender street")
- (rear-context-string . "1-29 Thu 10:58]\n")
- (position . 211957))
+ (front-context-string . "** evolution sec")
+ (rear-context-string . "2-05 Thu 17:28]\n")
+ (position . 217133))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

@@ -1,5 +1,5 @@
 ;; theme
-(load-theme 'gandalf t)
+;; (load-theme 'default t)
 
 ;; only show bad whitespace
 (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
@@ -55,14 +55,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; region highlight color
-(set-cursor-color "purple")
-(set-face-attribute 'region nil :background "lightblue")
-(set-face-attribute 'helm-selection nil :background "lightgreen")
-(set-face-foreground 'font-lock-comment-face "gray65")
-(set-face-attribute 'show-paren-match nil :background "red" :foreground "white")
-(set-face-attribute 'isearch nil :foreground "yellow" :background "deep pink")
-(set-face-attribute 'isearch-lazy-highlight-face nil :foreground "black" :background "lightblue")
-(set-face-attribute 'rainbow-delimiters-unmatched-face nil :background nil :foreground "red")
-(set-face-attribute 'mode-line nil :background "light green" :foreground "purple")
+
+;; (set-cursor-color "purple")
+;; (set-face-attribute 'region nil :background "lightblue")
+;; (set-face-attribute 'helm-selection nil :background "lightgreen")
+;; (set-face-foreground 'font-lock-comment-face "gray65")
+;; (set-face-attribute 'show-paren-match nil :background "red" :foreground "white")
+;; (set-face-attribute 'isearch nil :foreground "yellow" :background "deep pink")
+;; (set-face-attribute 'isearch-lazy-highlight-face nil :foreground "black" :background "lightblue")
+;; (set-face-attribute 'rainbow-delimiters-unmatched-face nil :background nil :foreground "red")
+;; (set-face-attribute 'mode-line nil :background "light green" :foreground "purple")
 
 (provide 'appearance-setup)

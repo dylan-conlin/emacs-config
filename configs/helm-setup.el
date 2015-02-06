@@ -11,16 +11,17 @@
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
-  (unless (and helm-source-ls-git-status
-               helm-source-ls-git)
-    (setq helm-source-ls-git-status
-          (helm-make-source "Git status" 'helm-ls-git-status-source
-            :fuzzy-match helm-ls-git-fuzzy-match)
-          helm-source-ls-git))
+  ;; (unless (and helm-source-ls-git-status
+  ;;              helm-source-ls-git)
+  ;;   (setq helm-source-ls-git-status
+  ;;         (helm-make-source "Git status" 'helm-ls-git-status-source
+  ;;           :fuzzy-match helm-ls-git-fuzzy-match)
+  ;;         helm-source-ls-git))
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
-        (helm :sources '(helm-source-projectile-buffers-list
-			 helm-source-ls-git-status
+        (helm :sources '(
+			 helm-source-projectile-buffers-list
+			 ;; helm-source-ls-git-status
 			 helm-source-projectile-files-list
 			 helm-source-bookmarks)
               :buffer "*project-search*"

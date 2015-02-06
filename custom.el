@@ -187,14 +187,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
- '(helm-ls-git-modified-not-staged-face ((t (:foreground "orange"))))
- '(helm-selection ((t (:background "light green"))))
- '(helm-selection-line ((t (:background "lightblue" :underline t))))
- '(helm-source-header ((t (:foreground "gray" :underline nil :weight bold :height 1.3 :family "Sans Serif"))))
- '(isearch ((t (:background "deep pink" :foreground "yellow"))))
- '(magit-item-highlight ((t nil)))
- '(magit-section-title ((t (:background "gray"))))
- '(mode-line ((t (:background "light green" :foreground "black" :inverse-video nil))))
- '(region ((t (:background "plum1"))))
- '(show-paren-match ((t (:foreground "red" :weight extra-bold)))))
+ '(helm-source-header ((t (:foreground "gray60")))))

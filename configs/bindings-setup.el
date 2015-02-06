@@ -39,7 +39,7 @@
 (bind-key "M-K" 'my-helm-do-ag)
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
-(bind-key "C-i" 'helm-execute-persistent-action)
+;; (bind-key "C-i" 'helm-execute-persistent-action)
 (bind-key "C-x t" 'helm-imenu)
 
 ;; window management
@@ -47,7 +47,7 @@
 (bind-key "s-r" 'split-window-right-and-move-there-dammit)
 (bind-key "s-w" 'delete-window)
 
-(key-chord-define-global "jl" 'fixup-whitespace)
+
 
 (bind-key "C-x p p" 'popwin:stick-popup-window)
 (bind-key "C-x o" 'other-window)
@@ -154,7 +154,6 @@
 (bind-key "C-c a" 'org-agenda)
 
 (key-chord-define-global "fj" 'ace-jump-word-mode)
-(key-chord-define-global "jl" 'ace-jump-line-mode)
 
 (bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
 (bind-key "C-c SPC" 'rectangle-mark-mode)
@@ -200,11 +199,12 @@
 (bind-key "C-S-<right>" 'sp-backward-barf-sexp)
 (bind-key "M-<delete>" 'sp-unwrap-sexp)
 
+
 ;; git-gutter
-(global-set-key (kbd "C-c x n") 'git-gutter+-next-hunk)
-(global-set-key (kbd "C-c x p") 'git-gutter+-previous-hunk)
-(global-set-key (kbd "C-c x d") 'git-gutter+-popup-hunk)
-(global-set-key (kbd "C-c x r") 'git-gutter+-revert-hunk)
+(bind-key "C-c g n" 'git-gutter+-next-hunk)
+(bind-key "C-c g p" 'git-gutter+-previous-hunk)
+(bind-key "C-c g d" 'git-gutter+-popup-hunk)
+(bind-key "C-c g r" 'git-gutter+-revert-hunk)
 
 ;; auto-complete settings
 (bind-key "C-n" 'ac-next ac-menu-map)
@@ -290,5 +290,7 @@
 ;; M-x describe-personal-keybindings
 ;; It will tell you if you've overriden a default keybinding, and what that default was.
 ;; Also, it will tell you if the key was rebound after your binding it with bind-key, and what it was rebound it to.
+
+(key-chord-define-global "jl" 'fixup-whitespace)
 
 (provide 'bindings-setup)

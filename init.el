@@ -123,10 +123,8 @@
 
 (smartparens-global-mode)
 
-(elmacro-mode)
 (require 'appearance-setup)
-
-(setq indicate-empty-lines t)
+(toggle-indicate-empty-lines)
 (setq show-trailing-whitespace t)
-
-(open-last-visited-file)
+(find-file "~/.emacs.d/init.el")
+;; (open-last-visited-file)
