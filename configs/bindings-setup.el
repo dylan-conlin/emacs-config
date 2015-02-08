@@ -1,9 +1,7 @@
-;; guide key config
-(guide-key-mode 1)
-(setq guide-key/recursive-key-sequence-flag t)
-(setq guide-key/guide-key-sequence '("C-x p" "M-r" "M-d"))
-(setq guide-key/popup-window-position 'bottom)
-(setq guide-key/idle-delay 0)
+
+
+
+
 
 ;; (setq ns-pop-up-frames nil)
 ;; my custom bindings!
@@ -23,13 +21,6 @@
 (bind-key "s-q" nil)
 
 ;; helm bindings
-(bind-key "C-x C-f" 'helm-find-files)
-(bind-key "C-x l" 'helm-ls-git-ls)
-(bind-key "C-x a" 'helm-apropos)
-(bind-key "M-x" 'helm-M-x)
-(bind-key "M-k" 'helm-project-search)
-(bind-key "M-l" 'helm-projectile)
-(bind-key "C-x b" 'helm-projectless-search)
 (bind-key "C-x p s" 'start-eshell-in-split-window)
 (bind-key "C-x p v" (lambda () (interactive) (browse-url "chrome-extension://ihlenndgcmojhcghmfjfneahoeklbjjh/pages/options.html")))
 
@@ -37,10 +28,11 @@
 (bind-key "C-k" 'kill-line)
 (bind-key "M-l" 'open-line-below)
 (bind-key "M-K" 'my-helm-do-ag)
+
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
 ;; (bind-key "C-i" 'helm-execute-persistent-action)
-(bind-key "C-x t" 'helm-imenu)
+
 
 ;; window management
 (bind-key "s-e" 'split-window-below-and-move-there-dammit)
@@ -69,8 +61,6 @@
 (bind-key "C-S-K" 'enlarge-window)
 (bind-key "C-S-J" 'shrink-window)
 
-(bind-key "s-p" 'helm-scroll-other-window-down)
-(bind-key "s-n" 'helm-scroll-other-window)
 
 
 (bind-key "C-x k" 'kill-current-buffer)
@@ -112,12 +102,7 @@
 (bind-key "M-/" 'point-undo)
 (bind-key "M-." 'point-redo)
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
-(bind-key "M-P" 'helm-list-elisp-packages)
-(bind-key "M-C-p" 'helm-eshell-history)
-(bind-key "C-c f" 'helm-dash)
-(bind-key "C-x f" 'helm-recentf)
 (bind-key "M-s s" 'scroll-bar-mode)
-(bind-key "M-j" 'helm-resume)
 (bind-key "C-x n" 'make-frame)
 
 (bind-key "C-S-n" 'org-move-subtree-down)
@@ -141,10 +126,6 @@
 			   (backward-char 1)
 			   (web-mode-element-beginning)))))
 
-(bind-key "M-i" 'helm-swoop)
-(bind-key "M-I" 'helm-swoop-back-to-last-point)
-(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-
 (bind-key "s-n" 'mc/mark-next-like-this)
 (bind-key "s-N" 'mc/unmark-next-like-this)
 (bind-key "s-p" 'mc/mark-previous-like-this)
@@ -160,6 +141,7 @@
 
 (bind-key "C-x C-o" 'open-dir-in-finder)
 (bind-key "M-z" 'capitalize-word-toggle)
+(bind-key "M-e" 'zop-to-char)
 (bind-key "C-<up>" 'ac-quick-help-scroll-up)
 (bind-key "C-<down>" 'ac-quick-help-scroll-down)
 (bind-key "M-e" 'web-mode-fold-or-unfold)
@@ -167,8 +149,6 @@
 (key-chord-define-global "fw" 'ruby-test-run)
 (key-chord-define-global "gw" 'ruby-test-run-at-point)
 
-(bind-key "C-x y" 'helm-show-kill-ring)
-(bind-key "C-x C-b" 'helm-bookmarks)
 
 
 (key-chord-define-global "wj" 'calculator)

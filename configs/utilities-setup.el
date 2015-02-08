@@ -578,7 +578,7 @@ Including indent-buffer, which should not be called automatically on save."
 
 
 (defun cache-last-open-file ()
-  (interactive "P")
+  (interactive)
   (let ((current-file-path (if (equal major-mode 'dired-mode)
 			       default-directory
 			     (expand-file-name buffer-file-name user-emacs-directory)))
@@ -592,7 +592,7 @@ Including indent-buffer, which should not be called automatically on save."
     (buffer-string)))
 
 (defun open-last-visited-file ()
-  (interactive "P")
+  (interactive)
   (find-file (get-string-from-file (expand-file-name ".last-opened-file" user-emacs-directory))))
 
 (defun point-at-beginning-of-word? ()
@@ -631,10 +631,48 @@ Including indent-buffer, which should not be called automatically on save."
   (delete-file filename)
   (find-file newfilename))
 
-;; the the frame title to the current buffer name
-(setq frame-title-format
-      '((:eval
-	 (if (buffer-file-name)
-	   (abbreviate-file-name (buffer-file-name)) "%b"))))
+;; ;; the the frame title to the current buffer name
+;; (setq frame-title-format
+;;       '((:eval
+;; 	 (if (buffer-file-name)
+;; 	   (abbreviate-file-name (buffer-file-name)) "%b"))))
+
+(defun my-helm-do-ag ()
+  (interactive)
+  (helm-do-ag (my-git-root)))
+
+(defun helm-project-search ()
+  "Use projectile with Helm instead of ido."
+  (interactive)
+  (unless (and helm-source-ls-git-status
+               helm-source-ls-git)
+    (setq helm-source-ls-git-status
+          (helm-make-source "Git status" 'helm-ls-git-status-source
+            :fuzzy-match helm-ls-git-fuzzy-match)
+          helm-source-ls-git))
+  (if (this-is-a-git-repo?)
+      (let ((helm-ff-transformer-show-only-basename nil))
+        (helm :sources '(
+			 helm-source-projectile-buffers-list
+			 ;; helm-source-ls-git-status
+			 helm-source-projectile-files-list
+			 helm-source-bookmarks)
+              :buffer "*project-search*"
+              :prompt (projectile-prepend-project-name "pattern: ")))
+    (helm-projectless-search)))
+
+(defun helm-projectless-search ()
+  "Use projectile with Helm instead of ido."
+  (interactive)
+  (unless helm-source-buffers-list
+    (setq helm-source-buffers-list
+	  (helm-make-source "Buffers" 'helm-source-buffers)))
+  (let ((helm-ff-transformer-show-only-basename nil))
+    (helm :sources '(helm-source-buffers-list
+		     helm-source-bookmarks)
+	  :buffer "*project(less)-search*"
+	  :prompt (projectile-prepend-project-name "pattern: "))))
+
+
 
 (provide 'utilities-setup)

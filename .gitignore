@@ -26,3 +26,6 @@ emms/
 image-dired/
 configs/sx/
 configs/dict/
+recentf~
+savehist
+.last-opened-file

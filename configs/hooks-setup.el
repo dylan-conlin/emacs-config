@@ -1,5 +1,7 @@
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+
 (remove-hook 'prog-mode-hook 'idle-highlight-mode)
 
 (add-hook 'org-mode-hook
@@ -35,8 +37,8 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(add-hook 'magit-status-mode-hook
-	  (lambda () (face-remap-add-relative 'magit-item-highlight '())))
+;; (add-hook 'magit-status-mode-hook
+;; 	  (lambda () (face-remap-add-relative 'magit-item-highlight '())))
 
 (add-hook 'kill-emacs-hook 'cache-last-open-file)
 
