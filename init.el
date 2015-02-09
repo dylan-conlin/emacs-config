@@ -501,5 +501,19 @@
 
 (setq debug-on-error t)
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq-default indent-tabs-mode nil)
+
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t
+      save-interprogram-paste-before-kill t
+      apropos-do-all t
+      mouse-yank-at-point t
+      require-final-newline t
+      ediff-window-setup-function 'ediff-setup-windows-plain
+      save-place-file (concat user-emacs-directory "places"))
+
 (find-file "~/.emacs.d/init.el")
+
 (open-last-visited-file)
