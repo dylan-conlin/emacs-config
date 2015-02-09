@@ -168,7 +168,7 @@
 (depends-on "projectile")
 (depends-on "purple-haze-theme")
 (depends-on "rails-log-mode")
-(depends-on "rainbow-delimiters")
+(depends-on "rainbow-mode")
 (depends-on "reverse-theme")
 (depends-on "rich-minority")
 (depends-on "ruby-test-mode")

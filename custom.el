@@ -49,7 +49,6 @@
  '(fill-column 110)
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(fringe-mode 6 nil (fringe))
- '(global-git-gutter+-mode t)
  '(guide-key-mode t)
  '(guide-key/align-command-by-space-flag t)
  '(guide-key/idle-delay 0)

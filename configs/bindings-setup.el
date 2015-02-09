@@ -17,31 +17,26 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 (dcon-minor-mode 1)
 
+
+
+
+
+
+
+
 ;; remove keybinding
 (bind-key "s-q" nil)
-
-;; helm bindings
-(bind-key "C-x p s" 'start-eshell-in-split-window)
-(bind-key "C-x p v" (lambda () (interactive) (browse-url "chrome-extension://ihlenndgcmojhcghmfjfneahoeklbjjh/pages/options.html")))
-
-
 (bind-key "C-k" 'kill-line)
 (bind-key "M-l" 'open-line-below)
 (bind-key "M-K" 'my-helm-do-ag)
-
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
-;; (bind-key "C-i" 'helm-execute-persistent-action)
-
 
 ;; window management
 (bind-key "s-e" 'split-window-below-and-move-there-dammit)
 (bind-key "s-r" 'split-window-right-and-move-there-dammit)
 (bind-key "s-w" 'delete-window)
 
-
-
-(bind-key "C-x p p" 'popwin:stick-popup-window)
 (bind-key "C-x o" 'other-window)
 (bind-key "M-o" 'other-window)
 (bind-key "M-0" 'delete-window)
@@ -74,7 +69,7 @@
 ;; general text editing
 (bind-key "C-h" 'backward-delete-char-untabify)
 (bind-key* "C-M-h" 'kill-whole-line)
-(bind-key "C-j" 'er/expand-region)
+
 
 (bind-key "C-q" 'backward-kill-word)
 (bind-key "M-p" 'backward-paragraph)
@@ -99,32 +94,14 @@
 (bind-key "H-n" 'drag-stuff-down)
 (bind-key "H-p" 'drag-stuff-up)
 
-(bind-key "M-/" 'point-undo)
-(bind-key "M-." 'point-redo)
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
 (bind-key "M-s s" 'scroll-bar-mode)
 (bind-key "C-x n" 'make-frame)
-
-(bind-key "C-S-n" 'org-move-subtree-down)
-(bind-key "C-c c" 'org-capture)
-(bind-key "C-c l" 'org-capture-goto-last-stored)
-(define-key org-mode-map "\C-cp" 'org-mobile-pull)
-(define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
 
 
 (bind-key "C-x C-n" 'flycheck-tip-cycle)
 (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
 (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
-(add-hook 'web-mode-hook
-	  '(lambda ()
-	     (define-key web-mode-map (kbd "C-M-f") 'web-mode-element-end)
-	     (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment)))
-
-(add-hook 'web-mode-hook
-	  '(lambda () (define-key web-mode-map (kbd "C-M-b")
-			'(lambda () (interactive)
-			   (backward-char 1)
-			   (web-mode-element-beginning)))))
 
 (bind-key "s-n" 'mc/mark-next-like-this)
 (bind-key "s-N" 'mc/unmark-next-like-this)
@@ -132,19 +109,16 @@
 (bind-key "s-P" 'mc/unmark-previous-like-this)
 (bind-key "C-S-c C-S-c" 'mc/edit-lines)
 
-(bind-key "C-c a" 'org-agenda)
+
 
 (key-chord-define-global "fj" 'ace-jump-word-mode)
-
 (bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
+
 (bind-key "C-c SPC" 'rectangle-mark-mode)
 
 (bind-key "C-x C-o" 'open-dir-in-finder)
 (bind-key "M-z" 'capitalize-word-toggle)
 (bind-key "M-e" 'zop-to-char)
-(bind-key "C-<up>" 'ac-quick-help-scroll-up)
-(bind-key "C-<down>" 'ac-quick-help-scroll-down)
-(bind-key "M-e" 'web-mode-fold-or-unfold)
 
 (key-chord-define-global "fw" 'ruby-test-run)
 (key-chord-define-global "gw" 'ruby-test-run-at-point)
@@ -197,7 +171,7 @@
 (bind-key "C-x p d" 'projectile-find-dir)
 (bind-key "C-x p i" 'projectile-invalidate-cache)
 (bind-key "C-x p l" 'package-list-packages)
-(bind-key "C-x p e" 'emms)
+
 (bind-key "C-o" 'open-line-above)
 
 (bind-key "M-a" 'mark-whole-buffer)

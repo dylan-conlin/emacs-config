@@ -16,9 +16,11 @@
   (package-install 'use-package))
 (setq use-package-verbose t)
 (require 'use-package)
+
 (use-package auto-compile
-	     :ensure t
-	     :init (auto-compile-on-load-mode))
+  :ensure t
+  :init (auto-compile-on-load-mode))
+
 (setq load-prefer-newer t)
 
 (use-package winner
@@ -41,6 +43,37 @@
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+
+(add-hook 'prog-mode-hook 'line-number-mode t)
+(add-hook 'prog-mode-hook 'column-number-mode t)
+(add-hook 'image-mode-hook 'eimp-mode)
+(add-hook 'coffee-mode-hook 'flycheck-mode 1)
+(add-hook 'shell-mode-hook 'coffee-comint-filter nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'kill-emacs-hook 'cache-last-open-file)
+(add-hook 'org-mode-hook
+          (lambda ()
+	    (require 'flyspell-lazy)
+	    (visual-line-mode t)
+	    (flyspell-lazy-mode 1)
+            (flyspell-mode 1)))
+
+(add-hook 'eshell-mode-hook (lambda () (yas-minor-mode nil)))
+(add-hook 'haml-mode-hook (lambda ()
+			    (setq comment-start "-# "
+				  comment-end "")))
+
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.html.erb$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.csv$" . org-mode))
+
 
 (use-package helm
   :ensure helm
@@ -136,8 +169,13 @@
   (setq evil-operator-state-cursor '("red" hollow))
   (setq require-final-newline t)   ;; add newline to file on save
   (set-face-attribute 'default nil :family "monaco" :height 110)   ;; font color and size
-  (rainbow-delimiters-mode -1)
-  (blink-cursor-mode 1))
+  (blink-cursor-mode 1)
+  (global-subword-mode 1)
+  (delete-selection-mode 1)
+  (drag-stuff-global-mode 1)
+  (auto-indent-mode 1)
+  (toggle-indicate-empty-lines)
+  (setq show-trailing-whitespace t))
 
 (eval-after-load 'color-theme
   '(when window-system
@@ -147,7 +185,9 @@
   :defer t
   :ensure t
   :diminish undo-tree-mode
-  :idle
+  :init
+  (global-undo-tree-mode)
+  :config
   (progn
     (global-undo-tree-mode)
     (setq undo-tree-visualizer-timestamps t)
@@ -166,6 +206,7 @@
     (guide-key-mode 1)))
 
 (prefer-coding-system 'utf-8)
+
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
@@ -206,59 +247,230 @@
 (bind-key "C-x 2" 'my/vsplit-last-buffer)
 (bind-key "C-x 3" 'my/hsplit-last-buffer)
 
+(use-package expand-region
+  :ensure expand-region
+  :defer t
+  :bind ("C-j" . er/expand-region))
+
+(use-package "eldoc"
+  :diminish eldoc-mode
+  :commands turn-on-eldoc-mode
+  :defer t
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)))
+
+(use-package js2-mode
+  :ensure t
+  :defer t
+  :commands js2-mode
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+    (setq-default js2-basic-offset 2)
+    (add-hook 'js2-mode-hook 'javascript-doc)
+    (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode)))
+  :config
+  (progn
+    (js2-imenu-extras-setup)
+    (bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
+    (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)))
+
+(use-package coffee-mode
+  :ensure t
+  :defer t
+  :idle (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
+  :config
+  (add-hook 'coffee-mode-hook 'coffee-doc))
+
+(use-package ruby-mode
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'ruby-mode-hook 'ruby-doc)
+  (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode))
 
 
+;; (custom-set-variables '(coffee-tab-width 2))
+
+(use-package emms
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (require 'emms-setup)
+    (require 'emms-player-mpd)
+    (require 'emms-player-vlc)
+    (require 'emms-browser)
+    (require 'emms-history)
+    (require 'emms-info-libtag)
+    (require 'emms-mark)
+    (setq emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
+    (add-to-list 'emms-player-list 'emms-player-mpd)
+    (emms-standard)
+    (setq emms-info-functions '(emms-info-libtag))
+    (define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+		    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+		    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
+    (setq emms-track-description-function 'fg-emms-track-description)
+    (emms-history-load))
+  :bind (("C-x p e" . emms)))
+
+(use-package rainbow-mode
+  :ensure rainbow-mode
+  :defer t
+  :idle (rainbow-mode))
+
+(use-package auto-complete
+  :ensure auto-complete
+  :defer t
+  :bind
+  (("C-<up>" . ac-quick-help-scroll-up)
+   ("C-<down>" . ac-quick-help-scroll-down))
+  :init
+  (progn
+    (auto-complete-mode t)
+    (ac-config-default)
+    (setq ac-use-fuzzy t)
+    (setq ac-use-menu-map t)
+    (setq ac-delay 0.025)))
+
+(use-package pallet
+  :ensure pallet
+  :defer t
+  :config
+  (pallet-mode t))
+
+(use-package point-undo
+  :ensure t
+  :defer t
+  :bind
+  (("M-/" . point-undo)
+   ("M-." . point-redo)))
+
+(use-package dired-details+
+  :ensure t
+  :defer t)
+
+(use-package itail
+  :ensure t
+  :defer t)
+
+(use-package bind-key
+  :ensure t
+  :defer t)
+
+(use-package dired-sort
+  :ensure t
+  :defer t)
+
+(use-package saveplace
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (setq save-place-file "~/.emacs.d/saveplace")
+    (setq-default save-place t)))
 
 
+(use-package eshell
+  :ensure t
+  :defer t
+  :bind
+  ("C-x p s" . start-eshell-in-split-window)
+  :config
+  (progn
+    (set-exec-path-from-shell-PATH)
+    (add-hook 'eshell-mode-hook
+	      #'(lambda ()
+		  (define-key eshell-mode-map
+		    [remap eshell-pcomplete]
+		    'helm-esh-pcomplete))))
+  (defadvice shell (before advice-utf-shell activate)
+    (set-default-coding-systems 'utf-8)))
+
+(use-package org
+  :defer t
+  :bind
+  (("C-S-n" . org-move-subtree-down)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-capture-goto-last-stored)
+   ("C-c a" . org-agenda))
+  :config
+  (progn
+    (require 'org-install)
+    (require 'org-crypt)
+    (require 'gnus-async)
+    ;; prettier appearance settings
+    (setq org-log-done t)
+    (setq org-startup-indented t)
+    (setq org-hide-leading-starts t)
+
+    ;; behavior settings
+    (setq org-use-fast-todo-selection t)
+    ;; setup org path
+    (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
+
+    ;; setup files agenda is aware of
+    (setq org-agenda-files '("~/Dropbox/org/code.org"
+			     "~/Dropbox/org/notes.org"
+			     "~/Dropbox/org/shortstack.org"
+			     "~/Dropbox/org/journal.org"
+			     "~/Dropbox/org/todo.org"))
+    (setq org-capture-templates
+	  '(
+	    ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
+	    ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")
+	    ;; ("e" "Email" entry (file+headline "~/Dropbox/org/emails.org" "Emails") "* %^{title} %^g \n %? \n%U")
+	    ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
+	    ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
+	    ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
+	    ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
+	    ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
+	    ))
+    (setq org-refile-targets
+	  '(
+	    ("~/Dropbox/org/notes.org" . (:level . 1))
+	    ("~/Dropbox/org/todo.org" . (:level . 1))
+	    ("~/Dropbox/org/shortstack.org" . (:level . 1))
+	    ("~/Dropbox/org/secrets.org" . (:level . 1))
+	    ("~/Dropbox/org/code.org" . (:level . 1))
+	    ("~/Dropbox/org/blogs.org" . (:level . 1))))))
 
 
+(smartparens-global-mode)
 
-(require 'pallet)
-(pallet-mode t)
+;; (use-package auto-package-update
+;;   :ensure t
+;;   :defer t
+;;   :config )
+
+;; (setq auto-package-update-interval 7)
+;; (auto-package-update-maybe)
+
+;; (use-package org-mobile
+;;   :ensure t
+;;   :defer t)
+;(define-key org-mode-map "\C-cp" 'org-mobile-pull)
+;(define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
+
+(projectile-global-mode 1)
 (server-start)
-
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
-
-
-
-
-
-
-
-
-
-;; this can't be moved any lower for some reason.
-(require 'org-mobile)
 
 ;; Set up load path
 (add-to-list 'load-path "~/.emacs.d/configs/")
 
-;; need to be required first to enable
-;; my custom setups
-
 (require 'utilities-setup)
-
-(require 'autocomplete-setup)
 (require 'bindings-setup)
-(require 'rainbow-mode)
-(require 'point-undo)
-(require 'dired-details+)
-(require 'itail)
-;; (require 'popwin)
 
 ;; require custom configs
 (require 'repository-root)
-(require 'dash-setup)
-(require 'mac-setup)
-(require 'bind-key)
-(require 'hooks-setup)
-(require 'mode-lists-setup)
-
-;; (require 'evil-search-highlight-persist)
-(require 'org-setup)
-(require 'dired-sort)
-(require 'saveplace)
-(require 'smartparens-config)
 
 ;; setup node.js
 (add-to-list 'load-path "~/.nvm/current/bin/")
@@ -272,38 +484,20 @@
       kept-old-versions 2
       version-control t)
 
-;; enable useful custom configs
-(projectile-global-mode 1)
+;; change command to meta, and ignore option to use weird Norwegian keyboard
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+(setq ns-function-modifier 'hyper)
 
-(require 'eshell-setup)
-(require 'coffee-setup)
-(require 'emms-configuration)
-(require 'auto-package-update)
-
-(delete-selection-mode 1)
-(global-git-gutter+-mode 1)
-(drag-stuff-global-mode 1)
-(auto-indent-mode 1)
+;; Use aspell for spell checking: brew install aspell --lang=en
+;; /usr/local/Cellar/aspell/0.60.6.1
+(setq ispell-program-name "/usr/local/bin/aspell")
 (key-chord-mode 1)
-
-;; (setq popwin:close-popup-window-timer-interval 0.05)
-;; (setq display-buffer-function 'popwin:display-buffer)
-;; (push '("*compilation*" :height 40) popwin:special-display-config)
-;; (push '("*help*" :width 0.5 :position right) popwin:special-display-config)
 
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
-(setq save-place-file "~/.emacs.d/saveplace")
-(setq-default save-place t)
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(setq auto-package-update-interval 7)
-(auto-package-update-maybe)
-(global-subword-mode 1)
 (setenv "NODE_NO_READLINE" "1")
-(smartparens-global-mode)
-;; (require 'appearance-setup)
-(toggle-indicate-empty-lines)
-(setq show-trailing-whitespace t)
 
 (setq debug-on-error t)
 
