@@ -123,7 +123,7 @@
          ("M-k" . helm-project-search)
          ("M-K" . my-helm-do-ag)
          ("C-x b" . helm-projectless-search)
-         ("C-x t" . helm-imenu)
+         ("C-x t" . helm-imenu-anywhere)
          ("s-P" . helm-scroll-other-window-down)
          ("s-N" . helm-scroll-other-window)
          ("M-o" . helm-resume)

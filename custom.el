@@ -140,6 +140,7 @@
  '(org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
  '(org-startup-indented t)
  '(package-build-verbose nil)
+ '(paradox-automatically-star nil)
  '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
  '(projectile-completion-system (quote helm))
  '(projectile-enable-caching t)
