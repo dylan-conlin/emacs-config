@@ -12,6 +12,7 @@
  '(ansi-term-color-vector
    [unspecified "#151718" "#CE4045" "#9FCA56" "#DCCD69" "#55B5DB" "#A074C4" "#55B5DB" "#D4D7D6"] t)
  '(auto-image-file-mode t)
+ '(aw-background t)
  '(battery-mode-line-format " %p" t)
  '(blink-cursor-interval 0.25)
  '(coffee-tab-width 2)
@@ -48,8 +49,9 @@
  '(fci-rule-color "#f1c40f")
  '(fill-column 110)
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
- '(fringe-mode 6 nil (fringe))
- '(guide-key-mode t)
+ '(git-gutter:hide-gutter nil)
+ '(global-git-gutter-mode t)
+ '(global-whitespace-mode nil)
  '(guide-key/align-command-by-space-flag t)
  '(guide-key/idle-delay 0)
  '(guide-key/recursive-key-sequence-flag t)
@@ -58,6 +60,7 @@
  '(helm-adaptive-history-file "~/.emacs.d/helm-adaptive-history")
  '(helm-adaptive-mode t nil (helm-adaptive))
  '(helm-ag-fuzzy-match t)
+ '(helm-ag-insert-at-point t)
  '(helm-ag-source-type (quote one-line))
  '(helm-always-two-windows t)
  '(helm-bookmark-show-location t)
@@ -79,14 +82,12 @@
  '(helm-ff-transformer-show-only-basename nil)
  '(helm-ls-git-show-abs-or-relative (quote relative))
  '(helm-match-plugin-mode t nil (helm-match-plugin))
- '(helm-mode t)
  '(helm-quick-update t)
  '(helm-swoop-pre-input-function
    (quote
     #[0 "\300\301!\207"
-	[thing-at-point symbol]
-	2 "
-
+        [thing-at-point symbol]
+        2 "
 (fn)"]))
  '(helm-swoop-speed-or-color t)
  '(helm-truncate-lines t)
@@ -115,6 +116,7 @@
  ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(ido-ubiquitous-fallback-completing-read-function (quote completing-read-default))
  '(isearch-lazy-highlight t)
+ '(ispell-highlight-face (quote flyspell-incorrect))
  '(js2-missing-semi-one-line-override t)
  '(js2-strict-missing-semi-warning nil)
  '(lazy-highlight-initial-delay 0)
@@ -138,19 +140,19 @@
  '(org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
  '(org-startup-indented t)
  '(package-build-verbose nil)
+ '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
  '(projectile-completion-system (quote helm))
  '(projectile-enable-caching t)
- '(projectile-global-mode t)
  '(projectile-indexing-method (quote alien))
  '(recentf-max-menu-items 100)
  '(recentf-max-saved-items 100)
- '(recentf-mode t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(scss-compile-at-save nil t)
+ '(sentence-end-double-space nil)
  '(show-paren-delay 0.06)
- '(show-paren-mode t)
+ '(show-smartparens-global-mode t)
+ '(show-trailing-whitespace nil)
  '(slack-token (getenv "SLACK_TOKEN"))
- '(smartparens-global-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(sml/replacer-regexp-list nil)
  '(sp-hybrid-kill-excessive-whitespace t)
@@ -175,10 +177,14 @@
   (330 . "#2492db")
   (360 . "#0a74b9"))))
  '(vc-annotate-very-old-color "#0a74b9")
+ '(web-mode-attr-indent-offset nil)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-markup-indent-offset 2)
 '(weechat-color-list
 (quote
  (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
- '(whitespace-line-column 120)
+ '(whitespace-line-column 300)
  '(win-switch-feedback-background-color "green"))
 
 (custom-set-faces
@@ -186,4 +192,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(helm-source-header ((t (:foreground "gray60")))))
+ '(ace-jump-face-background ((t (:foreground "#27ae60"))))
+ '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil :weight extra-bold))))
+ '(dired-directory ((t (:foreground "MediumPurple3" :weight bold))))
+ '(font-lock-negation-char-face ((t (:foreground "red" :weight extra-bold))))
+ '(helm-ls-git-modified-not-staged-face ((t (:foreground "forestgreen"))))
+ '(helm-source-header ((t (:foreground "gray60"))))
+ '(sp-show-pair-mismatch-face ((t (:background "red" :foreground "white"))))
+ '(whitespace-line ((t nil)))
+ '(whitespace-trailing ((t (:background "gray90")))))

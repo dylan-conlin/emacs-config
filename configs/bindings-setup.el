@@ -1,8 +1,3 @@
-
-
-
-
-
 ;; (setq ns-pop-up-frames nil)
 ;; my custom bindings!
 
@@ -17,46 +12,31 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 (dcon-minor-mode 1)
 
-
-
-
-
-
-
-
-;; remove keybinding
 (bind-key "s-q" nil)
 (bind-key "C-k" 'kill-line)
 (bind-key "M-l" 'open-line-below)
-(bind-key "M-K" 'my-helm-do-ag)
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
+(bind-key* "C-c SPC" 'rectangle-mark-mode)
+(bind-key "C-x r f" 'run-current-file)
 
 ;; window management
 (bind-key "s-e" 'split-window-below-and-move-there-dammit)
-(bind-key "s-r" 'split-window-right-and-move-there-dammit)
-(bind-key "s-w" 'delete-window)
-
-(bind-key "C-x o" 'other-window)
-(bind-key "M-o" 'other-window)
-(bind-key "M-0" 'delete-window)
-(bind-key "s-4" 'windows-swap)
-(bind-key "s-5" 'windows-flip)
-
-(bind-key "s-1" 'delete-other-windows)
 (bind-key "s-2" 'split-window-below-and-move-there-dammit)
 (bind-key "C-x 2" 'split-window-below-and-move-there-dammit)
+(bind-key "s-r" 'split-window-right-and-move-there-dammit)
 (bind-key "s-3" 'split-window-right-and-move-there-dammit)
 (bind-key "C-x 3" 'split-window-right-and-move-there-dammit)
-
-(bind-key "C-}" 'enlarge-window-horizontally)
-(bind-key "C-{" 'shrink-window-horizontally)
+(bind-key "s-w" 'delete-window)
+(bind-key "M-0" 'delete-window)
+(bind-key "C-x o" 'other-window)
+(bind-key "s-4" 'windows-swap)
+(bind-key "s-5" 'windows-flip)
+(bind-key "s-1" 'delete-other-windows)
 (bind-key "C-S-L" 'enlarge-window-horizontally)
 (bind-key "C-S-H" 'shrink-window-horizontally)
 (bind-key "C-S-K" 'enlarge-window)
 (bind-key "C-S-J" 'shrink-window)
-
-
 
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
@@ -67,13 +47,15 @@
 (bind-key "C-c C-k" 'eval-buffer)
 
 ;; general text editing
-(bind-key "C-h" 'backward-delete-char-untabify)
+;; dcon-minor-mode
+;; (define-key dcon-minor-mode-map (kbd "C-h") 'backward-delete-char-untabify)
+;; (define-key dcon-minor-mode-map (kbd "DEL") 'backward-delete-char-untabify)
+(bind-key* "DEL" 'backward-delete-char-untabify)
 (bind-key* "C-M-h" 'kill-whole-line)
 
-
 (bind-key "C-q" 'backward-kill-word)
-(bind-key "M-p" 'backward-paragraph)
-(bind-key "M-n" 'forward-paragraph)
+(bind-key* "M-p" 'backward-paragraph)
+(bind-key* "M-n" 'forward-paragraph)
 (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "C-c p") (kbd "<f2>"))
@@ -91,25 +73,13 @@
 (bind-key "H-i" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-api")))
 (bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d")))
 
-(bind-key "H-n" 'drag-stuff-down)
-(bind-key "H-p" 'drag-stuff-up)
-
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
 (bind-key "M-s s" 'scroll-bar-mode)
-(bind-key "C-x n" 'make-frame)
-
+;; (bind-key "C-x n" 'make-frame)
 
 (bind-key "C-x C-n" 'flycheck-tip-cycle)
 (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
 (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
-
-(bind-key "s-n" 'mc/mark-next-like-this)
-(bind-key "s-N" 'mc/unmark-next-like-this)
-(bind-key "s-p" 'mc/mark-previous-like-this)
-(bind-key "s-P" 'mc/unmark-previous-like-this)
-(bind-key "C-S-c C-S-c" 'mc/edit-lines)
-
-
 
 (key-chord-define-global "fj" 'ace-jump-word-mode)
 (bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
@@ -136,7 +106,7 @@
 
 (bind-key "C-c n" 'cleanup-buffer)
 
-(bind-key "C-x g" 'browse-file-on-github)
+(bind-key "C-x g" 'github-browse-file)
 
 (bind-key "C-/" 'undo-tree-undo)
 (bind-key "C-." 'undo-tree-redo)
@@ -154,12 +124,6 @@
 (bind-key "M-<delete>" 'sp-unwrap-sexp)
 
 
-;; git-gutter
-(bind-key "C-c g n" 'git-gutter+-next-hunk)
-(bind-key "C-c g p" 'git-gutter+-previous-hunk)
-(bind-key "C-c g d" 'git-gutter+-popup-hunk)
-(bind-key "C-c g r" 'git-gutter+-revert-hunk)
-
 ;; auto-complete settings
 (bind-key "C-n" 'ac-next ac-menu-map)
 (bind-key "C-p" 'ac-previous ac-menu-map)
@@ -170,7 +134,7 @@
 (bind-key "C-x p f" 'customize-face)
 (bind-key "C-x p d" 'projectile-find-dir)
 (bind-key "C-x p i" 'projectile-invalidate-cache)
-(bind-key "C-x p l" 'package-list-packages)
+(bind-key "C-x p l" 'paradox-list-packages)
 
 (bind-key "C-o" 'open-line-above)
 
@@ -181,26 +145,6 @@
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
 (bind-key "s-0" (lambda () (interactive) (text-scale-set 0)))
-
-;; (add-hook 'evil-mode-hook
-;; 	  '(lambda ()
-;; 	     ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-;; 	     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
-;; 	     (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-;; 	     (define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
-;; 	     (define-key evil-insert-state-map (kbd "C-l") 'delete-forward-char)
-;; 	     (define-key evil-insert-state-map (kbd "C-j") 'delete-forward-char)
-;; 	     (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-;; 	     (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-;; 	     (define-key evil-normal-state-map [escape] 'keyboard-quit)
-;; 	     (define-key evil-visual-state-map [escape] 'keyboard-quit)
-;; 	     (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-;; 	     (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-;; 	     (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-;; 	     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-;; 	     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; 	     (bind-key [escape] 'evil-exit-emacs-state)
-;; 	     ))
 
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()
@@ -245,6 +189,6 @@
 ;; It will tell you if you've overriden a default keybinding, and what that default was.
 ;; Also, it will tell you if the key was rebound after your binding it with bind-key, and what it was rebound it to.
 
-(key-chord-define-global "jl" 'fixup-whitespace)
+(key-chord-define-global "jl" 'collapse-whitespace)
 
 (provide 'bindings-setup)

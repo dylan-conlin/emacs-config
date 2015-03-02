@@ -1,5 +1,9 @@
 (require 'f)
 
+(defun my-git-root ()
+  (interactive)
+  (vc-git-root default-directory))
+
 (defun my-org-archive-done-tasks ()
   (interactive)
   (org-map-entries 'org-archive-subtree "/DONE" 'file))
@@ -131,6 +135,20 @@ Assumes that the frame is only split into two."
   "Convert JavaScript in the region into CoffeeScript."
   (interactive "r")
   (coffee-js2coffee-replace-region start end))
+
+;; (defun to-haml (start end)
+;;   "run html2haml on current buffer"
+;;   (interactive "r")
+;;   (coffee-js2coffee-replace-region start end))
+;;   (setf filename buffer-file-name)
+;;   (setf newfilename (concat
+;; 		     (car (split-string filename "\\.")) ".html.haml"))
+;;   (save-buffer)
+;;   (shell-command (concat
+;; 		  "html2haml " filename " > " newfilename))
+;;   (kill-buffer (current-buffer))
+;;   (delete-file filename)
+;;   (find-file newfilename))
 
 (defun to-javascript (start end)
   "Convert JavaScript in the region into CoffeeScript."
@@ -292,10 +310,6 @@ With a prefix argument, insert a newline above the current line."
       (if (f-exists? (f-expand ".git" dir))
           dir
         (find-git-root parent)))))
-
-(defun my-git-root ()
-  (interactive)
-  (vc-git-root default-directory))
 
 (defun csv-to-org-table ()
   (interactive)
@@ -553,9 +567,14 @@ Including indent-buffer, which should not be called automatically on save."
 (defun soulseek-playlist ()
   (interactive)
   (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
-    (emms-playlist-current-clear)
+    ;; (emms-playlist-current-clear)
     (-map (lambda (song) (emms-add-file song)) songs)
     (emms)))
+
+(defun soulseek-move-songs ()
+  (interactive)
+  (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
+    (-map (lambda (song) (move-song-to-new-dir song)) songs)))
 
 (defun move-song-to-new-dir (s)
   (f-move s (soulseek-new-dir s)))
@@ -567,7 +586,6 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (emms-add-directory "~/Soulseek Downloads/soulseek-songs/")
   (emms))
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -631,18 +649,6 @@ Including indent-buffer, which should not be called automatically on save."
     (goto-char start) (insert "var: \"#{")
     ))))
 
-(defun to-haml ()
-  "run html2haml on current buffer"
-  (interactive)
-  (setf filename buffer-file-name)
-  (setf newfilename (concat
-		     (car (split-string filename "\\.")) ".html.haml"))
-  (save-buffer)
-  (shell-command (concat
-		  "html2haml " filename " > " newfilename))
-  (kill-buffer (current-buffer))
-  (delete-file filename)
-  (find-file newfilename))
 
 ;; ;; the the frame title to the current buffer name
 ;; (setq frame-title-format
@@ -657,12 +663,12 @@ Including indent-buffer, which should not be called automatically on save."
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
-  (unless (and helm-source-ls-git-status
-               helm-source-ls-git)
-    (setq helm-source-ls-git-status
-          (helm-make-source "Git status" 'helm-ls-git-status-source
-            :fuzzy-match helm-ls-git-fuzzy-match)
-          helm-source-ls-git))
+;;  (unless (and helm-source-ls-git-status
+;;               helm-source-ls-git)
+;;    (setq helm-source-ls-git-status
+;;          (helm-make-source "Git status" 'helm-ls-git-status-source
+;;            :fuzzy-match helm-ls-git-fuzzy-match)
+;;          helm-source-ls-git))
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
         (helm :sources '(
@@ -698,5 +704,41 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (setq-local helm-dash-docsets '("JavaScript" "CoffeeScript" "KnockoutJS" "UnderscoreJS" "Jasmine" "NodeJS")))
 
+(defun css-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("CSS" "SASS")))
+
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)
+    (next-line)))
+
+(defun run-current-file ()
+  "run the current file according to its extension"
+  (interactive)
+  (let ((current-file-extension (f-ext (when buffer-file-name (file-truename buffer-file-name)))))
+    (cond ((equal current-file-extension "coffee")
+           (async-shell-command (concat "coffee " (f-filename buffer-file-name)) '(4) nil))
+          ((equal current-file-extension "js")
+           (async-shell-command (concat "babel-node " (f-filename buffer-file-name)) '(4) nil))
+          ((equal current-file-extension "rb")
+           (async-shell-command (concat "ruby " (f-filename buffer-file-name)) '(4) nil)))))
+
+
+(defun collapse-whitespace ()
+  "alternative to fixup-whitespace"
+  (interactive "*")
+  (save-excursion
+    (delete-horizontal-space)
+    (if (or (looking-at "^\\|\\s)")
+	    (save-excursion (forward-char -1)
+			    (looking-at "$\\|\\s(\\|\\s'")))
+	nil
+      )))
 
 (provide 'utilities-setup)
