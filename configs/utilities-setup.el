@@ -462,9 +462,14 @@ Including indent-buffer, which should not be called automatically on save."
     `(eval-after-load ,feature
        '(progn ,@body))))
 
+;; (defun open-in-iterm ()
+;;   (interactive)
+;;   (kill-new (s-concat "cd " (shell-quote-argument (f-full (s-trim (first (s-match " .*" (my-git-root)))))) "\r"))
+;;   (shell-command (s-concat "osascript " user-emacs-directory "applescripts/open-iterm.applescript")))
+
 (defun open-in-iterm ()
   (interactive)
-  (kill-new (s-concat "cd " (shell-quote-argument (f-full (s-trim (first (s-match " .*" (pwd)))))) "\r"))
+  (kill-new (s-concat "cd " (my-git-root) "\r"))
   (shell-command (s-concat "osascript " user-emacs-directory "applescripts/open-iterm.applescript")))
 
 (defun clipboard-youtube-mp3 ()
@@ -729,16 +734,29 @@ Including indent-buffer, which should not be called automatically on save."
           ((equal current-file-extension "rb")
            (async-shell-command (concat "ruby " (f-filename buffer-file-name)) '(4) nil)))))
 
+(defun my-previous-edit (arg)
+  (interactive "p")
+  (git-gutter:previous-hunk arg)
+  (recenter))
 
-(defun collapse-whitespace ()
-  "alternative to fixup-whitespace"
-  (interactive "*")
-  (save-excursion
-    (delete-horizontal-space)
-    (if (or (looking-at "^\\|\\s)")
-	    (save-excursion (forward-char -1)
-			    (looking-at "$\\|\\s(\\|\\s'")))
-	nil
-      )))
+(defun my-next-edit (arg)
+  (interactive "p")
+  (git-gutter:next-hunk arg)
+  (recenter))
+
+(defun youtube-dl-as-song ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "~/youtube-downloads/audio"))
+    (async-shell-command 
+     (s-concat "cd ~/youtube-downloads/audio && youtube-dl --extract-audio --audio-format mp3 \"" str "\""))))
+
+(defun youtube-dl-as-video ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "~/youtube-downloads/audio"))
+    (async-shell-command 
+     (s-concat "cd ~/youtube-downloads/video && youtube-dl \"" str "\""))))
+
 
 (provide 'utilities-setup)

@@ -62,6 +62,7 @@
 
 ;; magit
 (bind-key "s-SPC" 'magit-status)
+(bind-key "s-b" 'magit-branch-manager)
 
 ;; directory shortcuts
 (bind-key "C-," 'dired-up)
@@ -106,7 +107,7 @@
 
 (bind-key "C-c n" 'cleanup-buffer)
 
-(bind-key "C-x g" 'github-browse-file)
+(bind-key "C-x g" 'browse-file-on-github)
 
 (bind-key "C-/" 'undo-tree-undo)
 (bind-key "C-." 'undo-tree-redo)
@@ -189,6 +190,10 @@
 ;; It will tell you if you've overriden a default keybinding, and what that default was.
 ;; Also, it will tell you if the key was rebound after your binding it with bind-key, and what it was rebound it to.
 
-(key-chord-define-global "jl" 'collapse-whitespace)
+(key-chord-define-global "jl" 'c-hungry-delete-forward)
+
+(define-key ac-completing-map [return] nil)
+
+(define-key ac-completing-map "\r" nil)
 
 (provide 'bindings-setup)

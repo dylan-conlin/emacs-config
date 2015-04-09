@@ -3,9 +3,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-candidate-menu-min 2)
+ '(ac-dwim nil)
+ '(ac-expand-on-auto-complete t)
  '(ac-modes
    (quote
     (emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode clojure-mode clojurescript-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode ts-mode sclang-mode verilog-mode qml-mode coffee-mode haml-mode web-mode)))
+ '(ac-quick-help-height 30)
+ '(ac-show-menu-immediately-on-auto-complete nil)
+ '(ac-trigger-key "TAB")
  '(ag-highlight-search t)
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
@@ -49,7 +55,9 @@
  '(fci-rule-color "#f1c40f")
  '(fill-column 110)
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(fringe-mode 6 nil (fringe))
  '(git-gutter:hide-gutter nil)
+ '(global-auto-complete-mode t)
  '(global-git-gutter-mode t)
  '(global-whitespace-mode nil)
  '(guide-key/align-command-by-space-flag t)
@@ -114,6 +122,8 @@
 '(hl-fg-colors
 (quote
  ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
+ '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")))
  '(ido-ubiquitous-fallback-completing-read-function (quote completing-read-default))
  '(isearch-lazy-highlight t)
  '(ispell-highlight-face (quote flyspell-incorrect))
@@ -148,13 +158,17 @@
  '(recentf-max-menu-items 100)
  '(recentf-max-saved-items 100)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
- '(scss-compile-at-save nil t)
+ '(scss-compile-at-save nil)
  '(sentence-end-double-space nil)
  '(show-paren-delay 0.06)
  '(show-smartparens-global-mode t)
  '(show-trailing-whitespace nil)
  '(slack-token (getenv "SLACK_TOKEN"))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(sml/active-background-color "#34495e")
+ '(sml/active-foreground-color "#ecf0f1")
+ '(sml/inactive-background-color "#dfe4ea")
+ '(sml/inactive-foreground-color "#34495e")
  '(sml/replacer-regexp-list nil)
  '(sp-hybrid-kill-excessive-whitespace t)
  '(sp-show-pair-delay 0)
@@ -199,6 +213,8 @@
  '(font-lock-negation-char-face ((t (:foreground "red" :weight extra-bold))))
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "forestgreen"))))
  '(helm-source-header ((t (:foreground "gray60"))))
+ '(hl-line ((t (:background "gray97"))))
+ '(magit-item-highlight ((t nil)))
  '(sp-show-pair-mismatch-face ((t (:background "red" :foreground "white"))))
  '(whitespace-line ((t nil)))
  '(whitespace-trailing ((t (:background "gray90")))))

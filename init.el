@@ -24,17 +24,21 @@
 (setq use-package-verbose t)
 (require 'use-package)
 
-(use-package auto-compile
-  :ensure t
-  :init (auto-compile-on-load-mode))
+;(use-package auto-compile		
+;  :ensure t
+;  :init (auto-compile-on-load-mode))
+
 (setq load-prefer-newer t)
 
 (use-package winner
   :ensure t
-  :defer t
-  :idle (winner-mode 1))
+  :init
+  (winner-mode 1))
 
-(require 'bts-github)
+(use-package winner
+  :ensure t
+  :init
+  (winner-mode 1))
 
 (setq sentence-end-double-space nil)
 
@@ -54,13 +58,7 @@
 (add-hook 'image-mode-hook 'eimp-mode)
 (add-hook 'shell-mode-hook 'coffee-comint-filter nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;;(add-hook 'kill-emacs-hook 'cache-last-open-file)
-
-
-(add-hook 'haml-mode-hook (lambda ()
-                            (setq comment-start "-# "
-                                  comment-end "")))
-
+;; ;;(add-hook 'kill-emacs-hook 'cache-last-open-file)
 
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.html.erb$" . web-mode))
@@ -71,7 +69,6 @@
 (add-to-list 'load-path "~/.emacs.d/configs/")
 (use-package auto-complete
   :ensure auto-complete
-  :defer t
   :diminish auto-complete-mode
   :bind
   (("C-<up>" . ac-quick-help-scroll-up)
@@ -91,8 +88,6 @@
 
 (use-package helm
   :ensure helm
-  :defer t
-  :diminish helm-mode
   :config
   (progn
     (require 'helm-config)
@@ -101,8 +96,7 @@
       :config
       (projectile-global-mode))
     (use-package helm-projectile
-      :ensure t
-      :diminish helm-projectile-mode)
+      :ensure t)
     (use-package helm-ls-git)
     (use-package helm-bind-key)
     (setq helm-candidate-number-limit 100)
@@ -140,9 +134,8 @@
 
 (use-package drag-stuff
   :ensure drag-stuff
-  :defer t
   :diminish drag-stuff-mode
-  :idle
+  :config
   (drag-stuff-global-mode 1)
   :bind
   (("M-N" . drag-stuff-down)
@@ -160,8 +153,7 @@
    ("C-S-c C-S-c" . mc/edit-lines)))
 
 (use-package smart-mode-line
-  :defer t
-  :idle
+  :config
   (progn
     (setq-default
      mode-line-format
@@ -219,6 +211,41 @@
   (set-background-color "white")
   (set-border-color "red"))
 
+(defun my/setup-dark-theme ()
+  (interactive)
+  (load-theme 'peacock t)
+  ;; only show bad whitespace
+  (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
+  (setq dired-details-propagate-flag t)
+  (setq redisplay-dont-pause t)
+  (setq scroll-margin 5)
+  (setq scroll-step 1)
+  (setq scroll-conservatively 10000)
+  (setq scroll-preserve-screen-position 1)
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (setq scroll-step 1) ;; keyboard scroll one line at a time
+  (setq ring-bell-function 'ignore)
+  (setq-default truncate-lines t)
+  ;; evil cursor
+  (setq evil-emacs-state-cursor '("red" box))
+  (setq evil-normal-state-cursor '("green" box))
+  (setq evil-visual-state-cursor '("yellow" box))
+  (setq evil-insert-state-cursor '("red" bar))
+  (setq evil-replace-state-cursor '("red" bar))
+  (setq evil-operator-state-cursor '("red" hollow))
+  (setq require-final-newline t)   ;; add newline to file on save
+  (set-face-attribute 'default nil :family "monaco" :height 110)   ;; font color and size
+  (blink-cursor-mode 1)
+  (global-subword-mode 1)
+  (delete-selection-mode 1)
+  (auto-indent-mode 1)
+  (toggle-indicate-empty-lines)
+  (setq show-paren-mode 1)
+  (setq show-trailing-whitespace nil)
+  ;; (set-background-color "white")
+  (set-border-color "red"))
 
 (eval-after-load 'color-theme
   '(when window-system
@@ -226,7 +253,6 @@
 
 ;; (use-package evil
 ;;   :ensure t
-;;   :defer t
 ;;   :init
 ;;   :bind
 ;;   (progn
@@ -253,7 +279,6 @@
   (global-whitespace-mode 1))
 
 (use-package undo-tree
-  :defer t
   :ensure t
   :diminish undo-tree-mode
   :init
@@ -266,7 +291,6 @@
     (setq undo-tree-visualizer-diff t)))
 
 (use-package git-gutter
-  :defer t
   :ensure t
   :diminish git-gutter-mode
   :init
@@ -274,15 +298,14 @@
     (global-git-gutter-mode)
     (custom-set-variables '(git-gutter:hide-gutter nil)))
   :bind
-  (("C-x C-n" . git-gutter:next-hunk)
-   ("C-x C-p" . git-gutter:previous-hunk)
+  (("C-x C-n" . my-next-edit)
+   ("C-x C-p" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
 
 (use-package guide-key
-  :defer t
   :diminish guide-key-mode
-  :idle
+  :config
   (progn
     (setq guide-key/recursive-key-sequence-flag t)
     (setq guide-key/popup-window-position 'right)
@@ -303,7 +326,6 @@
 ;;            (line-beginning-position 2)))))
 
 (use-package helm-swoop
-  :defer t
   :bind
   (("M-i" . helm-swoop)
    ("M-I" . helm-swoop-back-to-last-point)
@@ -334,13 +356,11 @@
 
 (use-package expand-region
   :ensure expand-region
-  :defer t
   :bind ("C-j" . er/expand-region))
 
 (use-package "eldoc"
   :diminish eldoc-mode
   :commands turn-on-eldoc-mode
-  :defer t
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -349,7 +369,6 @@
 
 (use-package js2-mode
   :ensure t
-  :defer t
   :commands js2-mode
   :init
   (progn
@@ -367,27 +386,23 @@
 
 (use-package coffee-mode
   :ensure t
-  :defer t
-  :idle (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
   :config
-  (add-hook 'coffee-mode-hook 'flycheck-mode 1)
+  (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
+  ;; (add-hook 'coffee-mode-hook 'flycheck-mode 1)
   (add-hook 'coffee-mode-hook 'coffee-doc))
 
 (use-package css-mode
   :ensure t
-  :defer t
   :config
   (add-hook 'css-mode-hook 'css-doc))
 
 (use-package scss-mode
   :ensure t
-  :defer t
   :config
   (add-hook 'scss-mode-hook 'css-doc))
 
 (use-package ruby-mode
   :ensure t
-  :defer t
   :init
   (progn
     (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
@@ -403,7 +418,6 @@
 
 (use-package emms
   :ensure t
-  :defer t
   :config
   (progn
     (require 'emms-setup)
@@ -437,38 +451,42 @@
     (add-hook 'web-mode-hook 'rainbow-mode)
     (add-hook 'haml-mode-hook 'rainbow-mode)))
 
+(use-package haml-mode
+  :init
+  (progn
+    (add-hook 'haml-mode-hook (lambda ()
+                                (setq comment-start "-# "
+                                      comment-end ""))))
+  :config
+  (progn
+   ;; (add-hook 'haml-mode-hook 'flycheck-mode nil)
+   ))
+
 (use-package pallet
   :ensure pallet
-  :defer t
   :config
   (pallet-mode t))
 
 (use-package point-undo
   :ensure t
-  :defer t
   :bind
   (("M-/" . point-undo)
    ("M-." . point-redo)))
 
 (use-package dired-details+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package itail
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package bind-key
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package dired-sort
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package saveplace
   :ensure t
-  :defer t
   :config
   (progn
     (setq save-place-file "~/.emacs.d/saveplace")
@@ -477,7 +495,6 @@
 
 (use-package eshell
   :ensure t
-  :defer t
   :bind
   ("C-x p s" . start-eshell-in-split-window)
   :config
@@ -490,15 +507,19 @@
   (defadvice shell (before advice-utf-shell activate)
     (set-default-coding-systems 'utf-8)))
 
+;; (use-package ledger-mode
+;;   :init
+;;   (progn
+;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
+
 (use-package org
-  :defer t
   :bind
   (("C-S-n" . org-move-subtree-down)
    ("C-c c" . org-capture)
    ("C-c l" . org-capture-goto-last-stored)
    ("C-c a" . org-agenda)
    ("C-j" . er/expand-region))
-  :config
+  :init
   (progn
     (require 'org-install)
     (require 'org-crypt)
@@ -533,9 +554,15 @@
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
             ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
             ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
-            ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
+            ;; ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
             ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
+            
+            ("l" "Ledger entries")
+            ("lc" "Cash" plain
+             (file "~/Dropbox/org/main.ledger")
+             "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
             ))
+           
     (setq org-refile-targets
           '(
             ("~/Dropbox/org/notes.org" . (:level . 1))
@@ -546,7 +573,6 @@
             ("~/Dropbox/org/blogs.org" . (:level . 1))))))
 
 (use-package markdown-mode
-  :defer t
   :config
   (progn
     (add-hook 'markdown-mode-hook
@@ -565,7 +591,6 @@
 
 (use-package ace-window
   :ensure t
-  :defer t
   :bind
   ("M-j" . ace-window)
   :init
@@ -573,22 +598,18 @@
 
 (use-package smartparens
   :ensure t
-  :defer t
-  :diminish smartparens-global-mode
-  :idle
+  :config
   (smartparens-global-mode))
 
 ;; (use-package auto-package-update
 ;;   :ensure t
-;;   :defer t
 ;;   :config )
 
 ;; (setq auto-package-update-interval 7)
 ;; (auto-package-update-maybe)
 
 ;; (use-package org-mobile
-;;   :ensure t
-;;   :defer t)
+;;   :ensure t)
                                         ;(define-key org-mode-map "\C-cp" 'org-mobile-pull)
                                         ;(define-key org-agenda-mode-map "\C-cp" 'org-mobile-pull)
 
@@ -637,6 +658,5 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
-;; (open-last-visited-file)
 (find-file "~/.emacs.d/init.el")
-
+(open-last-visited-file)
