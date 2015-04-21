@@ -195,5 +195,5 @@
 (define-key ac-completing-map [return] nil)
 
 (define-key ac-completing-map "\r" nil)
-
+(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
 (provide 'bindings-setup)

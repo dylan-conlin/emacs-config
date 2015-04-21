@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("contest_finder"
+(("init"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "          '(\n   ")
+ (rear-context-string . "-refile-targets\n")
+ (position . 18146))
+("contest_finder"
  (filename . "~/drive/side-sites/ruby-projects/contest_finder/")
  (front-context-string . ".gitignore\n  -rw")
  (rear-context-string . "75 Feb 21 15:32 ")
@@ -93,10 +98,10 @@
  (rear-context-string . "quote right)))\n\n")
  (position . 2046))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** css for share")
- (rear-context-string . "4-04 Sat 03:27]\n")
- (position . 266859))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO urls to ")
+ (rear-context-string . "4-01 Wed 11:29]\n")
+ (position . 3909))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -148,8 +153,8 @@
  (rear-context-string)
  (position . 1))
 ("init.el"
- (filename . "~/drive/dotfiles/.emacs.d/init.el")
- (front-context-string . "(setq custom-fil")
- (rear-context-string . "n separate file\n")
- (position . 443))
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "          '(\n   ")
+ (rear-context-string . "-refile-targets\n")
+ (position . 18146))
 )

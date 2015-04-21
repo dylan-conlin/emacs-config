@@ -177,7 +177,7 @@
 
 (defun my/setup-light-theme ()
   (interactive)
-  (load-theme 'flatui t)
+  (load-theme 'leuven t)
   ;; only show bad whitespace
   (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
   (setq dired-details-propagate-flag t)
@@ -254,7 +254,7 @@
 ;; (use-package evil
 ;;   :ensure t
 ;;   :init
-;;   :bind
+;;   :config
 ;;   (progn
 ;;     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 ;;     (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
@@ -382,7 +382,8 @@
   (progn
     (js2-imenu-extras-setup)
     (bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
-    (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)))
+    (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)
+    (bind-key "C-j" 'er/expand-region)))
 
 (use-package coffee-mode
   :ensure t
@@ -517,8 +518,7 @@
   (("C-S-n" . org-move-subtree-down)
    ("C-c c" . org-capture)
    ("C-c l" . org-capture-goto-last-stored)
-   ("C-c a" . org-agenda)
-   ("C-j" . er/expand-region))
+   ("C-c a" . org-agenda))
   :init
   (progn
     (require 'org-install)
@@ -589,12 +589,19 @@
     (add-hook 'after-init-hook 'server-start t)
     (add-hook 'after-init-hook 'edit-server-start t)))
 
-(use-package ace-window
-  :ensure t
-  :bind
-  ("M-j" . ace-window)
-  :init
-  (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9)))
+;; (use-package ace-window
+;;   :ensure t
+;;   :bind
+;;   ("M-j" . ace-window)
+;;   :init
+;;   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9)))
+
+;; (use-package windmove
+;;   :ensure t
+;;   :config
+;;   (windmove-)
+;;   :bind
+;;   ("M-o" . windmove-other-))
 
 (use-package smartparens
   :ensure t

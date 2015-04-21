@@ -758,5 +758,17 @@ Including indent-buffer, which should not be called automatically on save."
     (async-shell-command 
      (s-concat "cd ~/youtube-downloads/video && youtube-dl \"" str "\""))))
 
+(defun ruby-comment-gap ()
+  (interactive)
+  
+  (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\""))
+
+(defun wrap-item (start end)
+  "Insert a markup \begin{itemize}\end{itemize} around a region."
+  (interactive "r")
+  (save-excursion 
+    (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
+    (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")))
+
 
 (provide 'utilities-setup)
