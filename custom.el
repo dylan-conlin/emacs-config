@@ -13,6 +13,8 @@
  '(ac-show-menu-immediately-on-auto-complete nil)
  '(ac-trigger-key "TAB")
  '(ag-highlight-search t)
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(ansi-term-color-vector
@@ -210,15 +212,17 @@
  '(ace-jump-face-background ((t (:foreground "#27ae60"))))
  '(ace-jump-face-foreground ((t (:background "#ecf0f1" :foreground "red" :inverse-video nil :weight extra-bold))))
  '(dired-directory ((t (:foreground "MediumPurple3" :weight bold))))
- '(font-lock-comment-face ((t (:foreground "gray74"))))
+ '(font-lock-comment-face ((t (:foreground "gray64" :slant italic))))
  '(font-lock-negation-char-face ((t (:foreground "red" :weight extra-bold))))
+ '(git-gutter:added ((t (:foreground "green3" :weight bold))))
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "forestgreen"))))
- '(helm-selection ((t (:background "LightBlue1" :underline nil))))
+ '(helm-selection ((t (:background "LightYellow1" :foreground "black" :underline nil))))
  '(helm-source-header ((t (:background "gray100" :foreground "gray60" :weight bold :height 1.3 :family "Sans Serif"))))
  '(hl-line ((t (:background "gray97"))))
  '(magit-diff-add ((t (:background "#DDFFDD" :foreground "green3"))))
  '(magit-diff-del ((t (:background "#FFDDDD" :foreground "red1"))))
  '(magit-item-highlight ((t (:background "gray100"))))
+ '(magit-section-title ((t (:inherit nil :foreground "cornflower blue" :weight bold :height 1.2 :family "Sans Serif"))))
  '(org-agenda-structure ((t (:foreground "#1F8DD6" :weight bold :height 1))))
  '(sp-show-pair-match-face ((t (:background "orange"))))
  '(sp-show-pair-mismatch-face ((t (:background "red" :foreground "white"))))

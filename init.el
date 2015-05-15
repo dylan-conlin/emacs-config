@@ -125,7 +125,8 @@
          ("C-c f" . helm-dash)
          ("C-x f" . helm-recentf)
          ("C-x y" . helm-show-kill-ring)
-         ("C-x C-b" . helm-bookmarks)))
+         ("C-x C-b" . helm-bookmarks)
+         ("M-." . helm-locate)))
 
 ;; (use-package helm-descbinds
 ;;   :defer t
@@ -177,7 +178,7 @@
 
 (defun my/setup-light-theme ()
   (interactive)
-  (load-theme 'leuven t)
+  ;; (load-theme 'base16-pop-light t)
   ;; only show bad whitespace
   (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
   (setq dired-details-propagate-flag t)
@@ -293,15 +294,14 @@
 (use-package git-gutter
   :ensure t
   :diminish git-gutter-mode
-  :init
-  (progn
-    (global-git-gutter-mode)
-    (custom-set-variables '(git-gutter:hide-gutter nil)))
   :bind
   (("C-x C-n" . my-next-edit)
    ("C-x C-p" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
+
+(global-git-gutter-mode)
+(custom-set-variables '(git-gutter:hide-gutter nil))
 
 (use-package guide-key
   :diminish guide-key-mode
@@ -440,7 +440,8 @@
       "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
     (setq emms-track-description-function 'fg-emms-track-description)
     (emms-history-load))
-  :bind (("C-x p e" . emms)))
+  :bind (("C-x p e" . emms)
+         ("C-x p k" . emms-soulseek)))
 
 (use-package rainbow-mode
   :ensure rainbow-mode
@@ -647,6 +648,7 @@
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
 
+(require 'ruby-interpolation)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
@@ -666,4 +668,7 @@
 (load custom-file)
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
 (find-file "~/.emacs.d/init.el")
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+(global-aggressive-indent-mode)
 (open-last-visited-file)

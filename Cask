@@ -104,6 +104,7 @@
 (depends-on "helm-cmd-t")
 (depends-on "helm-dash")
 (depends-on "helm-descbinds")
+(depends-on "helm-emms")
 (depends-on "helm-flycheck")
 (depends-on "helm-ls-git")
 (depends-on "helm-package")

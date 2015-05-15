@@ -645,14 +645,13 @@ Including indent-buffer, which should not be called automatically on save."
 
 
       
-(defun wrap-markup-region (start end)
-  "Insert a markup <b></b> around a region."
+(defun string-wrap-interpolate (start end)
+  "Insert a #{..} around a region."
   (interactive "r")
-  (let ((region (get-region beg end))
-  (save-excursion
-    (goto-char end) (insert "}\"")
-    (goto-char start) (insert "var: \"#{")
-    ))))
+  (let ((region (get-region start end))
+        (save-excursion
+          (goto-char end) (insert "}")
+          (goto-char start) (insert "#{")))))
 
 
 ;; ;; the the frame title to the current buffer name
@@ -767,8 +766,69 @@ Including indent-buffer, which should not be called automatically on save."
   "Insert a markup \begin{itemize}\end{itemize} around a region."
   (interactive "r")
   (save-excursion 
-    (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
-    (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")))
+    ;; (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
+    ;; (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")
+    (goto-char end) (insert "\nputs \"-------------------------------------------------------------\"")
+    (goto-char start) (insert "puts \"-------------------------------------------------------------\"\n")
+    
+    )
+  )
 
+
+;; ;;; Add music file to playlist on '!', --lgfang
+;; (add-to-list 'dired-guess-shell-alist-user
+;;              (list "\\.\\(flac\\|mp3\\|ogg\\|wav\\)\\'"
+;;                    '(if (y-or-n-p "Add to emms playlist?")
+;;                         (progn (emms-add-file (dired-get-filename))
+;;                                (keyboard-quit))
+;;                       "mplayer")))
+
+(defun wrappy ()
+  "Change me!"
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (set-mark-command nil)
+    (move-end-of-line 1)
+    (wrap-item (region-beginning) (region-end))
+    (search-backward-regexp "puts")
+    (indent-for-tab-command nil)
+    (move-end-of-line 1)
+    (search-forward-regexp "puts")
+    (indent-for-tab-command nil)))
+
+(defun unwrappy ()
+  "Change me!"
+  (interactive)
+  (save-excursion
+    (search-backward "puts")
+    (kill-whole-line 1)
+    (search-forward "puts")
+    (kill-whole-line 1)))
+
+;; QuickLookでファイルを開く
+(defun dired-quicklook ()
+  (interactive)
+  (let ((file (s-concat default-directory (dired-copy-filename-as-kill))))
+    (message file)
+    (unless (file-directory-p file)
+      (shell-command (s-concat "qlmanage -p " (shell-quote-argument file))))))
+
+
+
+;; (defun my-put-file-name-on-clipboard ()
+;;   "Put the current file name on the clipboard"
+;;   (interactive)
+;;   (let ((filename (if (equal major-mode 'dired-mode)
+;;                       (s-concat default-directory (dired-copy-filename-as-kill))
+;;                     (buffer-file-name))))
+;;     (when filename
+;;       (with-temp-buffer
+;;         (insert filename)
+;;         (clipboard-kill-region (point-min) (point-max)))
+;;       (message filename))))
+
+(eval-after-load  "Dired" 
+  '(define-key dired-mode-map (kbd "C-c y") 'dired-quicklook))
 
 (provide 'utilities-setup)

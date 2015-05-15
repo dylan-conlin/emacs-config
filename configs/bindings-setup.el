@@ -14,13 +14,14 @@
 
 (bind-key "s-q" nil)
 (bind-key "C-k" 'kill-line)
-(bind-key "M-l" 'open-line-below)
+;; (bind-key "M-l" 'open-line-below)
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
 (bind-key* "C-c SPC" 'rectangle-mark-mode)
 (bind-key "C-x r f" 'run-current-file)
 
 ;; window management
+(define-key dcon-minor-mode-map (kbd "M-j") 'ace-window)
 (bind-key "s-e" 'split-window-below-and-move-there-dammit)
 (bind-key "s-2" 'split-window-below-and-move-there-dammit)
 (bind-key "C-x 2" 'split-window-below-and-move-there-dammit)
@@ -49,7 +50,7 @@
 ;; general text editing
 ;; dcon-minor-mode
 ;; (define-key dcon-minor-mode-map (kbd "C-h") 'backward-delete-char-untabify)
-;; (define-key dcon-minor-mode-map (kbd "DEL") 'backward-delete-char-untabify)
+
 (bind-key* "DEL" 'backward-delete-char-untabify)
 (bind-key* "C-M-h" 'kill-whole-line)
 
@@ -66,6 +67,31 @@
 
 ;; directory shortcuts
 (bind-key "C-," 'dired-up)
+
+(bind-key "C-," 'dired-sort-ctime)
+(bind-key "C-," 'dired-sort-utime)
+
+(defhydra dired-sorter (global-map "<f2>")
+     "dired sorter"
+     ("c" dired-sort-ctime "created")
+     ("u" dired-sort-utime "updated"))
+
+(defhydra hydra-dired-buffer-menu (:color blue :hint nil)
+  "
+^Sort^
+^^^^^^^^-------------------------------------------
+_c_: created
+_u_: updated
+_q_: cancel
+  "
+  ("c" dired-sort-ctime)
+  ("u" dired-sort-utime)
+  ("q" nil :color red)
+  )
+
+(bind-key "C-c r" 'hydra-dired-buffer-menu/body)
+
+
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
 (bind-key "H-s" '(lambda () (interactive) (find-file "~/drive/sites/shortstack")))
 (bind-key "H-r" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-server")))
@@ -98,6 +124,9 @@
 
 (key-chord-define-global "wj" 'calculator)
 (key-chord-define-global "jk" (lambda () (interactive) (switch-to-buffer (other-buffer))))
+
+(key-chord-define-global "mw" 'wrappy)
+(key-chord-define-global "bw" 'unwrappy)
 
 (bind-key "C-x r q" 'save-buffers-kill-terminal)
 (bind-key "C-x C-c" 'delete-frame)
