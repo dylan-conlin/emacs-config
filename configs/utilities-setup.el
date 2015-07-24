@@ -156,6 +156,8 @@ Assumes that the frame is only split into two."
   (coffee-compile-region start end))
 
 (defun git-root-dir-only ()
+  (interactive)
+  (message (f-filename (my-git-root)))
   (f-filename (my-git-root)))
 
 (defun line-number-on-github ()
@@ -170,7 +172,21 @@ Assumes that the frame is only split into two."
 (defun browse-file-on-github ()
   (interactive)
   (when buffer-file-name
-    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/drive/sites" (git-root-dir-only)))) (line-number-on-github)))))
+    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/Dropbox/sites" (git-root-dir-only)))) (line-number-on-github)))))
+
+(provide 'utilities-setup)
+;; (defun github-source (start end)
+;;   (interactive "r")
+;;   (browse-url
+;;    (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1")))
+
+;; ;; https://github.com/pancakelabs/shortstack-designer/blob/staging/script/rails#L4
+
+
+
+
+
+
 
 (defun replace-smart-quotes (beg end)
   "Replace 'smart quotes' in buffer or region with ascii quotes."
@@ -290,8 +306,12 @@ With a prefix argument, insert a newline above the current line."
 
 (defun view-on-github (start end)
   (interactive "r")
-  (browse-url
-   (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1")))
+  (if (get-region start end)
+      (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1"))
+    (progn
+      (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
+      (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
+  
 
 (defun get-region (beg end)
   "message region or \"empty string\" if none highlighted"
@@ -768,12 +788,8 @@ Including indent-buffer, which should not be called automatically on save."
   (save-excursion 
     ;; (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
     ;; (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")
-    (goto-char end) (insert "\nputs \"-------------------------------------------------------------\"")
-    (goto-char start) (insert "puts \"-------------------------------------------------------------\"\n")
-    
-    )
-  )
-
+    (goto-char end) (insert "\nputs \"___________________________________________________________________________________________________\"")
+    (goto-char start) (insert "puts \"___________________________________________________________________________________________________\"\n")))
 
 ;; ;;; Add music file to playlist on '!', --lgfang
 ;; (add-to-list 'dired-guess-shell-alist-user

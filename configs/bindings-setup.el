@@ -14,14 +14,13 @@
 
 (bind-key "s-q" nil)
 (bind-key "C-k" 'kill-line)
-;; (bind-key "M-l" 'open-line-below)
+(bind-key "s-o" 'open-line-below)
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
 (bind-key* "C-c SPC" 'rectangle-mark-mode)
 (bind-key "C-x r f" 'run-current-file)
 
 ;; window management
-(define-key dcon-minor-mode-map (kbd "M-j") 'ace-window)
 (bind-key "s-e" 'split-window-below-and-move-there-dammit)
 (bind-key "s-2" 'split-window-below-and-move-there-dammit)
 (bind-key "C-x 2" 'split-window-below-and-move-there-dammit)
@@ -38,6 +37,7 @@
 (bind-key "C-S-H" 'shrink-window-horizontally)
 (bind-key "C-S-K" 'enlarge-window)
 (bind-key "C-S-J" 'shrink-window)
+(bind-key "M-o" 'other-window)
 
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
@@ -55,8 +55,8 @@
 (bind-key* "C-M-h" 'kill-whole-line)
 
 (bind-key "C-q" 'backward-kill-word)
-(bind-key* "M-p" 'backward-paragraph)
-(bind-key* "M-n" 'forward-paragraph)
+;; (bind-key* "M-p" 'backward-paragraph)
+;; (bind-key* "M-n" 'forward-paragraph)
 (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "C-c p") (kbd "<f2>"))
@@ -93,11 +93,11 @@ _q_: cancel
 
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
-(bind-key "H-s" '(lambda () (interactive) (find-file "~/drive/sites/shortstack")))
-(bind-key "H-r" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-server")))
-(bind-key "H-d" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-designer")))
-(bind-key "H-a" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-admin")))
-(bind-key "H-i" '(lambda () (interactive) (find-file "~/drive/sites/shortstack-api")))
+(bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack")))
+(bind-key "H-r" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-server")))
+(bind-key "H-d" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-designer")))
+(bind-key "H-a" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-admin")))
+(bind-key "H-i" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-api")))
 (bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d")))
 
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
@@ -123,7 +123,6 @@ _q_: cancel
 
 
 (key-chord-define-global "wj" 'calculator)
-(key-chord-define-global "jk" (lambda () (interactive) (switch-to-buffer (other-buffer))))
 
 (key-chord-define-global "mw" 'wrappy)
 (key-chord-define-global "bw" 'unwrappy)
@@ -203,6 +202,8 @@ _q_: cancel
 
 (bind-key "C-x p w" 'ispell)
 
+(bind-key "C-w" 'kill-region)
+
 ;; If you want the keybinding to override all minor modes that may also bind the same key, use the bind-key* form:
 ;; (bind-key* "<C-return>" 'other-window)
 
@@ -224,5 +225,10 @@ _q_: cancel
 (define-key ac-completing-map [return] nil)
 
 (define-key ac-completing-map "\r" nil)
-(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+
+(key-chord-define-global "jk" 'er/expand-region)
+(key-chord-define-global "hk" 'er/contract-region)
+
+;; (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+
 (provide 'bindings-setup)

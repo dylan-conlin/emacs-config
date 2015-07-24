@@ -117,16 +117,16 @@
          ("M-k" . helm-project-search)
          ("M-K" . my-helm-do-ag)
          ("C-x b" . helm-projectless-search)
-         ("C-x t" . helm-imenu-anywhere)
+         ("C-x t" . helm-imenu)
          ("s-P" . helm-scroll-other-window-down)
          ("s-N" . helm-scroll-other-window)
-         ("M-o" . helm-resume)
          ("M-C-p" . helm-eshell-history)
          ("C-c f" . helm-dash)
          ("C-x f" . helm-recentf)
          ("C-x y" . helm-show-kill-ring)
          ("C-x C-b" . helm-bookmarks)
-         ("M-." . helm-locate)))
+         ("M-." . helm-locate)
+         ("M-j" . helm-resume)))
 
 ;; (use-package helm-descbinds
 ;;   :defer t
@@ -148,9 +148,9 @@
   :ensure t
   :bind
   (("s-n" . mc/mark-next-like-this)
-   ("s-S-n" . mc/unmark-next-like-this)
+   ("s-N" . mc/unmark-next-like-this)
    ("s-p" . mc/mark-previous-like-this)
-   ("s-S-p" . mc/unmark-previous-like-this)
+   ("s-P" . mc/unmark-previous-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
 (use-package smart-mode-line
@@ -178,7 +178,7 @@
 
 (defun my/setup-light-theme ()
   (interactive)
-  ;; (load-theme 'base16-pop-light t)
+  (load-theme 'base16-google-light t)
   ;; only show bad whitespace
   (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
   (setq dired-details-propagate-flag t)
@@ -209,7 +209,8 @@
   (toggle-indicate-empty-lines)
   (setq show-paren-mode 1)
   (setq show-trailing-whitespace nil)
-  (set-background-color "white")
+  ;; (set-background-color "white")
+  (set-face-attribute 'region nil :background "lightblue")
   (set-border-color "red"))
 
 (defun my/setup-dark-theme ()
@@ -318,13 +319,6 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;; (defadvice kill-region (before slick-cut activate compile)
-;;   "When called interactively with no active region, kill a single line instead."
-;;   (interactive
-;;    (if mark-active (list (region-beginning) (region-end))
-;;      (list (line-beginning-position)
-;;            (line-beginning-position 2)))))
-
 (use-package helm-swoop
   :bind
   (("M-i" . helm-swoop)
@@ -355,8 +349,7 @@
 (bind-key "C-x 3" 'my/hsplit-last-buffer)
 
 (use-package expand-region
-  :ensure expand-region
-  :bind ("C-j" . er/expand-region))
+  :ensure expand-region)
 
 (use-package "eldoc"
   :diminish eldoc-mode
@@ -382,8 +375,7 @@
   (progn
     (js2-imenu-extras-setup)
     (bind-key "C-x C-e" 'js-send-last-sexp js2-mode-map)
-    (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)
-    (bind-key "C-j" 'er/expand-region)))
+    (bind-key "C-M-x" 'js-send-last-sexp-and-go js2-mode-map)))
 
 (use-package coffee-mode
   :ensure t
@@ -469,6 +461,17 @@
   :config
   (pallet-mode t))
 
+;; (use-package corral
+;;   :ensure t
+;;   :bind
+;;   (("M-9" . corral-parentheses-backward)
+;;    ("M-0" . corral-parentheses-forward)
+;;    ("M-[" . corral-brackets-backward)
+;;    ("M-]" . corral-brackets-forward)
+;;    ("M-{" . corral-braces-backward)
+;;    ("M-}" . corral-braces-forward)
+;;    ("M-\"" . corral-double-quotes-backward)))
+
 (use-package point-undo
   :ensure t
   :bind
@@ -550,23 +553,14 @@
     (setq org-capture-templates
           '(
             ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
-            ;; ("o" "Contacts" entry (file "~/Dropbox/org/contacts.org") "* %(org-contacts-template-name)\n:PROPERTIES:\n%(org-contacts-template-email)\n:END:")
-            ;; ("e" "Email" entry (file+headline "~/Dropbox/org/emails.org" "Emails") "* %^{title} %^g \n %? \n%U")
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
             ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
             ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
-            ;; ("s" "Shortstack" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack") "* %^{title} %^g \n %? \n%U")
             ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
-            
             ("l" "Ledger entries")
-            ("lc" "Cash" plain
-             (file "~/Dropbox/org/main.ledger")
-             "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
-            ))
-           
+            ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")))
     (setq org-refile-targets
-          '(
-            ("~/Dropbox/org/notes.org" . (:level . 1))
+          '(("~/Dropbox/org/notes.org" . (:level . 1))
             ("~/Dropbox/org/todo.org" . (:level . 1))
             ("~/Dropbox/org/shortstack.org" . (:level . 1))
             ("~/Dropbox/org/secrets.org" . (:level . 1))
@@ -650,6 +644,7 @@
 
 (require 'ruby-interpolation)
 (require 'uniquify)
+
 (setq uniquify-buffer-name-style 'forward)
 
 (setq-default indent-tabs-mode nil)
@@ -670,5 +665,6 @@
 (find-file "~/.emacs.d/init.el")
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-(global-aggressive-indent-mode)
+;; (global-aggressive-indent-mode)
 (open-last-visited-file)
+

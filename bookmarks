@@ -99,9 +99,9 @@
  (position . 2046))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** 1000 paradise")
- (rear-context-string . "5-14 Thu 17:47]\n")
- (position . 308019))
+ (front-context-string . "** most controll")
+ (rear-context-string . "7-13 Mon 11:05]\n")
+ (position . 357220))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")

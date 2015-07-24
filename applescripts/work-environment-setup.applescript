@@ -3,12 +3,12 @@ tell application "iTerm"
 	make new terminal
         
         -- setup paths where i'd like to start each server
-	set designer   to "cd drive/sites/shortstack-designer;foreman start -f Procfile.dev; clear"
-	set shortstack to "cd drive/sites/shortstack;foreman start -f Procfile.dev; clear"
-	set server     to "cd drive/sites/shortstack-server;foreman start -f Procfile.dev; clear"
-        set guard      to "cd drive/sites/shortstack-designer;bundle exec guard -i; clear"
-	set spork      to "cd drive/sites/shortstack;spork; clear"
-        set api        to "cd drive/sites/shortstack-api;foreman start -f Procfile.dev; clear;"
+	set designer   to "cd Dropbox/sites/shortstack-designer;foreman start -f Procfile.dev; clear"
+	set shortstack to "cd Dropbox/sites/shortstack;foreman start -f Procfile.dev; clear"
+	set server     to "cd Dropbox/sites/shortstack-server;foreman start -f Procfile.dev; clear"
+        set guard      to "cd Dropbox/sites/shortstack-designer;bundle exec guard -i; clear"
+	set spork      to "cd Dropbox/sites/shortstack;spork; clear"
+        set api        to "cd Dropbox/sites/shortstack-api;foreman start -f Procfile.dev; clear;"
         set tunnlr     to "ssh -nNt -g -R :12818:0.0.0.0:3001 tunnlr3598@ssh1.tunnlr.com"
         
 	tell the current terminal
