@@ -106,10 +106,14 @@ _q_: cancel
 
 (bind-key "C-x C-n" 'flycheck-tip-cycle)
 (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
-(bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
+;; (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
+(bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'ace-jump-word-mode)
-(bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
+(key-chord-define-global "fj" 'avy-goto-word-0)
+;; (key-chord-define-global "fk" 'avy-goto-word-0)
+
+(bind-key "C-x SPC" 'avy-pop-mark)
+(bind-key "M-g g" 'avy-goto-line)
 
 (bind-key "C-c SPC" 'rectangle-mark-mode)
 

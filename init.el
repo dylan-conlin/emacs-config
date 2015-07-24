@@ -584,13 +584,6 @@
     (add-hook 'after-init-hook 'server-start t)
     (add-hook 'after-init-hook 'edit-server-start t)))
 
-;; (use-package ace-window
-;;   :ensure t
-;;   :bind
-;;   ("M-j" . ace-window)
-;;   :init
-;;   (setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9)))
-
 ;; (use-package windmove
 ;;   :ensure t
 ;;   :config
