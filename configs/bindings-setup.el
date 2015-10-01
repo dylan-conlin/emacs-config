@@ -21,12 +21,14 @@
 (bind-key "C-x r f" 'run-current-file)
 
 ;; window management
-(bind-key "s-e" 'split-window-below-and-move-there-dammit)
-(bind-key "s-2" 'split-window-below-and-move-there-dammit)
-(bind-key "C-x 2" 'split-window-below-and-move-there-dammit)
-(bind-key "s-r" 'split-window-right-and-move-there-dammit)
-(bind-key "s-3" 'split-window-right-and-move-there-dammit)
-(bind-key "C-x 3" 'split-window-right-and-move-there-dammit)
+(bind-key "s-e" 'my/vsplit-last-buffer)
+(bind-key "s-2" 'my/vsplit-last-buffer)
+(bind-key "C-x 2" 'my/vsplit-last-buffer)
+(bind-key "s-r" 'my/hsplit-last-buffer)
+(bind-key "s-3" 'my/hsplit-last-buffer)
+(bind-key "C-x 3" 'my/hsplit-last-buffer)
+
+
 (bind-key "s-w" 'delete-window)
 (bind-key "M-0" 'delete-window)
 (bind-key "C-x o" 'other-window)
@@ -37,7 +39,7 @@
 (bind-key "C-S-H" 'shrink-window-horizontally)
 (bind-key "C-S-K" 'enlarge-window)
 (bind-key "C-S-J" 'shrink-window)
-(bind-key "M-o" 'other-window)
+(bind-key "M-o" 'ace-window)
 
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
@@ -55,8 +57,8 @@
 (bind-key* "C-M-h" 'kill-whole-line)
 
 (bind-key "C-q" 'backward-kill-word)
-;; (bind-key* "M-p" 'backward-paragraph)
-;; (bind-key* "M-n" 'forward-paragraph)
+(bind-key* "M-p" 'backward-paragraph)
+(bind-key* "M-n" 'forward-paragraph)
 (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "C-c p") (kbd "<f2>"))
@@ -93,12 +95,12 @@ _q_: cancel
 
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
-(bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack")))
-(bind-key "H-r" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-server")))
-(bind-key "H-d" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-designer")))
-(bind-key "H-a" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-admin")))
-(bind-key "H-i" '(lambda () (interactive) (find-file "~/Dropbox/sites/shortstack-api")))
-(bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d")))
+(bind-key "H-s" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack")))
+(bind-key "H-r" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-server")))
+(bind-key "H-d" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-designer")))
+(bind-key "H-a" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-admin")))
+(bind-key "H-i" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-api")))
+(bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d/")))
 
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
 (bind-key "M-s s" 'scroll-bar-mode)
@@ -109,7 +111,7 @@ _q_: cancel
 ;; (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 (bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'avy-goto-word-0)
+(key-chord-define-global "fj" 'avy-goto-word-1)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
 
 (bind-key "C-x SPC" 'avy-pop-mark)
@@ -139,7 +141,8 @@ _q_: cancel
 
 (bind-key "C-c n" 'cleanup-buffer)
 
-(bind-key "C-x g" 'browse-file-on-github)
+(bind-key "C-x g" 'browse-at-remote)
+(bind-key "C-x G" 'browse-at-remote/to-clipboard)
 
 (bind-key "C-/" 'undo-tree-undo)
 (bind-key "C-." 'undo-tree-redo)
@@ -175,8 +178,9 @@ _q_: cancel
 (bind-key "M-T" 'my-tail)
 (bind-key "C-c m" 'view-echo-area-messages)
 
-(bind-key "s-=" 'text-scale-increase)
-(bind-key "s--" 'text-scale-decrease)
+(bind-key "s-=" (lambda () (interactive) (shell-command "hue lights all +25")))
+(bind-key "s--" (lambda () (interactive) (shell-command "hue lights all -25")))
+
 (bind-key "s-0" (lambda () (interactive) (text-scale-set 0)))
 
 ;; ;; esc quits

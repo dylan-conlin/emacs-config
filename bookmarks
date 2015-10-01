@@ -2,141 +2,96 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("init"
+(("org-capture-last-stored"
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO turn the")
+ (rear-context-string . "8-27 Thu 09:02]\n")
+ (position . 1824))
+("text.org.gpg"
+ (filename . "~/Dropbox/org/text.org.gpg")
+ (front-context-string . "* Secrets\n** suc")
+ (rear-context-string)
+ (position . 1))
+("admin"
+ (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-admin/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "44 Sep  9 15:29 ")
+ (position . 296))
+("node"
+ (filename . "~/Dropbox/hacking/node/")
+ (front-context-string . "black-screen\n  d")
+ (rear-context-string . "16 Sep  8 10:24 ")
+ (position . 258))
+("hacking"
+ (filename . "~/Dropbox/hacking/")
+ (front-context-string)
+ (rear-context-string . "36 Sep  8 10:21 ")
+ (position . 253))
+("dropbox"
+ (filename . "~/Dropbox/")
+ (front-context-string . ".DS_Store\n  -rw-")
+ (rear-context-string . "48 Sep  7 19:12 ")
+ (position . 260))
+("home"
+ (filename . "~/")
+ (front-context-string . ".CFUserTextEncod")
+ (rear-context-string . " 7 Aug 28 13:29 ")
+ (position . 251))
+("emacs"
+ (filename . "~/.emacs.d/")
+ (front-context-string . "custom.el\n  drwx")
+ (rear-context-string . "15 Sep  9 10:15 ")
+ (position . 1145))
+("server"
+ (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-server/")
+ (front-context-string . ".agignore\n  drwx")
+ (rear-context-string . "33 Oct 28  2014 ")
+ (position . 304))
+("designer"
+ (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-designer/")
+ (front-context-string . ".agignore -> /Us")
+ (rear-context-string . "60 Oct 21  2014 ")
+ (position . 299))
+("shortstack"
+ (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "42 Sep  9 09:52 ")
+ (position . 430))
+("init"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "          '(\n   ")
  (rear-context-string . "-refile-targets\n")
  (position . 18146))
-("contest_finder"
- (filename . "~/drive/side-sites/ruby-projects/contest_finder/")
- (front-context-string . ".gitignore\n  -rw")
- (rear-context-string . "75 Feb 21 15:32 ")
- (position . 474))
-(".keysnail.coffee"
- (filename . "~/drive/dotfiles/keysnail-config/.keysnail.coffee")
- (front-context-string . "# ==============")
- (rear-context-string)
- (position . 1))
-("appearance-setup.el"
- (filename . "~/.emacs.d/configs/appearance-setup.el")
- (front-context-string . ";; theme\n(load-t")
- (rear-context-string)
- (position . 1))
-("shortstack-api"
- (filename . "~/drive/sites/shortstack-api/")
- (front-context-string . "lib\n  drwxr-xr-x")
- (rear-context-string . "70 Jan 15 17:00 ")
- (position . 1458))
 ("utilities-setup.el"
- (filename . "~/drive/dotfiles/.emacs.d/configs/utilities-setup.el")
+ (filename . "~/.emacs.d/configs/utilities-setup.el")
  (front-context-string . "\n\n;; (eval-after")
  (rear-context-string . " something like,")
  (position . 12468))
-("secret-links.org"
- (filename . "~/Dropbox/org/secret-links.org")
- (front-context-string)
- (rear-context-string . "20398891/ :porn:")
- (position . 111))
-("soulseek-complete"
- (filename . "~/Soulseek Downloads/complete/")
- (front-context-string . "2006 - late nigh")
- (rear-context-string . "02 Dec 18 10:36 ")
- (position . 323))
 ("soulseek"
  (filename . "~/Soulseek Downloads/complete/")
  (front-context-string . "Rhadow meets NTF")
  (rear-context-string . "02 Dec 10 19:04 ")
  (position . 282))
-("server"
- (filename . "~/drive/sites/shortstack-server/")
- (front-context-string . "clean.gems\n  drw")
- (rear-context-string . "39 Sep  3 09:35 ")
- (position . 1345))
-("shortstack"
- (filename . "~/drive/sites/shortstack/")
- (front-context-string . ".ruby-gemset\n  -")
- (rear-context-string . "19 Sep  2 12:10 ")
- (position . 667))
-("designer"
- (filename . "~/drive/sites/shortstack-designer/")
- (front-context-string . "app\n  drwxr-xr-x")
- (rear-context-string . "72 Oct 20 21:44 ")
- (position . 1580))
-("org-refile-last-stored"
- (filename . "~/Dropbox/org/code.org")
- (front-context-string . "** simple math c")
- (rear-context-string . "2-05 Thu 17:28]\n")
- (position . 52330))
-("sites"
- (filename . "~/drive/sites/")
- (front-context-string)
- (rear-context-string . ":13 ss-frontend\n")
- (position . 1204))
-("bindings-setup.el"
- (filename . "~/drive/dotfiles/.emacs.d/configs/bindings-setup.el")
- (front-context-string . "\n\n;; (define-key")
- (rear-context-string . "file-from-cache)")
- (position . 7525))
 (".zshrc"
  (filename . "~/.zshrc")
  (front-context-string . "ations/Postgres.")
  (rear-context-string . "TH=$PATH:/Applic")
  (position . 5463))
-("shortstack.org"
- (filename . "~/Dropbox/org/shortstack.org")
- (front-context-string . "* Shortstack\n** ")
- (rear-context-string)
- (position . 1))
 ("todo.org"
  (filename . "~/Dropbox/org/todo.org")
  (front-context-string . "** TODO share li")
  (rear-context-string . " foursquare bug\n")
  (position . 107844))
-("custom.el"
- (filename . "~/drive/dotfiles/.emacs.d/custom.el")
- (front-context-string . "(custom-set-face")
- (rear-context-string . "quote right)))\n\n")
- (position . 2046))
-("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** how get short")
- (rear-context-string . "7-22 Wed 16:34]\n")
- (position . 360183))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . ".DS_Store\n  -rw-")
  (rear-context-string . "48 Sep 16 10:59 ")
  (position . 267))
-("dotfiles"
- (filename . "~/drive/dotfiles/")
- (front-context-string . ".emacs.d\n  drwxr")
- (rear-context-string . "20 Oct 21 08:36 ")
- (position . 255))
-("coffee.coffee"
- (filename . "~/coffee.coffee")
- (front-context-string . "console.log \"888")
- (rear-context-string . "og dog.greet3()\n")
- (position . 260))
-("javascript.js"
- (filename . "~/javascript.js")
- (front-context-string . "var badQuotes = ")
- (rear-context-string)
- (position . 1))
-("node"
- (filename . "~/drive/side-sites/node-projects")
- (front-context-string . "Appointments\n  d")
- (rear-context-string . "42 Sep 10 18:36 ")
- (position . 262))
 ("side-sites"
- (filename . "~/drive/side-sites/")
+ (filename . "~/Dropbox/side-sites")
  (front-context-string . ".DS_Store\n  drwx")
  (rear-context-string . "48 Sep 10 10:39 ")
  (position . 262))
-("drive"
- (filename . "~/drive/")
- (front-context-string . ".DS_Store\n  drwx")
- (rear-context-string . "92 Sep  6 16:48 ")
- (position . 261))
 ("notes.org"
  (filename . "~/Dropbox/org/notes.org")
  (front-context-string . "* Notes\n** expla")
@@ -148,13 +103,8 @@
  (rear-context-string . "8:59 vimium.org\n")
  (position . 1546))
 ("private.xml"
- (filename . "~/drive/dotfiles/karabiner-config/private.xml")
+ (filename . "~/Dropbox/configs/karabiner-config/private.xml")
  (front-context-string . "<?xml version=\"1")
  (rear-context-string)
  (position . 1))
-("init.el"
- (filename . "~/.emacs.d/init.el")
- (front-context-string . "          '(\n   ")
- (rear-context-string . "-refile-targets\n")
- (position . 18146))
 )

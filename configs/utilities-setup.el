@@ -142,10 +142,10 @@ Assumes that the frame is only split into two."
 ;;   (coffee-js2coffee-replace-region start end))
 ;;   (setf filename buffer-file-name)
 ;;   (setf newfilename (concat
-;; 		     (car (split-string filename "\\.")) ".html.haml"))
+;;                   (car (split-string filename "\\.")) ".html.haml"))
 ;;   (save-buffer)
 ;;   (shell-command (concat
-;; 		  "html2haml " filename " > " newfilename))
+;;                "html2haml " filename " > " newfilename))
 ;;   (kill-buffer (current-buffer))
 ;;   (delete-file filename)
 ;;   (find-file newfilename))
@@ -311,7 +311,7 @@ With a prefix argument, insert a newline above the current line."
     (progn
       (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
       (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
-  
+
 
 (defun get-region (beg end)
   "message region or \"empty string\" if none highlighted"
@@ -558,7 +558,7 @@ Including indent-buffer, which should not be called automatically on save."
   "start eshell in split window. you can feed it an optional initial command"
   (interactive)
   (split-window-below-and-move-there-dammit)
-  (multi-eshell 1))
+  (eshell 1))
 
 
 (defun fg-emms-track-description (track)
@@ -591,25 +591,25 @@ Including indent-buffer, which should not be called automatically on save."
 
 (defun soulseek-playlist ()
   (interactive)
-  (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
+  (let ((songs (f-files "/Users/dylanconlin/Downloads/Soulseek Downloads/complete" nil t)))
     ;; (emms-playlist-current-clear)
     (-map (lambda (song) (emms-add-file song)) songs)
     (emms)))
 
 (defun soulseek-move-songs ()
   (interactive)
-  (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
+  (let ((songs (f-files "/Users/dylanconlin/Downloads/Soulseek Downloads/complete" nil t)))
     (-map (lambda (song) (move-song-to-new-dir song)) songs)))
 
 (defun move-song-to-new-dir (s)
   (f-move s (soulseek-new-dir s)))
 
 (defun soulseek-new-dir (song)
-  (s-concat "/Users/dylanconlin/Soulseek Downloads/soulseek-songs/" (f-filename song)))
+  (s-concat "/Users/dylanconlin/Downloads/Soulseek Downloads/soulseek-songs/" (f-filename song)))
 
 (defun emms-soulseek ()
   (interactive)
-  (emms-add-directory "~/Soulseek Downloads/soulseek-songs/")
+  (emms-add-directory "~/Downloads/Soulseek Downloads/soulseek-songs/")
   (emms))
 
 
@@ -636,8 +636,8 @@ Including indent-buffer, which should not be called automatically on save."
 (defun cache-last-open-file ()
   (interactive)
   (let ((current-file-path (if (equal major-mode 'dired-mode)
-			       default-directory
-			     (expand-file-name buffer-file-name user-emacs-directory)))
+                               default-directory
+                             (expand-file-name buffer-file-name user-emacs-directory)))
         (cache-path (concat user-emacs-directory ".last-opened-file")))
     (f-write current-file-path 'utf-8  cache-path)))
 
@@ -660,11 +660,11 @@ Including indent-buffer, which should not be called automatically on save."
   ;; go to beginning of word
   (while (not (point-at-beginning-of-word?))
     (backward-char 1))
-  
+
   )
 
 
-      
+
 (defun string-wrap-interpolate (start end)
   "Insert a #{..} around a region."
   (interactive "r")
@@ -677,8 +677,8 @@ Including indent-buffer, which should not be called automatically on save."
 ;; ;; the the frame title to the current buffer name
 ;; (setq frame-title-format
 ;;       '((:eval
-;; 	 (if (buffer-file-name)
-;; 	   (abbreviate-file-name (buffer-file-name)) "%b"))))
+;;       (if (buffer-file-name)
+;;         (abbreviate-file-name (buffer-file-name)) "%b"))))
 
 (defun my-helm-do-ag ()
   (interactive)
@@ -687,19 +687,19 @@ Including indent-buffer, which should not be called automatically on save."
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
-;;  (unless (and helm-source-ls-git-status
-;;               helm-source-ls-git)
-;;    (setq helm-source-ls-git-status
-;;          (helm-make-source "Git status" 'helm-ls-git-status-source
-;;            :fuzzy-match helm-ls-git-fuzzy-match)
-;;          helm-source-ls-git))
+  ;;  (unless (and helm-source-ls-git-status
+  ;;               helm-source-ls-git)
+  ;;    (setq helm-source-ls-git-status
+  ;;          (helm-make-source "Git status" 'helm-ls-git-status-source
+  ;;            :fuzzy-match helm-ls-git-fuzzy-match)
+  ;;          helm-source-ls-git))
   (if (this-is-a-git-repo?)
       (let ((helm-ff-transformer-show-only-basename nil))
         (helm :sources '(
-			 helm-source-projectile-buffers-list
-			 ;; helm-source-ls-git-status
-			 helm-source-projectile-files-list
-			 helm-source-bookmarks)
+                         helm-source-projectile-buffers-list
+                         ;; helm-source-ls-git-status
+                         helm-source-projectile-files-list
+                         helm-source-bookmarks)
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))
     (helm-projectless-search)))
@@ -709,12 +709,12 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (unless helm-source-buffers-list
     (setq helm-source-buffers-list
-	  (helm-make-source "Buffers" 'helm-source-buffers)))
+          (helm-make-source "Buffers" 'helm-source-buffers)))
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-		     helm-source-bookmarks)
-	  :buffer "*project(less)-search*"
-	  :prompt (projectile-prepend-project-name "pattern: "))))
+                     helm-source-bookmarks)
+          :buffer "*project(less)-search*"
+          :prompt (projectile-prepend-project-name "pattern: "))))
 
 (defun ruby-doc ()
   (interactive)
@@ -767,25 +767,25 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (let* ((str (current-kill 0))
          (default-directory "~/youtube-downloads/audio"))
-    (async-shell-command 
+    (async-shell-command
      (s-concat "cd ~/youtube-downloads/audio && youtube-dl --extract-audio --audio-format mp3 \"" str "\""))))
 
 (defun youtube-dl-as-video ()
   (interactive)
   (let* ((str (current-kill 0))
          (default-directory "~/youtube-downloads/audio"))
-    (async-shell-command 
+    (async-shell-command
      (s-concat "cd ~/youtube-downloads/video && youtube-dl \"" str "\""))))
 
 (defun ruby-comment-gap ()
   (interactive)
-  
+
   (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\""))
 
 (defun wrap-item (start end)
   "Insert a markup \begin{itemize}\end{itemize} around a region."
   (interactive "r")
-  (save-excursion 
+  (save-excursion
     ;; (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
     ;; (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")
     (goto-char end) (insert "\nputs \"___________________________________________________________________________________________________\"")
@@ -844,7 +844,7 @@ Including indent-buffer, which should not be called automatically on save."
 ;;         (clipboard-kill-region (point-min) (point-max)))
 ;;       (message filename))))
 
-(eval-after-load  "Dired" 
+(eval-after-load  "Dired"
   '(define-key dired-mode-map (kbd "C-c y") 'dired-quicklook))
 
 (provide 'utilities-setup)

@@ -16,7 +16,7 @@
 (setq ns-function-modifier 'hyper)
 
 ;; setup my packages
-(require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
 (cask-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -24,9 +24,9 @@
 (setq use-package-verbose t)
 (require 'use-package)
 
-;(use-package auto-compile		
-;  :ensure t
-;  :init (auto-compile-on-load-mode))
+                                        ;(use-package auto-compile
+                                        ;  :ensure t
+                                        ;  :init (auto-compile-on-load-mode))
 
 (setq load-prefer-newer t)
 
@@ -117,9 +117,9 @@
          ("M-k" . helm-project-search)
          ("M-K" . my-helm-do-ag)
          ("C-x b" . helm-projectless-search)
+         ("H-n" . helm-scroll-other-window)
+         ("H-p" . helm-scroll-other-window-down)
          ("C-x t" . helm-imenu)
-         ("s-P" . helm-scroll-other-window-down)
-         ("s-N" . helm-scroll-other-window)
          ("M-C-p" . helm-eshell-history)
          ("C-c f" . helm-dash)
          ("C-x f" . helm-recentf)
@@ -345,8 +345,6 @@
   (other-window 1 nil)
   (if (= prefix 1) (switch-to-next-buffer)))
 
-(bind-key "C-x 2" 'my/vsplit-last-buffer)
-(bind-key "C-x 3" 'my/hsplit-last-buffer)
 
 (use-package expand-region
   :ensure expand-region)
@@ -394,18 +392,6 @@
   :config
   (add-hook 'scss-mode-hook 'css-doc))
 
-(use-package ruby-mode
-  :ensure t
-  :init
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode)))
-  :config
-  (add-hook 'ruby-mode-hook 'ruby-doc)
-  (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
-  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode))
 
 ;; (custom-set-variables '(coffee-tab-width 2))
 
@@ -443,7 +429,8 @@
     (add-hook 'css-mode-hook 'rainbow-mode)
     (add-hook 'scss-mode-hook 'rainbow-mode)
     (add-hook 'web-mode-hook 'rainbow-mode)
-    (add-hook 'haml-mode-hook 'rainbow-mode)))
+    (add-hook 'haml-mode-hook 'rainbow-mode)
+    (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)))
 
 (use-package haml-mode
   :init
@@ -453,8 +440,8 @@
                                       comment-end ""))))
   :config
   (progn
-   ;; (add-hook 'haml-mode-hook 'flycheck-mode nil)
-   ))
+    ;; (add-hook 'haml-mode-hook 'flycheck-mode nil)
+    ))
 
 (use-package pallet
   :ensure pallet
@@ -471,9 +458,10 @@
 ;;    ("M-{" . corral-braces-backward)
 ;;    ("M-}" . corral-braces-forward)
 ;;    ("M-\"" . corral-double-quotes-backward)))
-
+(require 'point-undo)
 (use-package point-undo
   :ensure t
+  :init
   :bind
   (("M-/" . point-undo)
    ("M-." . point-redo)))
@@ -500,6 +488,7 @@
 
 (use-package eshell
   :ensure t
+  :init
   :bind
   ("C-x p s" . start-eshell-in-split-window)
   :config
@@ -635,8 +624,19 @@
 ;; disable scss-mode from compiling on save
 (setq scss-compile-at-save nil)
 
-(require 'ruby-interpolation)
+;; (require 'ruby-interpolation)
 (require 'uniquify)
+
+(use-package ruby-mode
+  :ensure t
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode)))
+  :config
+  (add-hook 'ruby-mode-hook 'ruby-doc))
 
 (setq uniquify-buffer-name-style 'forward)
 
@@ -658,6 +658,7 @@
 (find-file "~/.emacs.d/init.el")
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+;; (remove-hook 'before-save-hook 'cleanup-buffer)
+
 ;; (global-aggressive-indent-mode)
 (open-last-visited-file)
-
