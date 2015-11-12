@@ -5,8 +5,8 @@
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
+;; (when (fboundp 'scroll-bar-mode)
+;;   (scroll-bar-mode -1))
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setenv "NODE_NO_READLINE" "1")
@@ -19,14 +19,17 @@
 (require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
 (cask-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(setq use-package-verbose t)
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)     
+(require 'bind-key)     
 
-                                        ;(use-package auto-compile
-                                        ;  :ensure t
-                                        ;  :init (auto-compile-on-load-mode))
+
+
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
+;; (setq use-package-verbose t)
+;; (require 'use-package)
 
 (setq load-prefer-newer t)
 
@@ -109,7 +112,8 @@
           helm-M-x-requires-pattern nil
           helm-ff-skip-boring-files t
           helm-buffer-max-length 30)
-    (helm-mode))
+    (helm-mode)
+    (helm-flx-mode +1))
   :bind (("C-x C-f" . helm-find-files)
          ("C-x l" . helm-ls-git-ls)
          ("C-x a" . helm-apropos)
@@ -178,40 +182,43 @@
 
 (defun my/setup-light-theme ()
   (interactive)
-  (load-theme 'apropospriate-light t)
-  ;; only show bad whitespace
-  (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
-  (setq dired-details-propagate-flag t)
-  (setq redisplay-dont-pause t)
-  (setq scroll-margin 5)
-  (setq scroll-step 1)
-  (setq scroll-conservatively 10000)
-  (setq scroll-preserve-screen-position 1)
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  (setq scroll-step 1) ;; keyboard scroll one line at a time
-  (setq ring-bell-function 'ignore)
-  (setq-default truncate-lines t)
-  ;; evil cursor
-  (setq evil-emacs-state-cursor '("red" box))
-  (setq evil-normal-state-cursor '("green" box))
-  (setq evil-visual-state-cursor '("yellow" box))
-  (setq evil-insert-state-cursor '("red" bar))
-  (setq evil-replace-state-cursor '("red" bar))
-  (setq evil-operator-state-cursor '("red" hollow))
+  (load-theme 'base16-google-light t)
+  ;; (setq redisplay-dont-pause t)
   (setq require-final-newline t)   ;; add newline to file on save
   (set-face-attribute 'default nil :family "monaco" :height 110)   ;; font color and size
   (blink-cursor-mode 1)
   (global-subword-mode 1)
   (delete-selection-mode 1)
   (auto-indent-mode 1)
-  (toggle-indicate-empty-lines)
-  (setq show-paren-mode 1)
-  (setq show-trailing-whitespace nil)
-  ;; (set-background-color "white")
-  (set-face-attribute 'region nil :background "lightblue")
-  (set-border-color "red"))
+
+  ;; ;; only show bad whitespace
+  ;; (setq whitespace-style '(face trailing tab lines newline empty space-before-tab indentation empty space-after-tab))
+  ;; (setq dired-details-propagate-flag t)
+  ;; (setq scroll-margin 500)
+  ;; (setq scroll-step 1)
+  ;; (setq scroll-conservatively 10000000)
+  ;; (setq scroll-preserve-screen-position 1)
+  ;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  
+  ;; (setq-default truncate-lines t)
+  ;; ;; evil cursor
+  ;; (setq evil-emacs-state-cursor '("red" box))
+  ;; (setq evil-normal-state-cursor '("green" box))
+  ;; (setq evil-visual-state-cursor '("yellow" box))
+  ;; (setq evil-insert-state-cursor '("red" bar))
+  ;; (setq evil-replace-state-cursor '("red" bar))
+  ;; (setq evil-operator-state-cursor '("red" hollow))
+  
+  ;; (toggle-indicate-empty-lines)
+  ;; (setq show-paren-mode 1)
+  ;; (setq show-trailing-whitespace nil)
+  ;; ;; (set-background-color "white")
+  ;; (set-face-attribute 'region nil :background "lightblue")
+  ;; (set-border-color "red")
+  )
+
 
 (defun my/setup-dark-theme ()
   (interactive)
@@ -275,10 +282,10 @@
 ;;     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;;     (bind-key [escape] 'evil-exit-emacs-state)))
 
-(use-package whitespace
-  :ensure t
-  :config
-  (global-whitespace-mode 1))
+;; (use-package whitespace
+;;   :ensure t
+;;   :config
+;;   (global-whitespace-mode 1))
 
 (use-package undo-tree
   :ensure t
@@ -684,4 +691,6 @@
               (flycheck-mode))))
 (setq jsx-indent-level 2)
 
+(setq ring-bell-function 'ignore)
+(toggle-word-wrap 1)
 (open-last-visited-file)
