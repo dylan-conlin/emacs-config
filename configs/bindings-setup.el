@@ -161,8 +161,10 @@ _q_: cancel
 
 
 ;; auto-complete settings
-(bind-key "C-n" 'ac-next ac-menu-map)
-(bind-key "C-p" 'ac-previous ac-menu-map)
+;; (bind-key "C-n" 'ac-next ac-menu-map)
+;; (bind-key "C-p" 'ac-previous ac-menu-map)
+;; (define-key ac-completing-map [return] nil)
+;; (define-key ac-completing-map "\r" nil)
 
 ;; guide key
 (bind-key "C-x p h" 'hue-lights-toggle)
@@ -186,7 +188,8 @@ _q_: cancel
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()
 ;;   "Abort recursive edit.
-;; In Delete Selection mode, if the mark is active, just deactivate it;
+;; In Dbind-key "s-1" 'delete-other-windows)
+;; delete Selection mode, if the mark is active, just deactivate it;
 ;; then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;;   (interactive)
 ;;   (if (and delete-selection-mode transient-mark-mode mark-active)
@@ -230,9 +233,6 @@ _q_: cancel
 
 (key-chord-define-global "jl" 'c-hungry-delete-forward)
 
-(define-key ac-completing-map [return] nil)
-
-(define-key ac-completing-map "\r" nil)
 
 (key-chord-define-global "jk" 'er/expand-region)
 (key-chord-define-global "hk" 'er/contract-region)

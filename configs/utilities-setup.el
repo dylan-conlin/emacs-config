@@ -847,4 +847,20 @@ Including indent-buffer, which should not be called automatically on save."
 (eval-after-load  "Dired"
   '(define-key dired-mode-map (kbd "C-c y") 'dired-quicklook))
 
+(defun my/vsplit-last-buffer (prefix)
+  "Split the window vertically and display the previous buffer."
+  (interactive "p")
+  (split-window-vertically)
+  (other-window 1 nil)
+  (if (= prefix 1)
+      (switch-to-next-buffer)))
+
+(defun my/hsplit-last-buffer (prefix)
+  "Split the window horizontally and display the previous buffer."
+  (interactive "p")
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (if (= prefix 1) (switch-to-next-buffer)))
+
+
 (provide 'utilities-setup)
