@@ -779,7 +779,6 @@ Including indent-buffer, which should not be called automatically on save."
 
 (defun ruby-comment-gap ()
   (interactive)
-
   (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\""))
 
 (defun wrap-item (start end)
@@ -862,5 +861,13 @@ Including indent-buffer, which should not be called automatically on save."
   (other-window 1 nil)
   (if (= prefix 1) (switch-to-next-buffer)))
 
+;; start a httpd-server in current directory
+(defun httpd-start-here (directory port)
+  (interactive (list (read-directory-name "Root directory: " default-directory nil t)
+                     (read-number "Port: " 8017)))
+  (setq httpd-root directory)
+  (setq httpd-port port)
+  (httpd-start)
+  (browse-url (concat "http://localhost:" (number-to-string port) "/")))
 
 (provide 'utilities-setup)

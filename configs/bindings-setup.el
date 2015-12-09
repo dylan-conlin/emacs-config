@@ -39,7 +39,7 @@
 (bind-key "C-S-H" 'shrink-window-horizontally)
 (bind-key "C-S-K" 'enlarge-window)
 (bind-key "C-S-J" 'shrink-window)
-(bind-key "M-o" 'ace-window)
+(bind-key "M-o" nil)
 
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
@@ -57,11 +57,11 @@
 (bind-key* "C-M-h" 'kill-whole-line)
 
 (bind-key "C-q" 'backward-kill-word)
-(bind-key* "M-p" 'backward-paragraph)
-(bind-key* "M-n" 'forward-paragraph)
+;; (bind-key* "M-p" 'backward-paragraph)
+;; (bind-key* "M-n" 'forward-paragraph)
 (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-(define-key key-translation-map (kbd "C-c p") (kbd "<f2>"))
+
 
 ;; magit
 (bind-key "s-SPC" 'magit-status)
@@ -106,8 +106,8 @@ _q_: cancel
 (bind-key "M-s s" 'scroll-bar-mode)
 ;; (bind-key "C-x n" 'make-frame)
 
-(bind-key "C-x C-n" 'flycheck-tip-cycle)
-(bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
+;; (bind-key "C-x C-n" 'flycheck-tip-cycle)
+;; (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
 ;; (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 (bind-key "M-;" 'comment-dwim-2)
 
@@ -166,17 +166,17 @@ _q_: cancel
 ;; (define-key ac-completing-map [return] nil)
 ;; (define-key ac-completing-map "\r" nil)
 
-;; guide key
-(bind-key "C-x p h" 'hue-lights-toggle)
-(bind-key "C-x p c" 'customize)
-(bind-key "C-x p f" 'customize-face)
-(bind-key "C-x p d" 'projectile-find-dir)
-(bind-key "C-x p i" 'projectile-invalidate-cache)
-(bind-key "C-x p l" 'paradox-list-packages)
+;; ;; guide key
+;; (bind-key "C-x p h" 'hue-lights-toggle)
+;; (bind-key "C-x p c" 'customize)
+;; (bind-key "C-x p f" 'customize-face)
+;; (bind-key "C-x p d" 'projectile-find-dir)
+;; (bind-key "C-x p i" 'projectile-invalidate-cache)
+;; (bind-key "C-x p l" 'paradox-list-packages)
 
 (bind-key "C-o" 'open-line-above)
 
-(bind-key "M-a" 'mark-whole-buffer)
+;; (bind-key "M-a" 'mark-whole-buffer)
 (bind-key "M-T" 'my-tail)
 (bind-key "C-c m" 'view-echo-area-messages)
 
@@ -234,9 +234,31 @@ _q_: cancel
 (key-chord-define-global "jl" 'c-hungry-delete-forward)
 
 
-(key-chord-define-global "jk" 'er/expand-region)
-(key-chord-define-global "hk" 'er/contract-region)
+(key-chord-define-global "hk" 'er/expand-region)
 
 ;; (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+
+;; ;; esc quits
+;; (defun minibuffer-keyboard-quit ()
+;;   "Abort recursive edit.
+;;    In Delete Selection mode, if the mark is active, just deactivate it;
+;;    then it takes a second \\[keyboard-quit] to abort the minibuffer."
+;;   (interactive)
+;;   (if (and delete-selection-mode transient-mark-mode mark-active)
+;;       (setq deactivate-mark  t)
+;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;     (abort-recursive-edit)))
+;; (this)
+
+;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; (define-key evil-visual-state-map [escape] 'keyboard-quit)
+
+;; (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; (global-set-key [escape] 'evil-exit-emacs-state)
+
 
 (provide 'bindings-setup)

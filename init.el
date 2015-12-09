@@ -140,16 +140,12 @@
    ("s-P" . mc/unmark-previous-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
-(use-package smartparens
-  :config
-  (smartparens-global-mode))
-
 (use-package color-theme)
 
 ;; behavior and appearance stuff
 
-;; (load-theme 'base16-google-light t)
-
+;; (load-theme 'base16-brewer-light t)
+;; (load-theme ')
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
@@ -182,7 +178,8 @@
 (use-package git-gutter
   :diminish git-gutter-mode
   :config
-  (global-git-gutter-mode)
+  (global-git-gutter-mode 1)
+  ;; (git-gutter:linum-setup)
   :bind
   (("C-x C-n" . my-next-edit)
    ("C-x C-p" . my-previous-edit)
@@ -191,15 +188,15 @@
 
 ;; (custom-set-variables '(git-gutter:hide-gutter nil))
 
-(use-package guide-key
-  :diminish guide-key-mode
-  :config
-  (progn
-    (setq guide-key/recursive-key-sequence-flag t)
-    (setq guide-key/popup-window-position 'right)
-    (setq guide-key/idle-delay 0)
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "M-r" "M-d"))
-    (guide-key-mode 1)))
+;; (use-package guide-key
+;;   :diminish guide-key-mode
+;;   :config
+;;   (progn
+;;     (setq guide-key/recursive-key-sequence-flag t)
+;;     (setq guide-key/popup-window-position 'right)
+;;     (setq guide-key/idle-delay 0)
+;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "M-r" "M-d"))
+;;     (guide-key-mode 1)))
 
 (use-package helm-swoop
   :config
@@ -312,71 +309,97 @@
                 ;; (flyspell-mode 1)
 		))))
 
-;; (use-package org
-;;   :bind
-;;   (("C-S-n" . org-move-subtree-down)
-;;    ("C-c c" . org-capture)
-;;    ("C-c l" . org-capture-goto-last-stored)
-;;    ("C-c a" . org-agenda))
+(use-package org
+  :bind
+  (("C-S-n" . org-move-subtree-down)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-capture-goto-last-stored)
+   ("C-c a" . org-agenda))
+  :init
+  (progn
+    (require 'org-install)
+    (require 'org-crypt)
+    (require 'gnus-async)
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (require 'flyspell-lazy)
+                (visual-line-mode t)
+                (flyspell-lazy-mode 1)
+                (flyspell-mode 1)))
+    ;; prettier appearance settings
+    (setq org-log-done t)
+    (setq org-startup-indented t)
+    (setq org-hide-leading-starts t)
+
+    ;; behavior settings
+    (setq org-use-fast-todo-selection t)
+    ;; setup org path
+    (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
+
+    ;; setup files agenda is aware of
+    (setq org-agenda-files '("~/Dropbox/org/code.org"
+                             "~/Dropbox/org/notes.org"
+                             "~/Dropbox/org/shortstack.org"
+                             "~/Dropbox/org/journal.org"
+                             "~/Dropbox/org/todo.org"))
+    (setq org-capture-templates
+          '(
+            ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
+            ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
+            ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
+            ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
+            ("l" "Ledger entries")
+            ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")))
+    (setq org-refile-targets
+          '(("~/Dropbox/org/notes.org" . (:level . 1))
+            ("~/Dropbox/org/todo.org" . (:level . 1))
+            ("~/Dropbox/org/shortstack.org" . (:level . 1))
+            ("~/Dropbox/org/secrets.org" . (:level . 1))
+            ("~/Dropbox/org/code.org" . (:level . 1))
+            ("~/Dropbox/org/blogs.org" . (:level . 1))))))
+
+;; (use-package evil-smartparens
 ;;   :init
-;;   (progn
-;;     (require 'org-install)
-;;     (require 'org-crypt)
-;;     (require 'gnus-async)
-;;     (add-hook 'org-mode-hook
-;;               (lambda ()
-;;                 (require 'flyspell-lazy)
-;;                 (visual-line-mode t)
-;;                 (flyspell-lazy-mode 1)
-;;                 (flyspell-mode 1)))
-;;     ;; prettier appearance settings
-;;     (setq org-log-done t)
-;;     (setq org-startup-indented t)
-;;     (setq org-hide-leading-starts t)
-
-;;     ;; behavior settings
-;;     (setq org-use-fast-todo-selection t)
-;;     ;; setup org path
-;;     (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
-
-;;     ;; setup files agenda is aware of
-;;     (setq org-agenda-files '("~/Dropbox/org/code.org"
-;;                              "~/Dropbox/org/notes.org"
-;;                              "~/Dropbox/org/shortstack.org"
-;;                              "~/Dropbox/org/journal.org"
-;;                              "~/Dropbox/org/todo.org"))
-;;     (setq org-capture-templates
-;;           '(
-;;             ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
-;;             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
-;;             ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
-;;             ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
-;;             ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
-;;             ("l" "Ledger entries")
-;;             ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")))
-;;     (setq org-refile-targets
-;;           '(("~/Dropbox/org/notes.org" . (:level . 1))
-;;             ("~/Dropbox/org/todo.org" . (:level . 1))
-;;             ("~/Dropbox/org/shortstack.org" . (:level . 1))
-;;             ("~/Dropbox/org/secrets.org" . (:level . 1))
-;;             ("~/Dropbox/org/code.org" . (:level . 1))
-;;             ("~/Dropbox/org/blogs.org" . (:level . 1))))))
+;;   (evil-smartparens-mode 1))
 
 (use-package evil-mode
   :init 
+  (global-evil-leader-mode)
   (evil-mode 1)
-  (evil-escape-mode 1))
+  (evil-escape-mode 1)
+  (global-evil-surround-mode 1)
+  (evil-leader/set-leader ",")
+  (setq evil-leader/in-all-states 1))
 
 (global-set-key (kbd "C-g") 'evil-escape)
 
+(smartparens-global-mode 1)
   ;; evil cursor
-(setq evil-emacs-state-cursor '("red" box))
-(setq evil-normal-state-cursor '("green" box))
-(setq evil-visual-state-cursor '("yellow" box))
-(setq evil-insert-state-cursor '("red" bar))
-(setq evil-replace-state-cursor '("red" bar))
-(setq evil-operator-state-cursor '("red" hollow))
+;; (setq evil-emacs-state-cursor '("red" box))
+;; (setq evil-normal-state-cursor '("green3" box))
+;; (setq evil-visual-state-cursor '("orange" box))
+;; (setq evil-insert-state-cursor '("red" bar))
+;; (setq evil-replace-state-cursor '("blue" bar))
+;; (setq evil-operator-state-cursor '("pink" hollow))
+(global-set-key (kbd "C-g") 'evil-escape)
 
+(evilnc-default-hotkeys)
+
+;; Vim key bindings
+(evil-leader/set-key
+  "ci" 'evilnc-comment-or-uncomment-lines
+  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+  "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+  "cc" 'evilnc-copy-and-comment-lines
+  "cp" 'evilnc-comment-or-uncomment-paragraphs
+  "cr" 'comment-or-uncomment-region
+  "cv" 'evilnc-toggle-invert-comment-line-by-line
+  "\\" 'evilnc-comment-operator)
+
+;; (use-package emojify
+;;   :config
+;;   (global-emojify-mode 1))
 
 (toggle-indicate-empty-lines)
 (setq show-paren-mode 1)
@@ -420,11 +443,6 @@
 ;; ;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
 
 
-
-
-
-
-
 ;; (setq x-select-enable-clipboard t
 ;;       x-select-enable-primary t
 ;;       save-interprogram-paste-before-kill t
@@ -433,8 +451,6 @@
 ;;       require-final-newline t
 ;;       ediff-window-setup-function 'ediff-setup-windows-plain
 ;;       save-place-file (concat user-emacs-directory "places"))
-
-
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -450,31 +466,38 @@
 (use-package bindings-setup)
 (use-package vc-git)
 (use-package repository-root)
+
 (set-exec-path-from-shell-PATH)
 
 (find-file "~/.emacs.d/init.el")
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
-    ad-do-it))
+;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
+;;   (if (equal web-mode-content-type "jsx")
+;;       (let ((web-mode-enable-part-face nil))
+;;         ad-do-it)
+;;     ad-do-it))
 
-(flycheck-define-checker jsxhint-checker
-  "A JSX syntax and style checker based on JSXHint."
+;; (flycheck-define-checker jsxhint-checker
+;;   "A JSX syntax and style checker based on JSXHint."
 
-  :command ("jsxhint" source)
-  :error-patterns
-  ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-  :modes (web-mode))
+;;   :command ("jsxhint" source)
+;;   :error-patterns
+;;   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
+;;   :modes (web-mode))
 
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (equal web-mode-content-type "jsx")
-              ;; enable flycheck
-              (flycheck-select-checker 'jsxhint-checker)
-              (flycheck-mode))))
+;; (add-hook 'web-mode-hook
+;;           (lambda ()
+;;             (when (equal web-mode-content-type "jsx")
+;;               ;; enable flycheck
+;;               (flycheck-select-checker 'jsxhint-checker)
+;;               (flycheck-mode))))
 
-(setq jsx-indent-level 2)
+;; (setq jsx-indent-level 2)
 
+;; (global-linum-mode 1)
+(emms-cache-enable)
+
+
+
+(use-package web-mode)

@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** remember porn")
- (rear-context-string . "0-14 Wed 13:38]\n")
- (position . 370022))
+ (front-context-string . "** scroll parent")
+ (rear-context-string . "n-eldoc-mode)))\n")
+ (position . 375276))
 ("text.org.gpg"
  (filename . "~/Dropbox/org/text.org.gpg")
  (front-context-string . "* Secrets\n** suc")
