@@ -219,7 +219,6 @@ With a prefix arg set to real value of current selection."
 ;;   (forward-line -1)
 ;;   (indent-to (previous-nonblank-indent-value)))
 
-
 (defun open-line-above ()
   "Open a line above the line the point is at.
 Then move to that line and indent according to mode"
@@ -869,5 +868,54 @@ Including indent-buffer, which should not be called automatically on save."
   (setq httpd-port port)
   (httpd-start)
   (browse-url (concat "http://localhost:" (number-to-string port) "/")))
+
+(defun evil-split-window-v-and-move-there ()
+  (interactive)
+  (evil-window-vsplit)
+  (evil-window-right 1)
+  (switch-to-next-buffer))
+
+
+(defun evil-split-window-h-and-move-there ()
+  (interactive)
+  (evil-window-split)
+  (evil-window-down 1)
+  (switch-to-next-buffer))
+
+(defun uniquify-all-lines-region (start end)
+    "Find duplicate lines in region START to END keeping first occurrence."
+    (interactive "*r")
+    (save-excursion
+      (let ((end (copy-marker end)))
+        (while
+            (progn
+              (goto-char start)
+              (re-search-forward "^\\(.*\\)\n\\(\\(.*\n\\)*\\)\\1\n" end t))
+          (replace-match "\\1\n\\2")))))
+ 
+
+  (defun uniquify-all-lines-buffer ()
+    "Delete duplicate lines in buffer and keep first occurrence. This is
+nice when uniqifying your bash or zsh history"
+    (interactive "*")
+    (uniquify-all-lines-region (point-min) (point-max)))
+
+(defhydra hydra-window-switcher (global-map "M-r")
+  "window: "
+  ("l" windmove-right "right")
+  ("h" windmove-left "left")
+  ("j" windmove-down "down")
+  ("k" windmove-up "up"))
+
+
+;; (defhydra hydra-launcher (:color blue)
+;;   "Launch"
+;;   ("h" man "man")
+;;   ("r" (browse-url "http://www.reddit.com/r/emacs/") "reddit")
+;;   ("w" (browse-url "http://www.emacswiki.org/") "emacswiki")
+;;   ("s" shell "shell")
+;;   ("q" nil "cancel"))
+;; (global-set-key (kbd "C-c r") 'hydra-launcher/body)
+
 
 (provide 'utilities-setup)

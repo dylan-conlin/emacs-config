@@ -71,7 +71,8 @@
   (setq ac-use-menu-map t)
   :config
   (progn
-    (auto-complete-mode t)
+    (auto-complete-mode 1)
+    (global-auto-complete-mode)
     (ac-config-default)
     (setq ac-use-fuzzy t)
     
@@ -240,7 +241,6 @@
   (setq scss-compile-at-save nil))
 
 (use-package rainbow-mode
-  :diminish rainbow-mode
   :init
   (progn
     (add-hook 'css-mode-hook 'rainbow-mode)
@@ -360,42 +360,47 @@
             ("~/Dropbox/org/blogs.org" . (:level . 1))))))
 
 ;; (use-package evil-smartparens
+
 ;;   :init
 ;;   (evil-smartparens-mode 1))
 
-(use-package evil-mode
-  :init 
-  (global-evil-leader-mode)
-  (evil-mode 1)
-  (evil-escape-mode 1)
-  (global-evil-surround-mode 1)
-  (evil-leader/set-leader ",")
-  (setq evil-leader/in-all-states 1))
+;; (use-package evil-mode
+;;   :init 
+;;   (global-evil-leader-mode)
+;;   (evil-mode 1)
+;;   (evil-escape-mode 1)
+;;   (global-evil-surround-mode 1)
+;;   (evil-leader/set-leader ",")
+;;   (setq evil-leader/in-all-states 1))
 
-(global-set-key (kbd "C-g") 'evil-escape)
+;; (global-set-key (kbd "C-g") 'evil-escape)
 
-(smartparens-global-mode 1)
-  ;; evil cursor
-;; (setq evil-emacs-state-cursor '("red" box))
-;; (setq evil-normal-state-cursor '("green3" box))
-;; (setq evil-visual-state-cursor '("orange" box))
-;; (setq evil-insert-state-cursor '("red" bar))
-;; (setq evil-replace-state-cursor '("blue" bar))
-;; (setq evil-operator-state-cursor '("pink" hollow))
-(global-set-key (kbd "C-g") 'evil-escape)
+(smartparens-global-mode)
+;;   ;; evil cursor
+;; ;; (setq evil-emacs-state-cursor '("red" box))
+;; ;; (setq evil-normal-state-cursor '("green3" box))
+;; ;; (setq evil-visual-state-cursor '("orange" box))
+;; ;; (setq evil-insert-state-cursor '("red" bar))
+;; ;; (setq evil-replace-state-cursor '("blue" bar))
+;; ;; (setq evil-operator-state-cursor '("pink" hollow))
+;; (global-set-key (kbd "C-g") 'evil-escape)
 
-(evilnc-default-hotkeys)
+;; (evilnc-default-hotkeys)
 
-;; Vim key bindings
-(evil-leader/set-key
-  "ci" 'evilnc-comment-or-uncomment-lines
-  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-  "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
-  "cc" 'evilnc-copy-and-comment-lines
-  "cp" 'evilnc-comment-or-uncomment-paragraphs
-  "cr" 'comment-or-uncomment-region
-  "cv" 'evilnc-toggle-invert-comment-line-by-line
-  "\\" 'evilnc-comment-operator)
+;; ;; Vim key bindings
+;; (evil-leader/set-key
+;;   "ci" 'evilnc-comment-or-uncomment-lines
+;;   "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+;;   "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+;;   "cc" 'evilnc-copy-and-comment-lines
+;;   "cp" 'evilnc-comment-or-uncomment-paragraphs
+;;   "cr" 'comment-or-uncomment-region
+;;   "cv" 'evilnc-toggle-invert-comment-line-by-line
+;;   "\\" 'evilnc-comment-operator)
+
+;; (define-key evil-motion-state-map (kbd "C-w C-s") #'evil-split-window-h-and-move-there)
+;; (define-key evil-motion-state-map (kbd "C-w C-v") #'evil-split-window-v-and-move-there)
+
 
 ;; (use-package emojify
 ;;   :config
@@ -408,6 +413,21 @@
 (set-face-attribute 'region nil :background "lightblue")
 (set-border-color "red")
 
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
+(require 'emms-setup)
+(require 'emms-player-mplayer)
+(emms-standard)
+(emms-default-players)
+(emms-playing-time-enable-display)
+(define-emms-simple-player mplayer '(file url)
+  (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+                ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+                ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+  "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
+(require 'emms-playing-time)
+(emms-playing-time 1)
 
 
 ;; (use-package emms
@@ -442,7 +462,6 @@
 ;; ;;   (progn
 ;; ;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
 
-
 ;; (setq x-select-enable-clipboard t
 ;;       x-select-enable-primary t
 ;;       save-interprogram-paste-before-kill t
@@ -456,9 +475,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-
-
-
 ;; Set up load path
 (add-to-list 'load-path "~/.emacs.d/configs/")
 
@@ -470,6 +486,9 @@
 (set-exec-path-from-shell-PATH)
 
 (find-file "~/.emacs.d/init.el")
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
 ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 ;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
@@ -496,8 +515,14 @@
 ;; (setq jsx-indent-level 2)
 
 ;; (global-linum-mode 1)
+
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
 (emms-cache-enable)
 
+(use-package rvm
+  :config
+  (rvm-use-default))
 
 
 (use-package web-mode)

@@ -17,8 +17,6 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(ansi-term-color-vector
-   [unspecified "#151718" "#CE4045" "#9FCA56" "#DCCD69" "#55B5DB" "#A074C4" "#55B5DB" "#D4D7D6"] t)
  '(auto-image-file-mode t)
  '(aw-background t)
  '(battery-mode-line-format " %p")
@@ -80,6 +78,8 @@ static char *note[] = {
  '(fci-rule-color "#f1c40f")
  '(fill-column 110)
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(flycheck-pos-tip-mode t)
+ '(flycheck-pos-tip-timeout 3)
  '(fringe-mode 1 nil (fringe))
  '(git-gutter:hide-gutter nil)
  '(global-auto-complete-mode t)
@@ -191,6 +191,7 @@ static char *gnus-pointer[] = {
  '(lazy-highlight-initial-delay 0)
  '(linum-format " %d ")
  '(magit-completing-read-function (quote magit-builtin-completing-read))
+ '(magit-diff-arguments (quote ("--no-ext-diff")))
  '(magit-diff-use-overlays nil)
  '(magit-item-highlight-face (quote magit-item-highlight))
  '(magit-use-overlays nil)
@@ -212,6 +213,7 @@ static char *gnus-pointer[] = {
  '(package-build-verbose nil)
  '(paradox-automatically-star nil)
  '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
+ '(pos-tip-use-relative-coordinates t)
  '(projectile-completion-system (quote helm))
  '(projectile-enable-caching t)
  '(projectile-indexing-method (quote alien))

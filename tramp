@@ -1,0 +1,6 @@
+;; -*- emacs-lisp -*- <15/12/22 11:11:34 /Users/dylanconlin/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["vagrant" nil "ss_vagrant" nil nil]
+  nil))

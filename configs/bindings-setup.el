@@ -95,11 +95,11 @@ _q_: cancel
 
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
-(bind-key "H-s" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack")))
-(bind-key "H-r" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-server")))
-(bind-key "H-d" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-designer")))
-(bind-key "H-a" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-admin")))
-(bind-key "H-i" '(lambda () (interactive) (find-file "~/Documents/ss_vagrant/shortstack_apps/shortstack-api")))
+(bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")))
+(bind-key "H-r" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server")))
+(bind-key "H-d" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer")))
+(bind-key "H-a" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin")))
+(bind-key "H-i" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api")))
 (bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d/")))
 
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
@@ -234,9 +234,9 @@ _q_: cancel
 (key-chord-define-global "jl" 'c-hungry-delete-forward)
 
 
-(key-chord-define-global "hk" 'er/expand-region)
+;; (key-chord-define-global "hk" 'er/expand-region)
 
-;; (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
 
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()
@@ -259,6 +259,5 @@ _q_: cancel
 ;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 ;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;; (global-set-key [escape] 'evil-exit-emacs-state)
-
 
 (provide 'bindings-setup)

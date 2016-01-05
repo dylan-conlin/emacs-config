@@ -3,10 +3,20 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** scroll parent")
- (rear-context-string . "n-eldoc-mode)))\n")
- (position . 375276))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO admin te")
+ (rear-context-string . "2-30 Wed 01:51]\n")
+ (position . 1757))
+("node-projects"
+ (filename . "~/Dropbox/side-sites/node-projects/")
+ (front-context-string)
+ (rear-context-string . "59 youtube-test\n")
+ (position . 1303))
+("soulseek-songs"
+ (filename . "~/Downloads/Soulseek Downloads/soulseek-songs/")
+ (front-context-string . "Taana Gardner - ")
+ (rear-context-string . "87 Nov 24 20:10 ")
+ (position . 45189))
 ("text.org.gpg"
  (filename . "~/Dropbox/org/text.org.gpg")
  (front-context-string . "* Secrets\n** suc")
@@ -17,16 +27,6 @@
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "44 Sep  9 15:29 ")
  (position . 296))
-("node"
- (filename . "~/Dropbox/hacking/node/")
- (front-context-string . "black-screen\n  d")
- (rear-context-string . "16 Sep  8 10:24 ")
- (position . 258))
-("hacking"
- (filename . "~/Dropbox/hacking/")
- (front-context-string)
- (rear-context-string . "36 Sep  8 10:21 ")
- (position . 253))
 ("dropbox"
  (filename . "~/Dropbox/")
  (front-context-string . ".DS_Store\n  -rw-")
@@ -67,11 +67,6 @@
  (front-context-string . "\n\n;; (eval-after")
  (rear-context-string . " something like,")
  (position . 12468))
-("soulseek"
- (filename . "~/Soulseek Downloads/complete/")
- (front-context-string . "Rhadow meets NTF")
- (rear-context-string . "02 Dec 10 19:04 ")
- (position . 282))
 (".zshrc"
  (filename . "~/.zshrc")
  (front-context-string . "ations/Postgres.")
