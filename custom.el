@@ -58,7 +58,7 @@ static char *note[] = {
 \"#..######.\",
 \"#######...\",
 \"######....\",
-\"#######..#\" };")))
+\"#######..#\" };")) t)
  '(emms-mode-line-mode-line-function (quote emms-mode-line-icon-function))
  '(emms-mode-line-titlebar-function (quote ignore))
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))
@@ -120,6 +120,7 @@ static char *gnus-pointer[] = {
  '(helm-ag-fuzzy-match t)
  '(helm-ag-insert-at-point t)
  '(helm-ag-source-type (quote one-line))
+ '(helm-ag-use-agignore t)
  '(helm-always-two-windows t)
  '(helm-bookmark-show-location t)
  '(helm-boring-buffer-regexp-list
@@ -186,6 +187,8 @@ static char *gnus-pointer[] = {
  '(indicate-empty-lines t)
  '(isearch-lazy-highlight t)
  '(ispell-highlight-face (quote flyspell-incorrect))
+ '(js2-global-externs nil t)
+ '(js2-include-node-externs t)
  '(js2-missing-semi-one-line-override t)
  '(js2-strict-missing-semi-warning nil)
  '(lazy-highlight-initial-delay 0)
@@ -194,6 +197,7 @@ static char *gnus-pointer[] = {
  '(magit-diff-arguments (quote ("--no-ext-diff")))
  '(magit-diff-use-overlays nil)
  '(magit-item-highlight-face (quote magit-item-highlight))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(magit-use-overlays nil)
 '(newsticker-url-list
 (quote

@@ -46,7 +46,7 @@
 
 ;; utilities
 (bind-key "C-c h" 'describe-key)
-(bind-key "C-c z" 'copy-full-path-to-kill-ring)
+(bind-key "C-c y" 'copy-full-path-to-kill-ring)
 (bind-key "C-c C-k" 'eval-buffer)
 
 ;; general text editing
@@ -92,6 +92,7 @@ _q_: cancel
   )
 
 (bind-key "C-c r" 'hydra-dired-buffer-menu/body)
+(bind-key "C-x p l" 'paradox-list-packages)
 
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
@@ -108,8 +109,8 @@ _q_: cancel
 
 ;; (bind-key "C-x C-n" 'flycheck-tip-cycle)
 ;; (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
-;; (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
-(bind-key "M-;" 'comment-dwim-2)
+(bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
+;; (bind-key "M-;" 'comment-dwim-2)
 
 (key-chord-define-global "fj" 'avy-goto-word-1)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
@@ -236,7 +237,7 @@ _q_: cancel
 
 ;; (key-chord-define-global "hk" 'er/expand-region)
 
-(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
+(define-key dcon-minor-mode-map (kbd "M-a") 'er/expand-region)
 
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()

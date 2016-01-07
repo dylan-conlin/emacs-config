@@ -2,11 +2,21 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
+(("hydras.el"
+ (filename . "~/.emacs.d/configs/hydras.el")
+ (front-context-string . "\n(provide 'hydra")
+ (rear-context-string . "move-up \"up\"))\n\n")
+ (position . 1508))
+("bindings-setup.el"
+ (filename . "~/.emacs.d/configs/bindings-setup.el")
+ (front-context-string . "\n\n\n(bind-key \"H-")
+ (rear-context-string . "x-list-packages)")
+ (position . 2782))
+("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO admin te")
- (rear-context-string . "2-30 Wed 01:51]\n")
- (position . 1757))
+ (front-context-string . "** TODO emacs pl")
+ (rear-context-string . "1-06 Wed 12:57]\n")
+ (position . 3157))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

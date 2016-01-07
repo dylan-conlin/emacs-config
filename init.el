@@ -221,6 +221,8 @@
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
 
+(setq js2-global-externs '("module" ))
+
 (use-package ruby-mode
   :mode
   (("\\.rake\\'" . ruby-mode)
@@ -480,6 +482,7 @@
 
 (use-package utilities-setup)
 (use-package bindings-setup)
+(use-package hydras)
 (use-package vc-git)
 (use-package repository-root)
 
@@ -524,5 +527,15 @@
   :config
   (rvm-use-default))
 
+(global-set-key (kbd "M-9") 'corral-parentheses-backward)
+(global-set-key (kbd "M-0") 'corral-parentheses-forward)
+(global-set-key (kbd "M-[") 'corral-brackets-backward)
+(global-set-key (kbd "M-]") 'corral-brackets-forward)
+(global-set-key (kbd "M-{") 'corral-braces-backward)
+(global-set-key (kbd "M-}") 'corral-braces-forward)
+(global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
+
+(bind-key "M-r" 'evil-surround-change)
+(bind-key "s-d" 'evil-surround-delete)
 
 (use-package web-mode)

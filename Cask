@@ -69,6 +69,7 @@
 (depends-on "drag-stuff")
 (depends-on "edit-server")
 (depends-on "eimp")
+(depends-on "el-pocket")
 (depends-on "elmacro")
 (depends-on "emms")
 (depends-on "epl")

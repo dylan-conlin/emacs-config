@@ -46,12 +46,18 @@
     (go-to-dired)))
 
 (defun copy-full-path-to-kill-ring ()
-  "copy buffer's full path to kill ring"
+  "If in dired-mode, add the full path for file or dir under point to the kill ring.
+   Otherwise, add the current file's full path to kill ring"
   (interactive)
-  (when buffer-file-name
-    (kill-new (file-truename buffer-file-name)))
-  (message (file-truename buffer-file-name)))
-
+  (if (equal major-mode 'dired-mode)
+      (let ((file-or-dir-at-point (concat (expand-file-name default-directory) (dired-copy-filename-as-kill))))
+        (kill-new file-or-dir-at-point)
+        (message file-or-dir-at-point))
+    (progn 
+      (when buffer-file-name
+        (let ((current-file (file-truename buffer-file-name)))
+          (kill-new current-file)
+          (message current-file))))))
 
 (defun switch-to-old-emacs ()
   (interactive)
@@ -900,14 +906,6 @@ nice when uniqifying your bash or zsh history"
     (interactive "*")
     (uniquify-all-lines-region (point-min) (point-max)))
 
-(defhydra hydra-window-switcher (global-map "M-r")
-  "window: "
-  ("l" windmove-right "right")
-  ("h" windmove-left "left")
-  ("j" windmove-down "down")
-  ("k" windmove-up "up"))
-
-
 ;; (defhydra hydra-launcher (:color blue)
 ;;   "Launch"
 ;;   ("h" man "man")
@@ -916,6 +914,26 @@ nice when uniqifying your bash or zsh history"
 ;;   ("s" shell "shell")
 ;;   ("q" nil "cancel"))
 ;; (global-set-key (kbd "C-c r") 'hydra-launcher/body)
+
+(defun decrypt-and-copy-to-clipboard ()
+  (interactive)
+  (let* ((encrypted-file "/Users/dylanconlin/.emacs.d/.encrypted-file")
+         (unencrypted-file "/Users/dylanconlin/.emacs.d/.unencrypted-file")
+         (hash (current-kill 0)))
+    (f-touch unencrypted-file)
+    ;; write encrypted blob to file
+    (f-write hash 'utf-8 encrypted-file)
+    (f-read encrypted-file 'utf-8)
+    ;; decrypt blob
+    (epa-decrypt-file encrypted-file unencrypted-file)
+    ;; add to clipboard
+    (kill-new (f-read unencrypted-file 'utf-8))
+    ;; delete files
+    (f-delete encrypted-file)
+    (f-delete unencrypted-file)
+    ))
+
+
 
 
 (provide 'utilities-setup)
