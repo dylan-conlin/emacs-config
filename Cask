@@ -52,6 +52,7 @@
 (depends-on "darkburn-theme")
 (depends-on "darkmine-theme")
 (depends-on "dash")
+(depends-on "dash-at-point")
 (depends-on "deferred")
 (depends-on "diminish")
 (depends-on "dired+")

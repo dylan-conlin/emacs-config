@@ -44,16 +44,20 @@
       kept-old-versions 2
       version-control t)
 
-;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
+(global-hl-line-mode)
+
+;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu   .org/packages/"))
 
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
 (cask-initialize)
 
 (recentf-mode 1)
+(setq recentf-max-menu-items 500)
+
 (key-chord-mode 1)
 
-;; first cunch of unsused stuff
+;; first bunch of unused stuff
 
 (eval-when-compile
   (require 'use-package))
@@ -67,18 +71,14 @@
 (use-package uniquify)
 
 (use-package auto-complete
-  :init
-  (setq ac-use-menu-map t)
+  :diminish auto-complete-mode
   :config
   (progn
-    (auto-complete-mode 1)
-    (global-auto-complete-mode)
     (ac-config-default)
-    (setq ac-use-fuzzy t)
-    
-    (setq ac-delay 0.025))
-
-  :diminish auto-complete-mode
+    (setq ac-use-menu-map t
+          ac-use-fuzzy t
+          ac-delay 0.025
+          ac-quick-help-delay 0.025))
   :bind
   (("C-<up>" . ac-quick-help-scroll-up)
    ("C-<down>" . ac-quick-help-scroll-down)))
@@ -537,5 +537,38 @@
 
 (bind-key "M-r" 'evil-surround-change)
 (bind-key "s-d" 'evil-surround-delete)
+
+
+;; (autoload 'dash-at-point "dash-at-point"
+;;   "Search the word at point with Dash." t nil)
+
+(defun javascript-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("JavaScript")))
+
+(add-hook 'js2-mode-hook 'javascript-doc)
+
+(defun ruby-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("Ruby")))
+
+(add-hook 'ruby-mode-hook 'ruby-doc)
+
+(defun css-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("CSS")))
+
+(add-hook 'scss-mode-hook 'css-doc)
+(add-hook 'css-mode-hook 'css-doc)
+
+(avy-setup-default)
+
+;; I know-your-http-we… 20151220… available  melpa 1539  Look up the meaning of HTTP headers, methods, relations, status codes 
+;; I ledger-mode      h 20160111… available  melpa 1521  Helper code for use with the "ledger" command-line tool 
+;; I literate-starter-… 20150730… available  melpa  629  A literate starter kit to configure Emacs using Org-mode files. 
+;; I restclient       h 20151128… available  melpa  493  An interactive HTTP client for Emacs 
+;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents. 
+;; I git-timemachine  h 20160105… available  melpa  285  Walk through git revisions of a file 
+
 
 (use-package web-mode)

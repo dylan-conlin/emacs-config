@@ -49,25 +49,15 @@
   "If in dired-mode, add the full path for file or dir under point to the kill ring.
    Otherwise, add the current file's full path to kill ring"
   (interactive)
-  (if (equal major-mode 'dired-mode)
-      (let ((file-or-dir-at-point (concat (expand-file-name default-directory) (dired-copy-filename-as-kill))))
-        (kill-new file-or-dir-at-point)
-        (message file-or-dir-at-point))
+  (let ((my-path 
+         (if (equal major-mode 'dired-mode)
+             (concat (expand-file-name default-directory) (kill-new (dired-copy-filename-as-kill)))
+           (if (null (buffer-file-name))
+               (user-error "current buffer not assoc with file")
+             (buffer-file-name)))))
     (progn 
-      (when buffer-file-name
-        (let ((current-file (file-truename buffer-file-name)))
-          (kill-new current-file)
-          (message current-file))))))
-
-(defun switch-to-old-emacs ()
-  (interactive)
-  (f-move "~/drive/dotfiles/.emacs.d" "~/drive/dotfiles/.emacs.d-new")
-  (f-move "~/drive/dotfiles/.emacs.d-old" "~/drive/dotfiles/.emacs.d"))
-
-(defun switch-to-new-emacs ()
-  (interactive)
-  (f-move "~/drive/dotfiles/.emacs.d" "~/drive/dotfiles/.emacs.d-old")
-  (f-move "~/drive/dotfiles/.emacs.d-new" "~/drive/dotfiles/.emacs.d"))
+      (message my-path)
+      (kill-new my-path))))
 
 (defun this-is-a-git-repo? ()
   (interactive)
@@ -606,6 +596,7 @@ Including indent-buffer, which should not be called automatically on save."
   (let ((songs (f-files "/Users/dylanconlin/Downloads/Soulseek Downloads/complete" nil t)))
     (-map (lambda (song) (move-song-to-new-dir song)) songs)))
 
+
 (defun move-song-to-new-dir (s)
   (f-move s (soulseek-new-dir s)))
 
@@ -782,6 +773,12 @@ Including indent-buffer, which should not be called automatically on save."
     (async-shell-command
      (s-concat "cd ~/youtube-downloads/video && youtube-dl \"" str "\""))))
 
+(defun text-myself ()
+  (interactive)
+  (let* ((link (current-kill 0)))
+    (async-shell-command
+     (s-concat "/Users/dylanconlin/.nvm/versions/node/v5.3.0/bin/node /Users/dylanconlin/Dropbox/side-sites/node-projects/twilio-test/app.js " link))))
+
 (defun ruby-comment-gap ()
   (interactive)
   (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\""))
@@ -826,13 +823,13 @@ Including indent-buffer, which should not be called automatically on save."
     (search-forward "puts")
     (kill-whole-line 1)))
 
-;; QuickLookでファイルを開く
-(defun dired-quicklook ()
-  (interactive)
-  (let ((file (s-concat default-directory (dired-copy-filename-as-kill))))
-    (message file)
-    (unless (file-directory-p file)
-      (shell-command (s-concat "qlmanage -p " (shell-quote-argument file))))))
+;; ;; QuickLookでファイルを開く
+;; (defun dired-quicklook ()
+;;   (interactive)
+;;   (let ((file (s-concat default-directory (dired-copy-filename-as-kill))))
+;;     (message file)
+;;     (unless (file-directory-p file)
+;;       (shell-command (s-concat "qlmanage -p " (shell-quote-argument file))))))
 
 
 
@@ -848,8 +845,8 @@ Including indent-buffer, which should not be called automatically on save."
 ;;         (clipboard-kill-region (point-min) (point-max)))
 ;;       (message filename))))
 
-(eval-after-load  "Dired"
-  '(define-key dired-mode-map (kbd "C-c y") 'dired-quicklook))
+;; (eval-after-load  "Dired"
+;;   '(define-key dired-mode-map (kbd "C-c y") 'dired-quicklook))
 
 (defun my/vsplit-last-buffer (prefix)
   "Split the window vertically and display the previous buffer."
@@ -932,8 +929,5 @@ nice when uniqifying your bash or zsh history"
     (f-delete encrypted-file)
     (f-delete unencrypted-file)
     ))
-
-
-
 
 (provide 'utilities-setup)

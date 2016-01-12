@@ -8,8 +8,9 @@
  '(ac-expand-on-auto-complete t)
  '(ac-modes
    (quote
-    (emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode clojure-mode clojurescript-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode enh-ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode ts-mode sclang-mode verilog-mode qml-mode coffee-mode haml-mode web-mode)))
+    (emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode clojure-mode clojurescript-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode less-css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode ts-mode sclang-mode verilog-mode qml-mode coffee-mode haml-mode web-mode)))
  '(ac-quick-help-height 30)
+ '(ac-quick-help-prefer-pos-tip nil)
  '(ac-show-menu-immediately-on-auto-complete nil)
  '(ac-trigger-key "TAB")
  '(ag-highlight-search t)
@@ -20,6 +21,7 @@
  '(auto-image-file-mode t)
  '(aw-background t)
  '(battery-mode-line-format " %p")
+ '(blink-cursor-blinks 2000)
  '(blink-cursor-interval 0.25)
  '(coffee-tab-width 2)
  '(compilation-message-face (quote default))
@@ -286,4 +288,7 @@ static char *gnus-pointer[] = {
  '(helm-selection ((t (:background "thistle1" :underline nil))))
  '(helm-selection-line ((t (:background "gray100"))))
  '(helm-source-header ((t (:background "gray100" :foreground "Black" :weight bold))))
- '(org-level-2 ((t (:foreground "dark blue")))))
+ '(hl-line ((t (:background "gray88"))))
+ '(mode-line ((t (:background "IndianRed1" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(org-level-2 ((t (:foreground "dark blue"))))
+ '(sp-show-pair-match-face ((t (:foreground "blue" :weight extra-bold :width extra-expanded)))))

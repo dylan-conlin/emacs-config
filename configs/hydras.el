@@ -38,57 +38,7 @@
       (shrink-window arg)
     (enlarge-window arg)))
 
-;;** Example 2: move window splitter
 
-
-(key-chord-define-global 
- "jk" 
- (defhydra my-hydra-window (:pre (progn 
-                                   (setq hydra-is-helpful nil)
-                                   (set-cursor-color "red"))
-                            :post (progn (setq hydra-is-helpful t)
-                                         (set-cursor-color "black")))
-   ("h" windmove-left "←")
-   ("j" windmove-down "↓")
-   ("k" windmove-up "↑")
-   ("l" windmove-right "→")
-   ("H" hydra-move-splitter-left "splitter-left")
-   ("J" hydra-move-splitter-down "splitter-down")
-   ("K" hydra-move-splitter-up "splitter-up")
-   ("L" hydra-move-splitter-right "splitter-right")
-   ("d" ace-delete-window "delete")
-   ("v" my/hsplit-last-buffer "v-split")
-   ("x" my/vsplit-last-buffer "h-split")
-   ("o" delete-other-windows "delete-others")
-   ("s" ace-swap-window "swap")
-   ("f" windows-flip "flip")
-   ("u" winner-undo "undo")
-   ("r" winner-redo "redo")))
-
-
-(defun my-window-hydra ()
-  (interactive)
-  (setq hydra-is-helpful nil)
-  (defhydra my-hydra-window (:hint nil)
-      ("h" windmove-left "←")
-      ("j" windmove-down "↓")
-      ("k" windmove-up "↑")
-      ("l" windmove-right "→")
-      ("H" hydra-move-splitter-left "splitter-left")
-      ("J" hydra-move-splitter-down "splitter-down")
-      ("K" hydra-move-splitter-up "splitter-up")
-      ("L" hydra-move-splitter-right "splitter-right")
-      ("d" ace-delete-window "delete")
-      ("v" my/hsplit-last-buffer "v-split")
-      ("x" my/vsplit-last-buffer "h-split")
-      ("o" delete-other-windows "delete-others")
-      ("s" ace-swap-window "swap")
-      ("f" windows-flip "flip")
-      ("u" winner-undo "undo")
-      ("r" winner-redo "redo"))
-  ;; (setq hydra-is-helpful t)
-  )
-hydra-is-helpful
 ;; ((defhydra cqql-multiple-cursors-hydra (:hint nil)
 ;;   "
 ;;      ^Up^            ^Down^        ^Miscellaneous^
@@ -260,6 +210,38 @@ Git gutter:
 (bind-key "C-x (" 'my-hydra-macro/body)
 
 
+;;** Example 2: move window splitter
+
+
+(defhydra my-hydra-window 
+  (:timeout 4.0
+            :pre (progn 
+                   ;; (setq hydra-is-helpful nil)
+                   )
+            :post (progn 
+                    ;; (setq hydra-is-helpful t)
+                    ;; (set-cursor-color "red")
+                    ;; (setq cursor-type '(bar . 3))
+                    ))
+  ("h" windmove-left "←")
+  ("j" windmove-down "↓")
+  ("k" windmove-up "↑")
+  ("l" windmove-right "→")
+  ("H" hydra-move-splitter-left "splitter-left")
+  ("J" hydra-move-splitter-down "splitter-down")
+  ("K" hydra-move-splitter-up "splitter-up")
+  ("L" hydra-move-splitter-right "splitter-right")
+  ("0" ace-delete-window "ace-delete")
+  ("d" delete-window "delete this window")
+  ("v" my/hsplit-last-buffer "v-split")
+  ("x" my/vsplit-last-buffer "h-split")
+  ("o" delete-other-windows "delete-others")
+  ("s" ace-swap-window "swap")
+  ("f" windows-flip "flip")
+  ("u" winner-undo "undo")
+  ("r" winner-redo "redo"))
+
+(bind-key "M-'" 'my-hydra-window/body)
 
 (provide 'hydras)
 

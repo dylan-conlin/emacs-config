@@ -14,9 +14,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO emacs pl")
- (rear-context-string . "1-06 Wed 12:57]\n")
- (position . 3157))
+ (front-context-string . "** TODO enhance ")
+ (rear-context-string . "1-11 Mon 13:41]\n")
+ (position . 3012))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

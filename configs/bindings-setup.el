@@ -70,9 +70,6 @@
 ;; directory shortcuts
 (bind-key "C-," 'dired-up)
 
-(bind-key "C-," 'dired-sort-ctime)
-(bind-key "C-," 'dired-sort-utime)
-
 (defhydra dired-sorter (global-map "<f2>")
      "dired sorter"
      ("c" dired-sort-ctime "created")
@@ -103,6 +100,8 @@ _q_: cancel
 (bind-key "H-i" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api")))
 (bind-key "H-e" '(lambda () (interactive) (find-file "~/.emacs.d/")))
 
+(bind-key "H-t" 'text-myself)
+
 (bind-key "C-x C-u" 'reopen-last-closed-buffer)
 (bind-key "M-s s" 'scroll-bar-mode)
 ;; (bind-key "C-x n" 'make-frame)
@@ -112,7 +111,8 @@ _q_: cancel
 (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 ;; (bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'avy-goto-word-1)
+(key-chord-define-global "fj" 'avy-goto-char-2)
+(key-chord-define-global "kh" 'avy-goto-char-in-line)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
 
 (bind-key "C-x SPC" 'avy-pop-mark)
@@ -207,6 +207,7 @@ _q_: cancel
 (bind-key "C-x p a" 'emms-add-dired)
 (bind-key "C-x w c" 'to-coffee)
 (bind-key "C-x w j" 'to-javascript)
+
 
 ;; If you have lots of keybindings set in your .emacs file, it can be hard to know which
 ;; ones you haven't set yet -- and which may now be overriding some new default in
