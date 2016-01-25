@@ -1,7 +1,12 @@
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
-
-;; ;; remove menus, tool-bars, scroll bars, splash-screen, and startup-message
+(server-start)
+;; remove menus, tool-bars, scroll bars, splash-screen, and startup-message
 (menu-bar-mode -1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
@@ -44,7 +49,7 @@
       kept-old-versions 2
       version-control t)
 
-(global-hl-line-mode)
+
 
 ;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu   .org/packages/"))
 
@@ -58,11 +63,6 @@
 (key-chord-mode 1)
 
 ;; first bunch of unused stuff
-
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)     
-(require 'bind-key)
 
 (use-package winner
   :config
@@ -98,7 +98,7 @@
     (setq helm-idle-delay 0.0         ; update fast sources immediately (doesn't).
           helm-input-idle-delay 0.01  ; this actually updates things reeeelatively quickly.
           helm-quick-update t
-          helm-adaptive-mode t
+          helm-adaptive-mode nil
           helm-bookmark-show-location t
           helm-M-x-requires-pattern nil
           helm-ff-skip-boring-files t
@@ -217,9 +217,20 @@
   (("\\.js\\'" . js2-mode)
    ("\\.json\\'" . js2-mode))
   :interpreter "node"
+  :no-require t
   :config
+  (defun my-js-mode-hook ()
+    (require 'inf-ruby))
+  (setq-default js2-global-externs '("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
+
+(add-hook 'my-js-mode-hook (lambda () (tern-mode t)))
+
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
 
 (setq js2-global-externs '("module" ))
 
@@ -233,6 +244,7 @@
 (use-package coffee-mode
   :config
   (setq coffee-tab-width 2))
+
 ;; (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
 ;; ;; (custom-set-variables '(coffee-tab-width 2))
 
@@ -408,7 +420,7 @@
 ;;   :config
 ;;   (global-emojify-mode 1))
 
-(toggle-indicate-empty-lines)
+;; (toggle-indicate-empty-lines)
 (setq show-paren-mode 1)
 (setq show-trailing-whitespace nil)
 ;; (set-background-color "white")
@@ -418,18 +430,19 @@
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-(require 'emms-setup)
-(require 'emms-player-mplayer)
-(emms-standard)
-(emms-default-players)
-(emms-playing-time-enable-display)
-(define-emms-simple-player mplayer '(file url)
-  (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
-                ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
-                ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
-  "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
-(require 'emms-playing-time)
-(emms-playing-time 1)
+;; (require 'emms-setup)
+;; (require 'emms-player-mplayer)
+;; (emms-standard)
+;; (emms-default-players)
+;; (emms-playing-time-enable-display)
+;; (define-emms-simple-player mplayer '(file url)
+;;   (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+;;                 ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+;;                 ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+;;   "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
+;; (require 'emms-playing-time)
+;; (emms-playing-time 1)
+;; (emms-cache-enable)
 
 
 ;; (use-package emms
@@ -459,10 +472,10 @@
 ;;          ("C-x p k" . emms-soulseek)))
 
 
-;; ;; (use-package ledger-mode
-;; ;;   :init
-;; ;;   (progn
-;; ;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
+(use-package ledger-mode
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
 
 ;; (setq x-select-enable-clipboard t
 ;;       x-select-enable-primary t
@@ -493,51 +506,9 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
-;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
-;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
-;;   (if (equal web-mode-content-type "jsx")
-;;       (let ((web-mode-enable-part-face nil))
-;;         ad-do-it)
-;;     ad-do-it))
-
-;; (flycheck-define-checker jsxhint-checker
-;;   "A JSX syntax and style checker based on JSXHint."
-
-;;   :command ("jsxhint" source)
-;;   :error-patterns
-;;   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-;;   :modes (web-mode))
-
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (equal web-mode-content-type "jsx")
-;;               ;; enable flycheck
-;;               (flycheck-select-checker 'jsxhint-checker)
-;;               (flycheck-mode))))
-
-;; (setq jsx-indent-level 2)
-
-;; (global-linum-mode 1)
-
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-
-(emms-cache-enable)
-
 (use-package rvm
   :config
   (rvm-use-default))
-
-(global-set-key (kbd "M-9") 'corral-parentheses-backward)
-(global-set-key (kbd "M-0") 'corral-parentheses-forward)
-(global-set-key (kbd "M-[") 'corral-brackets-backward)
-(global-set-key (kbd "M-]") 'corral-brackets-forward)
-(global-set-key (kbd "M-{") 'corral-braces-backward)
-(global-set-key (kbd "M-}") 'corral-braces-forward)
-(global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
-
-(bind-key "M-r" 'evil-surround-change)
-(bind-key "s-d" 'evil-surround-delete)
-
 
 ;; (autoload 'dash-at-point "dash-at-point"
 ;;   "Search the word at point with Dash." t nil)
@@ -558,6 +529,12 @@
   (interactive)
   (setq-local helm-dash-docsets '("CSS")))
 
+(defun clojure-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("Clojure")))
+
+(add-hook 'clojure-mode-hook 'clojure-doc)
+(add-hook 'clojurescript-mode-hook 'clojure-doc)
 (add-hook 'scss-mode-hook 'css-doc)
 (add-hook 'css-mode-hook 'css-doc)
 
@@ -568,7 +545,13 @@
 ;; I literate-starter-… 20150730… available  melpa  629  A literate starter kit to configure Emacs using Org-mode files. 
 ;; I restclient       h 20151128… available  melpa  493  An interactive HTTP client for Emacs 
 ;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents. 
-;; I git-timemachine  h 20160105… available  melpa  285  Walk through git revisions of a file 
+;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file 
 
+(global-hl-line-mode)
+
+(require 'popwin)
+(popwin-mode 1)
+(push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
 (use-package web-mode)

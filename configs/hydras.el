@@ -57,12 +57,6 @@
 ;;   ("q" nil)))
 
 (defhydra my-hydra-dired (:hint nil)
-  "
-     ^Nav^            ^Down^        ^Miscellaneous^
-----------------------------------------------
-[_p_]   previous Line
-[_n_]   next Line    
-[_enter_] Open File  "
   ("p" dired-previous-line)
   ("n" dired-next-line)
   ("<enter>" dired-find-file)
@@ -212,15 +206,15 @@ Git gutter:
 
 ;;** Example 2: move window splitter
 
-
 (defhydra my-hydra-window 
-  (:timeout 4.0
+  (;;:timeout 10.0
             :pre (progn 
-                   ;; (setq hydra-is-helpful nil)
+                   (setq hydra-is-helpful nil)
+                   (set-cursor-color "green")
                    )
             :post (progn 
-                    ;; (setq hydra-is-helpful t)
-                    ;; (set-cursor-color "red")
+                    (setq hydra-is-helpful t)
+                    (set-cursor-color "magenta")
                     ;; (setq cursor-type '(bar . 3))
                     ))
   ("h" windmove-left "←")
@@ -241,7 +235,7 @@ Git gutter:
   ("u" winner-undo "undo")
   ("r" winner-redo "redo"))
 
-(bind-key "M-'" 'my-hydra-window/body)
+(bind-key "M-o" 'my-hydra-window/body)
 
 (provide 'hydras)
 

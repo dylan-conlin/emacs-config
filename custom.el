@@ -31,6 +31,7 @@
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(cursor-in-non-selected-windows t)
+ '(cursor-type (quote bar))
  '(custom-safe-themes
    (quote
     ("70340909b0f7e75b91e66a02aa3ad61f3106071a1a4e717d5cdabd8087b47ec4" "6998bd3671091820a6930b52aab30b776faea41449b4246fdce14079b3e7d125" "beeb5ac6b65fcccfe434071d4624ff0308b5968bf2f0c01b567d212bcaf66054" "c3e6b52caa77cb09c049d3c973798bc64b5c43cc437d449eacf35b3e776bf85c" "d9db2602073498bfa3d591e2ce70de3e9c144c30aeacf9e667b0fb9139f38f50" "5d8caed7f4ed8929fd79e863de3a38fbb1aaa222970b551edfd2e84552fec020" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "a5beb9b1d6dc23dd8a3c204c159c9a5f1e0115ff14b5b8579d6f3ede4f3b3aee" "28590b1f3a827a16ec1f025b20c025a6e63b56b6c4223851c224c2e6cd1c1775" "5ea20171762b3f9682fbf507ee4b4018ce7b6cc65415fa99799a125f112b2cdb" "b21bf64c01dc3a34bc56fff9310d2382aa47ba6bc3e0f4a7f5af857cd03a7ef7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "1011be33e9843afd22d8d26b031fbbb59036b1ce537d0b250347c19e1bd959d0" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "609a1521b4983dc1e1cc64fe57fe2fffd256e9058c95b8fc6bfae479ab8b0af3" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default)))
@@ -189,7 +190,7 @@ static char *gnus-pointer[] = {
  '(indicate-empty-lines t)
  '(isearch-lazy-highlight t)
  '(ispell-highlight-face (quote flyspell-incorrect))
- '(js2-global-externs nil t)
+ '(js2-global-externs nil)
  '(js2-include-node-externs t)
  '(js2-missing-semi-one-line-override t)
  '(js2-strict-missing-semi-warning nil)
@@ -201,6 +202,11 @@ static char *gnus-pointer[] = {
  '(magit-item-highlight-face (quote magit-item-highlight))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(magit-use-overlays nil)
+ '(neo-auto-indent-point nil)
+ '(neo-show-hidden-files t)
+ '(neo-smart-open t)
+ '(neo-theme (quote ascii))
+ '(neo-window-width 35)
 '(newsticker-url-list
 (quote
  (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
@@ -279,6 +285,9 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "Magenta"))))
+ '(font-lock-constant-face ((t (:foreground "purple2"))))
+ '(font-lock-variable-name-face ((t (:foreground "SlateBlue4"))))
  '(fringe ((t (:background "gray91"))))
  '(git-gutter:added ((t (:foreground "green4" :weight bold))))
  '(git-gutter:modified ((t (:foreground "orange" :weight bold))))
@@ -288,7 +297,8 @@ static char *gnus-pointer[] = {
  '(helm-selection ((t (:background "thistle1" :underline nil))))
  '(helm-selection-line ((t (:background "gray100"))))
  '(helm-source-header ((t (:background "gray100" :foreground "Black" :weight bold))))
- '(hl-line ((t (:background "gray88"))))
- '(mode-line ((t (:background "IndianRed1" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(hl-line ((t (:background "LemonChiffon1"))))
+ '(mode-line ((t (:background "IndianRed1" :foreground "white" :box (:line-width -1 :style released-button)))))
+ '(neo-expand-btn-face ((t (:foreground "red2" :weight ultra-bold :height 1.1 :width normal))))
  '(org-level-2 ((t (:foreground "dark blue"))))
  '(sp-show-pair-match-face ((t (:foreground "blue" :weight extra-bold :width extra-expanded)))))

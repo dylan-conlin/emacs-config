@@ -21,12 +21,8 @@
 (bind-key "C-x r f" 'run-current-file)
 
 ;; window management
-(bind-key "s-e" 'my/vsplit-last-buffer)
-(bind-key "s-2" 'my/vsplit-last-buffer)
-(bind-key "C-x 2" 'my/vsplit-last-buffer)
-(bind-key "s-r" 'my/hsplit-last-buffer)
-(bind-key "s-3" 'my/hsplit-last-buffer)
-(bind-key "C-x 3" 'my/hsplit-last-buffer)
+(bind-key "C-x 2" '(lambda () (interactive) (message "try s-w")))
+(bind-key "C-x 3" '(lambda () (interactive) (message "try s-w")))
 
 
 (bind-key "s-w" 'delete-window)
@@ -53,8 +49,9 @@
 ;; dcon-minor-mode
 ;; (define-key dcon-minor-mode-map (kbd "C-h") 'backward-delete-char-untabify)
 
-(bind-key* "DEL" 'backward-delete-char-untabify)
-(bind-key* "C-M-h" 'kill-whole-line)
+(bind-key "DEL" 'backward-delete-char-untabify)
+
+
 
 (bind-key "C-q" 'backward-kill-word)
 ;; (bind-key* "M-p" 'backward-paragraph)
@@ -111,7 +108,7 @@ _q_: cancel
 (bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 ;; (bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'avy-goto-char-2)
+(key-chord-define-global "fj" 'avy-goto-char)
 (key-chord-define-global "kh" 'avy-goto-char-in-line)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
 
@@ -239,7 +236,8 @@ _q_: cancel
 ;; (key-chord-define-global "hk" 'er/expand-region)
 
 (define-key dcon-minor-mode-map (kbd "M-a") 'er/expand-region)
-
+(define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
+(define-key dcon-minor-mode-map (kbd "s-q") 'camel-snake-toggle-word-at-point)
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()
 ;;   "Abort recursive edit.
@@ -261,5 +259,16 @@ _q_: cancel
 ;; (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 ;; (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;; (global-set-key [escape] 'evil-exit-emacs-state)
+
+(global-set-key (kbd "M-9") 'corral-parentheses-backward)
+(global-set-key (kbd "M-0") 'corral-parentheses-forward)
+(global-set-key (kbd "M-[") 'corral-brackets-backward)
+(global-set-key (kbd "M-]") 'corral-brackets-forward)
+(global-set-key (kbd "M-{") 'corral-braces-backward)
+(global-set-key (kbd "M-}") 'corral-braces-forward)
+(global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
+
+(bind-key "s-c" 'evil-surround-change)
+(bind-key "s-d" 'evil-surround-delete)
 
 (provide 'bindings-setup)

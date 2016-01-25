@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("hydras.el"
+(("kwmrc"
+ (filename . "~/.kwm/kwmrc")
+ (front-context-string . "me applications ")
+ (rear-context-string . "is is because so")
+ (position . 1779))
+("hydras.el"
  (filename . "~/.emacs.d/configs/hydras.el")
  (front-context-string . "\n(provide 'hydra")
  (rear-context-string . "move-up \"up\"))\n\n")
@@ -14,9 +19,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO enhance ")
- (rear-context-string . "1-11 Mon 13:41]\n")
- (position . 3012))
+ (front-context-string . "** TODO         ")
+ (rear-context-string . "1-14 Thu 10:52]\n")
+ (position . 3452))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

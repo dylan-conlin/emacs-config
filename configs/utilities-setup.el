@@ -680,6 +680,7 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (helm-do-ag (my-git-root)))
 
+
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
@@ -711,6 +712,7 @@ Including indent-buffer, which should not be called automatically on save."
                      helm-source-bookmarks)
           :buffer "*project(less)-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))
+
 
 (defun ruby-doc ()
   (interactive)
@@ -929,5 +931,39 @@ nice when uniqifying your bash or zsh history"
     (f-delete encrypted-file)
     (f-delete unencrypted-file)
     ))
+
+
+(defun split-name (s)
+  (split-string
+   (let ((case-fold-search nil))
+     (downcase
+      (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
+   "[^A-Za-z0-9]+"))
+
+(defun camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
+(defun lower-camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
+(defun underscore (s) (mapconcat 'downcase   (split-name s) "_"))
+(defun dasherize  (s) (mapconcat 'downcase   (split-name s) "-"))
+(defun colonize   (s) (mapconcat 'capitalize (split-name s) "::"))
+
+
+(defun camel-snake-toggle-word-at-point ()
+  (interactive)
+  (let* ((case-fold-search nil)
+         (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
+         (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
+         (txt (buffer-substring beg end))
+         (cml (camel-snake-toggle txt)) )
+    (if cml (progn (delete-region beg end) (insert cml))) ))
+
+
+(defun camel-snake-toggle (s)	
+  (cond ((string-match-p "_"  s) (concat (downcase (substring (lower-camelcase s) 0 1)) (substring (lower-camelcase s) 1)))
+        (t                          (underscore s)) ))
+
+;; other options i'm not using
+;; ((string-match-p "-" s)     (colonize s))
+;; ((string-match-p "_" s)	(dasherize s))
+
 
 (provide 'utilities-setup)
