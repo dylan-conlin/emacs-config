@@ -1,0 +1,3 @@
+[submodule "configs/emacs-websocket"]
+	path = configs/emacs-websocket
+	url = https://github.com/ahyatt/emacs-websocket.git

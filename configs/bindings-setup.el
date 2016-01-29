@@ -235,7 +235,8 @@ _q_: cancel
 
 ;; (key-chord-define-global "hk" 'er/expand-region)
 
-(define-key dcon-minor-mode-map (kbd "M-a") 'er/expand-region)
+(define-key dcon-minor-mode-map (kbd "M-a") 'my-hydra-window/body)
+(define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
 (define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
 (define-key dcon-minor-mode-map (kbd "s-q") 'camel-snake-toggle-word-at-point)
 ;; ;; esc quits

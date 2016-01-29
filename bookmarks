@@ -18,10 +18,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO         ")
- (rear-context-string . "1-14 Thu 10:52]\n")
- (position . 3452))
+ (filename . "~/Dropbox/org/secrets.org")
+ (front-context-string . "** discogs api k")
+ (rear-context-string)
+ (position . 11))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

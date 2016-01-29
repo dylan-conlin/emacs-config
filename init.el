@@ -1,7 +1,3 @@
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -57,12 +53,15 @@
 (require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
 (cask-initialize)
 
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+
 (recentf-mode 1)
 (setq recentf-max-menu-items 500)
 
 (key-chord-mode 1)
-
-;; first bunch of unused stuff
 
 (use-package winner
   :config
@@ -150,12 +149,19 @@
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
-;; (setq redisplay-dont-pause t)
+(setq redisplay-dont-pause t)
 
 ;; add newline to file on save
 (setq require-final-newline t)
 ;; font color and size
-(set-face-attribute 'default nil :family "monaco" :height 120)
+(set-face-attribute 'default nil :family "inconsolata" :height 145)
+(setq-default line-spacing 5)
+;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
+
+;; (defun set-custom-line-spacing ()
+;;   (add-text-properties (point-min) (point-max)
+;;                        '(line-spacing 0.25 line-height 1.25)))  
+
 (blink-cursor-mode 1)
 (global-subword-mode 1)
 (delete-selection-mode 1)
@@ -217,33 +223,53 @@
   (("\\.js\\'" . js2-mode)
    ("\\.json\\'" . js2-mode))
   :interpreter "node"
-  :no-require t
+  ;; :no-require t
   :config
-  (defun my-js-mode-hook ()
-    (require 'inf-ruby))
   (setq-default js2-global-externs '("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
 
-(add-hook 'my-js-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
-
-(setq js2-global-externs '("module" ))
+(eval-after-load 'progn
+  '(tern
+    (require 'tern-auto-complete)
+    (tern-ac-setup)))
 
 (use-package ruby-mode
   :mode
   (("\\.rake\\'" . ruby-mode)
    ("\\Rakefile\\'" . ruby-mode)
    ("\\Gemfile\\'" . ruby-mode)
-   ("\\.gemspec\\'" . ruby-mode)))
+   ("\\.gemspec\\'" . ruby-mode)
+   ("\\kwmrc\\'" . ruby-mode))
+  :init
+  (progn 
+    (require 'ruby-block)
+    (ruby-block-mode t)
+    ;; do overlay
+    (setq ruby-block-highlight-toggle 'overlay)
+    ;; display to minibuffer
+    (setq ruby-block-highlight-toggle 'minibuffer)
+    ;; display to minibuffer and do overlay
+    (setq ruby-block-highlight-toggle t)))
 
 (use-package coffee-mode
   :config
   (setq coffee-tab-width 2))
+
+;; # Automatically Turn on the mode for your buffer of choice.
+;;(add-hook 'js2-mode-hook (lambda () (kite-mode t)))
+
+;;(add-hook 'css-mode-hook (lambda () (kite-mode t)))
+
+
+(use-package smooth-scroll
+  :config
+  (smooth-scroll-mode 1)
+  (setq smooth-scroll/vscroll-step-size 2))
+
+;; (require 'kite "/Users/dylanconlin/.emacs.d/configs/emacs-websocket/websocket.el")
 
 ;; (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
 ;; ;; (custom-set-variables '(coffee-tab-width 2))
@@ -373,6 +399,7 @@
             ("~/Dropbox/org/code.org" . (:level . 1))
             ("~/Dropbox/org/blogs.org" . (:level . 1))))))
 
+
 ;; (use-package evil-smartparens
 
 ;;   :init
@@ -421,7 +448,8 @@
 ;;   (global-emojify-mode 1))
 
 ;; (toggle-indicate-empty-lines)
-(setq show-paren-mode 1)
+(setq show-paren-mode nil)
+(show-smartparens-global-mode +1)
 (setq show-trailing-whitespace nil)
 ;; (set-background-color "white")
 (set-face-attribute 'region nil :background "lightblue")
@@ -547,11 +575,12 @@
 ;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents. 
 ;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file 
 
-(global-hl-line-mode)
+;; (global-hl-line-mode)
 
 (require 'popwin)
 (popwin-mode 1)
 (push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+
 
 (use-package web-mode)
