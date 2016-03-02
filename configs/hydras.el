@@ -206,15 +206,19 @@ Git gutter:
 
 ;;** Example 2: move window splitter
 
+(setq blink-cursor-delay 0)
+(setq blink-cursor-interval 0.1)
 (defhydra my-hydra-window 
   (;;:timeout 10.0
             :pre (progn 
                    (setq hydra-is-helpful nil)
-                   (set-cursor-color "green")
+                   ;; (set-cursor-color "red")
+                   (blink-cursor-mode 1)
                    )
             :post (progn 
                     (setq hydra-is-helpful t)
-                    (set-cursor-color "magenta")
+                    ;; (set-cursor-color "magenta")
+                    (blink-cursor-mode -1)
                     ;; (setq cursor-type '(bar . 3))
                     ))
   ("h" windmove-left "←")
@@ -237,9 +241,18 @@ Git gutter:
 
 (bind-key "M-o" 'my-hydra-window/body)
 
+(defhydra my-hydra-flycheck
+  (:pre (progn (setq hydra-lv t) (flycheck-list-errors))
+        :post (progn (setq hydra-lv nil) (quit-windows-on "*Flycheck errors*"))
+        :hint nil)
+  "Errors"
+  ("f"  flycheck-error-list-set-filter                            "Filter")
+  ("j"  flycheck-next-error                                       "Next")
+  ("k"  flycheck-previous-error                                   "Previous")
+  ("gg" flycheck-first-error                                      "First")
+  ("G"  (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
+  ("q"  nil))
+
+(bind-key "C-x r f" 'my-hydra-flycheck/body)
+
 (provide 'hydras)
-
-
-
-
-

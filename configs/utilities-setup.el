@@ -156,8 +156,10 @@ Assumes that the frame is only split into two."
   (message (f-filename (my-git-root)))
   (f-filename (my-git-root)))
 
-(defun line-number-on-github ()
-  (s-concat "#L" (number-to-string (line-number-at-pos))))
+(defun line-number-blob (line-param)
+  "prepends the line-param to the current line
+   number occupied by the cursor"
+  (s-concat line-param (number-to-string (line-number-at-pos))))
 
 (when buffer-file-name
   (git-root-dir-only)
@@ -168,7 +170,7 @@ Assumes that the frame is only split into two."
 (defun browse-file-on-github ()
   (interactive)
   (when buffer-file-name
-    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/Dropbox/sites" (git-root-dir-only)))) (line-number-on-github)))))
+    (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/Dropbox/sites" (git-root-dir-only)))) (line-number-blob "#L")))))
 
 (provide 'utilities-setup)
 ;; (defun github-source (start end)
@@ -676,10 +678,19 @@ Including indent-buffer, which should not be called automatically on save."
 ;;       (if (buffer-file-name)
 ;;         (abbreviate-file-name (buffer-file-name)) "%b"))))
 
+;; (defun my-helm-do-ag ()
+;;   (interactive)
+;;   (helm-do-ag (my-git-root)))
+
+(defun my-recentf ()
+  (interactive)
+  (if (this-is-a-git-repo?)
+       (helm-projectile-recentf)
+     (helm-recentf)))
+
 (defun my-helm-do-ag ()
   (interactive)
-  (helm-do-ag (my-git-root)))
-
+  (helm-do-ag-project-root))
 
 (defun helm-project-search ()
   "Use projectile with Helm instead of ido."
@@ -774,6 +785,19 @@ Including indent-buffer, which should not be called automatically on save."
          (default-directory "~/youtube-downloads/audio"))
     (async-shell-command
      (s-concat "cd ~/youtube-downloads/video && youtube-dl \"" str "\""))))
+
+(defun rspec-test-at-current-line-number ()
+  "build the command rspec requires to run a test at a 
+  specific line. This only works in shortstack projects using
+  rspec (v1)"
+  (interactive)
+  (kill-new (s-concat "spec "  (car (last (s-slice-at "spec/" (copy-full-path-to-kill-ring)))) (line-number-blob ":"))))
+
+;; (if (get-region start end)
+;;     (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1"))
+;;   (progn
+;;     (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
+;;     (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
 
 (defun text-myself ()
   (interactive)
@@ -964,6 +988,34 @@ nice when uniqifying your bash or zsh history"
 ;; other options i'm not using
 ;; ((string-match-p "-" s)     (colonize s))
 ;; ((string-match-p "_" s)	(dasherize s))
+
+(defun calc-eval-region (arg)
+  "Evaluate an expression in calc and communicate the result.
+If the region is active evaluate that, otherwise search backwards
+to the first whitespace character to find the beginning of the
+expression. By default, replace the expression with its value. If
+called with the universal prefix argument, keep the expression
+and insert the result into the buffer after it. If called with a
+negative prefix argument, just echo the result in the
+minibuffer."
+  (interactive "p")
+  (let (start end)
+    (if (use-region-p)
+        (setq start (region-beginning) end (region-end))
+      (progn
+        (setq end (point))
+        (setq start (search-backward-regexp "\\s-\\|\n" 0 1))
+        (setq start (1+ (if start start 0)))
+        (goto-char end)))
+    (let ((value (calc-eval (buffer-substring-no-properties start end))))
+      (pcase arg
+        (1 (delete-region start end))
+        (4 (insert " = ")))
+      (pcase arg
+        ((or 1 4) (insert value))
+        (-1 (message value))))))
+
+(bind-key "C-=" 'calc-eval-region)
 
 
 (provide 'utilities-setup)

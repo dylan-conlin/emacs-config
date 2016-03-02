@@ -15,7 +15,6 @@
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 (setq ns-function-modifier 'hyper)
-
 (setq load-prefer-newer t)
 
 (setq uniquify-buffer-name-style 'forward)
@@ -23,6 +22,7 @@
 (setq ispell-program-name "/usr/local/bin/aspell")
 
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
+
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 (setq-default indent-tabs-mode nil)
@@ -82,45 +82,46 @@
   (("C-<up>" . ac-quick-help-scroll-up)
    ("C-<down>" . ac-quick-help-scroll-down)))
 
+(use-package projectile
+  :config
+  (projectile-global-mode))
+
 (use-package helm
   :config
-  (progn
+  (progn 
     (require 'helm-config)
-    (use-package projectile
-      :config
-      (projectile-global-mode))
     (use-package helm-projectile)
     (use-package helm-ls-git)
     (use-package helm-bind-key)
     (setq helm-candidate-number-limit 100)
     ;; From https://gist.github.com/antifuchs/9238468
-    (setq helm-idle-delay 0.0         ; update fast sources immediately (doesn't).
-          helm-input-idle-delay 0.01  ; this actually updates things reeeelatively quickly.
-          helm-quick-update t
-          helm-adaptive-mode nil
-          helm-bookmark-show-location t
-          helm-M-x-requires-pattern nil
-          helm-ff-skip-boring-files t
-          helm-buffer-max-length 30)
-    (helm-mode)
-    (helm-flx-mode +1))
-  :bind (("C-x C-f" . helm-find-files)
-         ("C-x l" . helm-ls-git-ls)
-         ("C-x a" . helm-apropos)
-         ("M-x" . helm-M-x)
-         ("M-k" . helm-project-search)
-         ("M-K" . my-helm-do-ag)
-         ("C-x b" . helm-projectless-search)
-         ("H-n" . helm-scroll-other-window)
-         ("H-p" . helm-scroll-other-window-down)
-         ("C-x t" . helm-imenu)
-         ("M-C-p" . helm-eshell-history)
-         ("C-c f" . helm-dash)
-         ("C-x f" . helm-recentf)
-         ("C-x y" . helm-show-kill-ring)
-         ("C-x C-b" . helm-bookmarks)
-         ("M-." . helm-locate)
-         ("M-j" . helm-resume)))
+    (setq helm-idle-delay 0.0)         ; update fast sources immediately (doesn't).
+    (setq helm-input-idle-delay 0.01)  ; this actually updates things reeeelatively quickly.
+    (setq helm-quick-update t)
+    (setq helm-adaptive-mode nil)
+    (setq helm-bookmark-show-location t)
+    (setq helm-M-x-requires-pattern nil)
+    (setq helm-ff-skip-boring-files t)
+    (setq helm-buffer-max-length 30)
+    (helm-mode 1))
+  :bind 
+  (("C-x C-f" . helm-find-files)
+   ("C-x l" . helm-ls-git-ls)
+   ("C-x a" . helm-apropos)
+   ("M-x" . helm-M-x)
+   ("M-k" . helm-project-search)
+   ("M-K" . my-helm-do-ag)
+   ("C-x b" . helm-projectless-search)
+   ("H-n" . helm-scroll-other-window)
+   ("H-p" . helm-scroll-other-window-down)
+   ("C-x t" . helm-imenu)
+   ("M-C-p" . helm-eshell-history)
+   ("C-c f" . helm-dash)
+   ("C-x f" . my-recentf)
+   ("C-x y" . helm-show-kill-ring)
+   ("C-x C-b" . helm-bookmarks)
+   ("M-." . helm-locate)
+   ("M-j" . helm-resume)))
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -155,6 +156,7 @@
 (setq require-final-newline t)
 ;; font color and size
 (set-face-attribute 'default nil :family "inconsolata" :height 145)
+;; (set-face-attribute 'default nil :family "share tech mono" :height 145)
 (setq-default line-spacing 5)
 ;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
 
@@ -162,7 +164,7 @@
 ;;   (add-text-properties (point-min) (point-max)
 ;;                        '(line-spacing 0.25 line-height 1.25)))  
 
-(blink-cursor-mode 1)
+(blink-cursor-mode -1)
 (global-subword-mode 1)
 (delete-selection-mode 1)
 (auto-indent-mode 1)
@@ -235,6 +237,8 @@
   '(tern
     (require 'tern-auto-complete)
     (tern-ac-setup)))
+
+
 
 (use-package ruby-mode
   :mode
@@ -362,10 +366,12 @@
     (require 'gnus-async)
     (add-hook 'org-mode-hook
               (lambda ()
-                (require 'flyspell-lazy)
+                ;; (require 'flyspell-lazy)
                 (visual-line-mode t)
-                (flyspell-lazy-mode 1)
-                (flyspell-mode 1)))
+                ;; (flyspell-lazy-mode 1)
+                ;; (flyspell-mode 1)
+                ))
+    
     ;; prettier appearance settings
     (setq org-log-done t)
     (setq org-startup-indented t)
@@ -373,9 +379,10 @@
 
     ;; behavior settings
     (setq org-use-fast-todo-selection t)
+    
     ;; setup org path
     (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
-
+    
     ;; setup files agenda is aware of
     (setq org-agenda-files '("~/Dropbox/org/code.org"
                              "~/Dropbox/org/notes.org"
@@ -454,7 +461,6 @@
 ;; (set-background-color "white")
 (set-face-attribute 'region nil :background "lightblue")
 (set-border-color "red")
-
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -575,12 +581,37 @@
 ;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents. 
 ;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file 
 
-;; (global-hl-line-mode)
+(global-hl-line-mode 0)
 
 (require 'popwin)
 (popwin-mode 1)
 (push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
+(defun fci-enabled-p () (symbol-value 'fci-mode))
+
+(defvar fci-mode-suppressed nil)
+(make-variable-buffer-local 'fci-mode-suppressed)
+
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible"
+  (let ((fci-enabled (fci-enabled-p)))
+    (when fci-enabled
+      (setq fci-mode-suppressed fci-enabled)
+      (turn-off-fci-mode))))
+
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed"
+  (when (and fci-mode-suppressed
+             (null popup-instances))
+    (setq fci-mode-suppressed nil)
+    (turn-on-fci-mode)))
+
+(use-package fci-mode
+  :init
+  (progn (add-hook 'prog-mode-hook 'fci-mode))
+  :config
+  (setq fci-rule-column 80))
+(turn-on-fci-mode)
 
 (use-package web-mode)

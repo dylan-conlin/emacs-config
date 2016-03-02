@@ -24,7 +24,6 @@
 (bind-key "C-x 2" '(lambda () (interactive) (message "try s-w")))
 (bind-key "C-x 3" '(lambda () (interactive) (message "try s-w")))
 
-
 (bind-key "s-w" 'delete-window)
 (bind-key "M-0" 'delete-window)
 (bind-key "C-x o" 'other-window)
@@ -132,6 +131,7 @@ _q_: cancel
 (key-chord-define-global "bw" 'unwrappy)
 
 (bind-key "C-x r q" 'save-buffers-kill-terminal)
+
 (bind-key "C-x C-c" 'delete-frame)
 
 ;; Create scratch buffer
@@ -271,5 +271,10 @@ _q_: cancel
 
 (bind-key "s-c" 'evil-surround-change)
 (bind-key "s-d" 'evil-surround-delete)
+
+(bind-key "C-x n" 'flycheck-tip-cycle)
+;; (unbind-key "s-c")
+(unbind-key "s-1")
+(unbind-key "s-2")
 
 (provide 'bindings-setup)
