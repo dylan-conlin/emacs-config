@@ -45,8 +45,6 @@
       kept-old-versions 2
       version-control t)
 
-
-
 ;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu   .org/packages/"))
 
 ;; setup my packages
