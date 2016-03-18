@@ -222,6 +222,8 @@
 (depends-on "purple-haze-theme")
 (depends-on "rails-log-mode")
 (depends-on "rainbow-mode")
+(depends-on "request")
+(depends-on "request-deferred")
 (depends-on "reverse-theme")
 (depends-on "rich-minority")
 (depends-on "ruby-block")

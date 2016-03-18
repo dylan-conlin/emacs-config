@@ -75,7 +75,7 @@
     (setq ac-use-menu-map t
           ac-use-fuzzy t
           ac-delay 0.025
-          ac-quick-help-delay 0.025))
+          ac-quick-help-delay 0.25))
   :bind
   (("C-<up>" . ac-quick-help-scroll-up)
    ("C-<down>" . ac-quick-help-scroll-down)))
@@ -101,6 +101,13 @@
     (setq helm-M-x-requires-pattern nil)
     (setq helm-ff-skip-boring-files t)
     (setq helm-buffer-max-length 30)
+    (setq helm-ff-file-name-history-use-recentf t)
+    (setq helm-M-x-fuzzy-match t)
+    (setq helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match    t)
+    (setq helm-semantic-fuzzy-match t
+          helm-imenu-fuzzy-match    t)
+    
     (helm-mode 1))
   :bind 
   (("C-x C-f" . helm-find-files)
@@ -155,7 +162,7 @@
 ;; font color and size
 (set-face-attribute 'default nil :family "inconsolata" :height 145)
 ;; (set-face-attribute 'default nil :family "share tech mono" :height 145)
-(setq-default line-spacing 5)
+(setq-default line-spacing 1)
 ;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
 
 ;; (defun set-custom-line-spacing ()
@@ -188,8 +195,8 @@
   (global-git-gutter-mode 1)
   ;; (git-gutter:linum-setup)
   :bind
-  (("C-x C-n" . my-next-edit)
-   ("C-x C-p" . my-previous-edit)
+  (("C-x <down>" . my-next-edit)
+   ("C-x <up>" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
 
@@ -605,6 +612,9 @@
     (setq fci-mode-suppressed nil)
     (turn-on-fci-mode)))
 
+;; fontify code in code blocks
+(setq org-src-fontify-natively t)
+
 (use-package fci-mode
   :init
   (progn (add-hook 'prog-mode-hook 'fci-mode))
@@ -612,4 +622,6 @@
   (setq fci-rule-column 80))
 (turn-on-fci-mode)
 
+(require 'edbi)
+(require 'helm-kickass)
 (use-package web-mode)

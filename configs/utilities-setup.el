@@ -813,18 +813,12 @@ Including indent-buffer, which should not be called automatically on save."
   "Insert a markup \begin{itemize}\end{itemize} around a region."
   (interactive "r")
   (save-excursion
-    ;; (goto-char end) (insert "\nputs \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"")
-    ;; (goto-char start) (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\"\n")
     (goto-char end) (insert "\nputs \"___________________________________________________________________________________________________\"")
     (goto-char start) (insert "puts \"___________________________________________________________________________________________________\"\n")))
 
-;; ;;; Add music file to playlist on '!', --lgfang
-;; (add-to-list 'dired-guess-shell-alist-user
-;;              (list "\\.\\(flac\\|mp3\\|ogg\\|wav\\)\\'"
-;;                    '(if (y-or-n-p "Add to emms playlist?")
-;;                         (progn (emms-add-file (dired-get-filename))
-;;                                (keyboard-quit))
-;;                       "mplayer")))
+;; puts "___________________________________________________________________________________________________"
+;; ap templ.working_tab.resource_tags
+;; puts "___________________________________________________________________________________________________"
 
 (defun wrappy ()
   "Change me!"
@@ -833,7 +827,9 @@ Including indent-buffer, which should not be called automatically on save."
     (move-beginning-of-line 1)
     (set-mark-command nil)
     (move-end-of-line 1)
+    
     (wrap-item (region-beginning) (region-end))
+    
     (search-backward-regexp "puts")
     (indent-for-tab-command nil)
     (move-end-of-line 1)

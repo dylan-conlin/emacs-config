@@ -201,7 +201,7 @@ Git gutter:
   ("," edit-kbd-macro)
   ("q" nil :color blue))
 
-(bind-key "C-x (" 'my-hydra-macro/body)
+(bind-key "C-x (" 'start-kbd-macro)
 
 
 ;;** Example 2: move window splitter
@@ -212,12 +212,12 @@ Git gutter:
   (;;:timeout 10.0
             :pre (progn 
                    (setq hydra-is-helpful nil)
-                   ;; (set-cursor-color "red")
+                   (set-cursor-color "orange")
                    (blink-cursor-mode 1)
                    )
             :post (progn 
                     (setq hydra-is-helpful t)
-                    ;; (set-cursor-color "magenta")
+                    (set-cursor-color "magenta")
                     (blink-cursor-mode -1)
                     ;; (setq cursor-type '(bar . 3))
                     ))
