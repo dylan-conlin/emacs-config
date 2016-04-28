@@ -2,7 +2,27 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("kwmrc"
+(("org-refile-last-stored"
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** TODO mailchim")
+ (rear-context-string . "3-24 Thu 11:45]\n")
+ (position . 394521))
+("bitbar-plugins"
+ (filename . "~/Dropbox/bitbar-plugins/")
+ (front-context-string)
+ (rear-context-string . ":42 cmus.10s.sh\n")
+ (position . 353))
+("work"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/")
+ (front-context-string . "shortstack-admin")
+ (rear-context-string . "88 Mar 21 14:12 ")
+ (position . 718))
+("shortstack-admin"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin/")
+ (front-context-string . "config\n  -rw-r--")
+ (rear-context-string . "80 Mar 21 14:12 ")
+ (position . 1267))
+("kwmrc"
  (filename . "~/.kwm/kwmrc")
  (front-context-string . "me applications ")
  (rear-context-string . "is is because so")
@@ -18,10 +38,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO share bu")
- (rear-context-string . "3-03 Thu 14:22]\n")
- (position . 11988))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** remote duplic")
+ (rear-context-string . "4-19 Tue 12:06]\n")
+ (position . 395420))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)
@@ -38,7 +58,7 @@
  (rear-context-string)
  (position . 1))
 ("admin"
- (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-admin/")
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps")
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "44 Sep  9 15:29 ")
  (position . 296))
@@ -58,17 +78,17 @@
  (rear-context-string . "15 Sep  9 10:15 ")
  (position . 1145))
 ("server"
- (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-server/")
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server")
  (front-context-string . ".agignore\n  drwx")
  (rear-context-string . "33 Oct 28  2014 ")
  (position . 304))
 ("designer"
- (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack-designer/")
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer")
  (front-context-string . ".agignore -> /Us")
  (rear-context-string . "60 Oct 21  2014 ")
  (position . 299))
 ("shortstack"
- (filename . "~/Documents/ss_vagrant/shortstack_apps/shortstack/")
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "42 Sep  9 09:52 ")
  (position . 430))

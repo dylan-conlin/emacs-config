@@ -39,6 +39,7 @@
 (defvar helm-source-kickass-torrent-search
   '((name . "Kickass")
     (volatile)
+    (delayed . 0.5)
     (requires-pattern . 2)
     (candidates-process . helm-kickass-search)
     (action-transformer . helm-spotify-actions-for-track)))

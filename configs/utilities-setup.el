@@ -301,14 +301,18 @@ With a prefix argument, insert a newline above the current line."
     (indent-for-tab-command)))
 
 
-(defun view-on-github (start end)
-  (interactive "r")
-  (if (get-region start end)
-      (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1"))
-    (progn
-      (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
-      (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
+(defun view-on-github ()
+  (interactive)
+  (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
+  (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))
 
+;; (defun view-on-github (start end)
+;;   (interactive "r")
+;;   (if (get-region start end)
+;;       (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1"))
+;;     (progn
+;;       (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
+;;       (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
 
 (defun get-region (beg end)
   "message region or \"empty string\" if none highlighted"
@@ -558,33 +562,33 @@ Including indent-buffer, which should not be called automatically on save."
   (eshell 1))
 
 
-(defun fg-emms-track-description (track)
-  "Return a somewhat nice track description."
-  (let ((artist (emms-track-get track 'info-artist))
-        (year (emms-track-get track 'info-year))
-        (album (emms-track-get track 'info-album))
-        (tracknumber (emms-track-get track 'info-tracknumber))
-        (title (emms-track-get track 'info-title)))
-    (cond
-     ((or artist title)
-      (concat
-       (format-as-column 6  0  (format "% 3d" (string-to-number tracknumber)))
-       (format-as-column 30 30 title)
-       (format-as-column 30 30 artist)
-       (format-as-column 30 30 album)
-       (format-as-column 30 30 year)
-       ))
-     (t
-      (emms-track-simple-description track)))))
+;; (defun fg-emms-track-description (track)
+;;   "Return a somewhat nice track description."
+;;   (let ((artist (emms-track-get track 'info-artist))
+;;         (year (emms-track-get track 'info-year))
+;;         (album (emms-track-get track 'info-album))
+;;         (tracknumber (emms-track-get track 'info-tracknumber))
+;;         (title (emms-track-get track 'info-title)))
+;;     (cond
+;;      ((or artist title)
+;;       (concat
+;;        (format-as-column 6  0  (format "% 3d" (string-to-number tracknumber)))
+;;        (format-as-column 30 30 title)
+;;        (format-as-column 30 30 artist)
+;;        (format-as-column 30 30 album)
+;;        (format-as-column 30 30 year)
+;;        ))
+;;      (t
+;;       (emms-track-simple-description track)))))
 
-(defun emms-mode-line-playlist-current ()
-  "Format the currently playing song."
-  (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
-        (artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
-    (format emms-mode-line-format (concat track " - " artist))))
+;; (defun emms-mode-line-playlist-current ()
+;;   "Format the currently playing song."
+;;   (let ((track (emms-track-get (emms-playlist-current-selected-track) 'info-title))
+;;         (artist (emms-track-get (emms-playlist-current-selected-track) 'info-artist)))
+;;     (format emms-mode-line-format (concat track " - " artist))))
 
-(defun format-as-column (width right-padding field)
-  (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
+;; (defun format-as-column (width right-padding field)
+;;   (s-truncate width (s-pad-right right-padding " " (concat "   " (if (> (length field) 0) field "----")))))
 
 (defun soulseek-playlist ()
   (interactive)
@@ -1012,6 +1016,7 @@ minibuffer."
         (-1 (message value))))))
 
 (bind-key "C-=" 'calc-eval-region)
+
 
 
 (provide 'utilities-setup)

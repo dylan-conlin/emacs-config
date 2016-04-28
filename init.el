@@ -48,8 +48,10 @@
 ;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu   .org/packages/"))
 
 ;; setup my packages
-(require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
 (cask-initialize)
+
+(require 'pallet)
 
 (eval-when-compile
   (require 'use-package))
@@ -122,7 +124,7 @@
    ("C-x t" . helm-imenu)
    ("M-C-p" . helm-eshell-history)
    ("C-c f" . helm-dash)
-   ("C-x f" . my-recentf)
+   ("C-x f" . helm-recentf)
    ("C-x y" . helm-show-kill-ring)
    ("C-x C-b" . helm-bookmarks)
    ("M-." . helm-locate)
@@ -150,8 +152,9 @@
 
 ;; behavior and appearance stuff
 
-;; (load-theme 'base16-brewer-light t)
-;; (load-theme ')
+;; (load-theme 'base16-google-light t)
+;; (load-theme 'apropospriate-dark t)
+(load-theme 'leuven t)
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
@@ -236,14 +239,12 @@
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
 
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 
 (eval-after-load 'progn
   '(tern
     (require 'tern-auto-complete)
     (tern-ac-setup)))
-
-
 
 (use-package ruby-mode
   :mode
@@ -273,10 +274,11 @@
 ;;(add-hook 'css-mode-hook (lambda () (kite-mode t)))
 
 
-(use-package smooth-scroll
-  :config
-  (smooth-scroll-mode 1)
-  (setq smooth-scroll/vscroll-step-size 2))
+;; (use-package smooth-scroll
+;;   :config
+;;   (smooth-scroll-mode 1)
+;;   (setq smooth-scroll/vscroll-step-size 5)
+;;   )
 
 ;; (require 'kite "/Users/dylanconlin/.emacs.d/configs/emacs-websocket/websocket.el")
 
@@ -289,11 +291,14 @@
   ;; disable scss-mode from compiling on save
   (setq scss-compile-at-save nil))
 
+(use-package sass-mode
+  )
 (use-package rainbow-mode
   :init
   (progn
     (add-hook 'css-mode-hook 'rainbow-mode)
     (add-hook 'scss-mode-hook 'rainbow-mode)
+    (add-hook 'sass-mode-hook 'rainbow-mode)
     (add-hook 'web-mode-hook 'rainbow-mode)
     (add-hook 'haml-mode-hook 'rainbow-mode)
     (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)))
@@ -412,6 +417,8 @@
             ("~/Dropbox/org/blogs.org" . (:level . 1))))))
 
 
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
 ;; (use-package evil-smartparens
 
 ;;   :init
@@ -469,6 +476,22 @@
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
+(add-to-list 'load-path "~/.emacs.d/emms/")
+(add-to-list 'load-path "~/usr/local/bin/mp3info/")
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
+(setq emms-source-file-default-directory "~/Music/")
+(setq emms-player-mplayer-command-name "/usr/local/bin/mplayer")
+(setq emms-player-list '(emms-player-mplayer
+                         emms-player-mpg321
+                         emms-player-mpd))
+
+(setq emms-info-auto-update t)
+(setq emms-info-asynchronously t)
+(setq debug-on-error t)
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
 ;; (require 'emms-setup)
 ;; (require 'emms-player-mplayer)
 ;; (emms-standard)
@@ -593,35 +616,35 @@
 (push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
-(defun fci-enabled-p () (symbol-value 'fci-mode))
+;; (defun fci-enabled-p () (symbol-value 'fci-mode))
 
-(defvar fci-mode-suppressed nil)
-(make-variable-buffer-local 'fci-mode-suppressed)
+;; (defvar fci-mode-suppressed nil)
+;; (make-variable-buffer-local 'fci-mode-suppressed)
 
-(defadvice popup-create (before suppress-fci-mode activate)
-  "Suspend fci-mode while popups are visible"
-  (let ((fci-enabled (fci-enabled-p)))
-    (when fci-enabled
-      (setq fci-mode-suppressed fci-enabled)
-      (turn-off-fci-mode))))
+;; (defadvice popup-create (before suppress-fci-mode activate)
+;;   "Suspend fci-mode while popups are visible"
+;;   (let ((fci-enabled (fci-enabled-p)))
+;;     (when fci-enabled
+;;       (setq fci-mode-suppressed fci-enabled)
+;;       (turn-off-fci-mode))))
 
-(defadvice popup-delete (after restore-fci-mode activate)
-  "Restore fci-mode when all popups have closed"
-  (when (and fci-mode-suppressed
-             (null popup-instances))
-    (setq fci-mode-suppressed nil)
-    (turn-on-fci-mode)))
+;; (defadvice popup-delete (after restore-fci-mode activate)
+;;   "Restore fci-mode when all popups have closed"
+;;   (when (and fci-mode-suppressed
+;;              (null popup-instances))
+;;     (setq fci-mode-suppressed nil)
+;;     (turn-on-fci-mode)))
 
-;; fontify code in code blocks
-(setq org-src-fontify-natively t)
+;; ;; fontify code in code blocks
+;; (setq org-src-fontify-natively t)
 
-(use-package fci-mode
-  :init
-  (progn (add-hook 'prog-mode-hook 'fci-mode))
-  :config
-  (setq fci-rule-column 80))
-(turn-on-fci-mode)
+;; (use-package fill-column-indicator
+;;   :init
+;;   (progn (add-hook 'prog-mode-hook 'fci-mode))
+;;   :config
+;;   (setq fci-rule-column 80))
 
-(require 'edbi)
+
+;; (require 'edbi)
 (require 'helm-kickass)
 (use-package web-mode)
