@@ -38,10 +38,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** remote duplic")
- (rear-context-string . "4-19 Tue 12:06]\n")
- (position . 395420))
+ (filename . "~/Dropbox/org/todo.org")
+ (front-context-string . "** TODO LED stri")
+ (rear-context-string . "4-29 Fri 12:30]\n")
+ (position . 17747))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

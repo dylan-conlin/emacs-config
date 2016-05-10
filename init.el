@@ -86,6 +86,8 @@
   :config
   (projectile-global-mode))
 
+
+
 (use-package helm
   :config
   (progn 
@@ -110,25 +112,45 @@
     (setq helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match    t)
     
-    (helm-mode 1))
-  :bind 
-  (("C-x C-f" . helm-find-files)
-   ("C-x l" . helm-ls-git-ls)
-   ("C-x a" . helm-apropos)
-   ("M-x" . helm-M-x)
-   ("M-k" . helm-project-search)
-   ("M-K" . my-helm-do-ag)
-   ("C-x b" . helm-projectless-search)
-   ("H-n" . helm-scroll-other-window)
-   ("H-p" . helm-scroll-other-window-down)
-   ("C-x t" . helm-imenu)
-   ("M-C-p" . helm-eshell-history)
-   ("C-c f" . helm-dash)
-   ("C-x f" . helm-recentf)
-   ("C-x y" . helm-show-kill-ring)
-   ("C-x C-b" . helm-bookmarks)
-   ("M-." . helm-locate)
-   ("M-j" . helm-resume)))
+    (helm-mode 1)
+   ;; (define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
+    )
+  :bind (("C-x C-f" . helm-find-files)
+         ("C-x l" . helm-ls-git-ls)
+         ("C-x a" . helm-apropos)
+         ("M-x" . helm-M-x)
+         ("M-k" . helm-project-search)
+         ("M-K" . my-helm-do-ag)
+         ("C-x b" . helm-projectless-search)
+         ("H-n" . helm-scroll-other-window)
+         ("H-p" . helm-scroll-other-window-down)
+         ("C-x t" . helm-imenu)
+         ("M-C-p" . helm-eshell-history)
+         ("C-c f" . helm-dash)
+         ("C-x f" . helm-recentf)
+         ("C-x y" . helm-show-kill-ring)
+         ("C-x C-b" . helm-bookmarks)
+         ("M-." . helm-locate)
+         ("M-j" . helm-resume)))
+         ;; :map helm-do-ag-map
+         ;; ("C-c C-y" . my-helm-yank-selection)))
+
+;;(require 'helm)
+;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
+
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+  :bind
+  (("s-e" . yas-expand))
+  :init
+  (progn
+    (setq yas-verbosity 3)
+    (yas-global-mode 1)
+    ))
+
+(add-to-list 'load-path "~/.emacs.d/snippets/es6-snippets")
+(require 'es6-snippets)
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -155,6 +177,7 @@
 ;; (load-theme 'base16-google-light t)
 ;; (load-theme 'apropospriate-dark t)
 (load-theme 'leuven t)
+
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
@@ -163,8 +186,8 @@
 ;; add newline to file on save
 (setq require-final-newline t)
 ;; font color and size
-(set-face-attribute 'default nil :family "inconsolata" :height 145)
-;; (set-face-attribute 'default nil :family "share tech mono" :height 145)
+(set-face-attribute 'default nil :family "inconsolata" :height 140)
+;; (set-face-attribute 'default nil :family "monaco" :height 120)
 (setq-default line-spacing 1)
 ;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
 
@@ -198,8 +221,8 @@
   (global-git-gutter-mode 1)
   ;; (git-gutter:linum-setup)
   :bind
-  (("C-x <down>" . my-next-edit)
-   ("C-x <up>" . my-previous-edit)
+  (("C-x C-n" . my-next-edit)
+   ("C-x C-p" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
 
@@ -377,7 +400,7 @@
     (add-hook 'org-mode-hook
               (lambda ()
                 ;; (require 'flyspell-lazy)
-                (visual-line-mode t)
+                (visual-line-mode nil)
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))
@@ -394,28 +417,38 @@
     (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
     
     ;; setup files agenda is aware of
-    (setq org-agenda-files '("~/Dropbox/org/code.org"
+    (setq org-agenda-files '(
+                             ;; "~/Dropbox/org/code.org"
                              "~/Dropbox/org/notes.org"
                              "~/Dropbox/org/shortstack.org"
-                             "~/Dropbox/org/journal.org"
-                             "~/Dropbox/org/todo.org"))
+                             ;; "~/Dropbox/org/journal.org"
+                             "~/Dropbox/org/todo-personal.org"
+                             "~/Dropbox/org/todo-work.org"
+                             "~/Dropbox/org/todo-consulting.org"
+                             ))
     (setq org-capture-templates
           '(
-            ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
+            ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
+            ("e" "Todo-Consulting" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Consulting") "* TODO %^{title} %^g \n %? \n%U")
+            ;; ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
-            ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
-            ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
-            ("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks") "* TODO %^{title} %^g \n %? \n%U")
-            ("l" "Ledger entries")
-            ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")))
+            ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
+            ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
+            ;; ("l" "Ledger entries")
+            ;; ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
+            ))
     (setq org-refile-targets
-          '(("~/Dropbox/org/notes.org" . (:level . 1))
-            ("~/Dropbox/org/todo.org" . (:level . 1))
-            ("~/Dropbox/org/shortstack.org" . (:level . 1))
-            ("~/Dropbox/org/secrets.org" . (:level . 1))
-            ("~/Dropbox/org/code.org" . (:level . 1))
-            ("~/Dropbox/org/blogs.org" . (:level . 1))))))
-
+          '(
+            ("~/Dropbox/org/todo-work.org" . (:level . 1))
+            ("~/Dropbox/org/todo-personal.org" . (:level . 1))
+            ("~/Dropbox/org/todo-consulting.org" . (:level . 1))
+            ("~/Dropbox/org/notes.org" . (:level . 1))
+            ;; ("~/Dropbox/org/shortstack.org" . (:level . 1))
+            ;; ("~/Dropbox/org/secrets.org" . (:level . 1))
+            ;; ("~/Dropbox/org/code.org" . (:level . 1))
+            ;; ("~/Dropbox/org/blogs.org" . (:level . 1))
+            ))))
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
@@ -478,6 +511,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/emms/")
 (add-to-list 'load-path "~/usr/local/bin/mp3info/")
+(add-to-list 'load-path "~/bin/tmsu")
 (require 'emms-setup)
 (emms-standard)
 (emms-default-players)
@@ -646,5 +680,17 @@
 
 
 ;; (require 'edbi)
-(require 'helm-kickass)
+;; (require 'helm-kickass)
+
+;; (define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
+
+(defun quicklisp-slime-setup ()
+  (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime"))
+  (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime/contrib"))
+  (setq inferior-lisp-program "/usr/local/bin/ccl64")
+  (setq slime-autodoc-mode t)
+  (setq slime-net-coding-system 'utf-8-unix)
+  (require 'slime)
+  (slime-setup '(slime-repl slime-fancy)))
+
 (use-package web-mode)

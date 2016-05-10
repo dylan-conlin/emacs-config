@@ -38,9 +38,13 @@
 
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
-
+(bind-key "C-x r l" 'ruby-logger)
+(bind-key "C-x r t" 'ruby-toggle-active-test)
+(bind-key "C-x r T" 'ruby-deactivate-all-tests)
+(bind-key "C-x j l" 'js-logger)
 ;; utilities
 (bind-key "C-c h" 'describe-key)
+
 (bind-key "C-c y" 'copy-full-path-to-kill-ring)
 (bind-key "C-c C-k" 'eval-buffer)
 

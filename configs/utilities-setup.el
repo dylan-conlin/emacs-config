@@ -201,7 +201,7 @@ Assumes that the frame is only split into two."
 With a prefix arg set to real value of current selection."
   (interactive "P")
   (let ((str (helm-get-selection nil (not arg))))
-    (kill-new (car (last (s-split ":    " (car (last (s-slice-at ": +?" str)))))))
+    (kill-new (car (last (s-split ":    " (car (last (s-split-up-to ":*:" str 2)))))))
     (helm-set-pattern str)))
 
 ;; (defun open-line-below ()
@@ -314,14 +314,40 @@ With a prefix argument, insert a newline above the current line."
 ;;       (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
 ;;       (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
 
+
 (defun get-region (beg end)
   "message region or \"empty string\" if none highlighted"
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
                  (list nil nil)))
-  (if (and beg end)
-      (buffer-substring-no-properties beg end)
-    "xxx"))
+  (let ((my-region (if (and beg end)
+                       (buffer-substring-no-properties beg end)
+                     (message "%s" "Please select a region first!")
+                     nil)))
+    my-region))
+
+(defun js-logger (beg end)
+  "message region or \"empty string\" if none highlighted"
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (let ((my-region (if (and beg end)
+                       (buffer-substring-no-properties beg end)
+                     (insert (format-js-logger (current-kill 0))))))
+    (kill-new (format-js-logger my-region))
+    (deactivate-mark)))
+
+(defun format-js-logger (my-region)
+  (concat "console.log('" my-region ": ', " my-region ")"))
+
+;; (defun get-region (beg end)
+;;   "message region or \"empty string\" if none highlighted"
+;;   (interactive (if (use-region-p)
+;;                    (list (region-beginning) (region-end))
+;;                  (list nil nil)))
+;;   (message "%s" (if (and beg end)
+;;                     (buffer-substring-no-properties beg end)
+;;                   "Please select a region first!")))
 
 (defun find-git-root (&optional dir)
   (interactive)
@@ -1017,6 +1043,36 @@ minibuffer."
 
 (bind-key "C-=" 'calc-eval-region)
 
+(defun ruby-deactivate-test (active-test-string)
+  (save-excursion
+    (goto-char (line-beginning-position))
+    (while (re-search-forward active-test-string (line-end-position) t)
+      (replace-match "" nil nil))))
 
+(defun ruby-activate-test (active-test-string)
+  (save-excursion
+    (goto-char (line-beginning-position))
+    (while (re-search-forward "[it|describe] '" (line-end-position) t 1)
+      (insert active-test-string))))
+
+
+(defun ruby-toggle-active-test ()
+  (interactive)
+  (let ((my-active-test-string "my_active_test "))
+    (save-excursion
+      (goto-char (line-beginning-position))
+      
+      (if (re-search-forward my-active-test-string (line-end-position) t)
+          (progn 
+            (ruby-deactivate-test my-active-test-string))
+        (ruby-activate-test my-active-test-string)))))
+
+(defun ruby-deactivate-all-tests ()
+  (interactive)
+  (let ((my-active-test-string "my_active_test "))
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward my-active-test-string (point-max) t)
+        (replace-match "" nil nil)))))
 
 (provide 'utilities-setup)

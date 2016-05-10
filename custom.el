@@ -145,11 +145,11 @@ static char *gnus-pointer[] = {
  '(helm-flx-mode t)
  '(helm-fuzzy-matching-highlight-fn (quote helm-flx-fuzzy-highlight-match))
  '(helm-fuzzy-sort-fn (quote helm-flx-fuzzy-matching-sort))
- '(helm-idle-delay 0.01)
+ '(helm-idle-delay 0.01 t)
  '(helm-ls-git-show-abs-or-relative (quote relative))
  '(helm-mode t)
  '(helm-persistent-action-use-special-display nil)
- '(helm-quick-update t)
+ '(helm-quick-update t t)
  '(helm-recentf-fuzzy-match t)
  '(helm-reuse-last-window-split-state t)
  '(helm-swoop-pre-input-function
@@ -218,6 +218,7 @@ static char *gnus-pointer[] = {
 '(org-agenda-files
 (quote
  ("~/Dropbox/org/code.org" "~/Dropbox/org/notes.org" "~/Dropbox/org/shortstack.org" "~/Dropbox/org/todo.org")))
+ '(org-auto-align-tags nil)
 '(org-babel-load-languages
 (quote
  ((emacs-lisp . t)
@@ -235,7 +236,7 @@ static char *gnus-pointer[] = {
  '(org-mobile-directory "~/Dropbox/Apps/MobileOrg")
  '(org-mobile-inbox-for-pull "~/Dropbox/org/mobile.org")
  '(org-startup-indented t)
- '(org-tags-column 110)
+ '(org-tags-column 0)
  '(package-build-verbose nil)
  '(paradox-automatically-star nil)
  '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
@@ -250,6 +251,7 @@ static char *gnus-pointer[] = {
  '(ruby-block-highlight-toggle t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(scss-compile-at-save nil)
+ '(send-mail-function (quote mailclient-send-it))
  '(sentence-end-double-space nil)
  '(show-paren-delay 0.06)
  '(show-smartparens-global-mode t)
@@ -307,4 +309,6 @@ static char *gnus-pointer[] = {
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "dark blue"))))
  '(helm-ls-git-renamed-modified-face ((t (:foreground "dark cyan"))))
  '(helm-source-header ((t (:foreground "dark blue" :background "white" :weight bold :height 1.1 :family "Sans Serif"))))
- '(show-paren-match ((t (:foreground "green1" :underline t)))))
+ '(org-level-2 ((t (:background "White" :foreground "#123555" :overline nil :weight bold :height 1.0))))
+ '(show-paren-match ((t (:foreground "green1" :underline t))))
+ '(sp-show-pair-match-face ((t (:background "green")))))
