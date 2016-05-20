@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <16/04/19 08:06:11 /Users/dylanconlin/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <16/05/11 08:21:05 /Users/dylanconlin/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -25,7 +25,7 @@
   ("~root" "/var/root"))
  (["sudo" "root" "localhost" nil nil]
   ("locale" "LC_ALL=C")
-  ("uname" "Darwin 15.3.0")
+  ("uname" "Darwin 15.4.0")
   ("test" "test")
   ("remote-path"
    ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/bin"))

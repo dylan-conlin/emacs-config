@@ -148,7 +148,7 @@ Git gutter:
               (git-gutter:clear))
    :color blue))
 
-(bind-key "C-c g" 'my-hydra-git-gutter/body)
+(bind-key "C-c f" 'my-hydra-git-gutter/body)
 
 (defhydra my-hydra-macro (:hint nil :color pink :pre 
                              (when defining-kbd-macro

@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** TODO mailchim")
- (rear-context-string . "3-24 Thu 11:45]\n")
- (position . 394521))
+ (front-context-string . "** creating a ne")
+ (rear-context-string . "5-08 Sun 22:37]\n")
+ (position . 398844))
 ("bitbar-plugins"
  (filename . "~/Dropbox/bitbar-plugins/")
  (front-context-string)
@@ -38,10 +38,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo.org")
- (front-context-string . "** TODO LED stri")
- (rear-context-string . "4-29 Fri 12:30]\n")
- (position . 17747))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** days off for ")
+ (rear-context-string . "5-13 Fri 00:41]\n")
+ (position . 430858))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

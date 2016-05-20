@@ -21,6 +21,12 @@
  '(auto-image-file-mode t)
  '(aw-background t)
  '(battery-mode-line-format " %p")
+ '(beacon-blink-delay 0.2)
+ '(beacon-blink-duration 0.1)
+ '(beacon-blink-when-focused t)
+ '(beacon-color 0.5)
+ '(beacon-mode t)
+ '(beacon-size 50)
  '(blink-cursor-blinks 2000)
  '(blink-cursor-interval 0.25)
  '(blink-cursor-mode nil)
@@ -78,7 +84,7 @@ static char *note[] = {
  '(fci-rule-color "dark gray")
  '(fill-column 110)
  '(flycheck-pos-tip-timeout 3)
- '(fringe-mode 1 nil (fringe))
+ '(fringe-mode (quote (1 . 1)) nil (fringe))
  '(git-gutter:hide-gutter nil)
  '(global-auto-complete-mode t)
  '(global-git-gutter-mode t)
@@ -213,11 +219,11 @@ static char *gnus-pointer[] = {
 (quote
  (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
  '(nyan-cat-face-number 1)
- '(nyan-mode t)
+ '(nyan-mode nil)
  '(nyan-wavy-trail t)
 '(org-agenda-files
 (quote
- ("~/Dropbox/org/code.org" "~/Dropbox/org/notes.org" "~/Dropbox/org/shortstack.org" "~/Dropbox/org/todo.org")))
+ ("~/Dropbox/org/code.org" "~/Dropbox/org/notes.org" "~/Dropbox/org/shortstack.org")))
  '(org-auto-align-tags nil)
 '(org-babel-load-languages
 (quote
@@ -302,6 +308,7 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(beacon-fallback-background ((t (:background "Cyan"))))
  '(cursor ((t (:background "Magenta"))))
  '(git-gutter:added ((t (:foreground "green4" :weight bold))))
  '(git-gutter:modified ((t (:foreground "orange" :weight bold))))
@@ -309,6 +316,16 @@ static char *gnus-pointer[] = {
  '(helm-ls-git-modified-not-staged-face ((t (:foreground "dark blue"))))
  '(helm-ls-git-renamed-modified-face ((t (:foreground "dark cyan"))))
  '(helm-source-header ((t (:foreground "dark blue" :background "white" :weight bold :height 1.1 :family "Sans Serif"))))
+ '(org-block-begin-line ((t (:background "White" :foreground "#555555" :underline "#A7A6AA"))))
+ '(org-block-end-line ((t (:background "White" :foreground "#555555"))))
+ '(org-date ((t (:foreground "gray62" :underline nil :height 0.9))))
+ '(org-done ((t (:background "White" :foreground "green4" :box nil :weight bold))))
+ '(org-level-1 ((t (:background "White" :foreground "#3C3C3C" :overline nil :weight bold :height 1.3))))
  '(org-level-2 ((t (:background "White" :foreground "#123555" :overline nil :weight bold :height 1.0))))
+ '(org-level-3 ((t (:background "White" :foreground "#123555" :strike-through nil :weight bold :height 1.0))))
+ '(org-level-4 ((t (:foreground "#123555" :slant normal :weight bold :height 1.0))))
+ '(org-level-5 ((t (:foreground "#123555" :slant normal :weight bold :height 1.0))))
+ '(org-special-keyword ((t (:background "White" :foreground "gray71" :weight thin :height 0.75))))
+ '(org-todo ((t (:background "White" :foreground "red3" :box nil :weight bold))))
  '(show-paren-match ((t (:foreground "green1" :underline t))))
  '(sp-show-pair-match-face ((t (:background "green")))))

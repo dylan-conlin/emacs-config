@@ -1075,4 +1075,5 @@ minibuffer."
       (while (re-search-forward my-active-test-string (point-max) t)
         (replace-match "" nil nil)))))
 
+
 (provide 'utilities-setup)

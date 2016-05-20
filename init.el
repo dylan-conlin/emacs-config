@@ -21,6 +21,13 @@
 
 (setq ispell-program-name "/usr/local/bin/aspell")
 
+
+(set-face-attribute 'fringe nil 
+                    :background "gray95")
+
+
+(set-fringe-style '(1 . 1))
+
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
 
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -146,7 +153,7 @@
   :init
   (progn
     (setq yas-verbosity 3)
-    (yas-global-mode 1)
+    ;; (yas-global-mode 1)
     ))
 
 (add-to-list 'load-path "~/.emacs.d/snippets/es6-snippets")
@@ -187,6 +194,7 @@
 (setq require-final-newline t)
 ;; font color and size
 (set-face-attribute 'default nil :family "inconsolata" :height 140)
+;; (set-face-attribute 'default nil :family "mononoki" :height 140)
 ;; (set-face-attribute 'default nil :family "monaco" :height 120)
 (setq-default line-spacing 1)
 ;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
@@ -401,6 +409,7 @@
               (lambda ()
                 ;; (require 'flyspell-lazy)
                 (visual-line-mode nil)
+                (yas-global-mode nil)
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))
@@ -431,7 +440,7 @@
             ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
             ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
             ("e" "Todo-Consulting" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Consulting") "* TODO %^{title} %^g \n %? \n%U")
-            ;; ("c" "Code" entry (file+headline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ;; ("c" "Code" entry (file+nheadline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
             ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
             ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
@@ -449,6 +458,7 @@
             ;; ("~/Dropbox/org/code.org" . (:level . 1))
             ;; ("~/Dropbox/org/blogs.org" . (:level . 1))
             ))))
+
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
@@ -591,6 +601,7 @@
 
 (use-package utilities-setup)
 (use-package bindings-setup)
+(use-package texter)
 (use-package hydras)
 (use-package vc-git)
 (use-package repository-root)
@@ -624,6 +635,7 @@
 (defun css-doc ()
   (interactive)
   (setq-local helm-dash-docsets '("CSS")))
+
 
 (defun clojure-doc ()
   (interactive)
@@ -692,5 +704,25 @@
   (setq slime-net-coding-system 'utf-8-unix)
   (require 'slime)
   (slime-setup '(slime-repl slime-fancy)))
+
+(require 'sublimity)
+;(require 'sublimity-scroll)
+;; (require 'sublimity-map)
+;; ;; (require 'sublimity-attractive)
+;; (sublimity-mode 1)
+
+;; (setq sublimity-scroll-weight 5
+;;       sublimity-scroll-drift-length 20)
+
+(use-package beacon
+  :config
+  (beacon-mode t))
+
+(use-package anzu
+  :config
+  (anzu-mode t))
+
+(use-package nyan-cat
+  )
 
 (use-package web-mode)
