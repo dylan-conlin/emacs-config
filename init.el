@@ -22,12 +22,6 @@
 (setq ispell-program-name "/usr/local/bin/aspell")
 
 
-(set-face-attribute 'fringe nil 
-                    :background "gray95")
-
-
-(set-fringe-style '(1 . 1))
-
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
 
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -62,9 +56,10 @@
 
 (eval-when-compile
   (require 'use-package))
+
+
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
-
 (recentf-mode 1)
 (setq recentf-max-menu-items 500)
 
@@ -97,7 +92,7 @@
 
 (use-package helm
   :config
-  (progn 
+  (progn
     (require 'helm-config)
     (use-package helm-projectile)
     (use-package helm-ls-git)
@@ -118,9 +113,9 @@
           helm-recentf-fuzzy-match    t)
     (setq helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match    t)
+
+    (helm-mode 1)    
     
-    (helm-mode 1)
-   ;; (define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
     )
   :bind (("C-x C-f" . helm-find-files)
          ("C-x l" . helm-ls-git-ls)
@@ -139,9 +134,9 @@
          ("C-x C-b" . helm-bookmarks)
          ("M-." . helm-locate)
          ("M-j" . helm-resume)))
-         ;; :map helm-do-ag-map
-         ;; ("C-c C-y" . my-helm-yank-selection)))
-
+;; :map helm-do-ag-map
+;; ("C-c C-y" . my-helm-yank-selection)))
+;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
 ;;(require 'helm)
 ;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
 
@@ -172,12 +167,16 @@
 (use-package multiple-cursors
   :bind
   (("s-n" . mc/mark-next-like-this)
-   ("s-N" . mc/unmark-next-like-this)
+   ("s-P" . mc/unmark-next-like-this)
    ("s-p" . mc/mark-previous-like-this)
-   ("s-P" . mc/unmark-previous-like-this)
+   ("s-N" . mc/unmark-previous-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
 (use-package color-theme)
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 ;; behavior and appearance stuff
 
@@ -194,14 +193,17 @@
 (setq require-final-newline t)
 ;; font color and size
 (set-face-attribute 'default nil :family "inconsolata" :height 140)
+;; font for all unicode characters
+(set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
+
 ;; (set-face-attribute 'default nil :family "mononoki" :height 140)
 ;; (set-face-attribute 'default nil :family "monaco" :height 120)
-(setq-default line-spacing 1)
+;; (setq-default line-spacing 0)
 ;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
 
 ;; (defun set-custom-line-spacing ()
 ;;   (add-text-properties (point-min) (point-max)
-;;                        '(line-spacing 0.25 line-height 1.25)))  
+;;                        '(line-spacing 0.25 line-height 1.25)))
 
 (blink-cursor-mode -1)
 (global-subword-mode 1)
@@ -259,10 +261,15 @@
 
 (use-package expand-region)
 
+(use-package js-mode
+  :mode
+  (("\\.json\\'" . js-mode)
+   ("\\.babelrc\\'" . js-mode)))
+
 (use-package js2-mode
   :mode
   (("\\.js\\'" . js2-mode)
-   ("\\.json\\'" . js2-mode))
+   ("\\.jsx$" . js2-mode))
   :interpreter "node"
   ;; :no-require t
   :config
@@ -285,7 +292,7 @@
    ("\\.gemspec\\'" . ruby-mode)
    ("\\kwmrc\\'" . ruby-mode))
   :init
-  (progn 
+  (progn
     (require 'ruby-block)
     (ruby-block-mode t)
     ;; do overlay
@@ -392,7 +399,7 @@
                 (visual-line-mode t)
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
-		))))
+                ))))
 
 (use-package org
   :bind
@@ -413,18 +420,27 @@
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))
-    
+
     ;; prettier appearance settings
     (setq org-log-done t)
+    (setq org-todo-keywords
+          '((sequence "TODO" "REVIEW" "DONE")))
+    
+    (setq org-todo-keyword-faces
+          '(("TODO" . "red3")
+            ("REVIEW" . "orange3")
+            ("DONE" . "green4")
+            ("ARCHIVED" .  "blue3")))
+    
     (setq org-startup-indented t)
     (setq org-hide-leading-starts t)
 
     ;; behavior settings
     (setq org-use-fast-todo-selection t)
-    
+
     ;; setup org path
     (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
-    
+
     ;; setup files agenda is aware of
     (setq org-agenda-files '(
                              ;; "~/Dropbox/org/code.org"
@@ -468,7 +484,7 @@
 ;;   (evil-smartparens-mode 1))
 
 ;; (use-package evil-mode
-;;   :init 
+;;   :init
 ;;   (global-evil-leader-mode)
 ;;   (evil-mode 1)
 ;;   (evil-escape-mode 1)
@@ -533,7 +549,7 @@
 
 (setq emms-info-auto-update t)
 (setq emms-info-asynchronously t)
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 ;; (require 'emms-setup)
@@ -592,10 +608,6 @@
 ;;       ediff-window-setup-function 'ediff-setup-windows-plain
 ;;       save-place-file (concat user-emacs-directory "places"))
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
 ;; Set up load path
 (add-to-list 'load-path "~/.emacs.d/configs/")
 
@@ -610,7 +622,6 @@
 
 (find-file "~/.emacs.d/init.el")
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
 (use-package rvm
@@ -648,52 +659,69 @@
 
 (avy-setup-default)
 
-;; I know-your-http-we… 20151220… available  melpa 1539  Look up the meaning of HTTP headers, methods, relations, status codes 
-;; I ledger-mode      h 20160111… available  melpa 1521  Helper code for use with the "ledger" command-line tool 
-;; I literate-starter-… 20150730… available  melpa  629  A literate starter kit to configure Emacs using Org-mode files. 
-;; I restclient       h 20151128… available  melpa  493  An interactive HTTP client for Emacs 
-;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents. 
-;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file 
+;; I know-your-http-we… 20151220… available  melpa 1539  Look up the meaning of HTTP headers, methods, relations, status codes
+;; I ledger-mode      h 20160111… available  melpa 1521  Helper code for use with the "ledger" command-line tool
+;; I literate-starter-… 20150730… available  melpa  629  A literate starter kit to configure Emacs using Org-mode files.
+;; I restclient       h 20151128… available  melpa  493  An interactive HTTP client for Emacs
+;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents.
+;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file
 
 (global-hl-line-mode 0)
 
-(require 'popwin)
-(popwin-mode 1)
-(push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
+;; (require 'popwin)
+;; (popwin-mode 1)
+
+;; (push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
+
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
-;; (defun fci-enabled-p () (symbol-value 'fci-mode))
+(defun fci-enabled-p () (symbol-value 'fci-mode))
 
-;; (defvar fci-mode-suppressed nil)
-;; (make-variable-buffer-local 'fci-mode-suppressed)
+(defvar fci-mode-suppressed nil)
+(make-variable-buffer-local 'fci-mode-suppressed)
 
-;; (defadvice popup-create (before suppress-fci-mode activate)
-;;   "Suspend fci-mode while popups are visible"
-;;   (let ((fci-enabled (fci-enabled-p)))
-;;     (when fci-enabled
-;;       (setq fci-mode-suppressed fci-enabled)
-;;       (turn-off-fci-mode))))
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible"
+  (let ((fci-enabled (fci-enabled-p)))
+    (when fci-enabled
+      (setq fci-mode-suppressed fci-enabled)
+      (turn-off-fci-mode))))
 
-;; (defadvice popup-delete (after restore-fci-mode activate)
-;;   "Restore fci-mode when all popups have closed"
-;;   (when (and fci-mode-suppressed
-;;              (null popup-instances))
-;;     (setq fci-mode-suppressed nil)
-;;     (turn-on-fci-mode)))
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed"
+  (when (and fci-mode-suppressed
+             (null popup-instances))
+    (setq fci-mode-suppressed nil)
+    (turn-on-fci-mode)))
 
-;; ;; fontify code in code blocks
-;; (setq org-src-fontify-natively t)
+;; fontify code in code blocks
+(setq org-src-fontify-natively t)
 
 ;; (use-package fill-column-indicator
 ;;   :init
-;;   (progn (add-hook 'prog-mode-hook 'fci-mode))
+;;   (progn 
+;;     (add-hook 'prog-mode-hook 'fci-mode)
+    
+;;     )
 ;;   :config
-;;   (setq fci-rule-column 80))
+;;   (setq fci-rule-column 100))
 
+
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda ()
+    (if (not 
+         (or 
+          ;; disable fci in the following modes:
+          (eq major-mode 'dired-mode)
+          (eq major-mode 'web-mode)
+          (eq major-mode 'org-mode)))
+        (fci-mode 1))))
+(global-fci-mode 1)
+
+(setq fci-rule-column 100)
 
 ;; (require 'edbi)
 ;; (require 'helm-kickass)
-
 ;; (define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
 
 (defun quicklisp-slime-setup ()
@@ -706,11 +734,10 @@
   (slime-setup '(slime-repl slime-fancy)))
 
 (require 'sublimity)
-;(require 'sublimity-scroll)
+                                        ;(require 'sublimity-scroll)
 ;; (require 'sublimity-map)
 ;; ;; (require 'sublimity-attractive)
 ;; (sublimity-mode 1)
-
 ;; (setq sublimity-scroll-weight 5
 ;;       sublimity-scroll-drift-length 20)
 
@@ -722,7 +749,34 @@
   :config
   (anzu-mode t))
 
-(use-package nyan-cat
-  )
+(use-package web-mode
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.html\\.erb\\'" . web-mode)
+         ("\\.mustache\\'" . web-mode)
+         ("\\.jinja\\'" . web-mode)
+         ("\\.php\\'" . web-mode))
+  :config
+  (progn
+    (setq web-mode-engines-alist
+          '(("\\.jinja\\'"  . "django")))))
 
-(use-package web-mode)
+(fringe-mode 1)
+(set-face-attribute 'fringe nil :background "gray88")
+(set-fringe-style '(1 . 1))
+
+(setq debug-on-error nil)
+
+;; scroll one line at a time (less "jumpy" than defaults)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+(when (locate-library "edit-server")
+  (require 'edit-server)
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
+
+(point-undo)

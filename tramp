@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <16/05/11 08:21:05 /Users/dylanconlin/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <16/06/22 12:13:07 /Users/dylanconlin/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -38,4 +38,43 @@
   ("perl" "\\perl")
   ("id" "/usr/bin/id")
   ("gid-integer" 0)
-  ("gid-string" "wheel")))
+  ("gid-string" "wheel"))
+ (["sudo" "root" "dylanconlin.local" nil nil]
+  ("locale" "LC_ALL=C")
+  ("uname" "Darwin 15.4.0")
+  ("test" "test")
+  ("remote-path"
+   ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/bin"))
+  ("remote-shell" "/bin/sh")
+  ("~root" "/var/root")
+  ("file-exists" "test -e")
+  ("stat" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("gid-string" "wheel")
+  ("readlink" nil)
+  ("ls" "/bin/ls")
+  ("git" "\\git")
+  ("ls-dired" nil))
+ (["sudo" "root" "dylanconlin" nil nil]
+  ("locale" "LC_ALL=C")
+  ("uname" "Darwin 15.5.0")
+  ("test" "test")
+  ("remote-path"
+   ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/bin"))
+  ("remote-shell" "/bin/sh")
+  ("~root" "/var/root")
+  ("file-exists" "test -e")
+  ("stat" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("gid-string" "wheel")
+  ("readlink" nil)
+  ("uid-integer" 0)
+  ("git" "\\git")))

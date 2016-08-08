@@ -121,7 +121,7 @@ _g_o to
 
 
 (defhydra my-hydra-git-gutter (:body-pre (git-gutter-mode 1)
-                                      :hint nil)
+                                         :hint nil)
   "
 Git gutter:
   _j_: next hunk        _s_tage hunk     _q_uit
@@ -151,8 +151,8 @@ Git gutter:
 (bind-key "C-c f" 'my-hydra-git-gutter/body)
 
 (defhydra my-hydra-macro (:hint nil :color pink :pre 
-                             (when defining-kbd-macro
-                               (kmacro-end-macro 1)))
+                                (when defining-kbd-macro
+                                  (kmacro-end-macro 1)))
   "
   ^Create-Cycle^   ^Basic^           ^Insert^        ^Save^         ^Edit^
 ╭─────────────────────────────────────────────────────────────────────────╯
@@ -190,21 +190,23 @@ Git gutter:
 
 ;;** Example 2: move window splitter
 
+(defun prepare-cursor (color type blinkp)
+  (set-cursor-color color)
+  (setq cursor-type type)
+  (blink-cursor-mode blinkp))
+
 (setq blink-cursor-delay 0)
 (setq blink-cursor-interval 0.1)
+
 (defhydra my-hydra-window 
-  (;;:timeout 10.0
-            :pre (progn 
-                   (setq hydra-is-helpful nil)
-                   (set-cursor-color "orange")
-                   (blink-cursor-mode 1)
-                   )
-            :post (progn 
-                    (setq hydra-is-helpful t)
-                    (set-cursor-color "magenta")
-                    (blink-cursor-mode -1)
-                    ;; (setq cursor-type '(bar . 3))
-                    ))
+  (:pre 
+   (progn 
+     (setq hydra-is-helpful nil)
+     (set-cursor-color "red"))
+   :post
+   (progn 
+     (setq hydra-is-helpful t)
+     (set-cursor-color "blue")))
   ("h" windmove-left "←")
   ("j" windmove-down "↓")
   ("k" windmove-up "↑")
@@ -238,5 +240,49 @@ Git gutter:
   ("q"  nil))
 
 (bind-key "C-x r f" 'my-hydra-flycheck/body)
+
+(defhydra dh-hydra-markdown-mode (:hint nil)
+  "
+Formatting        C-c C-s    _s_: bold          _e_: italic     _b_: blockquote   _p_: pre-formatted    _c_: code
+
+Headings          C-c C-t    _h_: automatic     _1_: h1         _2_: h2           _3_: h3               _4_: h4
+
+Lists             C-c C-x    _m_: insert item   
+
+Demote/Promote    C-c C-x    _l_: promote       _r_: demote     _u_: move up      _d_: move down
+
+Links, footnotes  C-c C-a    _L_: link          _U_: uri        _F_: footnote     _W_: wiki-link      _R_: reference
+
+"
+
+
+  ("s" markdown-insert-bold)
+  ("e" markdown-insert-italic)
+  ("b" markdown-insert-blockquote :color blue)
+  ("p" markdown-insert-pre :color blue)
+  ("c" markdown-insert-code)
+
+  ("h" markdown-insert-header-dwim) 
+  ("1" markdown-insert-header-atx-1)
+  ("2" markdown-insert-header-atx-2)
+  ("3" markdown-insert-header-atx-3)
+  ("4" markdown-insert-header-atx-4)
+
+  ("m" markdown-insert-list-item)
+
+  ("l" markdown-promote)
+  ("r" markdown-demote)
+  ("d" markdown-move-down)
+  ("u" markdown-move-up)  
+
+  ("L" markdown-insert-link :color blue)
+  ("U" markdown-insert-uri :color blue)
+  ("F" markdown-insert-footnote :color blue)
+  ("W" markdown-insert-wiki-link :color blue)
+  ("R" markdown-insert-reference-link-dwim :color blue) 
+  )
+
+
+(global-set-key [f9] 'dh-hydra-markdown-mode/body)
 
 (provide 'hydras)

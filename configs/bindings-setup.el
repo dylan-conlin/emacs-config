@@ -71,9 +71,9 @@
 (bind-key "C-," 'dired-up)
 
 (defhydra dired-sorter (global-map "<f2>")
-     "dired sorter"
-     ("c" dired-sort-ctime "created")
-     ("u" dired-sort-utime "updated"))
+  "dired sorter"
+  ("c" dired-sort-ctime "created")
+  ("u" dired-sort-utime "updated"))
 
 (defhydra hydra-dired-buffer-menu (:color blue :hint nil)
   "
@@ -141,7 +141,8 @@ _q_: cancel
 ;; Create scratch buffer
 (bind-key "C-c b" 'create-scratch-buffer)
 
-(bind-key "C-c n" 'cleanup-buffer)
+(bind-key "C-c w r" 'whitespace-cleanup-region)
+(bind-key "C-c w b" 'cleanup-buffer)
 
 (bind-key "C-x g" 'browse-at-remote)
 (bind-key "C-x G" 'browse-at-remote/to-clipboard)
@@ -277,8 +278,12 @@ _q_: cancel
 (bind-key "s-d" 'evil-surround-delete)
 
 (bind-key "C-x n" 'flycheck-tip-cycle)
+
+(bind-key "s-r" 'go-to-git-root)
+
 ;; (unbind-key "s-c")
 (unbind-key "s-1")
 (unbind-key "s-2")
+
 
 (provide 'bindings-setup)

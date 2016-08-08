@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
+(("nginx-servers"
+ (filename . "/usr/local/etc/nginx/servers/")
+ (front-context-string . "shortstack-style")
+ (rear-context-string . "42 Jul 15 13:51 ")
+ (position . 766))
+("todo-consulting.org"
+ (filename . "~/Dropbox/org/todo-consulting.org")
+ (front-context-string . "ONE bark campaig")
+ (rear-context-string . "d=984737444\n** D")
+ (position . 121))
+("todo-personal.org"
+ (filename . "~/Dropbox/org/todo-personal.org")
+ (front-context-string)
+ (rear-context-string . "6-16 Thu 10:57]\n")
+ (position . 10897))
+("todo-work.org"
+ (filename . "~/Dropbox/org/todo-work.org")
+ (front-context-string . "need to run the ")
+ (rear-context-string . "O webpack stuff\n")
+ (position . 6658))
+("feeds"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/")
+ (front-context-string)
+ (rear-context-string . "4 09:44 webpack\n")
+ (position . 1913))
+("org-refile-last-stored"
  (filename . "~/Dropbox/org/notes.org")
  (front-context-string . "** creating a ne")
  (rear-context-string . "5-08 Sun 22:37]\n")
@@ -38,10 +63,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** days off for ")
- (rear-context-string . "5-13 Fri 00:41]\n")
- (position . 430858))
+ (filename . "~/Dropbox/org/todo-work.org")
+ (front-context-string . "** TODO zendesk ")
+ (rear-context-string . "cef921c23650001\n")
+ (position . 6882))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

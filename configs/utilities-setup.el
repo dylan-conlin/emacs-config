@@ -4,6 +4,10 @@
   (interactive)
   (vc-git-root default-directory))
 
+(defun go-to-git-root ()
+  (interactive)
+  (find-file (my-git-root)))
+
 (defun my-org-archive-done-tasks ()
   (interactive)
   (org-map-entries 'org-archive-subtree "/DONE" 'file))
@@ -304,7 +308,10 @@ With a prefix argument, insert a newline above the current line."
 (defun view-on-github ()
   (interactive)
   (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
-  (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))
+  (if (equal "shortstack-style" (git-root-dir-only))
+      (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/master..." (magit-get-current-branch) "?expand=1"))
+    (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
+    ))
 
 ;; (defun view-on-github (start end)
 ;;   (interactive "r")
@@ -1052,7 +1059,7 @@ minibuffer."
 (defun ruby-activate-test (active-test-string)
   (save-excursion
     (goto-char (line-beginning-position))
-    (while (re-search-forward "[it|describe] '" (line-end-position) t 1)
+    (while (re-search-forward "[it|describe] ['|\"]" (line-end-position) t 1)
       (insert active-test-string))))
 
 
@@ -1074,6 +1081,24 @@ minibuffer."
       (goto-char (point-min))
       (while (re-search-forward my-active-test-string (point-max) t)
         (replace-match "" nil nil)))))
+
+
+;; (defun a-test-save-hook()
+;;   "Test of save hook"
+;;   (when (editing-chrome-extension-p)
+;;     (browse-url "http://reload.extensions")))
+
+
+;; (remove-hook 'after-save-hook 'a-test-save-hook)
+
+;; (defun editing-chrome-extension-p ()
+;;   (interactive)
+;;   (not (equal nil (f-traverse-upwards
+;;                   (lambda (path)
+;;                     (f-exists? (f-expand "manifest.json" path)))
+;;                   (expand-file-name default-directory)))))
+
+
 
 
 (provide 'utilities-setup)
