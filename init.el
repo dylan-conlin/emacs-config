@@ -151,9 +151,6 @@
     ;; (yas-global-mode 1)
     ))
 
-(add-to-list 'load-path "~/.emacs.d/snippets/es6-snippets")
-(require 'es6-snippets)
-
 (use-package drag-stuff
   :diminish drag-stuff-mode
   :config
