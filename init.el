@@ -192,7 +192,8 @@
 ;; add newline to file on save
 (setq require-final-newline t)
 ;; font color and size
-(set-face-attribute 'default nil :family "inconsolata" :height 140)
+(set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
+
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 

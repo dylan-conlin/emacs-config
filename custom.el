@@ -201,8 +201,10 @@ static char *gnus-pointer[] = {
 (quote
  ("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "SSMGR")))
  '(js2-include-node-externs t)
+ '(js2-indent-switch-body t)
  '(js2-missing-semi-one-line-override t)
  '(js2-strict-missing-semi-warning nil)
+ '(js2-strict-trailing-comma-warning nil)
  '(lazy-highlight-initial-delay 0)
  '(linum-format " %d ")
  '(magit-completing-read-function (quote magit-builtin-completing-read))
@@ -312,7 +314,7 @@ static char *gnus-pointer[] = {
  ;; If there is more than one, they won't work right.
  '(beacon-fallback-background ((t (:background "Cyan"))))
  '(font-lock-constant-face ((t (:background "gray94" :foreground "dark cyan"))))
- '(font-lock-variable-name-face ((t (:foreground "selectedKnobColor"))))
+ '(font-lock-variable-name-face ((t (:foreground "MediumPurple1" :weight normal))))
  '(git-gutter:added ((t (:foreground "green4" :weight bold))))
  '(git-gutter:modified ((t (:foreground "orange" :weight bold))))
  '(git-timemachine-minibuffer-detail-face ((t (:foreground "dark blue"))))

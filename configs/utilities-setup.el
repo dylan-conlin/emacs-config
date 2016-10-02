@@ -632,7 +632,7 @@ Including indent-buffer, which should not be called automatically on save."
 
 (defun soulseek-move-songs ()
   (interactive)
-  (let ((songs (f-files "/Users/dylanconlin/Downloads/Soulseek Downloads/complete" nil t)))
+  (let ((songs (f-files "/Users/dylanconlin/Soulseek Downloads/complete" nil t)))
     (-map (lambda (song) (move-song-to-new-dir song)) songs)))
 
 
@@ -640,7 +640,7 @@ Including indent-buffer, which should not be called automatically on save."
   (f-move s (soulseek-new-dir s)))
 
 (defun soulseek-new-dir (song)
-  (s-concat "/Users/dylanconlin/Downloads/Soulseek Downloads/soulseek-songs/" (f-filename song)))
+  (s-concat "/Users/dylanconlin/Soulseek Downloads/soulseek-songs" (f-filename song)))
 
 (defun emms-soulseek ()
   (interactive)
@@ -1099,6 +1099,8 @@ minibuffer."
 ;;                   (expand-file-name default-directory)))))
 
 
-
+(defun insert-current-date ()
+  (interactive)
+  (insert (shell-command-to-string "echo -n $(date +%m-%d-%y)")))
 
 (provide 'utilities-setup)

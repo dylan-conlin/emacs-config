@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("nginx-servers"
+(("api"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_picker.js")
+ (front-context-string . "return Object.as")
+ (rear-context-string . "CT_THEME:\n      ")
+ (position . 1365))
+("nginx-servers"
  (filename . "/usr/local/etc/nginx/servers/")
  (front-context-string . "shortstack-style")
  (rear-context-string . "42 Jul 15 13:51 ")
@@ -63,10 +68,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo-work.org")
- (front-context-string . "** TODO zendesk ")
- (rear-context-string . "cef921c23650001\n")
- (position . 6882))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** password and ")
+ (rear-context-string . "9-13 Tue 21:55]\n")
+ (position . 443963))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

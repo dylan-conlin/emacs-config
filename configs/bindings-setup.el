@@ -90,7 +90,7 @@ _q_: cancel
 
 (bind-key "C-c r" 'hydra-dired-buffer-menu/body)
 (bind-key "C-x p l" 'paradox-list-packages)
-
+(bind-key "C-c d" 'insert-current-date)
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
 (bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")))
