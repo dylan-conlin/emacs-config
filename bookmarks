@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("api"
+(("ini"
+ (filename . "~/Dropbox/side-sites/node-projects/redux/examples/real-world/package.json")
+ (front-context-string . "{\n  \"name\": \"rea")
+ (rear-context-string)
+ (position . 1))
+("api"
  (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_picker.js")
  (front-context-string . "return Object.as")
  (rear-context-string . "CT_THEME:\n      ")
@@ -69,9 +74,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** password and ")
- (rear-context-string . "9-13 Tue 21:55]\n")
- (position . 443963))
+ (front-context-string . "** aws lambda cr")
+ (rear-context-string . "0-21 Fri 12:46]\n")
+ (position . 453299))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

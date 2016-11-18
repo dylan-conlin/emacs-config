@@ -1,4 +1,11 @@
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (server-start)
@@ -121,7 +128,7 @@
          ("C-x l" . helm-ls-git-ls)
          ("C-x a" . helm-apropos)
          ("M-x" . helm-M-x)
-         ("M-k" . helm-project-search)
+         ("M-k" . my-helm-project-search)
          ("M-K" . my-helm-do-ag)
          ("C-x b" . helm-projectless-search)
          ("H-n" . helm-scroll-other-window)
@@ -266,8 +273,9 @@
 
 (use-package js2-mode
   :mode
-  (("\\.js\\'" . js2-mode)
-   ("\\.jsx$" . js2-mode))
+  (;("\\.js\\'" . js2-mode)
+   ;("\\.jsx$" . js2-mode)
+   )
   :interpreter "node"
   ;; :no-require t
   :config
@@ -673,24 +681,24 @@
 
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
-(defun fci-enabled-p () (symbol-value 'fci-mode))
+;; (defun fci-enabled-p () (symbol-value 'fci-mode))
 
-(defvar fci-mode-suppressed nil)
-(make-variable-buffer-local 'fci-mode-suppressed)
+;; (defvar fci-mode-suppressed nil)
+;; (make-variable-buffer-local 'fci-mode-suppressed)
 
-(defadvice popup-create (before suppress-fci-mode activate)
-  "Suspend fci-mode while popups are visible"
-  (let ((fci-enabled (fci-enabled-p)))
-    (when fci-enabled
-      (setq fci-mode-suppressed fci-enabled)
-      (turn-off-fci-mode))))
+;; (defadvice popup-create (before suppress-fci-mode activate)
+;;   "Suspend fci-mode while popups are visible"
+;;   (let ((fci-enabled (fci-enabled-p)))
+;;     (when fci-enabled
+;;       (setq fci-mode-suppressed fci-enabled)
+;;       (turn-off-fci-mode))))
 
-(defadvice popup-delete (after restore-fci-mode activate)
-  "Restore fci-mode when all popups have closed"
-  (when (and fci-mode-suppressed
-             (null popup-instances))
-    (setq fci-mode-suppressed nil)
-    (turn-on-fci-mode)))
+;; (defadvice popup-delete (after restore-fci-mode activate)
+;;   "Restore fci-mode when all popups have closed"
+;;   (when (and fci-mode-suppressed
+;;              (null popup-instances))
+;;     (setq fci-mode-suppressed nil)
+;;     (turn-on-fci-mode)))
 
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
@@ -705,18 +713,19 @@
 ;;   (setq fci-rule-column 100))
 
 
-(define-globalized-minor-mode global-fci-mode fci-mode
-  (lambda ()
-    (if (not 
-         (or 
-          ;; disable fci in the following modes:
-          (eq major-mode 'dired-mode)
-          (eq major-mode 'web-mode)
-          (eq major-mode 'org-mode)))
-        (fci-mode 1))))
-(global-fci-mode 1)
+;; (define-globalized-minor-mode global-fci-mode fci-mode
+;;   (lambda ()
+;;     (if (not 
+;;          (or 
+;;           ;; disable fci in the following modes:
+;;           (eq major-mode 'dired-mode)
+;;           (eq major-mode 'web-mode)
+;;           (eq major-mode 'org-mode)))
+;;         (fci-mode 1))))
 
-(setq fci-rule-column 100)
+;; (global-fci-mode 1)
+
+;; (setq fci-rule-column 100)
 
 ;; (require 'edbi)
 ;; (require 'helm-kickass)
@@ -745,18 +754,62 @@
 
 (use-package anzu
   :config
-  (anzu-mode t))
+  (global-anzu-mode t))
 
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)
          ("\\.html\\.erb\\'" . web-mode)
          ("\\.mustache\\'" . web-mode)
          ("\\.jinja\\'" . web-mode)
-         ("\\.php\\'" . web-mode))
+         ("\\.php\\'" . web-mode)
+         (("\\.jsx$" . web-mode))
+         ("\\.js$" . web-mode))
   :config
   (progn
     (setq web-mode-engines-alist
           '(("\\.jinja\\'"  . "django")))))
+
+(use-package flycheck
+  :config
+  (global-flycheck-mode 1)
+  )
+
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
+
+
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+
+;; adjust indents for web-mode to 2 spaces
+(defun my-web-mode-hook ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-attr-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  ;; (setq web-mode-indent-style 2)
+  )
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js[x]?\\'")))
 
 (fringe-mode 1)
 (set-face-attribute 'fringe nil :background "gray88")

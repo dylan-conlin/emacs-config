@@ -281,6 +281,9 @@ _q_: cancel
 
 (bind-key "s-r" 'go-to-git-root)
 
+(bind-key "M-n" 'forward-paragraph)
+(bind-key "M-p" 'backward-paragraph)
+
 ;; (unbind-key "s-c")
 (unbind-key "s-1")
 (unbind-key "s-2")

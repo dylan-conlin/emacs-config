@@ -709,16 +709,6 @@ Including indent-buffer, which should not be called automatically on save."
           (goto-char start) (insert "#{")))))
 
 
-;; ;; the the frame title to the current buffer name
-;; (setq frame-title-format
-;;       '((:eval
-;;       (if (buffer-file-name)
-;;         (abbreviate-file-name (buffer-file-name)) "%b"))))
-
-;; (defun my-helm-do-ag ()
-;;   (interactive)
-;;   (helm-do-ag (my-git-root)))
-
 (defun my-recentf ()
   (interactive)
   (if (this-is-a-git-repo?)
@@ -729,7 +719,7 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (helm-do-ag-project-root))
 
-(defun helm-project-search ()
+(defun my-helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
   ;;  (unless (and helm-source-ls-git-status
