@@ -38,6 +38,10 @@
       (shrink-window arg)
     (enlarge-window arg)))
 
+(defhydra my-hydra-last-change ()
+  "goto-last-change"
+  ("p" goto-last-change "previous")
+  ("n" goto-last-change-reverse "next"))
 
 (defhydra my-hydra-dired (:hint nil)
   ("p" dired-previous-line)
@@ -148,7 +152,7 @@ Git gutter:
               (git-gutter:clear))
    :color blue))
 
-(bind-key "C-c f" 'my-hydra-git-gutter/body)
+
 
 (defhydra my-hydra-macro (:hint nil :color pink :pre 
                                 (when defining-kbd-macro
@@ -237,6 +241,7 @@ Git gutter:
   ("k"  flycheck-previous-error                                   "Previous")
   ("gg" flycheck-first-error                                      "First")
   ("G"  (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
+  ("c" flycheck-copy-errors-as-kill "Copy Error")
   ("q"  nil))
 
 (bind-key "C-x r f" 'my-hydra-flycheck/body)
@@ -284,5 +289,43 @@ Links, footnotes  C-c C-a    _L_: link          _U_: uri        _F_: footnote   
 
 
 (global-set-key [f9] 'dh-hydra-markdown-mode/body)
+
+
+(defun my--set-transparency (inc)
+  "Increase or decrease the selected frame transparency"
+  (let* ((alpha (frame-parameter (selected-frame) 'alpha))
+         (next-alpha (cond ((not alpha) 100)
+                           ((> (- alpha inc) 100) 100)
+                           ((< (- alpha inc) 0) 0)
+                           (t (- alpha inc)))))
+    (set-frame-parameter (selected-frame) 'alpha next-alpha)))
+
+(defhydra hydra-transparency (:columns 2)
+  "
+ALPHA : [ %(frame-parameter nil 'alpha) ]
+"
+  ("j" (lambda () (interactive) (my--set-transparency +1)) "+ more")
+  ("k" (lambda () (interactive) (my--set-transparency -1)) "- less")
+  ("J" (lambda () (interactive) (my--set-transparency +10)) "++ more")
+  ("K" (lambda () (interactive) (my--set-transparency -10)) "-- less")
+  ("=" (lambda (value) (interactive "nTransparency Value 0 - 100 opaque:")
+         (set-frame-parameter (selected-frame) 'alpha value)) "Set to ?" :color blue))
+
+(defhydra cqql-multiple-cursors-hydra (:hint nil)
+  "
+     ^Up^            ^Down^        ^Miscellaneous^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+[_M-p_] Unmark  [_M-n_] Unmark  [_q_] Quit"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("q" nil))
 
 (provide 'hydras)

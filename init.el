@@ -1,5 +1,3 @@
-
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -27,7 +25,6 @@
 (setq uniquify-buffer-name-style 'forward)
 
 (setq ispell-program-name "/usr/local/bin/aspell")
-
 
 (setq frame-title-format '(:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
 
@@ -95,8 +92,6 @@
   :config
   (projectile-global-mode))
 
-
-
 (use-package helm
   :config
   (progn
@@ -115,11 +110,11 @@
     (setq helm-ff-skip-boring-files t)
     (setq helm-buffer-max-length 30)
     (setq helm-ff-file-name-history-use-recentf t)
-    (setq helm-M-x-fuzzy-match t)
+    (setq helm-M-x-fuzzy-match nil)
     (setq helm-buffers-fuzzy-matching t
           helm-recentf-fuzzy-match    t)
-    (setq helm-semantic-fuzzy-match t
-          helm-imenu-fuzzy-match    t)
+    (setq helm-semantic-fuzzy-match nil
+          helm-imenu-fuzzy-match    nil)
 
     (helm-mode 1)    
     
@@ -130,17 +125,21 @@
          ("M-x" . helm-M-x)
          ("M-k" . my-helm-project-search)
          ("M-K" . my-helm-do-ag)
+         ("C-c M-K" . helm-do-ag)
+         ("C-c p p" . helm-projectile-switch-project)
          ("C-x b" . helm-projectless-search)
+         ("C-c f" . helm-projectile-recentf)
+         ("C-x p f" . helm-projectile-recentf)
          ("H-n" . helm-scroll-other-window)
          ("H-p" . helm-scroll-other-window-down)
          ("C-x t" . helm-imenu)
          ("M-C-p" . helm-eshell-history)
-         ("C-c f" . helm-dash)
          ("C-x f" . helm-recentf)
          ("C-x y" . helm-show-kill-ring)
          ("C-x C-b" . helm-bookmarks)
          ("M-." . helm-locate)
          ("M-j" . helm-resume)))
+
 ;; :map helm-do-ag-map
 ;; ("C-c C-y" . my-helm-yank-selection)))
 ;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
@@ -155,8 +154,12 @@
   :init
   (progn
     (setq yas-verbosity 3)
-    ;; (yas-global-mode 1)
-    ))
+    (yas-global-mode 1)
+    
+    )
+  ;;  :bind
+  ;;(("C-x j". helm-yas-complete))
+  )
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -186,8 +189,8 @@
 
 ;; (load-theme 'base16-google-light t)
 ;; (load-theme 'apropospriate-dark t)
-(load-theme 'leuven t)
-
+;; (load-theme 'badger t)
+(load-theme 'leuven)
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
@@ -198,6 +201,7 @@
 ;; font color and size
 (set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
 
+;; (set-face-attribute 'default nil :family "Inconsolata" :height 140 :weight 'light)
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
@@ -484,54 +488,8 @@
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
-;; (use-package evil-smartparens
-
-;;   :init
-;;   (evil-smartparens-mode 1))
-
-;; (use-package evil-mode
-;;   :init
-;;   (global-evil-leader-mode)
-;;   (evil-mode 1)
-;;   (evil-escape-mode 1)
-;;   (global-evil-surround-mode 1)
-;;   (evil-leader/set-leader ",")
-;;   (setq evil-leader/in-all-states 1))
-
-;; (global-set-key (kbd "C-g") 'evil-escape)
 
 (smartparens-global-mode)
-;;   ;; evil cursor
-;; ;; (setq evil-emacs-state-cursor '("red" box))
-;; ;; (setq evil-normal-state-cursor '("green3" box))
-;; ;; (setq evil-visual-state-cursor '("orange" box))
-;; ;; (setq evil-insert-state-cursor '("red" bar))
-;; ;; (setq evil-replace-state-cursor '("blue" bar))
-;; ;; (setq evil-operator-state-cursor '("pink" hollow))
-;; (global-set-key (kbd "C-g") 'evil-escape)
-
-;; (evilnc-default-hotkeys)
-
-;; ;; Vim key bindings
-;; (evil-leader/set-key
-;;   "ci" 'evilnc-comment-or-uncomment-lines
-;;   "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-;;   "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
-;;   "cc" 'evilnc-copy-and-comment-lines
-;;   "cp" 'evilnc-comment-or-uncomment-paragraphs
-;;   "cr" 'comment-or-uncomment-region
-;;   "cv" 'evilnc-toggle-invert-comment-line-by-line
-;;   "\\" 'evilnc-comment-operator)
-
-;; (define-key evil-motion-state-map (kbd "C-w C-s") #'evil-split-window-h-and-move-there)
-;; (define-key evil-motion-state-map (kbd "C-w C-v") #'evil-split-window-v-and-move-there)
-
-
-;; (use-package emojify
-;;   :config
-;;   (global-emojify-mode 1))
-
-;; (toggle-indicate-empty-lines)
 (setq show-paren-mode nil)
 (show-smartparens-global-mode +1)
 (setq show-trailing-whitespace nil)
@@ -544,6 +502,7 @@
 (add-to-list 'load-path "~/.emacs.d/emms/")
 (add-to-list 'load-path "~/usr/local/bin/mp3info/")
 (add-to-list 'load-path "~/bin/tmsu")
+
 (require 'emms-setup)
 (emms-standard)
 (emms-default-players)
@@ -672,7 +631,8 @@
 ;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents.
 ;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file
 
-(global-hl-line-mode 0)
+(global-hl-line-mode 1)
+
 
 ;; (require 'popwin)
 ;; (popwin-mode 1)
@@ -750,7 +710,7 @@
 
 (use-package beacon
   :config
-  (beacon-mode t))
+  (beacon-mode 1))
 
 (use-package anzu
   :config
@@ -812,10 +772,12 @@
       '(("jsx" . "\\.js[x]?\\'")))
 
 (fringe-mode 1)
-(set-face-attribute 'fringe nil :background "gray88")
+(set-face-attribute 'fringe nil :background "black")
 (set-fringe-style '(1 . 1))
 
 (setq debug-on-error nil)
+
+;; hi there!
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 
@@ -829,5 +791,13 @@
   (require 'edit-server)
   (setq edit-server-new-frame nil)
   (edit-server-start))
+
+(crux-reopen-as-root-mode)
+
+
+(require 'prettier-js)
+(add-hook 'js-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'jscodefmt-before-save)))
 
 (point-undo)

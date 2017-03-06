@@ -18,24 +18,19 @@
 (bind-key "C-s" 'isearch-forward-regexp)
 (bind-key "C-r" 'isearch-backward-regexp)
 (bind-key* "C-c SPC" 'rectangle-mark-mode)
-(bind-key "C-x r f" 'run-current-file)
+
+(bind-key "C-c y" 'helm-yas-complete)
 
 ;; window management
 (bind-key "C-x 2" '(lambda () (interactive) (message "try s-w")))
 (bind-key "C-x 3" '(lambda () (interactive) (message "try s-w")))
 
+
 (bind-key "s-w" 'delete-window)
 (bind-key "M-0" 'delete-window)
 (bind-key "C-x o" 'other-window)
-(bind-key "s-4" 'windows-swap)
-(bind-key "s-5" 'windows-flip)
-(bind-key "s-1" 'delete-other-windows)
-(bind-key "C-S-L" 'enlarge-window-horizontally)
-(bind-key "C-S-H" 'shrink-window-horizontally)
-(bind-key "C-S-K" 'enlarge-window)
-(bind-key "C-S-J" 'shrink-window)
-(bind-key "M-o" nil)
-
+(bind-key "C-c u" 'crux-view-url)
+(bind-key "C-c i" 'crux-ispell-word-then-abbrev)
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
 (bind-key "C-x r l" 'ruby-logger)
@@ -46,6 +41,8 @@
 (bind-key "C-c h" 'describe-key)
 
 (bind-key "C-c y" 'copy-full-path-to-kill-ring)
+(bind-key "C-x c y" 'rspec-test-at-current-line-number)
+;; (bind-key "C-x c y t" 'minitest-test-at-current-line-number)
 (bind-key "C-c C-k" 'eval-buffer)
 
 ;; general text editing
@@ -108,7 +105,9 @@ _q_: cancel
 
 ;; (bind-key "C-x C-n" 'flycheck-tip-cycle)
 ;; (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
-(bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
+
+(bind-key "M-;" 'comment-or-uncomment-region-or-line)
+
 ;; (bind-key "M-;" 'comment-dwim-2)
 
 (key-chord-define-global "fj" 'avy-goto-char)
@@ -274,8 +273,8 @@ _q_: cancel
 (global-set-key (kbd "M-}") 'corral-braces-forward)
 (global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
 
-(bind-key "s-c" 'evil-surround-change)
-(bind-key "s-d" 'evil-surround-delete)
+;; (bind-key "s-c" 'evil-surround-change)
+;; (bind-key "s-d" 'evil-surround-delete)
 
 (bind-key "C-x n" 'flycheck-tip-cycle)
 
@@ -283,6 +282,8 @@ _q_: cancel
 
 (bind-key "M-n" 'forward-paragraph)
 (bind-key "M-p" 'backward-paragraph)
+
+(bind-key "C-x G" 'view-on-github)
 
 ;; (unbind-key "s-c")
 (unbind-key "s-1")

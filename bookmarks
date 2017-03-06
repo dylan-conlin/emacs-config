@@ -2,11 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ini"
- (filename . "~/Dropbox/side-sites/node-projects/redux/examples/real-world/package.json")
- (front-context-string . "{\n  \"name\": \"rea")
- (rear-context-string)
- (position . 1))
+(("sms-app"
+ (filename . "~/Dropbox/side-sites/ruby-projects/sms-app/")
+ (front-context-string . "Gemfile\n  -rw-r-")
+ (rear-context-string . "90 Jan 11 20:23 ")
+ (position . 738))
+("style"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/")
+ (front-context-string . "Dockerfile\n  -rw")
+ (rear-context-string . "53 Jan 11 13:04 ")
+ (position . 905))
 ("api"
  (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_picker.js")
  (front-context-string . "return Object.as")
@@ -74,9 +79,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** aws lambda cr")
- (rear-context-string . "0-21 Fri 12:46]\n")
- (position . 453299))
+ (front-context-string . "** cool global n")
+ (rear-context-string . "7-02-27 Mon 22:\n")
+ (position . 481236))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

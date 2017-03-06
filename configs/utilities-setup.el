@@ -49,9 +49,11 @@
       (dired-single-buffer "..")
     (go-to-dired)))
 
+
 (defun copy-full-path-to-kill-ring ()
-  "If in dired-mode, add the full path for file or dir under point to the kill ring.
-   Otherwise, add the current file's full path to kill ring"
+  "If in \"dired-mode\", add the full path for file or dir under point to the kill ring.
+Otherwise, add the current
+ file's full path to kill ring"
   (interactive)
   (let ((my-path 
          (if (equal major-mode 'dired-mode)
@@ -60,7 +62,6 @@
                (user-error "current buffer not assoc with file")
              (buffer-file-name)))))
     (progn 
-      (message my-path)
       (kill-new my-path))))
 
 (defun this-is-a-git-repo? ()
@@ -176,7 +177,6 @@ Assumes that the frame is only split into two."
   (when buffer-file-name
     (browse-url (s-concat  (f-join "https://github.com/pancakelabs" (git-root-dir-only) "blob" "staging" (file-relative-name buffer-file-name (f-join "~/Dropbox/sites" (git-root-dir-only)))) (line-number-blob "#L")))))
 
-(provide 'utilities-setup)
 ;; (defun github-source (start end)
 ;;   (interactive "r")
 ;;   (browse-url
@@ -662,10 +662,10 @@ Including indent-buffer, which should not be called automatically on save."
 
 (ad-activate 'ruby-test-run-command)
 
-(defun squash-whitespace ()
-  (interactive)
-  (save-excursion
-    (let ((beg (point))) (evil-forward-word-begin) (delete-region beg (point)))))
+;;(defun squash-whitespace ()
+;;  (interactive)
+;;  (save-excursion
+;;    (let ((beg (point))) (evil-forward-word-begin) (delete-region beg (point)))))
 
 
 (defun cache-last-open-file ()
@@ -694,20 +694,15 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   ;; go to beginning of word
   (while (not (point-at-beginning-of-word?))
-    (backward-char 1))
-
-  )
-
-
+    (backward-char 1)))
 
 (defun string-wrap-interpolate (start end)
   "Insert a #{..} around a region."
   (interactive "r")
-  (let ((region (get-region start end))
-        (save-excursion
-          (goto-char end) (insert "}")
-          (goto-char start) (insert "#{")))))
-
+  (let ((region (get-region start end)))
+    (save-excursion
+      (goto-char end) (insert "}")
+      (goto-char start) (insert "#{"))))
 
 (defun my-recentf ()
   (interactive)
@@ -818,13 +813,18 @@ Including indent-buffer, which should not be called automatically on save."
   specific line. This only works in shortstack projects using
   rspec (v1)"
   (interactive)
-  (kill-new (s-concat "spec "  (car (last (s-slice-at "spec/" (copy-full-path-to-kill-ring)))) (line-number-blob ":"))))
+  (let ((test-command (s-concat "spec "  (car (last (s-slice-at "spec/" (copy-full-path-to-kill-ring)))) (line-number-blob ":"))))
+    (message test-command)
+    (kill-new test-command)))
 
-;; (if (get-region start end)
-;;     (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (get-region start end) "?expand=1"))
-;;   (progn
-;;     (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
-;;     (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1")))))
+(defun minitest-test-at-current-line-number ()
+  "build the command rspec requires to run a test at a 
+  specific line. This only works in shortstack projects using
+  minitest"
+  (interactive)
+  (let ((test-command (s-concat "ruby -I test "  (car (last (s-slice-at "test/" (copy-full-path-to-kill-ring)))) " --name /my_active_test/")))
+    (message test-command)
+    (kill-new test-command)))
 
 (defun text-myself ()
   (interactive)
@@ -920,19 +920,6 @@ Including indent-buffer, which should not be called automatically on save."
   (setq httpd-port port)
   (httpd-start)
   (browse-url (concat "http://localhost:" (number-to-string port) "/")))
-
-(defun evil-split-window-v-and-move-there ()
-  (interactive)
-  (evil-window-vsplit)
-  (evil-window-right 1)
-  (switch-to-next-buffer))
-
-
-(defun evil-split-window-h-and-move-there ()
-  (interactive)
-  (evil-window-split)
-  (evil-window-down 1)
-  (switch-to-next-buffer))
 
 (defun uniquify-all-lines-region (start end)
     "Find duplicate lines in region START to END keeping first occurrence."
@@ -1092,5 +1079,7 @@ minibuffer."
 (defun insert-current-date ()
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%m-%d-%y)")))
+
+
 
 (provide 'utilities-setup)
