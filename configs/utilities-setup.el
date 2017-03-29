@@ -185,11 +185,6 @@ Assumes that the frame is only split into two."
 ;; ;; https://github.com/pancakelabs/shortstack-designer/blob/staging/script/rails#L4
 
 
-
-
-
-
-
 (defun replace-smart-quotes (beg end)
   "Replace 'smart quotes' in buffer or region with ascii quotes."
   (interactive "r")
@@ -198,7 +193,6 @@ Assumes that the frame is only split into two."
                             ("\x2018" . "'")
                             ("\x2019" . "'"))
                           nil beg end))
-
 
 (defun my-helm-yank-selection (arg)
   "Set minibuffer contents to current display selection.
@@ -836,16 +830,21 @@ Including indent-buffer, which should not be called automatically on save."
   (interactive)
   (insert "puts \"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\""))
 
+(defun unwrap-item (start end)
+  "remove markup \begin{itemize}\end{itemize} around a region."
+  (interactive "r")
+  (save-excursion
+    (word-search-backward "puts\s\"xxxxx")
+    (kill-whole-line)
+    (word-search-forward "puts\s\"xxxxx")
+    (kill-whole-line)))
+  
 (defun wrap-item (start end)
   "Insert a markup \begin{itemize}\end{itemize} around a region."
   (interactive "r")
   (save-excursion
-    (goto-char end) (insert "\nputs \"___________________________________________________________________________________________________\"")
-    (goto-char start) (insert "puts \"___________________________________________________________________________________________________\"\n")))
-
-;; puts "___________________________________________________________________________________________________"
-;; ap templ.working_tab.resource_tags
-;; puts "___________________________________________________________________________________________________"
+    (goto-char end) (insert "\nputs \"xxxxx___________________________________________________________________________________________________\"")
+    (goto-char start) (insert "puts \"xxxxx___________________________________________________________________________________________________\"\n")))
 
 (defun wrappy ()
   "Change me!"
@@ -854,23 +853,12 @@ Including indent-buffer, which should not be called automatically on save."
     (move-beginning-of-line 1)
     (set-mark-command nil)
     (move-end-of-line 1)
-    
     (wrap-item (region-beginning) (region-end))
-    
     (search-backward-regexp "puts")
     (indent-for-tab-command nil)
     (move-end-of-line 1)
     (search-forward-regexp "puts")
     (indent-for-tab-command nil)))
-
-(defun unwrappy ()
-  "Change me!"
-  (interactive)
-  (save-excursion
-    (search-backward "puts")
-    (kill-whole-line 1)
-    (search-forward "puts")
-    (kill-whole-line 1)))
 
 ;; ;; QuickLookでファイルを開く
 ;; (defun dired-quicklook ()
@@ -1080,6 +1068,20 @@ minibuffer."
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%m-%d-%y)")))
 
+(defun func-region (start end func)
+  "run a function over the region between START and END in current buffer."
+  (save-excursion
+    (let ((text (delete-and-extract-region start end)))
+      (insert (funcall func text)))))
 
+(defun encode-region (start end)
+  "urlencode the region between START and END in current buffer."
+  (interactive "r")
+  (func-region start end #'org-link-escape))
+
+(defun decode-region (start end)
+  "decode the region between START and END in current buffer."
+  (interactive "r")
+  (func-region start end #'org-link-unescape))
 
 (provide 'utilities-setup)

@@ -1,7 +1,3 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 (setq inhibit-splash-screen t)
@@ -30,6 +26,7 @@
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+;; prefer spaces over tabs
 (setq-default indent-tabs-mode nil)
 
 (setq savehist-file "~/.emacs.d/savehist")
@@ -50,8 +47,6 @@
       kept-old-versions 2
       version-control t)
 
-;; (add-to-list 'package-archives '("elpa" . "http://elpa.gnu   .org/packages/"))
-
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
 (cask-initialize)
@@ -60,7 +55,6 @@
 
 (eval-when-compile
   (require 'use-package))
-
 
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
@@ -90,7 +84,7 @@
 
 (use-package projectile
   :config
-  (projectile-global-mode))
+  (projectile-mode))
 
 (use-package helm
   :config
@@ -115,9 +109,7 @@
           helm-recentf-fuzzy-match    t)
     (setq helm-semantic-fuzzy-match nil
           helm-imenu-fuzzy-match    nil)
-
-    (helm-mode 1)    
-    
+    (helm-mode 1)
     )
   :bind (("C-x C-f" . helm-find-files)
          ("C-x l" . helm-ls-git-ls)
@@ -140,12 +132,6 @@
          ("M-." . helm-locate)
          ("M-j" . helm-resume)))
 
-;; :map helm-do-ag-map
-;; ("C-c C-y" . my-helm-yank-selection)))
-;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
-;;(require 'helm)
-;;(define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
-
 (use-package yasnippet
   :diminish yas-minor-mode
   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
@@ -157,7 +143,7 @@
     (yas-global-mode 1)
     
     )
-  ;;  :bind
+;;   :bind
   ;;(("C-x j". helm-yas-complete))
   )
 
@@ -179,18 +165,17 @@
    ("s-N" . mc/unmark-previous-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
-(use-package color-theme)
+(use-package color-theme
+  :config
+  (load-theme 'dracula t)
+  ;; '(hl-line ((t (:background "gray96"))))
+  ;; (load-theme 'leuven)
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+  ;; Keep emacs Custom-settings in separate file
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file))
 
-;; behavior and appearance stuff
 
-;; (load-theme 'base16-google-light t)
-;; (load-theme 'apropospriate-dark t)
-;; (load-theme 'badger t)
-(load-theme 'leuven)
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
 
@@ -205,23 +190,12 @@
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
-;; (set-face-attribute 'default nil :family "mononoki" :height 140)
-;; (set-face-attribute 'default nil :family "monaco" :height 120)
-;; (setq-default line-spacing 0)
-;; (add-hook 'afer-change-major-mode-hook 'set-custom-line-spacing)
-
-;; (defun set-custom-line-spacing ()
-;;   (add-text-properties (point-min) (point-max)
-;;                        '(line-spacing 0.25 line-height 1.25)))
-
 (blink-cursor-mode -1)
 (global-subword-mode 1)
 (delete-selection-mode 1)
 (auto-indent-mode 1)
 (setq-default truncate-lines t)
-
 (prefer-coding-system 'utf-8)
-
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
@@ -244,18 +218,6 @@
    ("C-x C-p" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
-
-;; (custom-set-variables '(git-gutter:hide-gutter nil))
-
-;; (use-package guide-key
-;;   :diminish guide-key-mode
-;;   :config
-;;   (progn
-;;     (setq guide-key/recursive-key-sequence-flag t)
-;;     (setq guide-key/popup-window-position 'right)
-;;     (setq guide-key/idle-delay 0)
-;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "M-r" "M-d"))
-;;     (guide-key-mode 1)))
 
 (use-package helm-swoop
   :config
@@ -287,12 +249,10 @@
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
 
-;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-
-(eval-after-load 'progn
-  '(tern
-    (require 'tern-auto-complete)
-    (tern-ac-setup)))
+;; (eval-after-load 'progn
+;;   '(tern
+;;     (require 'tern-auto-complete)
+;;     (tern-ac-setup)))
 
 (use-package ruby-mode
   :mode
@@ -316,31 +276,13 @@
   :config
   (setq coffee-tab-width 2))
 
-;; # Automatically Turn on the mode for your buffer of choice.
-;;(add-hook 'js2-mode-hook (lambda () (kite-mode t)))
-
-;;(add-hook 'css-mode-hook (lambda () (kite-mode t)))
-
-
-;; (use-package smooth-scroll
-;;   :config
-;;   (smooth-scroll-mode 1)
-;;   (setq smooth-scroll/vscroll-step-size 5)
-;;   )
-
-;; (require 'kite "/Users/dylanconlin/.emacs.d/configs/emacs-websocket/websocket.el")
-
-;; (setq-default coffee-js-mode 'js2-mode coffee-tab-width 2)
-;; ;; (custom-set-variables '(coffee-tab-width 2))
-
 (use-package css-mode)
 (use-package scss-mode
   :config
   ;; disable scss-mode from compiling on save
   (setq scss-compile-at-save nil))
 
-(use-package sass-mode
-  )
+(use-package sass-mode)
 (use-package rainbow-mode
   :init
   (progn
@@ -452,21 +394,24 @@
     (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
 
     ;; setup files agenda is aware of
-    (setq org-agenda-files '(
-                             ;; "~/Dropbox/org/code.org"
-                             "~/Dropbox/org/notes.org"
-                             "~/Dropbox/org/shortstack.org"
-                             ;; "~/Dropbox/org/journal.org"
-                             "~/Dropbox/org/todo-personal.org"
-                             "~/Dropbox/org/todo-work.org"
-                             "~/Dropbox/org/todo-consulting.org"
-                             ))
+    (setq my-org-agenda-files
+          (f-entries "~/Dropbox/org/" (lambda (file) (not (s-matches? ".git" file)))))
+    ;; (setq org-agenda-files '(
+    ;;                          ;; "~/Dropbox/org/code.org"
+    ;;                          "~/Dropbox/org/notes.org"
+    ;;                          "~/Dropbox/org/shortstack.org"
+    ;;                          ;; "~/Dropbox/org/journal.org"
+    ;;                          "~/Dropbox/org/todo-personal.org"
+    ;;                          "~/Dropbox/org/todo-work.org"
+    ;;                          "~/Dropbox/org/todo-consulting.org"
+    ;;                          "~/Dropbox/org/campaign-code.org"
+    ;;                          ))
     (setq org-capture-templates
           '(
             ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
             ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
             ("e" "Todo-Consulting" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Consulting") "* TODO %^{title} %^g \n %? \n%U")
-            ;; ("c" "Code" entry (file+nheadline "~/Dropbox/org/code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ("c" "Code" entry (file+nheadline "~/Dropbox/org/campaign-code.org" "Code") "* %^{title} %^g \n %? \n%U")
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
             ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
             ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
@@ -474,19 +419,21 @@
             ;; ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
             ))
     (setq org-refile-targets
-          '(
-            ("~/Dropbox/org/todo-work.org" . (:level . 1))
+          ;; (f-entries "~/Dropbox/org/" (lambda (file) file))
+            '(
+             ("~/Dropbox/org/todo-work.org" . (:level . 1))
             ("~/Dropbox/org/todo-personal.org" . (:level . 1))
             ("~/Dropbox/org/todo-consulting.org" . (:level . 1))
             ("~/Dropbox/org/notes.org" . (:level . 1))
-            ;; ("~/Dropbox/org/shortstack.org" . (:level . 1))
-            ;; ("~/Dropbox/org/secrets.org" . (:level . 1))
-            ;; ("~/Dropbox/org/code.org" . (:level . 1))
-            ;; ("~/Dropbox/org/blogs.org" . (:level . 1))
-            ))))
-
+            ("~/Dropbox/org/campaign-code.org" . (:level . 1))
+            )
+          )
+    ))
 
 (setq org-clock-persist 'history)
+;; fontify code in code blocks
+(setq org-src-fontify-natively t)
+
 (org-clock-persistence-insinuate)
 
 (smartparens-global-mode)
@@ -494,26 +441,26 @@
 (show-smartparens-global-mode +1)
 (setq show-trailing-whitespace nil)
 ;; (set-background-color "white")
-(set-face-attribute 'region nil :background "lightblue")
+
 (set-border-color "red")
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-(add-to-list 'load-path "~/.emacs.d/emms/")
-(add-to-list 'load-path "~/usr/local/bin/mp3info/")
-(add-to-list 'load-path "~/bin/tmsu")
+;; (add-to-list 'load-path "~/.emacs.d/emms/")
+;; (add-to-list 'load-path "~/usr/local/bin/mp3info/")
+;; (add-to-list 'load-path "~/bin/tmsu")
 
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
-(setq emms-source-file-default-directory "~/Music/")
-(setq emms-player-mplayer-command-name "/usr/local/bin/mplayer")
-(setq emms-player-list '(emms-player-mplayer
-                         emms-player-mpg321
-                         emms-player-mpd))
+;; (require 'emms-setup)
+;; (emms-standard)
+;; (emms-default-players)
+;; (setq emms-source-file-default-directory "~/Music/")
+;; (setq emms-player-mplayer-command-name "/usr/local/bin/mplayer")
+;; (setq emms-player-list '(emms-player-mplayer
+;;                          emms-player-mpg321
+;;                          emms-player-mpd))
 
-(setq emms-info-auto-update t)
-(setq emms-info-asynchronously t)
+;; (setq emms-info-auto-update t)
+;; (setq emms-info-asynchronously t)
 ;; (setq debug-on-error t)
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
@@ -589,107 +536,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
-(use-package rvm
-  :config
-  (rvm-use-default))
-
-;; (autoload 'dash-at-point "dash-at-point"
-;;   "Search the word at point with Dash." t nil)
-
-(defun javascript-doc ()
-  (interactive)
-  (setq-local helm-dash-docsets '("JavaScript")))
-
-(add-hook 'js2-mode-hook 'javascript-doc)
-
-(defun ruby-doc ()
-  (interactive)
-  (setq-local helm-dash-docsets '("Ruby")))
-
-(add-hook 'ruby-mode-hook 'ruby-doc)
-
-(defun css-doc ()
-  (interactive)
-  (setq-local helm-dash-docsets '("CSS")))
-
-
-(defun clojure-doc ()
-  (interactive)
-  (setq-local helm-dash-docsets '("Clojure")))
-
-(add-hook 'clojure-mode-hook 'clojure-doc)
-(add-hook 'clojurescript-mode-hook 'clojure-doc)
-(add-hook 'scss-mode-hook 'css-doc)
-(add-hook 'css-mode-hook 'css-doc)
-
-(avy-setup-default)
-
-;; I know-your-http-we… 20151220… available  melpa 1539  Look up the meaning of HTTP headers, methods, relations, status codes
-;; I ledger-mode      h 20160111… available  melpa 1521  Helper code for use with the "ledger" command-line tool
-;; I literate-starter-… 20150730… available  melpa  629  A literate starter kit to configure Emacs using Org-mode files.
-;; I restclient       h 20151128… available  melpa  493  An interactive HTTP client for Emacs
-;; I pdf-tools        h 20151224… available  melpa  325  Support library for PDF documents.
-;; I git-timemachine  h 20160105… available  melpa  285  Walk through git reviosions of a file
-
-(global-hl-line-mode 1)
-
-
-;; (require 'popwin)
-;; (popwin-mode 1)
-
-;; (push '(direx:direx-mode :position left :width 50 :dedicated t :stick t) popwin:special-display-config)
-
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
-
-;; (defun fci-enabled-p () (symbol-value 'fci-mode))
-
-;; (defvar fci-mode-suppressed nil)
-;; (make-variable-buffer-local 'fci-mode-suppressed)
-
-;; (defadvice popup-create (before suppress-fci-mode activate)
-;;   "Suspend fci-mode while popups are visible"
-;;   (let ((fci-enabled (fci-enabled-p)))
-;;     (when fci-enabled
-;;       (setq fci-mode-suppressed fci-enabled)
-;;       (turn-off-fci-mode))))
-
-;; (defadvice popup-delete (after restore-fci-mode activate)
-;;   "Restore fci-mode when all popups have closed"
-;;   (when (and fci-mode-suppressed
-;;              (null popup-instances))
-;;     (setq fci-mode-suppressed nil)
-;;     (turn-on-fci-mode)))
-
-;; fontify code in code blocks
-(setq org-src-fontify-natively t)
-
-;; (use-package fill-column-indicator
-;;   :init
-;;   (progn 
-;;     (add-hook 'prog-mode-hook 'fci-mode)
-    
-;;     )
+;; (use-package rvm
 ;;   :config
-;;   (setq fci-rule-column 100))
+;;   (rvm-use-default))
 
-
-;; (define-globalized-minor-mode global-fci-mode fci-mode
-;;   (lambda ()
-;;     (if (not 
-;;          (or 
-;;           ;; disable fci in the following modes:
-;;           (eq major-mode 'dired-mode)
-;;           (eq major-mode 'web-mode)
-;;           (eq major-mode 'org-mode)))
-;;         (fci-mode 1))))
-
-;; (global-fci-mode 1)
-
-;; (setq fci-rule-column 100)
-
-;; (require 'edbi)
-;; (require 'helm-kickass)
-;; (define-key helm-do-ag-map (kbd "C-c C-y") 'my-helm-yank-selection)
 
 (defun quicklisp-slime-setup ()
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime"))
@@ -730,8 +580,7 @@
           '(("\\.jinja\\'"  . "django")))))
 
 (use-package flycheck
-  :config
-  (global-flycheck-mode 1)
+  :commands flycheck-mode
   )
 
 (setq-default flycheck-disabled-checkers
@@ -771,10 +620,6 @@
 (setq web-mode-content-types-alist
       '(("jsx" . "\\.js[x]?\\'")))
 
-(fringe-mode 1)
-(set-face-attribute 'fringe nil :background "black")
-(set-fringe-style '(1 . 1))
-
 (setq debug-on-error nil)
 
 ;; hi there!
@@ -787,10 +632,10 @@
 
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-(when (locate-library "edit-server")
-  (require 'edit-server)
-  (setq edit-server-new-frame nil)
-  (edit-server-start))
+;; (when (locate-library "edit-server")
+;;   (require 'edit-server)
+;;   (setq edit-server-new-frame nil)
+;;   (edit-server-start))
 
 (crux-reopen-as-root-mode)
 
@@ -799,5 +644,42 @@
 (add-hook 'js-mode-hook
           (lambda ()
             (add-hook 'before-save-hook 'jscodefmt-before-save)))
+
+(fringe-mode 1)
+(set-face-attribute 'fringe nil :background "gray")
+(set-fringe-style '(1 . 1))
+
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config 
+  :ensure)
+
+;; (use-package evil
+;;   :config
+;;   (evil-mode 1)
+;;   (evil-escape-mode 1)
+;;   (global-evil-surround-mode 1)
+;;   (evil-magit-init)
+;;   (global-evil-matchit-mode)
+;;   (global-evil-mc-mode)
+;;   (evilnc-default-hotkeys)
+;;   )
+
+;; (setq evil-emacs-state-cursor '("red" box))
+;; (setq evil-normal-state-cursor '("green3" box))
+;; (setq evil-visual-state-cursor '("orange" box))
+;; (setq evil-insert-state-cursor '("red" bar))
+;; (setq evil-replace-state-cursor '("blue" bar))
+;; (setq evil-operator-state-cursor '("pink" hollow))
+
+;; (global-set-key (kbd "C-g") 'evil-escape)
+
+
+
 
 (point-undo)

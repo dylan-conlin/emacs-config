@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("sms-app"
+(("shortstack-api"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/")
+ (front-context-string)
+ (rear-context-string . "18  2016 vendor\n")
+ (position . 2181))
+("sms-app"
  (filename . "~/Dropbox/side-sites/ruby-projects/sms-app/")
  (front-context-string . "Gemfile\n  -rw-r-")
  (rear-context-string . "90 Jan 11 20:23 ")
@@ -12,11 +17,6 @@
  (front-context-string . "Dockerfile\n  -rw")
  (rear-context-string . "53 Jan 11 13:04 ")
  (position . 905))
-("api"
- (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_picker.js")
- (front-context-string . "return Object.as")
- (rear-context-string . "CT_THEME:\n      ")
- (position . 1365))
 ("nginx-servers"
  (filename . "/usr/local/etc/nginx/servers/")
  (front-context-string . "shortstack-style")
@@ -43,10 +43,10 @@
  (rear-context-string . "4 09:44 webpack\n")
  (position . 1913))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** creating a ne")
- (rear-context-string . "5-08 Sun 22:37]\n")
- (position . 398844))
+ (filename . "~/Dropbox/org/campaign-code.org")
+ (front-context-string . "** image append ")
+ (rear-context-string . "ext() );\n 3 });\n")
+ (position . 23728))
 ("bitbar-plugins"
  (filename . "~/Dropbox/bitbar-plugins/")
  (front-context-string)
@@ -78,10 +78,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** cool global n")
- (rear-context-string . "7-02-27 Mon 22:\n")
- (position . 481236))
+ (filename . "~/Dropbox/org/todo-work.org")
+ (front-context-string . "** TODO when edi")
+ (rear-context-string . "3-03 Fri 10:47]\n")
+ (position . 2245))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

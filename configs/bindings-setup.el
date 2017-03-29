@@ -106,7 +106,7 @@ _q_: cancel
 ;; (bind-key "C-x C-n" 'flycheck-tip-cycle)
 ;; (bind-key "C-x C-p" 'flycheck-tip-cycle-reverse)
 
-(bind-key "M-;" 'comment-or-uncomment-region-or-line)
+(bind-key "M-;" 'evilnc-comment-or-uncomment-lines)
 
 ;; (bind-key "M-;" 'comment-dwim-2)
 
@@ -131,7 +131,7 @@ _q_: cancel
 (key-chord-define-global "wj" 'calculator)
 
 (key-chord-define-global "mw" 'wrappy)
-(key-chord-define-global "bw" 'unwrappy)
+(key-chord-define-global "bw" 'unwrap-item)
 
 (bind-key "C-x r q" 'save-buffers-kill-terminal)
 
@@ -273,8 +273,8 @@ _q_: cancel
 (global-set-key (kbd "M-}") 'corral-braces-forward)
 (global-set-key (kbd "M-\"") 'corral-double-quotes-backward)
 
-;; (bind-key "s-c" 'evil-surround-change)
-;; (bind-key "s-d" 'evil-surround-delete)
+(bind-key "s-c" 'evil-surround-change)
+(bind-key "s-d" 'evil-surround-delete)
 
 (bind-key "C-x n" 'flycheck-tip-cycle)
 
@@ -288,6 +288,7 @@ _q_: cancel
 ;; (unbind-key "s-c")
 (unbind-key "s-1")
 (unbind-key "s-2")
+
 
 
 (provide 'bindings-setup)

@@ -154,23 +154,23 @@ Git gutter:
 
 
 
-(defhydra my-hydra-macro (:hint nil :color pink :pre 
-                                (when defining-kbd-macro
-                                  (kmacro-end-macro 1)))
+(defhydra hydra-macro (:hint nil :color pink :pre 
+                             (when defining-kbd-macro
+                                 (kmacro-end-macro 1)))
   "
   ^Create-Cycle^   ^Basic^           ^Insert^        ^Save^         ^Edit^
 ╭─────────────────────────────────────────────────────────────────────────╯
      ^_i_^           [_e_] execute    [_n_] insert    [_b_] name      [_'_] previous
      ^^↑^^           [_d_] delete     [_t_] set       [_K_] key       [_,_] last
- _j_ ←   → _k_       [_o_] edit       [_a_] add       [_x_] register     
+ _j_ ←   → _l_       [_o_] edit       [_a_] add       [_x_] register     
      ^^↓^^           [_r_] region     [_f_] format    [_B_] defun
-     ^_l_^           [_m_] step
+     ^_k_^           [_m_] step
     ^^   ^^          [_s_] swap
 "
   ("j" kmacro-start-macro :color blue)
-  ("k" kmacro-end-or-call-macro-repeat)
+  ("l" kmacro-end-or-call-macro-repeat)
   ("i" kmacro-cycle-ring-previous)
-  ("l" kmacro-cycle-ring-next)
+  ("k" kmacro-cycle-ring-next)
   ("r" apply-macro-to-region-lines)
   ("d" kmacro-delete-ring-head)
   ("e" kmacro-end-or-call-macro-repeat)
@@ -189,7 +189,7 @@ Git gutter:
   ("," edit-kbd-macro)
   ("q" nil :color blue))
 
-(bind-key "C-x (" 'start-kbd-macro)
+(bind-key "C-x (" 'hydra-macro/body)
 
 
 ;;** Example 2: move window splitter
