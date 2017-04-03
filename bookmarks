@@ -17,11 +17,6 @@
  (front-context-string . "Dockerfile\n  -rw")
  (rear-context-string . "53 Jan 11 13:04 ")
  (position . 905))
-("nginx-servers"
- (filename . "/usr/local/etc/nginx/servers/")
- (front-context-string . "shortstack-style")
- (rear-context-string . "42 Jul 15 13:51 ")
- (position . 766))
 ("todo-consulting.org"
  (filename . "~/Dropbox/org/todo-consulting.org")
  (front-context-string . "ONE bark campaig")
@@ -79,9 +74,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo-work.org")
- (front-context-string . "** TODO when edi")
- (rear-context-string . "3-03 Fri 10:47]\n")
- (position . 2245))
+ (front-context-string . "** TODO fix issu")
+ (rear-context-string . "3-28 Tue 09:53]\n")
+ (position . 2420))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)
