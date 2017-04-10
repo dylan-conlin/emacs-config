@@ -167,7 +167,7 @@
 
 (use-package color-theme
   :config
-  (load-theme 'dracula t)
+  (load-theme 'leuven t)
   ;; '(hl-line ((t (:background "gray96"))))
   ;; (load-theme 'leuven)
 
@@ -230,7 +230,10 @@
    ("C-c M-i" . helm-multi-swoop)
    ("C-x M-i" . helm-multi-swoop-all)))
 
-(use-package expand-region)
+(use-package expand-region
+  :bind
+  (("C-j" . er/expand-region))
+  )
 
 (use-package js-mode
   :mode
@@ -352,6 +355,14 @@
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))))
+
+;; (use-package lastpass
+;;   :config
+;;   ;; Set lastpass user
+;;   (setq lastpass-user "dylan.conlin@gmail.com")
+;;   (setq lastpass-multifactor-use-passcode t)
+;;   ;; Enable lastpass custom auth-source
+;;   (lastpass-auth-source-enable))
 
 (use-package org
   :bind
@@ -536,11 +547,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
-;; (use-package rvm
-;;   :config
-;;   (rvm-use-default))
-
-
 (defun quicklisp-slime-setup ()
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime"))
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime/contrib"))
@@ -549,14 +555,6 @@
   (setq slime-net-coding-system 'utf-8-unix)
   (require 'slime)
   (slime-setup '(slime-repl slime-fancy)))
-
-(require 'sublimity)
-                                        ;(require 'sublimity-scroll)
-;; (require 'sublimity-map)
-;; ;; (require 'sublimity-attractive)
-;; (sublimity-mode 1)
-;; (setq sublimity-scroll-weight 5
-;;       sublimity-scroll-drift-length 20)
 
 (use-package beacon
   :config
@@ -582,6 +580,8 @@
 (use-package flycheck
   :commands flycheck-mode
   )
+
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
@@ -622,8 +622,6 @@
 
 (setq debug-on-error nil)
 
-;; hi there!
-
 ;; scroll one line at a time (less "jumpy" than defaults)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -646,10 +644,8 @@
             (add-hook 'before-save-hook 'jscodefmt-before-save)))
 
 (fringe-mode 1)
-(set-face-attribute 'fringe nil :background "gray")
+(set-face-attribute 'fringe nil :background "gray33")
 (set-fringe-style '(1 . 1))
-
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -680,6 +676,16 @@
 ;; (global-set-key (kbd "C-g") 'evil-escape)
 
 
+;; (require 'sublimity)
+                                        ;(require 'sublimity-scroll)
+;; (require 'sublimity-map)
+;; ;; (require 'sublimity-attractive)
+;; (sublimity-mode 1)
+;; (setq sublimity-scroll-weight 5
+;;       sublimity-scroll-drift-length 20)
 
+;; (use-package rvm
+;;   :config
+;;   (rvm-use-default))
 
 (point-undo)
