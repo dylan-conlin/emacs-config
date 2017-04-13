@@ -120,13 +120,13 @@
          ("C-c M-K" . helm-do-ag)
          ("C-c p p" . helm-projectile-switch-project)
          ("C-x b" . helm-projectless-search)
-         ("C-c f" . helm-projectile-recentf)
+         ("C-x f" . helm-projectile-recentf)
          ("C-x p f" . helm-projectile-recentf)
          ("H-n" . helm-scroll-other-window)
          ("H-p" . helm-scroll-other-window-down)
          ("C-x t" . helm-imenu)
          ("M-C-p" . helm-eshell-history)
-         ("C-x f" . helm-recentf)
+         ("C-c f" . helm-recentf)
          ("C-x y" . helm-show-kill-ring)
          ("C-x C-b" . helm-bookmarks)
          ("M-." . helm-locate)
@@ -388,15 +388,13 @@
     (setq org-log-done t)
     (setq org-todo-keywords
           '((sequence "TODO" "REVIEW" "DONE")))
-    
     (setq org-todo-keyword-faces
           '(("TODO" . "red3")
             ("REVIEW" . "orange3")
             ("DONE" . "green4")
             ("ARCHIVED" .  "blue3")))
-    
-    (setq org-startup-indented t)
-    (setq org-hide-leading-starts t)
+    (setq org-startup-indented nil)
+    (setq org-hide-leading-stars nil)
 
     ;; behavior settings
     (setq org-use-fast-todo-selection t)
@@ -687,5 +685,18 @@
 ;; (use-package rvm
 ;;   :config
 ;;   (rvm-use-default))
+
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(progn
+     (add-to-list 'ac-modes 'cider-mode)
+     (add-to-list 'ac-modes 'cider-repl-mode)))
+
+
+(autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 
 (point-undo)
