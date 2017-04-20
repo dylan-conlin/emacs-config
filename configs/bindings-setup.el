@@ -110,7 +110,8 @@ _q_: cancel
 
 ;; (bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'avy-goto-char)
+(key-chord-define-global "fj" 'avy-goto-char-2)
+(key-chord-define-global "hf" 'avy-goto-char-timer)
 (key-chord-define-global "kh" 'avy-goto-char-in-line)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
 
@@ -235,9 +236,6 @@ _q_: cancel
 ;; Also, it will tell you if the key was rebound after your binding it with bind-key, and what it was rebound it to.
 
 (key-chord-define-global "jl" 'c-hungry-delete-forward)
-
-
-;; (key-chord-define-global "hk" 'er/expand-region)
 
 (define-key dcon-minor-mode-map (kbd "M-a") 'my-hydra-window/body)
 (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)

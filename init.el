@@ -105,8 +105,8 @@
     (setq helm-buffer-max-length 30)
     (setq helm-ff-file-name-history-use-recentf t)
     (setq helm-M-x-fuzzy-match nil)
-    (setq helm-buffers-fuzzy-matching t
-          helm-recentf-fuzzy-match    t)
+    (setq helm-buffers-fuzzy-matching nil
+          helm-recentf-fuzzy-match    nil)
     (setq helm-semantic-fuzzy-match nil
           helm-imenu-fuzzy-match    nil)
     (helm-mode 1)
@@ -231,8 +231,12 @@
    ("C-x M-i" . helm-multi-swoop-all)))
 
 (use-package expand-region
-  :bind
-  (("C-j" . er/expand-region))
+  :config
+  ;; this fixes bug detailed here
+  ;; https://github.com/magnars/expand-region.el/issues/220
+  (setq shift-select-mode nil)
+  ;; :bind
+  ;; (("C-j" . er/expand-region))
   )
 
 (use-package js-mode
@@ -636,10 +640,10 @@
 (crux-reopen-as-root-mode)
 
 
-(require 'prettier-js)
-(add-hook 'js-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'jscodefmt-before-save)))
+;; (require 'prettier-js)
+;; (add-hook 'js-mode-hook
+;;           (lambda ()
+;;             (add-hook 'before-save-hook 'jscodefmt-before-save)))
 
 (fringe-mode 1)
 (set-face-attribute 'fringe nil :background "gray33")
@@ -698,5 +702,8 @@
 
 (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+
+(unless (package-installed-p 'indium)
+  (package-install 'indium))
 
 (point-undo)
