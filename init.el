@@ -1,10 +1,10 @@
 (package-initialize)
-
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (server-start)
 ;; remove menus, tool-bars, scroll bars, splash-screen, and startup-message
 (menu-bar-mode -1)
+
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode)
@@ -64,29 +64,35 @@
 (key-chord-mode 1)
 
 (use-package winner
+  :if (not noninteractive)
+  :defer 5
+  :bind (("s-/" . winner-undo)
+         ("s-." . winner-redo))
   :config
   (winner-mode 1))
 
 (use-package uniquify)
 
-(use-package auto-complete
-  :diminish auto-complete-mode
-  :config
-  (progn
-    (ac-config-default)
-    (setq ac-use-menu-map t
-          ac-use-fuzzy t
-          ac-delay 0.025
-          ac-quick-help-delay 0.25))
-  :bind
-  (("C-<up>" . ac-quick-help-scroll-up)
-   ("C-<down>" . ac-quick-help-scroll-down)))
+;; (use-package auto-complete
+;;   :diminish auto-complete-mode
+;;   :config
+;;   (progn
+;;     (ac-config-default)
+;;     (setq ac-use-menu-map t
+;;           ac-use-fuzzy t
+;;           ac-delay 0.025
+;;           ac-quick-help-delay 0.25))
+;;   :bind
+;;   (("C-<up>" . ac-quick-help-scroll-up)
+;;    ("C-<down>" . ac-quick-help-scroll-down)))
 
 (use-package projectile
+  :diminish projectile-mode
   :config
   (projectile-mode))
 
 (use-package helm
+  :diminish helm-mode
   :config
   (progn
     (require 'helm-config)
@@ -130,7 +136,9 @@
          ("C-x y" . helm-show-kill-ring)
          ("C-x C-b" . helm-bookmarks)
          ("M-." . helm-locate)
-         ("M-j" . helm-resume)))
+         ("M-j" . helm-resume)
+         ("C-x m" . helm-execute-kmacro)
+         ("M-r" . helm-register)))
 
 (use-package yasnippet
   :diminish yas-minor-mode
@@ -141,7 +149,6 @@
   (progn
     (setq yas-verbosity 3)
     (yas-global-mode 1)
-    
     )
 ;;   :bind
   ;;(("C-x j". helm-yas-complete))
@@ -201,22 +208,23 @@
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :config
-  (progn
-    (global-undo-tree-mode)
-    (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-relative-timestamps t)
-    (setq undo-tree-visualizer-diff t)))
+  :init
+  (global-undo-tree-mode))
 
 (use-package git-gutter
+  :ensure t
   :diminish git-gutter-mode
+  :init
+  (progn
+    (customize-set-variable 'git-gutter:update-interval 2) ; Activate live update timer.
+    (setq git-gutter:hide-gutter t)) ; Always a 0 width margin when no changes.)
   :config
-  (global-git-gutter-mode 1)
+  (global-git-gutter-mode)
   ;; (git-gutter:linum-setup)
   :bind
   (("C-x C-n" . my-next-edit)
    ("C-x C-p" . my-previous-edit)
-   ("C-x C-r" . git-gutter:revert-hunk)
+   ("C-x C-r" . git-gutter:revert-hunk)   
    ("C-x C-d" . git-gutter:popup-hunk)))
 
 (use-package helm-swoop
@@ -269,15 +277,17 @@
    ("\\.gemspec\\'" . ruby-mode)
    ("\\kwmrc\\'" . ruby-mode))
   :init
-  (progn
-    (require 'ruby-block)
-    (ruby-block-mode t)
-    ;; do overlay
-    (setq ruby-block-highlight-toggle 'overlay)
-    ;; display to minibuffer
-    (setq ruby-block-highlight-toggle 'minibuffer)
-    ;; display to minibuffer and do overlay
-    (setq ruby-block-highlight-toggle t)))
+  (progn    
+    (use-package ruby-block
+      :diminish ruby-block-mode
+      :config
+      (ruby-block-mode t)
+      ;; do overlay
+      (setq ruby-block-highlight-toggle 'overlay)
+      ;; display to minibuffer
+      (setq ruby-block-highlight-toggle 'minibuffer)
+      ;; display to minibuffer and do overlay
+      (setq ruby-block-highlight-toggle t))))
 
 (use-package coffee-mode
   :config
@@ -291,6 +301,7 @@
 
 (use-package sass-mode)
 (use-package rainbow-mode
+  :diminish rainbow-mode
   :init
   (progn
     (add-hook 'css-mode-hook 'rainbow-mode)
@@ -449,6 +460,9 @@
 
 (org-clock-persistence-insinuate)
 
+(use-package smartparens
+  :diminish smartparens-mode)
+
 (smartparens-global-mode)
 (setq show-paren-mode nil)
 (show-smartparens-global-mode +1)
@@ -549,24 +563,26 @@
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
-(defun quicklisp-slime-setup ()
-  (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime"))
-  (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime/contrib"))
-  (setq inferior-lisp-program "/usr/local/bin/ccl64")
-  (setq slime-autodoc-mode t)
-  (setq slime-net-coding-system 'utf-8-unix)
-  (require 'slime)
-  (slime-setup '(slime-repl slime-fancy)))
+;; (defun quicklisp-slime-setup ()
+;;   (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime"))
+;;   (add-to-list 'load-path (expand-file-name "~/.emacs.d/vendor/slime/contrib"))
+;;   (setq inferior-lisp-program "/usr/local/bin/ccl64")
+;;   (setq slime-autodoc-mode t)
+;;   (setq slime-net-coding-system 'utf-8-unix)
+;;   (require 'slime)
+;;   (slime-setup '(slime-repl slime-fancy)))
 
 (use-package beacon
   :config
   (beacon-mode 1))
 
 (use-package anzu
+  :diminish anzu-mode
   :config
   (global-anzu-mode t))
 
 (use-package web-mode
+  :disabled t
   :mode (("\\.html\\'" . web-mode)
          ("\\.html\\.erb\\'" . web-mode)
          ("\\.mustache\\'" . web-mode)
@@ -585,20 +601,20 @@
 
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
-(setq-default flycheck-disabled-checkers
-              (append flycheck-disabled-checkers
-                      '(javascript-jshint)))
+;; (setq-default flycheck-disabled-checkers
+;;               (append flycheck-disabled-checkers
+;;                       '(javascript-jshint)))
 
 ;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
+;; (flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
 
 ;; disable json-jsonlist checking for json files
-(setq-default flycheck-disabled-checkers
-              (append flycheck-disabled-checkers
-                      '(json-jsonlist)))
+;; (setq-default flycheck-disabled-checkers
+;;               (append flycheck-disabled-checkers
+;;                       '(json-jsonlist)))
 
 
 ;; https://github.com/purcell/exec-path-from-shell
@@ -686,19 +702,18 @@
 ;; (setq sublimity-scroll-weight 5
 ;;       sublimity-scroll-drift-length 20)
 
-;; (use-package rvm
-;;   :config
-;;   (rvm-use-default))
+(use-package rvm
+  :config
+  (rvm-use-default))
 
-(require 'ac-cider)
-(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-(eval-after-load "auto-complete"
-  '(progn
-     (add-to-list 'ac-modes 'cider-mode)
-     (add-to-list 'ac-modes 'cider-repl-mode)))
-
+;; (require 'ac-cider)
+;; (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+;; (add-hook 'cider-mode-hook 'ac-cider-setup)
+;; (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+;; (eval-after-load "auto-complete"
+;;   '(progn
+;;      (add-to-list 'ac-modes 'cider-mode)
+;;      (add-to-list 'ac-modes 'cider-repl-mode)))
 
 (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
@@ -706,4 +721,340 @@
 (unless (package-installed-p 'indium)
   (package-install 'indium))
 
-(point-undo)
+
+;;; Golden-ratio
+;;
+(use-package golden-ratio
+  :disabled t
+  :diminish golden-ratio-mode
+  :init
+  (progn
+    (add-hook 'ediff-before-setup-windows-hook (lambda () (golden-ratio-mode -1)))
+    (add-hook 'ediff-quit-hook (lambda () (golden-ratio-mode 1))))
+  :config
+  (progn
+    (defun helm/running-p () helm-alive-p)
+    (defun tv/ispell-running-p ()
+      (and (boundp 'ispell-choices-buffer)
+           (get-buffer ispell-choices-buffer)))
+    (setq golden-ratio-inhibit-functions     '(helm/running-p tv/ispell-running-p))
+    (setq golden-ratio-exclude-buffer-regexp '("\\`\\*[Hh]elm.*\\*\\'"))
+    (setq golden-ratio-exclude-buffer-names  '("*Org Select*"))
+    (setq golden-ratio-exclude-modes         '(ediff-mode calendar-mode wget-mode))
+    (setq golden-ratio-recenter              t)
+    (golden-ratio-mode 1)))
+
+;;; Whitespace-mode
+;;
+(use-package whitespace
+  :diminish (global-whitespace-mode
+             whitespace-mode
+             whitespace-newline-mode)
+  :commands (whitespace-buffer
+             whitespace-cleanup
+             whitespace-mode)
+  :defines (whitespace-auto-cleanup
+            whitespace-rescan-timer-time
+            whitespace-silent)
+  :preface
+  (defun normalize-file ()
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (whitespace-cleanup)
+      (delete-trailing-whitespace)
+      (goto-char (point-max))
+      (delete-blank-lines)
+      (set-buffer-file-coding-system 'unix)
+      (goto-char (point-min))
+      (while (re-search-forward "\r$" nil t)
+        (replace-match ""))
+      (set-buffer-file-coding-system 'utf-8)
+      (let ((require-final-newline t))
+        (save-buffer))))
+
+  (defun maybe-turn-on-whitespace ()
+    "Depending on the file, maybe clean up whitespace."
+    (let ((file (expand-file-name ".clean"))
+          parent-dir)
+      (while (and (not (file-exists-p file))
+                  (progn
+                    (setq parent-dir
+                          (file-name-directory
+                           (directory-file-name
+                            (file-name-directory file))))
+                    ;; Give up if we are already at the root dir.
+                    (not (string= (file-name-directory file)
+                                  parent-dir))))
+        ;; Move up to the parent dir and try again.
+        (setq file (expand-file-name ".clean" parent-dir)))
+      ;; If we found a change log in a parent, use that.
+      (when (and (file-exists-p file)
+                 (not (file-exists-p ".noclean"))
+                 (not (and buffer-file-name
+                           (string-match "\\.texi\\'" buffer-file-name))))
+        (add-hook 'write-contents-hooks
+                  #'(lambda () (ignore (whitespace-cleanup))) nil t)
+        (whitespace-cleanup))))
+
+  :init
+  (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
+
+  :config
+  (remove-hook 'find-file-hooks 'whitespace-buffer)
+  (remove-hook 'kill-buffer-hook 'whitespace-buffer)
+
+  ;; For some reason, having these in settings.el gets ignored if whitespace
+  ;; loads lazily.
+  (setq whitespace-auto-cleanup t
+        whitespace-line-column 110
+        whitespace-rescan-timer-time nil
+        whitespace-silent t
+        whitespace-style '(face trailing lines space-before-tab empty)))
+
+;;; Eshell-config
+;;
+(use-package eshell
+  :init
+  (progn
+    ;; Eshell-prompt
+    (setq eshell-prompt-function
+          (lambda nil
+            (let ((pwd (eshell/pwd)))
+              (with-temp-buffer
+                (let* ((default-directory (file-name-as-directory pwd))
+                       (proc (process-file
+                              "git" nil t nil
+                              "symbolic-ref" "HEAD" "--short"))
+                       (id (if (= (user-uid) 0) " # " " $ "))
+                       detached branch status)
+                  (unless (= proc 0)
+                    (erase-buffer)
+                    (setq detached t)
+                    (setq proc (process-file
+                                "git" nil t nil
+                                "rev-parse" "--short" "HEAD")))
+                  (if (= proc 0)
+                      (progn
+                        (setq branch (replace-regexp-in-string
+                                      "\n" "" (buffer-string)))
+                        (erase-buffer)
+                        (setq proc (process-file
+                                    "git" nil t nil "status" "--porcelain"))
+                        (setq status (pcase (buffer-string)
+                                       ((and str (guard (and (not (string= str ""))
+                                                             (= proc 0))))
+                                        (if (string-match "\\`[?]" str) "?" "*"))
+                                       (_ "")))
+                        (format "%s:(%s%s)%s"
+                                (abbreviate-file-name pwd)
+                                (propertize (format
+                                             "%s%s"
+                                             (if detached "detached@" "")
+                                             branch)
+                                            'face '((:foreground "red")))
+                                (propertize status
+                                            'face `((:foreground
+                                                     ,(if (string= "?" status)
+                                                          "OrangeRed" "gold1"))))
+                                id))
+                    (format "%s@%s:%s%s"
+                            (getenv "USER") (system-name)
+                            (abbreviate-file-name pwd) id)))))))
+
+    ;; Compatibility 24.2/24.3
+    (unless (fboundp 'eshell-pcomplete)
+      (defalias 'eshell-pcomplete 'pcomplete))
+    (unless (fboundp 'eshell-complete-lisp-symbol)
+      (defalias 'eshell-complete-lisp-symbol 'lisp-complete-symbol))
+
+    (add-hook 'eshell-mode-hook (lambda ()
+                                  (setq eshell-pwd-convert-function (lambda (f)
+                                                                      (if (file-equal-p (file-truename f) "/")
+                                                                          "/" f)))
+                                  ;; This is needed for eshell-command (otherwise initial history is empty).
+                                  (eshell-read-history eshell-history-file-name)
+                                  ;; Helm completion with pcomplete
+                                  (setq eshell-cmpl-ignore-case t
+                                        eshell-hist-ignoredups t)
+                                  (eshell-cmpl-initialize)
+                                  (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+                                  ;; Helm lisp completion
+                                  (define-key eshell-mode-map [remap eshell-complete-lisp-symbol] 'helm-lisp-completion-at-point)
+                                  ;; Helm completion on eshell history.
+                                  (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
+                                  ;; Eshell prompt
+                                  (set-face-attribute 'eshell-prompt nil :foreground "DeepSkyBlue")))
+
+    ;; Eshell history size
+    (setq eshell-history-size 1000) ; Same as env var HISTSIZE.
+
+    ;; Eshell-banner
+    (setq eshell-banner-message (format "%s %s\nwith Emacs %s on %s"
+                                        (propertize
+                                         "Eshell session started on"
+                                         'face '((:foreground "Goldenrod")))
+                                        (propertize
+                                         (format-time-string "%c")
+                                         'face '((:foreground "magenta")))
+                                        (propertize emacs-version
+                                                    'face '((:foreground "magenta")))
+                                        (propertize
+                                         (with-temp-buffer
+                                           (call-process "uname" nil t nil "-r")
+                                           (buffer-string))
+                                         'face '((:foreground "magenta")))))
+
+    ;; Eshell-et-ansi-color
+    (ignore-errors
+      (dolist (i (list 'eshell-handle-ansi-color
+                       'eshell-handle-control-codes
+                       'eshell-watch-for-password-prompt))
+        (add-to-list 'eshell-output-filter-functions i)))
+
+    ;; Eshell-save-history-on-exit
+    ;; Possible values: t (always save), 'never, 'ask (default)
+    (setq eshell-save-history-on-exit t)
+
+    
+    ;; Eshell-visual
+    (setq eshell-term-name "eterm-color")
+    (with-eval-after-load "em-term"
+      (dolist (i '("tmux" "htop" "ipython" "alsamixer" "git-log"))
+        (add-to-list 'eshell-visual-commands i))))
+  :config
+  ;; Finally load eshell on startup.
+  (add-hook 'emacs-startup-hook (lambda ()
+                                  (let ((default-directory (getenv "HOME")))
+                                    (command-execute 'eshell)
+                                    (bury-buffer))))
+  (global-set-key (kbd "C-!") 'eshell-command))
+
+
+;;; Shell
+;;
+(use-package shell
+  :requires helm
+  :config
+  (progn
+    (defun comint--advice-send-eof (&rest _args)
+      (kill-buffer))
+    (advice-add 'comint-send-eof :after 'comint--advice-send-eof))
+  :bind (:map shell-mode-map
+         ("M-p" . helm-comint-input-ring)))
+
+;;; Powerline
+;;
+;; (use-package powerline
+;;   :config
+;;   (progn
+;;     (defun tv/powerline-default-theme ()
+;;       "Setup the default mode-line."
+;;       (interactive)
+;;       (setq-default mode-line-format
+;;                     '("%e"
+;;                       (:eval
+;;                        (let* ((active (powerline-selected-window-active))
+;;                               (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
+;;                               (mode-line (if active 'mode-line 'mode-line-inactive))
+;;                               (face1 (if active 'powerline-active1 'powerline-inactive1))
+;;                               (face2 (if active 'powerline-active2 'powerline-inactive2))
+;;                               (separator-left (intern (format "powerline-%s-%s"
+;;                                                               (powerline-current-separator)
+;;                                                               (car powerline-default-separator-dir))))
+;;                               (separator-right (intern (format "powerline-%s-%s"
+;;                                                                (powerline-current-separator)
+;;                                                                (cdr powerline-default-separator-dir))))
+;;                               (lhs (list (powerline-raw mode-line-remote mode-line 'l)
+;;                                          (powerline-raw "%*" mode-line 'l)
+;;                                          (when powerline-display-buffer-size
+;;                                            (powerline-buffer-size mode-line 'l))
+;;                                          (when powerline-display-mule-info
+;;                                            (powerline-raw mode-line-mule-info mode-line 'l))
+;;                                          (powerline-buffer-id mode-line-buffer-id 'l)
+;;                                          (when (and (boundp 'which-func-mode) which-func-mode)
+;;                                            (powerline-raw which-func-format nil 'l))
+;;                                          (powerline-raw " ")
+;;                                          (funcall separator-left mode-line face1)
+;;                                          (powerline-raw "%4l" face1 'l)
+;;                                          (powerline-raw ":" face1 'l)
+;;                                          (powerline-raw "%3c" face1 'r)
+;;                                          (funcall separator-left face1 mode-line)
+;;                                          (powerline-raw " ")
+;;                                          (powerline-raw "%6p" mode-line 'r)
+;;                                          (funcall separator-left mode-line face1)
+;;                                          (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
+;;                                            (powerline-raw erc-modified-channels-object face1 'l))
+;;                                          (powerline-major-mode face1 'l)
+;;                                          (powerline-process face1)
+;;                                          (powerline-minor-modes face1 'l)
+;;                                          (powerline-narrow face1 'l)
+;;                                          (powerline-raw " " face1)
+;;                                          (funcall separator-left face1 face2)
+;;                                          (powerline-vc face2 'r)
+;;                                          (when (bound-and-true-p nyan-mode)
+;;                                            (powerline-raw (list (nyan-create)) face2 'l))))
+;;                               (rhs (list (powerline-raw global-mode-string face2 'r)
+;;                                          (funcall separator-right face2 face1)
+;;                                          (unless window-system
+;;                                            (powerline-raw (char-to-string #xe0a1) face1 'l))
+;;                                          (when powerline-display-hud
+;;                                            (powerline-hud face2 face1)))))
+;;                          (concat (powerline-render lhs)
+;;                                  (powerline-fill face2 (powerline-width rhs))
+;;                                  (powerline-render rhs)))))))
+;;     (tv/powerline-default-theme)
+;;     (global-set-key [mode-line mouse-1] 'ignore)
+;;     (global-set-key [mode-line mouse-2] 'ignore)
+;;     (global-set-key [mode-line mouse-3] 'ignore)
+;;     (setq mode-line-default-help-echo nil))
+;;   :ensure t)
+
+;; (use-package selected
+;;   :defer 5
+;;   :diminish selected-minor-mode
+;;   :config
+;;   (selected-global-mode 1)
+
+;;   (bind-key "q" #'selected-off selected-keymap)
+;;   (bind-key "[" #'align-entire selected-keymap)
+;;   (bind-key "f" #'fill-region selected-keymap)
+;;   (bind-key "U" #'unfill-region selected-keymap)
+;;   (bind-key "d" #'downcase-region selected-keymap)
+;;   (bind-key "r" #'reverse-region selected-keymap)
+;;   (bind-key "s" #'sort-lines selected-keymap)
+;;   (bind-key "u" #'upcase-region selected-keymap))
+
+(use-package company
+  :diminish company-mode
+  :config
+  (setq company-idle-delay 0.025)
+  (company-quickhelp-mode 1)
+  (setq company-frontends
+        '(company-pseudo-tooltip-unless-just-one-frontend
+          company-preview-frontend
+          company-echo-metadata-frontend))
+  (setq company-require-match 'never)
+  (setq company-auto-complete nil)
+  (setq company-require-match nil)
+  ;; (setq company-frontends '(company-echo-metadata-frontend
+  ;;                           company-pseudo-tooltip-unless-just-one-frontend-with-delay
+  ;;                           company-preview-frontend))
+  (define-key company-active-map [tab] 'company-select-next-if-tooltip-visible-or-complete-selection)
+  (define-key company-active-map (kbd "C-i") 'company-complete-selection)
+  (define-key company-active-map (kbd "C-e") 'company-complete-selection)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (custom-set-faces
+   '(company-preview
+     ((t (:foreground "darkgray" :underline t)))))
+  (global-company-mode))
+
+(use-package nyan-mode
+  :config
+  (nyan-mode)
+  (setq nyan-wavy-trail nil))
+
+(setq-default indicate-empty-lines t)
+
+(use-package fold-dwim)

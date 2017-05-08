@@ -74,9 +74,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/todo-work.org")
- (front-context-string . "** TODO remove s")
- (rear-context-string . "d counterparts.\n")
- (position . 1836))
+ (front-context-string . "** TODO fix thes")
+ (rear-context-string . "4-27 Thu 10:35]\n")
+ (position . 2183))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

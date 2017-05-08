@@ -110,7 +110,7 @@ _q_: cancel
 
 ;; (bind-key "M-;" 'comment-dwim-2)
 
-(key-chord-define-global "fj" 'avy-goto-char-2)
+(key-chord-define-global "fj" 'avy-goto-char-timer)
 (key-chord-define-global "hf" 'avy-goto-char-timer)
 (key-chord-define-global "kh" 'avy-goto-char-in-line)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
@@ -147,9 +147,11 @@ _q_: cancel
 (bind-key "C-x g" 'browse-at-remote)
 (bind-key "C-x G" 'browse-at-remote/to-clipboard)
 
+(bind-key "C-/" 'undo)
 (bind-key "C-/" 'undo-tree-undo)
 (bind-key "C-." 'undo-tree-redo)
 (bind-key "C-x u" 'undo-tree-visualize)
+
 (bind-key "C-c o" 'other-frame)
 (bind-key "M-`" 'other-frame)
 (bind-key "C-x C-v" 'global-visual-line-mode)
@@ -200,9 +202,6 @@ _q_: cancel
 ;;     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
 ;;     (abort-recursive-edit)))
 
-(bind-key "s-/" 'winner-undo)
-(bind-key "s-." 'winner-redo)
-
 (bind-key "RET" 'new-line-dwim)
 
 ;; emms
@@ -237,7 +236,6 @@ _q_: cancel
 
 (key-chord-define-global "jl" 'c-hungry-delete-forward)
 
-(define-key dcon-minor-mode-map (kbd "M-a") 'my-hydra-window/body)
 (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
 (define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
 (define-key dcon-minor-mode-map (kbd "s-q") 'camel-snake-toggle-word-at-point)
