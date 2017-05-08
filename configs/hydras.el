@@ -367,4 +367,17 @@ ALPHA : [ %(frame-parameter nil 'alpha) ]
 (global-set-key (kbd "C-x SPC") 'avy-pop-mark)
 (global-set-key (kbd "s-f") 'hydra-fold/body)
 
+(defhydra hydra-selection ()
+  "actions on regions of text"
+  ("a" align-entire     "Align")
+  ("u" upcase-region    "Upcase")
+  ("d" downcase-region  "Downcase")
+  ("s" sort-lines       "Sort Lines")
+  ("f" fill-region      "Fill Region")
+  ("r" reverse-region   "Reverse")
+  ("F" unfill-region    "Unfill Region")
+  ("q" nil))
+
+(bind-key "C-x U" 'hydra-selection/body)
+
 (provide 'hydras)
