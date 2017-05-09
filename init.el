@@ -31,6 +31,7 @@
 
 (setq savehist-file "~/.emacs.d/savehist")
 (savehist-mode 1)
+
 (setq history-length t)
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
@@ -247,10 +248,10 @@
   ;; (("C-j" . er/expand-region))
   )
 
-(use-package js-mode
-  :mode
-  (("\\.json\\'" . js-mode)
-   ("\\.babelrc\\'" . js-mode)))
+;; (use-package js-mode
+;;   :mode
+;;   (("\\.json\\'" . js-mode)
+;;    ("\\.babelrc\\'" . js-mode)))
 
 (use-package js2-mode
   :mode
@@ -582,7 +583,6 @@
   (global-anzu-mode t))
 
 (use-package web-mode
-  :disabled t
   :mode (("\\.html\\'" . web-mode)
          ("\\.html\\.erb\\'" . web-mode)
          ("\\.mustache\\'" . web-mode)
@@ -591,22 +591,23 @@
          (("\\.jsx$" . web-mode))
          ("\\.js$" . web-mode))
   :config
-  (progn
-    (setq web-mode-engines-alist
-          '(("\\.jinja\\'"  . "django")))))
+  ;; adjust indents for web-mode to 2 spaces
+  (defun my-web-mode-hook ()
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-attr-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    ;; (setq web-mode-indent-style 2)
+    )
+  (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+
+  (setq web-mode-content-types-alist
+        '(("jsx" . "\\.js[x]?\\'"))))
 
 (use-package flycheck
-  :commands flycheck-mode
-  )
-
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-;; (setq-default flycheck-disabled-checkers
-;;               (append flycheck-disabled-checkers
-;;                       '(javascript-jshint)))
-
-;; use eslint with web-mode for jsx files
-;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
@@ -623,20 +624,6 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-
-;; adjust indents for web-mode to 2 spaces
-(defun my-web-mode-hook ()
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-attr-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  ;; (setq web-mode-indent-style 2)
-  )
-(add-hook 'web-mode-hook  'my-web-mode-hook)
-
-
-(setq web-mode-content-types-alist
-      '(("jsx" . "\\.js[x]?\\'")))
 
 (setq debug-on-error nil)
 
@@ -673,25 +660,23 @@
   :config 
   :ensure)
 
-;; (use-package evil
-;;   :config
-;;   (evil-mode 1)
-;;   (evil-escape-mode 1)
-;;   (global-evil-surround-mode 1)
-;;   (evil-magit-init)
-;;   (global-evil-matchit-mode)
-;;   (global-evil-mc-mode)
-;;   (evilnc-default-hotkeys)
-;;   )
-
-;; (setq evil-emacs-state-cursor '("red" box))
-;; (setq evil-normal-state-cursor '("green3" box))
-;; (setq evil-visual-state-cursor '("orange" box))
-;; (setq evil-insert-state-cursor '("red" bar))
-;; (setq evil-replace-state-cursor '("blue" bar))
-;; (setq evil-operator-state-cursor '("pink" hollow))
-
-;; (global-set-key (kbd "C-g") 'evil-escape)
+(use-package evil
+  :config
+  (setq evil-emacs-state-cursor '("red" box))
+  (setq evil-normal-state-cursor '("green3" box))
+  (setq evil-visual-state-cursor '("orange" box))
+  (setq evil-insert-state-cursor '("red" bar))
+  (setq evil-replace-state-cursor '("blue" bar))
+  (setq evil-operator-state-cursor '("pink" hollow))
+  (evil-mode 1)
+  (evil-escape-mode 1)
+  (global-evil-surround-mode 1)
+  (evil-magit-init)
+  (global-evil-matchit-mode)
+  (global-evil-mc-mode)
+  (evilnc-default-hotkeys)
+  :bind
+  (("C-g" . evil-escape)))
 
 
 ;; (require 'sublimity)
@@ -721,6 +706,7 @@
 (unless (package-installed-p 'indium)
   (package-install 'indium))
 
+(use-package indium)
 
 ;;; Golden-ratio
 ;;

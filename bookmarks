@@ -163,10 +163,10 @@
  (rear-context-string)
  (position . 1))
 ("org"
- (filename . "~/Dropbox/org/")
- (front-context-string)
- (rear-context-string . "odo.org_archive\n")
- (position . 1190))
+ (filename . "~/Dropbox/org")
+ (front-context-string . ";; fontify code ")
+ (rear-context-string . "rsist 'history)\n")
+ (position . 13759))
 ("private.xml"
  (filename . "~/Dropbox/Mackup/Library/Application Support/Karabiner/private.xml")
  (front-context-string . "<?xml version=\"1")
