@@ -305,6 +305,7 @@
 (depends-on "tango-2-theme")
 (depends-on "tango-plus-theme")
 (depends-on "tangotango-theme")
+(depends-on "terminal-here")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
 (depends-on "tommyh-theme")

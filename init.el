@@ -1,4 +1,6 @@
+;;; Code:
 (package-initialize)
+
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (server-start)
@@ -19,6 +21,8 @@
 (setq load-prefer-newer t)
 
 (setq uniquify-buffer-name-style 'forward)
+
+(save-place-mode 1)
 
 (setq ispell-program-name "/usr/local/bin/aspell")
 
@@ -192,9 +196,10 @@
 ;; add newline to file on save
 (setq require-final-newline t)
 ;; font color and size
-(set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
+;; (set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
 
-;; (set-face-attribute 'default nil :family "Inconsolata" :height 140 :weight 'light)
+(set-face-attribute 'default nil :family "Inconsolata" :height 140 :weight 'light)
+
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
@@ -216,17 +221,24 @@
   :ensure t
   :diminish git-gutter-mode
   :init
-  (progn
-    (customize-set-variable 'git-gutter:update-interval 2) ; Activate live update timer.
-    (setq git-gutter:hide-gutter t)) ; Always a 0 width margin when no changes.)
+  ;; (progn
+  ;;   (customize-set-variable 'git-gutter:update-interval 2) ; Activate live update timer.
+  ;;   (setq git-gutter:hide-gutter t)
+  ;;   ) ; Always a 0 width margin when no changes.)
   :config
   (global-git-gutter-mode)
+  (global-set-key "\C-x\C-\\" 'goto-last-change)
   ;; (git-gutter:linum-setup)
   :bind
   (("C-x C-n" . my-next-edit)
    ("C-x C-p" . my-previous-edit)
-   ("C-x C-r" . git-gutter:revert-hunk)   
+   ("C-x C-r" . git-gutter:revert-hunk)
    ("C-x C-d" . git-gutter:popup-hunk)))
+
+(use-package flycheck
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package helm-swoop
   :config
@@ -276,19 +288,18 @@
    ("\\Rakefile\\'" . ruby-mode)
    ("\\Gemfile\\'" . ruby-mode)
    ("\\.gemspec\\'" . ruby-mode)
-   ("\\kwmrc\\'" . ruby-mode))
-  :init
-  (progn    
-    (use-package ruby-block
-      :diminish ruby-block-mode
-      :config
-      (ruby-block-mode t)
-      ;; do overlay
-      (setq ruby-block-highlight-toggle 'overlay)
-      ;; display to minibuffer
-      (setq ruby-block-highlight-toggle 'minibuffer)
-      ;; display to minibuffer and do overlay
-      (setq ruby-block-highlight-toggle t))))
+   ("\\kwmrc\\'" . ruby-mode)))
+
+;; (use-package ruby-block
+;;   :diminish ruby-block-mode
+;;   :config
+;;   (ruby-block-mode t)
+;;   ;; do overlay
+;;   (setq ruby-block-highlight-toggle 'overlay)
+;;   ;; display to minibuffer
+;;   (setq ruby-block-highlight-toggle 'minibuffer)
+;;   ;; display to minibuffer and do overlay
+;;   (setq ruby-block-highlight-toggle t))
 
 (use-package coffee-mode
   :config
@@ -558,8 +569,6 @@
 (use-package vc-git)
 (use-package repository-root)
 
-(set-exec-path-from-shell-PATH)
-
 (find-file "~/.emacs.d/init.el")
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
@@ -604,10 +613,6 @@
 
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'"))))
-
-(use-package flycheck
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
@@ -660,23 +665,23 @@
   :config 
   :ensure)
 
-(use-package evil
-  :config
-  (setq evil-emacs-state-cursor '("red" box))
-  (setq evil-normal-state-cursor '("green3" box))
-  (setq evil-visual-state-cursor '("orange" box))
-  (setq evil-insert-state-cursor '("red" bar))
-  (setq evil-replace-state-cursor '("blue" bar))
-  (setq evil-operator-state-cursor '("pink" hollow))
-  (evil-mode 1)
-  (evil-escape-mode 1)
-  (global-evil-surround-mode 1)
-  (evil-magit-init)
-  (global-evil-matchit-mode)
-  (global-evil-mc-mode)
-  (evilnc-default-hotkeys)
-  :bind
-  (("C-g" . evil-escape)))
+;; (use-package evil
+;;   :config
+;;   (setq evil-emacs-state-cursor '("red" box))
+;;   (setq evil-normal-state-cursor '("green3" box))
+;;   (setq evil-visual-state-cursor '("orange" box))
+;;   (setq evil-insert-state-cursor '("red" bar))
+;;   (setq evil-replace-state-cursor '("blue" bar))
+;;   (setq evil-operator-state-cursor '("pink" hollow))
+;;   (evil-mode 1)
+;;   (evil-escape-mode 1)
+;;   (global-evil-surround-mode 1)
+;;   (evil-magit-init)
+;;   (global-evil-matchit-mode)
+;;   (global-evil-mc-mode)
+;;   (evilnc-default-hotkeys)
+;;   :bind
+;;   (("C-g" . evil-escape)))
 
 
 ;; (require 'sublimity)
@@ -798,123 +803,123 @@
         whitespace-silent t
         whitespace-style '(face trailing lines space-before-tab empty)))
 
-;;; Eshell-config
-;;
-(use-package eshell
-  :init
-  (progn
-    ;; Eshell-prompt
-    (setq eshell-prompt-function
-          (lambda nil
-            (let ((pwd (eshell/pwd)))
-              (with-temp-buffer
-                (let* ((default-directory (file-name-as-directory pwd))
-                       (proc (process-file
-                              "git" nil t nil
-                              "symbolic-ref" "HEAD" "--short"))
-                       (id (if (= (user-uid) 0) " # " " $ "))
-                       detached branch status)
-                  (unless (= proc 0)
-                    (erase-buffer)
-                    (setq detached t)
-                    (setq proc (process-file
-                                "git" nil t nil
-                                "rev-parse" "--short" "HEAD")))
-                  (if (= proc 0)
-                      (progn
-                        (setq branch (replace-regexp-in-string
-                                      "\n" "" (buffer-string)))
-                        (erase-buffer)
-                        (setq proc (process-file
-                                    "git" nil t nil "status" "--porcelain"))
-                        (setq status (pcase (buffer-string)
-                                       ((and str (guard (and (not (string= str ""))
-                                                             (= proc 0))))
-                                        (if (string-match "\\`[?]" str) "?" "*"))
-                                       (_ "")))
-                        (format "%s:(%s%s)%s"
-                                (abbreviate-file-name pwd)
-                                (propertize (format
-                                             "%s%s"
-                                             (if detached "detached@" "")
-                                             branch)
-                                            'face '((:foreground "red")))
-                                (propertize status
-                                            'face `((:foreground
-                                                     ,(if (string= "?" status)
-                                                          "OrangeRed" "gold1"))))
-                                id))
-                    (format "%s@%s:%s%s"
-                            (getenv "USER") (system-name)
-                            (abbreviate-file-name pwd) id)))))))
+;; ;;; Eshell-config
+;; ;;
+;; (use-package eshell
+;;   :init
+;;   (progn
+;;     ;; Eshell-prompt
+;;     (setq eshell-prompt-function
+;;           (lambda nil
+;;             (let ((pwd (eshell/pwd)))
+;;               (with-temp-buffer
+;;                 (let* ((default-directory (file-name-as-directory pwd))
+;;                        (proc (process-file
+;;                               "git" nil t nil
+;;                               "symbolic-ref" "HEAD" "--short"))
+;;                        (id (if (= (user-uid) 0) " # " " $ "))
+;;                        detached branch status)
+;;                   (unless (= proc 0)
+;;                     (erase-buffer)
+;;                     (setq detached t)
+;;                     (setq proc (process-file
+;;                                 "git" nil t nil
+;;                                 "rev-parse" "--short" "HEAD")))
+;;                   (if (= proc 0)
+;;                       (progn
+;;                         (setq branch (replace-regexp-in-string
+;;                                       "\n" "" (buffer-string)))
+;;                         (erase-buffer)
+;;                         (setq proc (process-file
+;;                                     "git" nil t nil "status" "--porcelain"))
+;;                         (setq status (pcase (buffer-string)
+;;                                        ((and str (guard (and (not (string= str ""))
+;;                                                              (= proc 0))))
+;;                                         (if (string-match "\\`[?]" str) "?" "*"))
+;;                                        (_ "")))
+;;                         (format "%s:(%s%s)%s"
+;;                                 (abbreviate-file-name pwd)
+;;                                 (propertize (format
+;;                                              "%s%s"
+;;                                              (if detached "detached@" "")
+;;                                              branch)
+;;                                             'face '((:foreground "red")))
+;;                                 (propertize status
+;;                                             'face `((:foreground
+;;                                                      ,(if (string= "?" status)
+;;                                                           "OrangeRed" "gold1"))))
+;;                                 id))
+;;                     (format "%s@%s:%s%s"
+;;                             (getenv "USER") (system-name)
+;;                             (abbreviate-file-name pwd) id)))))))
 
-    ;; Compatibility 24.2/24.3
-    (unless (fboundp 'eshell-pcomplete)
-      (defalias 'eshell-pcomplete 'pcomplete))
-    (unless (fboundp 'eshell-complete-lisp-symbol)
-      (defalias 'eshell-complete-lisp-symbol 'lisp-complete-symbol))
+;;     ;; Compatibility 24.2/24.3
+;;     (unless (fboundp 'eshell-pcomplete)
+;;       (defalias 'eshell-pcomplete 'pcomplete))
+;;     (unless (fboundp 'eshell-complete-lisp-symbol)
+;;       (defalias 'eshell-complete-lisp-symbol 'lisp-complete-symbol))
 
-    (add-hook 'eshell-mode-hook (lambda ()
-                                  (setq eshell-pwd-convert-function (lambda (f)
-                                                                      (if (file-equal-p (file-truename f) "/")
-                                                                          "/" f)))
-                                  ;; This is needed for eshell-command (otherwise initial history is empty).
-                                  (eshell-read-history eshell-history-file-name)
-                                  ;; Helm completion with pcomplete
-                                  (setq eshell-cmpl-ignore-case t
-                                        eshell-hist-ignoredups t)
-                                  (eshell-cmpl-initialize)
-                                  (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
-                                  ;; Helm lisp completion
-                                  (define-key eshell-mode-map [remap eshell-complete-lisp-symbol] 'helm-lisp-completion-at-point)
-                                  ;; Helm completion on eshell history.
-                                  (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
-                                  ;; Eshell prompt
-                                  (set-face-attribute 'eshell-prompt nil :foreground "DeepSkyBlue")))
+;;     (add-hook 'eshell-mode-hook (lambda ()
+;;                                   (setq eshell-pwd-convert-function (lambda (f)
+;;                                                                       (if (file-equal-p (file-truename f) "/")
+;;                                                                           "/" f)))
+;;                                   ;; This is needed for eshell-command (otherwise initial history is empty).
+;;                                   (eshell-read-history eshell-history-file-name)
+;;                                   ;; Helm completion with pcomplete
+;;                                   (setq eshell-cmpl-ignore-case t
+;;                                         eshell-hist-ignoredups t)
+;;                                   (eshell-cmpl-initialize)
+;;                                   (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+;;                                   ;; Helm lisp completion
+;;                                   (define-key eshell-mode-map [remap eshell-complete-lisp-symbol] 'helm-lisp-completion-at-point)
+;;                                   ;; Helm completion on eshell history.
+;;                                   (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
+;;                                   ;; Eshell prompt
+;;                                   (set-face-attribute 'eshell-prompt nil :foreground "DeepSkyBlue")))
 
-    ;; Eshell history size
-    (setq eshell-history-size 1000) ; Same as env var HISTSIZE.
+;;     ;; Eshell history size
+;;     (setq eshell-history-size 1000) ; Same as env var HISTSIZE.
 
-    ;; Eshell-banner
-    (setq eshell-banner-message (format "%s %s\nwith Emacs %s on %s"
-                                        (propertize
-                                         "Eshell session started on"
-                                         'face '((:foreground "Goldenrod")))
-                                        (propertize
-                                         (format-time-string "%c")
-                                         'face '((:foreground "magenta")))
-                                        (propertize emacs-version
-                                                    'face '((:foreground "magenta")))
-                                        (propertize
-                                         (with-temp-buffer
-                                           (call-process "uname" nil t nil "-r")
-                                           (buffer-string))
-                                         'face '((:foreground "magenta")))))
+;;     ;; Eshell-banner
+;;     (setq eshell-banner-message (format "%s %s\nwith Emacs %s on %s"
+;;                                         (propertize
+;;                                          "Eshell session started on"
+;;                                          'face '((:foreground "Goldenrod")))
+;;                                         (propertize
+;;                                          (format-time-string "%c")
+;;                                          'face '((:foreground "magenta")))
+;;                                         (propertize emacs-version
+;;                                                     'face '((:foreground "magenta")))
+;;                                         (propertize
+;;                                          (with-temp-buffer
+;;                                            (call-process "uname" nil t nil "-r")
+;;                                            (buffer-string))
+;;                                          'face '((:foreground "magenta")))))
 
-    ;; Eshell-et-ansi-color
-    (ignore-errors
-      (dolist (i (list 'eshell-handle-ansi-color
-                       'eshell-handle-control-codes
-                       'eshell-watch-for-password-prompt))
-        (add-to-list 'eshell-output-filter-functions i)))
+;;     ;; Eshell-et-ansi-color
+;;     (ignore-errors
+;;       (dolist (i (list 'eshell-handle-ansi-color
+;;                        'eshell-handle-control-codes
+;;                        'eshell-watch-for-password-prompt))
+;;         (add-to-list 'eshell-output-filter-functions i)))
 
-    ;; Eshell-save-history-on-exit
-    ;; Possible values: t (always save), 'never, 'ask (default)
-    (setq eshell-save-history-on-exit t)
+;;     ;; Eshell-save-history-on-exit
+;;     ;; Possible values: t (always save), 'never, 'ask (default)
+;;     (setq eshell-save-history-on-exit t)
 
     
-    ;; Eshell-visual
-    (setq eshell-term-name "eterm-color")
-    (with-eval-after-load "em-term"
-      (dolist (i '("tmux" "htop" "ipython" "alsamixer" "git-log"))
-        (add-to-list 'eshell-visual-commands i))))
-  :config
-  ;; Finally load eshell on startup.
-  (add-hook 'emacs-startup-hook (lambda ()
-                                  (let ((default-directory (getenv "HOME")))
-                                    (command-execute 'eshell)
-                                    (bury-buffer))))
-  (global-set-key (kbd "C-!") 'eshell-command))
+;;     ;; Eshell-visual
+;;     (setq eshell-term-name "eterm-color")
+;;     (with-eval-after-load "em-term"
+;;       (dolist (i '("tmux" "htop" "ipython" "alsamixer" "git-log"))
+;;         (add-to-list 'eshell-visual-commands i))))
+;;   :config
+;;   ;; Finally load eshell on startup.
+;;   (add-hook 'emacs-startup-hook (lambda ()
+;;                                   (let ((default-directory (getenv "HOME")))
+;;                                     (command-execute 'eshell)
+;;                                     (bury-buffer))))
+;;   (global-set-key (kbd "C-!") 'eshell-command))
 
 
 ;;; Shell
@@ -1044,3 +1049,6 @@
 (setq-default indicate-empty-lines t)
 
 (use-package fold-dwim)
+
+(provide 'init)
+;;; init.el ends here

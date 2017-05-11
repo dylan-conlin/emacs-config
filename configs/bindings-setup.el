@@ -6,6 +6,7 @@
 (define-minor-mode dcon-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " dcon" 'dcon-minor-mode-map)
+(diminish 'dcon-minor-mode)
 (defun my-minibuffer-setup-hook ()
   (dcon-minor-mode 0))
 ;; turn this off in the minibuffer:
@@ -113,12 +114,15 @@ _q_: cancel
 (key-chord-define-global "fj" 'avy-goto-char-timer)
 (key-chord-define-global "hf" 'avy-goto-char-timer)
 (key-chord-define-global "kh" 'avy-goto-char-in-line)
+;; (key-chord-define-global "jk" 'goto-last-change)
 ;; (key-chord-define-global "fk" 'avy-goto-word-0)
 
 (bind-key "C-x SPC" 'avy-pop-mark)
 (bind-key "M-g g" 'avy-goto-line)
 
 (bind-key "C-c SPC" 'rectangle-mark-mode)
+
+
 
 (bind-key "C-x C-o" 'open-dir-in-finder)
 (bind-key "M-z" 'capitalize-word-toggle)
