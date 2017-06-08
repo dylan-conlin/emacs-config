@@ -33,16 +33,16 @@
 ;; prefer spaces over tabs
 (setq-default indent-tabs-mode nil)
 
-(setq savehist-file "~/.emacs.d/savehist")
-(savehist-mode 1)
+;; (setq savehist-file "~/.emacs.d/savehist")
+;; (savehist-mode 1)
 
 (setq history-length t)
 (setq history-delete-duplicates t)
-(setq savehist-save-minibuffer-history 1)
-(setq savehist-additional-variables
-      '(kill-ring
-        search-ring
-        regexp-search-ring))
+;; (setq savehist-save-minibuffer-history 1)
+;; (setq savehist-additional-variables
+;;       '(kill-ring
+;;         search-ring
+;;         regexp-search-ring))
 
 ;; group backup files together to prevent clutter
 (setq backup-directory-alist '(("." . "~/.emacs.d/.saves")))
@@ -67,6 +67,33 @@
 (setq recentf-max-menu-items 500)
 
 (key-chord-mode 1)
+
+;; Remember the history of commands and searches
+;; Extracted from spacemacs
+(use-package savehist
+  :init
+  (progn
+    ;; Minibuffer history
+    (setq savehist-file (concat user-emacs-directory "savehist")
+          enable-recursive-minibuffers t ; Allow commands in minibuffers
+          history-length 1000
+          savehist-additional-variables '(mark-ring
+                                          global-mark-ring
+                                          search-ring
+                                          regexp-search-ring
+                                          extended-command-history)
+          savehist-autosave-interval 60)
+    (savehist-mode t)))
+
+;; ;; Track recently opened files
+;; (use-package recentf
+;;   :config
+;;   (progn
+;;     (setq recentf-max-saved-items 1000
+;;           recentf-max-menu-items 25)
+;;     (recentf-mode 1)
+;;     (after 'helm
+;;       (global-set-key (kbd "C-x C-r") 'helm-recentf))))
 
 (use-package winner
   :if (not noninteractive)
@@ -120,6 +147,7 @@
           helm-recentf-fuzzy-match    nil)
     (setq helm-semantic-fuzzy-match nil
           helm-imenu-fuzzy-match    nil)
+    
     (helm-mode 1)
     )
   :bind (("C-x C-f" . helm-find-files)
@@ -179,14 +207,29 @@
 
 (use-package color-theme
   :config
-  (load-theme 'leuven t)
-  ;; '(hl-line ((t (:background "gray96"))))
-  ;; (load-theme 'leuven)
-
+  ;; (load-theme 'spacemacs-light t)
+  (load-theme 'spacemacs-light-dylan t)
+  ;; leuven faces
+  ;; (custom-set-faces
+  ;;  ;; custom-set-faces was added by Custom.
+  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;;  ;; Your init file should contain only one such instance.
+  ;;  ;; If there is more than one, they won't work right.
+  ;;  '(company-preview ((t (:foreground "darkgray" :underline t))))
+  ;;  '(font-lock-constant-face ((t (:foreground "DodgerBlue4"))))
+  ;;  '(font-lock-function-name-face ((t (:foreground "dark blue" :weight normal))))
+  ;;  '(helm-ls-git-added-copied-face ((t (:foreground "green4"))))
+  ;;  '(helm-ls-git-modified-and-staged-face ((t (:foreground "DarkGoldenrod4"))))
+  ;;  '(org-level-1 ((t (:background "white" :foreground "#3C3C3C" :overline nil :weight bold :height 1.3))))
+  ;;  '(org-level-2 ((t (:background "white" :foreground "#123555" :overline nil :weight bold :height 1.0))))
+  ;;  '(org-level-3 ((t (:background "white" :foreground "#123555" :weight bold :height 1.0))))
+  ;;  '(org-todo ((t (:background "white" :foreground "#D8ABA7" :weight bold))))
+  ;;  '(sp-show-pair-match-face ((t (:foreground "red2" :weight bold)))))
+  )
+  
   ;; Keep emacs Custom-settings in separate file
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file))
-
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 (setq ring-bell-function 'ignore)
 (toggle-word-wrap 1)
@@ -198,7 +241,7 @@
 ;; font color and size
 ;; (set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
 
-(set-face-attribute 'default nil :family "Inconsolata" :height 140 :weight 'light)
+(set-face-attribute 'default nil :family "Inconsolata" :height 150 :weight 'light)
 
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
@@ -237,8 +280,40 @@
 
 (use-package flycheck
   :config
+  
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  
+  ;; disable jshint since we prefer eslint checking
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+
+  ;; customize flycheck temp file prefix
+  (setq-default flycheck-temp-prefix ".flycheck")
+  
+  ;; use eslint with web-mode for jsx files
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+  ;; disable json-jsonlist checking for json files
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(json-jsonlist)))
+  
+  ;; use local eslint from node_modules before global
+  ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+  ;; (defun my/use-eslint-from-node-modules ()
+  ;;   (let* ((root (locate-dominating-file
+  ;;                 (or (buffer-file-name) default-directory)
+  ;;                 "node_modules"))
+  ;;          (eslint (and root
+  ;;                       (expand-file-name "node_modules/eslint/bin/eslint.js"
+  ;;                                         root))))
+  ;;     (when (and eslint (file-executable-p eslint))
+  ;;       (setq-local flycheck-javascript-eslint-executable eslint))))
+  ;;(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  )
 
 (use-package helm-swoop
   :config
@@ -282,6 +357,10 @@
 ;;     (require 'tern-auto-complete)
 ;;     (tern-ac-setup)))
 
+(use-package rvm
+  :config
+  (rvm-use-default))
+
 (use-package ruby-mode
   :mode
   (("\\.rake\\'" . ruby-mode)
@@ -289,6 +368,21 @@
    ("\\Gemfile\\'" . ruby-mode)
    ("\\.gemspec\\'" . ruby-mode)
    ("\\kwmrc\\'" . ruby-mode)))
+
+(use-package inf-ruby
+  :config
+  (add-to-list 'inf-ruby-implementations
+               '("docker-irb" . "docker-compose run web bundle exec irb") t)
+  (add-to-list 'inf-ruby-implementations
+               '("docker-pry" . "docker-compose run web bundle exec pry") t)
+  (setq inf-ruby-default-implementation "docker-irb"))
+
+;; (use-package robe-mode
+;;   :init
+;;   (add-hook 'ruby-mode-hook 'robe-mode)
+;;   :config
+;;   (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+;;     (rvm-activate-corresponding-ruby)))
 
 ;; (use-package ruby-block
 ;;   :diminish ruby-block-mode
@@ -303,6 +397,8 @@
 
 (use-package coffee-mode
   :config
+  ;; aggressive indent fucks with coffee mode indentation.
+  (add-hook 'coffee-mode-hook (lambda () (aggressive-indent-mode -1)))
   (setq coffee-tab-width 2))
 
 (use-package css-mode)
@@ -325,10 +421,10 @@
 
 (use-package haml-mode
   :config
-  (progn
-    (add-hook 'haml-mode-hook (lambda ()
-                                (setq comment-start "-# "
-                                      comment-end "")))))
+  (add-hook 'haml-mode-hook (lambda ()
+                              (setq comment-start "-# "
+                                    comment-end "")))
+  (add-hook 'haml-mode-hook (lambda () (aggressive-indent-mode -1))))
 
 (use-package pallet
   :config
@@ -399,6 +495,7 @@
    ("C-c a" . org-agenda))
   :init
   (progn
+    (org-display-inline-images t t)
     (require 'org-install)
     (require 'org-crypt)
     (require 'gnus-async)
@@ -415,11 +512,11 @@
     (setq org-log-done t)
     (setq org-todo-keywords
           '((sequence "TODO" "REVIEW" "DONE")))
-    (setq org-todo-keyword-faces
-          '(("TODO" . "red3")
-            ("REVIEW" . "orange3")
-            ("DONE" . "green4")
-            ("ARCHIVED" .  "blue3")))
+    ;; (setq org-todo-keyword-faces
+    ;;       '(("TODO" . "red3")
+    ;;         ("REVIEW" . "orange3")
+    ;;         ("DONE" . "green4")
+    ;;         ("ARCHIVED" .  "blue3")))
     (setq org-startup-indented nil)
     (setq org-hide-leading-stars nil)
 
@@ -464,7 +561,10 @@
             ("~/Dropbox/org/campaign-code.org" . (:level . 1))
             )
           )
-    ))
+    )
+  :config
+  
+  )
 
 (setq org-clock-persist 'history)
 ;; fontify code in code blocks
@@ -623,7 +723,7 @@
 ;;                       '(json-jsonlist)))
 
 
-;; https://github.com/purcell/exec-path-from-shell
+;; https://github.com/epurcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
 ;; this hopefully sets up path and other vars better
 (when (memq window-system '(mac ns))
@@ -652,10 +752,6 @@
 ;; (add-hook 'js-mode-hook
 ;;           (lambda ()
 ;;             (add-hook 'before-save-hook 'jscodefmt-before-save)))
-
-(fringe-mode 1)
-(set-face-attribute 'fringe nil :background "gray33")
-(set-fringe-style '(1 . 1))
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -692,9 +788,7 @@
 ;; (setq sublimity-scroll-weight 5
 ;;       sublimity-scroll-drift-length 20)
 
-(use-package rvm
-  :config
-  (rvm-use-default))
+
 
 ;; (require 'ac-cider)
 ;; (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
@@ -1039,7 +1133,8 @@
   (custom-set-faces
    '(company-preview
      ((t (:foreground "darkgray" :underline t)))))
-  (global-company-mode))
+  (global-company-mode)
+  (push 'company-robe company-backends))
 
 (use-package nyan-mode
   :config
@@ -1050,5 +1145,21 @@
 
 (use-package fold-dwim)
 
+(use-package aggressive-indent
+  :config
+  (aggressive-indent-global-mode 1))
+
+
+;; (use-package telephone-line
+;;   :config
+;;   (setq telephone-line-primary-right-separator 'telephone-line-abs-left
+;;         telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
+;;   (setq telephone-line-height 24
+;;         telephone-line-evil-use-short-tag t)
+;;   (telephone-line-mode 1))
+
+(desktop-save-mode 1)
+
 (provide 'init)
+
 ;;; init.el ends here

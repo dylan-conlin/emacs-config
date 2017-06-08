@@ -70,6 +70,57 @@ Otherwise, add the current
       nil
     t))
 
+(f-base (my-git-root))
+(f-this-file)
+(expand-file-name default-directory)
+
+
+
+(defun add-file-to-agignore ()
+  (interactive)
+  (let ((my-path 
+         (if (equal major-mode 'dired-mode)
+             (concat "/" (f-relative default-directory (my-git-root)) "\n")
+           (if (null (buffer-file-name))
+               (user-error "current buffer not assoc with file")
+             (concat "/" (f-relative (buffer-file-name) (my-git-root)) "\n"))))
+        (agignore (concat (my-git-root) ".agignore")))
+    
+    (if (y-or-n-p (concat "Add " my-path " to .agignore?"))
+        (progn
+          ;; if yes...
+          (write-region my-path nil agignore 'append)
+          (message "Added!"))
+      (progn
+        (message "Not added.")))))
+
+
+
+(defun remove-file-from-agignore ()
+  (interactive)
+  (let ((my-path
+         (if (equal major-mode 'dired-mode)
+             (concat "/" (f-relative default-directory (my-git-root)) "\n")
+           (if (null (buffer-file-name))
+               (user-error "current buffer not assoc with file")
+             (concat "/" (f-relative (buffer-file-name) (my-git-root)) "\n"))))
+        (agignore (concat (my-git-root) ".agignore")))
+    (if (y-or-n-p (concat "Remove " my-path " from .agignore?"))
+        (progn
+          ;; if yes...
+          (f-write-text
+           (replace-regexp-in-string (regexp-quote my-path) "" (f-read-text agignore 'utf-8) nil 'literal)
+           'utf-8
+           agignore)
+          
+          (message "Removed!"))
+      (progn
+        (message "Not removed.")))))
+
+(defun replace-in-string (what with in)
+  (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
+
+
 (defun windows-flip ()
   "If the frame is split vertically, split it horizontally or vice versa.
 Assumes that the frame is only split into two."
@@ -141,7 +192,6 @@ Assumes that the frame is only split into two."
 
 (defun git-root-dir-only ()
   (interactive)
-  (message (f-filename (my-git-root)))
   (f-filename (my-git-root)))
 
 (defun line-number-blob (line-param)
@@ -287,8 +337,18 @@ With a prefix argument, insert a newline above the current line."
   (message (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
   (if (equal "shortstack-style" (git-root-dir-only))
       (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/master..." (magit-get-current-branch) "?expand=1"))
-    (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))
-    ))
+    (browse-url (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/compare/staging..." (magit-get-current-branch) "?expand=1"))))
+
+
+
+(defun view-original-on-github ()
+  (interactive)
+  (let ((current-git-path (s-concat "https://github.com/pancakelabs/" (git-root-dir-only) "/blob/master/" (current-git-file-path))))
+    (browse-url current-git-path)))
+
+(defun current-git-file-path ()
+  (interactive)
+  (car (cdr (s-split (s-concat "/" (git-root-dir-only) "/") (f-this-file)))))
 
 ;; (defun view-on-github (start end)
 ;;   (interactive "r")
@@ -390,6 +450,8 @@ With a prefix argument, insert a newline above the current line."
 (defun my-git-root-is-print ()
   (interactive)
   (message (my-git-root)))
+
+
 
 (defun copy-mac-app-id (beg end)
   (interactive "r")
@@ -1066,5 +1128,8 @@ minibuffer."
   "decode the region between START and END in current buffer."
   (interactive "r")
   (func-region start end #'org-link-unescape))
+
+
+
 
 (provide 'utilities-setup)

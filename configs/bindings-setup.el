@@ -92,6 +92,7 @@ _q_: cancel
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
 (bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")))
+(bind-key "H-o" '(lambda () (interactive) (find-file "~/Dropbox/org")))
 (bind-key "H-r" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server")))
 (bind-key "H-d" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer")))
 (bind-key "H-a" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin")))
@@ -243,6 +244,13 @@ _q_: cancel
 (define-key dcon-minor-mode-map (kbd "C-j") 'er/expand-region)
 (define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
 (define-key dcon-minor-mode-map (kbd "s-q") 'camel-snake-toggle-word-at-point)
+
+(define-key dcon-minor-mode-map (kbd "C-c C-s") '(lambda ()
+                                                   (interactive)
+                                                   (helm-do-ag "~/Dropbox/org/")))
+
+
+
 ;; ;; esc quits
 ;; (defun minibuffer-keyboard-quit ()
 ;;   "Abort recursive edit.
@@ -284,6 +292,7 @@ _q_: cancel
 (bind-key "M-p" 'backward-paragraph)
 
 (bind-key "C-x G" 'view-on-github)
+(bind-key "C-x O" 'view-original-on-github)
 
 ;; (unbind-key "s-c")
 (unbind-key "s-1")

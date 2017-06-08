@@ -2,55 +2,127 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Tue May  9 10:01:10 2017
+;; Created Thu Jun  8 16:13:29 2017
 ;; Desktop file format version 208
 ;; Emacs version 25.1.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (22801 62934 674484 0) (desktop . "208") "dylanconlin@dylanconlin" nil nil ((((font-backend mac-ct) (fontsize . 0) (font . "-*-Operator Mono-light-normal-normal-*-14-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#333333") (background-color . "#FFFFFF") (line-spacing) (left-fringe . 1) (right-fringe . 1) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (alpha) (fullscreen) (display-type . color) (background-mode . light) (cursor-color . "blue") (environment) (border-color . "red") (frameset--id . "84F3-BC8D-B796-0F80") (frameset--mini t . t) (height . 86) (width . 319) (modeline . t) (minibuffer . t) (unsplittable) (left . 0) (top . 23) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (visibility . t) (display . "dylanconlin") (explicit-name) (tool-bar-position . top)) ((min-height . 8) (min-width . 20) (min-height-ignore . 6) (min-width-ignore . 8) (min-height-safe . 2) (min-width-safe . 4) (min-pixel-height . 128) (min-pixel-width . 160) (min-pixel-height-ignore . 96) (min-pixel-width-ignore . 64) (min-pixel-height-safe . 32) (min-pixel-width-safe . 32)) hc (pixel-width . 2554) (pixel-height . 1360) (total-width . 319) (total-height . 85) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 1226) (pixel-height . 1360) (total-width . 153) (total-height . 85) (normal-height . 1.0) (normal-width . 0.4812059514487079) (buffer "voting.js" (selected) (hscroll . 0) (fringes 1 1 nil) (margins 1) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 7058) (start . 5287))) (vc (last . t) (pixel-width . 1328) (pixel-height . 1360) (total-width . 166) (total-height . 85) (normal-height . 1.0) (normal-width . 0.5187940485512921) (combination-limit) (leaf (pixel-width . 1328) (pixel-height . 688) (total-width . 166) (total-height . 43) (normal-height . 0.5) (normal-width . 1.0) (buffer "core.js" (selected) (hscroll . 0) (fringes 1 1 nil) (margins 1) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 23511) (start . 22624))) (leaf (last . t) (pixel-width . 1328) (pixel-height . 672) (total-width . 166) (total-height . 42) (normal-height . 0.5) (normal-width . 1.0) (buffer "assets.yml" (selected . t) (hscroll . 0) (fringes 1 1 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 3572) (start . 2831))))))])
+(setq desktop-saved-frameset [frameset 1 (22841 55833 32798 0) (desktop . "208") "dylanconlin@dylanconlin" nil nil ((((font-backend mac-ct) (fontsize . 0) (font . "-*-Inconsolata-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#655370") (background-color . "#fbf8ef") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (alpha) (fullscreen) (display-type . color) (background-mode . light) (cursor-color . "blue") (environment) (border-color . "red") (frameset--id . "846E-755D-02F4-B5BF") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (visibility . t) (display . "dylanconlin") (explicit-name) (tool-bar-position . top) (height . 81) (width . 317) (left . 0) (top . 23)) ((min-height . 8) (min-width . 10) (min-height-ignore . 7) (min-width-ignore . 5) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 136) (min-pixel-width . 80) (min-pixel-height-ignore . 119) (min-pixel-width-ignore . 40) (min-pixel-height-safe . 34) (min-pixel-width-safe . 16)) vc (pixel-width . 2552) (pixel-height . 1360) (total-width . 319) (total-height . 80) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 2552) (pixel-height . 680) (total-width . 319) (total-height . 40) (normal-height . 0.5) (normal-width . 1.0) (buffer "en.yml" (selected) (hscroll . 0) (fringes 8 8 nil) (margins 1) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 14046) (start . 12614))) (leaf (last . t) (pixel-width . 2552) (pixel-height . 680) (total-width . 319) (total-height . 40) (normal-height . 0.5) (normal-width . 1.0) (buffer "*helm-ag*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 213) (start . 1)))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
 (setq search-ring '("bind" "init" "wrapp" "util" "con" "unwra" "yas" "ini" "config" "pall" "map" "helm-mode" "personal" "helm" "helm-map" ".emacs"))
-(setq regexp-search-ring '("evil" "player_id" "vimeo" "new " "video" "save" "hist" "docp" "indiu" "indium" "node" "res" "ra" "resi" "auto" "spli"))
+(setq regexp-search-ring '("rssitem" "other" "autho" "title" "feed" "unes" "un" "update_from" "hidden" "dele" "action" "temp" "width" "actions" "detail" "thumb"))
 (setq register-alist nil)
-(setq file-name-history '("~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/v2/sst/core.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack_sendgrid_action_mailer/lib/sendwithus_ruby_action_mailer/jobs/mail_job.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/spec/controllers/chargify_controller_spec.rb" "~/Dropbox/side-sites/clojure-projects/scratch/src/scratch/core.clj" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/spec/models/user_notifier_spec_slow.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/sendgrid_client.rb" "~/Dropbox/Mackup/Library/Application Support/Karabiner/private.xml" "~/Dropbox/side-sites/clojure-projects/dep-test/project.clj" "~/Dropbox/side-sites/node-projects/csv-sorter/index.js" "~/Dropbox/side-sites/clojure-projects/clojure-noob/src/clojure_noob/core.clj" "/etc/hosts" "~/Dropbox/org/ledger/test.ledger" "~/Dropbox/org/db.org" "~/Dropbox/org/notes.org" "~/Dropbox/side-sites/node-projects/red-radio/src/components/Picker.js" "/usr/local/bin/ledger" "~/Dropbox/side-sites/clojure-projects/clojure-noob/project.clj" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/vendor/assets/javascripts/ss_media_selector.tinymce.plugin.js" "~/Dropbox/side-sites/tinymce/src/plugins/image/src/main/js/Plugin.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/ss_media_selector.tinymce.plugin.js" "/Users/dylanconlin/.tmux.conf.local" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/javascripts/knockout/view_models/app_support/style_window_bridge.js.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/test/controllers/v1/media_controller_test.rb" "~/Dropbox/side-sites/rust-projects/guessing_game/src/main.rs" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/layouts/media_selector.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/media_selector/_main.scss" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/models/asset.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/my_db_entry.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main.scss" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/config/initializers/paperclip.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/layouts/v2/_body.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/shared/render/_branded_ss_header.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/docker_dev/lib/docker_cleanup.rb" "/usr/local/etc/nginx/nginx.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/dialogs/_form_designer_dialog.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/_help_blocks.html.haml" "~/Dropbox/side-sites/ruby-projects/sms-app/app/views/layouts/_navigation.html" "~/.tmuxinator/sms.yml" "~/Dropbox/side-sites/ruby-projects/sms-app/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/shared/_google_adwords.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/initializers/a_settings_local_example.rb" "~/Dropbox/side-sites/ruby-projects/sms-app/app/views/users/show.html.erb" "~/Dropbox/side-sites/ruby-projects/setlister/client/src/components/App.js" "~/Dropbox/side-sites/ruby-projects/sms-app/Guardfile" "~/Dropbox/side-sites/ruby-projects/setlister/config/routes.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/_responder_buttons.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/responder/_settings.html.haml" "~/Dropbox/side-sites/node-projects/saga-login-flow/app/auth/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/config/environments/development.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/_upload_bar.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/test/controllers/concerns/v1/pagination_test.rb" "~/Dropbox/pitchfork.txt" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/controllers/v1/media_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/config/routes.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/controllers/v1/tags_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/custom_bindings.coffee" "~/Dropbox/Mackup/.emacs.d/custom.el" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/selector.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/public_media.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/media.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/models/resource_tag.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/views/v1/media/index.json.jbuilder" "~/Dropbox/org/todo-work.org" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/member/assets_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/app.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/coffeescripts/media_selector/app.js" "~/.emacs.d" "~/.emacs.d/" "~/.emacs.d/init" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/api.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor_footer.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/components/App.js" "~/Dropbox/side-sites/node-projects/red-radio/package.json" "~/Dropbox/side-sites/node-projects/red-radio/src/containers/AppContainer.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/application.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/docker-compose.yml" "~/Dropbox/side-sites/node-projects/red-radio/src/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/config/environments/development-sample.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_editor.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_picker/theme_picker_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_picker.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/theme_editor_container.jsx" "~/Dropbox/side-sites/node-projects/itunes-data-test/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/utilities.jsx" "/Users/dylanconlin/.emacs.d/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/red-radio/src/components/Player.js" "~/Dropbox/side-sites/node-projects/react-color-scroll-bug/package.json" "~/Dropbox/itunes-playlists/dylan-chill.m3u" "~/Dropbox/side-sites/node-projects/playlist-synchronizer/package.json" "~/Dropbox/side-sites/node-projects/red-radio/build/index.html" "~/Dropbox/side-sites/node-projects/slack-integration/.projectile" "/Users/dylanconlin/Dropbox/side-sites/node-projects/slack-integration/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_editor.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor_header.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/css_editor.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/controllers/concerns/style_errors.rb" "~/Dropbox/side-sites/node-projects/react-color-scroll-bug/index.html" "~/Dropbox/side-sites/node-projects/whosampled/src/__tests__/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/index.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_font_weight_setting_container.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/containers/App.js" "~/Dropbox/side-sites/node-projects/radio-project/index.html" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/.env" "/Users/dylanconlin/Dropbox/side-sites/node-projects/radio-project/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_picker_tile.jsx" "~/Dropbox/side-sites/node-projects/reddit-radio/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/app/app_error_container.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/components/Posts.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/server.js" "~/Dropbox/side-sites/node-projects/reddit-radio/reducers/index.js" "~/Dropbox/side-sites/node-projects/reddit-radio/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_color_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_border_style_setting_container.jsx" "/Users/dylanconlin/Dropbox/side-sites/node-projects/reddit-radio/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_units_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_border_style_setting.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/models/concerns/themes_concerns.rb" "~/Dropbox/side-sites/node-projects/node-youtube-dl-test/index.js" "~/Dropbox/side-sites/generator-chrome-extension/app/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_font_family_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/environment.rb" "~/Dropbox/side-sites/node-projects/react-hot-boilerplate/server.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/package.json" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/index.html" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/db/seeds.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/integrations/_highrise_fields.html.haml" "~/.gnupg/pubring.gpg" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/Procfile_sample" "~/.emacs.d/init.el" "~/.tmuxinator/work.yml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/asterisk/tmp/unicorn.pid" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/environments/development-sample.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/assets/stylesheets/components/_theme_editor_body.scss" "/usr/local/etc/nginx/servers/shortstack-style.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_font_family_setting.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/index.js" "~/.emacs.d/emms/history" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/css_color_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/store.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_editor_footer.jsx" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/react-redux-blog/public/src/components/PostsForm.js" "~/Dropbox/side-sites/node-projects/redux/examples/real-world/containers/UserPage.js" "~/Dropbox/side-sites/node-projects/redux/examples/buildAll.js" "~/Dropbox/side-sites/node-projects/react-redux-blog/public/src/containers/PostFormContainer.js" "~/Dropbox/side-sites/node-projects/react-redux-blog/.projectile" "~/Dropbox/side-sites/node-projects/redux/examples/async/containers/App.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/store/configureStore.js" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/components/pages/ContractsList.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/package.json" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/server.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/feeds_controller.rb" "~/Dropbox/side-sites/node-projects/redux/examples/real-world/reducers/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/store/store.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/config/environments/development.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/reducers/feeds_reducer.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/containers/feed_list_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/docker-compose.yml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/application.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/.agignore" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/package.json" "/Users/dylanconlin/.hyperterm.js" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/app/assets/javascripts/dealkitApp/dealkit.routes.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/views/layouts/application.html.erb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/site_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/user_sessions_controller.rb" "~/Dropbox/org/todo-consulting.org" "/Users/dylanconlin/Dropbox/side-sites/node-projects/whosampled/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/tabserving_v2.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/.projectile" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-hashtag/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/app/assets/javascripts/dealkitApp/dealkitRequire.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-hashtag/app/assets/javascripts/feedRequire.js" "/Users/dylanconlin/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/.git/COMMIT_EDITMSG" "~/Dropbox/org/text.org.gpg" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/feeds/index.html.haml" "/usr/local/Cellar/mysql/5.7.12/my.cnf" "/usr/local/var/mysql/dylanconlin.local.err" "/sudo:root@dylanconlin:/etc/hosts" "/usr/local/etc/nginx/servers/shortstack-feeds.conf" "~/Dropbox/bitbar-plugins/ethusd.1m.sh" "~/Dropbox/side-sites/node-projects/whosampled/index.js" "~/Dropbox/side-sites/node-projects/whosampled-test/main.js" "/Users/dylanconlin/Dropbox/side-sites/test-extension/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/whosampled/README.md" "~/Dropbox/side-sites/google-search-enhancement-suite/app/manifest.json" "~/Dropbox/side-sites/node-projects/open-in-lichess/package.json" "~/Dropbox/side-sites/test-extension/background.js" "~/Dropbox/side-sites/test-extension/script.js" "~/Dropbox/side-sites/test-extension/contentscript.js" "~/Dropbox/side-sites/google-search-enhancement-suite/app/scripts.babel/contentscript.js" "~/Dropbox/Mackup/.hammerspoon/init.lua" "~/Dropbox/org/code.org" "~/Dropbox/org/todo-personal.org" "~/Dropbox/bitbar-plugins/sonos.5s.sh" "~/Dropbox/bitbar-plugins/sonos.5s.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/assets/javascripts/sst/share_data.coffee" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/gulpfile.js" "~/Music/virtual-playlists/autumn-stuff" "~/Music/virtual-playlists/native-test" "~/Music/virtual-playlists/autumn-2" "~/Music/virtual-playlists/latest-picks" "~/youtube-downloads/audio/Air Horn-QVw5mnRI8Zw.mp3" "~/Dropbox/side-sites/google-search-enhancement-suite/app/scripts.babel/nlp-compromise.min.js" "~/Dropbox/side-sites/google-search-enhancement-suite/gulpfile.babel.js" "/usr/local/etc/nginx/servers/shortstack.conf" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/test/index.js" "~/Dropbox/org/timesheet.csv" "~/Dropbox/side-sites/google-search-enhancement-suite/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/controllers/concerns/create_campaign_concerns.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/test/controllers/concerns/create_campaign_concerns_test.rb" "~/.emacs.d/org-clock-save.el" "~/Dropbox/side-sites/ruby-projects/workspace/rayplay/.gitignore" "/Users/dylanconlin/Dropbox/side-sites/ruby-projects/workspace/residentadvisor/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/package.json" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/core/actions/tests/posts.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/package.json" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/concerns/permissions_concerns.rb" "/Users/dylanconlin/Dropbox/side-sites/node-projects/resident-advisor-scraper/.git/COMMIT_EDITMSG" "~/.emacs.d/snippets/es6-snippets/snippets/js-mode/import.yasnippet" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/lib/index.js" "/usr/local/Cellar/avrdude/6.3/etc/avrdude.conf" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/main.rb" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_colors/components/colors/_sidebar.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/newPlaylist.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/tests/newPlaylist.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/tests/newplaylist.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/main.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/playlists/_collection.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/methods/_colors.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/publications/_users.js" "~/.tmux.conf.local" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/template.rb" "/Users/dylanconlin/.tmuxinator/mantra.yml" "/Users/dylanconlin/.tmuxinator/meteor.yml" "~/Dropbox/side-sites/node-projects/google-music/index.js" "~/.oh-my-zsh/custom/plugins/fzf/fzf.plugin.zsh" "/Users/dylanconlin/.tmuxinator/test.yml" "~/.tmux.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/test/models/tab_test.rb" "~/Documents/april-2016.m3u" "/Users/dylanconlin/Dropbox/Mackup/.git/COMMIT_EDITMSG" "~/Documents/ra-top-50-march-2016.m3u" "/sudo:root@Dylans-MBP:/etc/hosts" "~/Dropbox/side-sites/docker-stuff/docker-aws-test/config/docker/#Dockerfile#" "~/Dropbox/side-sites/docker-stuff/docker-rails/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/config/initializers/rails_3.rb" "/Users/dylanconlin/.tmuxinator/work.yml" "/Users/dylanconlin/Dropbox/side-sites/ruby-projects/csv-image-downloader/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/Gemfile" "~/Dropbox/side-sites/docker-stuff/docker-aws-test/Dockerfile" "/Users/dylanconlin/Dropbox/side-sites/docker-stuff/docker-rails/config/database.yml" "/Users/dylanconlin/Dropbox/side-sites/docker-stuff/docker-test/default" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/README.md" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin/.git/COMMIT_EDITMSG" "~/Dropbox/music/longest-selections" "~/Music/iTunes/caribou-longest-mixtape" "~/test-playlist" "~/Music/00 &ME - Everless (Original Mix)_.mp3" "~/Benoit & Sergio/That's The Party Talking EP/Benoit & Sergio - You Might Say - Original Mix.mp3" "~/Music/chill-shit" "~/Music/iTunes/iTunes Library Extras.itdb" "~/Dropbox/side-sites/docker-images/docker-curriculum/flask-app/Dockerfile" "~/Music/.localized" "~/Music/00 Busy.mp3" "/usr/local/bin/mysql" "/usr/local/Cellar/cask" "~/" "~/Applications" "/Applications" "~/"))
+(setq file-name-history '("~/Dropbox/org/images/Screen Shot 2017-06-07 at 1.44.12 PM.png" "~/Downloads/Screen Shot 2017-06-07 at 11.34.30 AM.png" "~/Downloads/wwf_cc_logo.jpg" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/s3_upload.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/panels/_publisher_panel.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/knockout_templates/_settings_other_template.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/knockout_templates/_settings_general_template.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/knockout_templates/_publish_custom_domain_template.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/knockout_templates/_publish_choose_publish_method_template.html.haml" "/etc/hosts" "~/Documents/vagrant/local/shortstack_apps/shortstack-server/app/log/development.log" "~/Documents/vagrant/config.yml" "~/Documents/vagrant/Vagrantfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/.agignore" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/mailers/campaign_performance_report_v2.html" "~/.emacs.d/init.el" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/widgets/action_widget.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/v2/sst/core.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack_sendgrid_action_mailer/lib/sendwithus_ruby_action_mailer/jobs/mail_job.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/spec/controllers/chargify_controller_spec.rb" "~/Dropbox/side-sites/clojure-projects/scratch/src/scratch/core.clj" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/spec/models/user_notifier_spec_slow.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/sendgrid_client.rb" "~/Dropbox/Mackup/Library/Application Support/Karabiner/private.xml" "~/Dropbox/side-sites/clojure-projects/dep-test/project.clj" "~/Dropbox/side-sites/node-projects/csv-sorter/index.js" "~/Dropbox/side-sites/clojure-projects/clojure-noob/src/clojure_noob/core.clj" "~/Dropbox/org/ledger/test.ledger" "~/Dropbox/org/db.org" "~/Dropbox/org/notes.org" "~/Dropbox/side-sites/node-projects/red-radio/src/components/Picker.js" "/usr/local/bin/ledger" "~/Dropbox/side-sites/clojure-projects/clojure-noob/project.clj" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/vendor/assets/javascripts/ss_media_selector.tinymce.plugin.js" "~/Dropbox/side-sites/tinymce/src/plugins/image/src/main/js/Plugin.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/ss_media_selector.tinymce.plugin.js" "/Users/dylanconlin/.tmux.conf.local" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/javascripts/knockout/view_models/app_support/style_window_bridge.js.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/test/controllers/v1/media_controller_test.rb" "~/Dropbox/side-sites/rust-projects/guessing_game/src/main.rs" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/layouts/media_selector.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/media_selector/_main.scss" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/models/asset.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/my_db_entry.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main.scss" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/config/initializers/paperclip.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/layouts/v2/_body.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/shared/render/_branded_ss_header.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/docker_dev/lib/docker_cleanup.rb" "/usr/local/etc/nginx/nginx.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/dialogs/_form_designer_dialog.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/_help_blocks.html.haml" "~/Dropbox/side-sites/ruby-projects/sms-app/app/views/layouts/_navigation.html" "~/.tmuxinator/sms.yml" "~/Dropbox/side-sites/ruby-projects/sms-app/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/shared/_google_adwords.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/initializers/a_settings_local_example.rb" "~/Dropbox/side-sites/ruby-projects/sms-app/app/views/users/show.html.erb" "~/Dropbox/side-sites/ruby-projects/setlister/client/src/components/App.js" "~/Dropbox/side-sites/ruby-projects/sms-app/Guardfile" "~/Dropbox/side-sites/ruby-projects/setlister/config/routes.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/_responder_buttons.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/responder/_settings.html.haml" "~/Dropbox/side-sites/node-projects/saga-login-flow/app/auth/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/config/environments/development.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/_upload_bar.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/test/controllers/concerns/v1/pagination_test.rb" "~/Dropbox/pitchfork.txt" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/controllers/v1/media_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/config/routes.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/controllers/v1/tags_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/custom_bindings.coffee" "~/Dropbox/Mackup/.emacs.d/custom.el" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/selector.html.haml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/public_media.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/media.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/models/resource_tag.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/app/views/v1/media/index.json.jbuilder" "~/Dropbox/org/todo-work.org" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/member/assets_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/app.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/coffeescripts/media_selector/app.js" "~/.emacs.d" "~/.emacs.d/" "~/.emacs.d/init" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/api.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor_footer.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/components/App.js" "~/Dropbox/side-sites/node-projects/red-radio/package.json" "~/Dropbox/side-sites/node-projects/red-radio/src/containers/AppContainer.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/application.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/docker-compose.yml" "~/Dropbox/side-sites/node-projects/red-radio/src/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/config/environments/development-sample.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/theme_editor.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_picker/theme_picker_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_picker.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/theme_editor_container.jsx" "~/Dropbox/side-sites/node-projects/itunes-data-test/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/utilities.jsx" "/Users/dylanconlin/.emacs.d/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/red-radio/src/components/Player.js" "~/Dropbox/side-sites/node-projects/react-color-scroll-bug/package.json" "~/Dropbox/itunes-playlists/dylan-chill.m3u" "~/Dropbox/side-sites/node-projects/playlist-synchronizer/package.json" "~/Dropbox/side-sites/node-projects/red-radio/build/index.html" "~/Dropbox/side-sites/node-projects/slack-integration/.projectile" "/Users/dylanconlin/Dropbox/side-sites/node-projects/slack-integration/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_editor.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_editor_header.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/ducks/css_editor.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/controllers/concerns/style_errors.rb" "~/Dropbox/side-sites/node-projects/react-color-scroll-bug/index.html" "~/Dropbox/side-sites/node-projects/whosampled/src/__tests__/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/index.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_font_weight_setting_container.jsx" "~/Dropbox/side-sites/node-projects/red-radio/src/containers/App.js" "~/Dropbox/side-sites/node-projects/radio-project/index.html" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/.env" "/Users/dylanconlin/Dropbox/side-sites/node-projects/radio-project/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/theme_picker_tile.jsx" "~/Dropbox/side-sites/node-projects/reddit-radio/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/app/app_error_container.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/components/Posts.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/server.js" "~/Dropbox/side-sites/node-projects/reddit-radio/reducers/index.js" "~/Dropbox/side-sites/node-projects/reddit-radio/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_color_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_border_style_setting_container.jsx" "/Users/dylanconlin/Dropbox/side-sites/node-projects/reddit-radio/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_units_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_border_style_setting.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/models/concerns/themes_concerns.rb" "~/Dropbox/side-sites/node-projects/node-youtube-dl-test/index.js" "~/Dropbox/side-sites/generator-chrome-extension/app/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor/css_font_family_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/environment.rb" "~/Dropbox/side-sites/node-projects/react-hot-boilerplate/server.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/package.json" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/index.html" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/db/seeds.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/integrations/_highrise_fields.html.haml" "~/.gnupg/pubring.gpg" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/Procfile_sample" "~/.tmuxinator/work.yml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/theme_editor_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/asterisk/tmp/unicorn.pid" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/config/environments/development-sample.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/app/assets/stylesheets/components/_theme_editor_body.scss" "/usr/local/etc/nginx/servers/shortstack-style.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_font_family_setting.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/index.js" "~/.emacs.d/emms/history" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/containers/css_color_setting_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/store.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/webpack/components/css_editor_footer.jsx" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/react-redux-blog/public/src/components/PostsForm.js" "~/Dropbox/side-sites/node-projects/redux/examples/real-world/containers/UserPage.js" "~/Dropbox/side-sites/node-projects/redux/examples/buildAll.js" "~/Dropbox/side-sites/node-projects/react-redux-blog/public/src/containers/PostFormContainer.js" "~/Dropbox/side-sites/node-projects/react-redux-blog/.projectile" "~/Dropbox/side-sites/node-projects/redux/examples/async/containers/App.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/store/configureStore.js" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/components/pages/ContractsList.js" "~/Dropbox/side-sites/node-projects/redux/examples/async/package.json" "~/Dropbox/side-sites/node-projects/react-redux-router-crud-example/server.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/feeds_controller.rb" "~/Dropbox/side-sites/node-projects/redux/examples/real-world/reducers/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/store/store.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/actions/index.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/config/environments/development.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/reducers/feeds_reducer.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/containers/feed_list_container.jsx" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/docker-compose.yml" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/webpack/application.jsx" "~/Dropbox/side-sites/node-projects/redux/examples/async/.agignore" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/package.json" "/Users/dylanconlin/.hyperterm.js" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/app/assets/javascripts/dealkitApp/dealkit.routes.coffee" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/views/layouts/application.html.erb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/site_controller.rb" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-feeds/app/controllers/user_sessions_controller.rb" "~/Dropbox/org/todo-consulting.org" "/Users/dylanconlin/Dropbox/side-sites/node-projects/whosampled/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/tabserving_v2.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/.projectile" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-hashtag/.git/COMMIT_EDITMSG" "~/Dropbox/ss_vagrant/shortstack_apps/DealKit/app/assets/javascripts/dealkitApp/dealkitRequire.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-hashtag/app/assets/javascripts/feedRequire.js" "/Users/dylanconlin/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/.git/COMMIT_EDITMSG" "~/Dropbox/org/text.org.gpg" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/feeds/index.html.haml" "/usr/local/Cellar/mysql/5.7.12/my.cnf" "/usr/local/var/mysql/dylanconlin.local.err" "/sudo:root@dylanconlin:/etc/hosts" "/usr/local/etc/nginx/servers/shortstack-feeds.conf" "~/Dropbox/bitbar-plugins/ethusd.1m.sh" "~/Dropbox/side-sites/node-projects/whosampled/index.js" "~/Dropbox/side-sites/node-projects/whosampled-test/main.js" "/Users/dylanconlin/Dropbox/side-sites/test-extension/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/whosampled/README.md" "~/Dropbox/side-sites/google-search-enhancement-suite/app/manifest.json" "~/Dropbox/side-sites/node-projects/open-in-lichess/package.json" "~/Dropbox/side-sites/test-extension/background.js" "~/Dropbox/side-sites/test-extension/script.js" "~/Dropbox/side-sites/test-extension/contentscript.js" "~/Dropbox/side-sites/google-search-enhancement-suite/app/scripts.babel/contentscript.js" "~/Dropbox/Mackup/.hammerspoon/init.lua" "~/Dropbox/org/code.org" "~/Dropbox/org/todo-personal.org" "~/Dropbox/bitbar-plugins/sonos.5s.sh" "~/Dropbox/bitbar-plugins/sonos.5s.js" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/assets/javascripts/sst/share_data.coffee" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/gulpfile.js" "~/Music/virtual-playlists/autumn-stuff" "~/Music/virtual-playlists/native-test" "~/Music/virtual-playlists/autumn-2" "~/Music/virtual-playlists/latest-picks" "~/youtube-downloads/audio/Air Horn-QVw5mnRI8Zw.mp3" "~/Dropbox/side-sites/google-search-enhancement-suite/app/scripts.babel/nlp-compromise.min.js" "~/Dropbox/side-sites/google-search-enhancement-suite/gulpfile.babel.js" "/usr/local/etc/nginx/servers/shortstack.conf" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/test/index.js" "~/Dropbox/org/timesheet.csv" "~/Dropbox/side-sites/google-search-enhancement-suite/.babelrc" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/controllers/concerns/create_campaign_concerns.rb" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/test/controllers/concerns/create_campaign_concerns_test.rb" "~/.emacs.d/org-clock-save.el" "~/Dropbox/side-sites/ruby-projects/workspace/rayplay/.gitignore" "/Users/dylanconlin/Dropbox/side-sites/ruby-projects/workspace/residentadvisor/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/package.json" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/core/actions/tests/posts.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/package.json" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/concerns/permissions_concerns.rb" "/Users/dylanconlin/Dropbox/side-sites/node-projects/resident-advisor-scraper/.git/COMMIT_EDITMSG" "~/.emacs.d/snippets/es6-snippets/snippets/js-mode/import.yasnippet" "~/Dropbox/side-sites/node-projects/resident-advisor-scraper/lib/index.js" "/usr/local/Cellar/avrdude/6.3/etc/avrdude.conf" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/main.rb" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_colors/components/colors/_sidebar.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/newPlaylist.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/tests/newPlaylist.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/tests/newplaylist.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/main.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/client/modules/_playlists/components/playlists/_collection.jsx" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/methods/_colors.js" "~/Dropbox/side-sites/node-projects/meteor-mantra-kickstarter/server/publications/_users.js" "~/.tmux.conf.local" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/template.rb" "/Users/dylanconlin/.tmuxinator/mantra.yml" "/Users/dylanconlin/.tmuxinator/meteor.yml" "~/Dropbox/side-sites/node-projects/google-music/index.js" "~/.oh-my-zsh/custom/plugins/fzf/fzf.plugin.zsh" "/Users/dylanconlin/.tmuxinator/test.yml" "~/.tmux.conf" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/test/models/tab_test.rb" "~/Documents/april-2016.m3u" "/Users/dylanconlin/Dropbox/Mackup/.git/COMMIT_EDITMSG" "~/Documents/ra-top-50-march-2016.m3u" "/sudo:root@Dylans-MBP:/etc/hosts" "~/Dropbox/side-sites/docker-stuff/docker-aws-test/config/docker/#Dockerfile#" "~/Dropbox/side-sites/docker-stuff/docker-rails/Gemfile" "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/config/initializers/rails_3.rb" "/Users/dylanconlin/.tmuxinator/work.yml" "/Users/dylanconlin/Dropbox/side-sites/ruby-projects/csv-image-downloader/.git/COMMIT_EDITMSG" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/Gemfile" "~/Dropbox/side-sites/docker-stuff/docker-aws-test/Dockerfile" "/Users/dylanconlin/Dropbox/side-sites/docker-stuff/docker-rails/config/database.yml" "/Users/dylanconlin/Dropbox/side-sites/docker-stuff/docker-test/default" "~/Dropbox/side-sites/ruby-projects/csv-image-downloader/README.md" "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin/.git/COMMIT_EDITMSG" "~/Dropbox/music/longest-selections" "~/Music/iTunes/caribou-longest-mixtape" "~/test-playlist" "~/Music/00 &ME - Everless (Original Mix)_.mp3" "~/Benoit & Sergio/That's The Party Talking EP/Benoit & Sergio - You Might Say - Original Mix.mp3" "~/Music/chill-shit" "~/Music/iTunes/iTunes Library Extras.itdb" "~/Dropbox/side-sites/docker-images/docker-curriculum/flask-app/Dockerfile" "~/Music/.localized" "~/Music/00 Busy.mp3" "/usr/local/bin/mysql" "/usr/local/Cellar/cask" "~/" "~/Applications" "/Applications" "~/"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 208
-  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/config/assets.yml"
-  "assets.yml"
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/config/locales/en.yml"
+  "en.yml"
   'yaml-mode
-  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode auto-revert-mode drag-stuff-mode)
-  3572
-  '(3572 nil)
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  14046
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "shortstack-designer"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1585
+  '(1 nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/models/widget_items/rss_item.rb"
+  "rss_item.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  833
+  '(804 nil)
   nil
   nil
   '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
-  '((mark-ring (3559 2147 2147 216 2146 2089 2146))))
+  '((mark-ring (800 329 329 329 1941 1941 329 329 794 905 290 290 1 290 290 290))))
 
 (desktop-create-buffer 208
-  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/v2/sst/core.js"
-  "core.js"
-  'web-mode
-  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode auto-revert-mode drag-stuff-mode)
-  23511
-  '(23829 nil)
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/models/widgets/rss_widget.rb"
+  "rss_widget.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  4585
+  '(1 nil)
   nil
   nil
-  '((buffer-file-coding-system . undecided-unix))
-  '((mark-ring (23541 23821 23541 23541 23541 23829 23472 23829 23829 23511 23454 23454 23454 23829 23468 23468))))
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (4316 4326 4319 4151 4147 1 4319 1 4693 453 453 1618 453 449 449 449))))
 
 (desktop-create-buffer 208
-  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/public/javascripts/v2/sst/voting.js"
-  "voting.js"
-  'web-mode
-  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode auto-revert-mode drag-stuff-mode)
-  7058
-  '(26 nil)
+  nil
+  "rss_widget"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/rss_widget/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/rss_widget/_template_new_themes.html.haml"
+  "_template_new_themes.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  618
+  '(134 nil)
   nil
   nil
-  '((buffer-file-coding-system . undecided-unix))
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (159 159 123 159 1 159 159 159 159 159 159 159 159 159 159 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/rss_widget/_template2.html.haml"
+  "_template2.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1707
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/rss_widget/_template1.html.haml"
+  "_template1.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1679
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/rss_widget/_show.html.haml"
+  "_show.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
@@ -58,46 +130,1162 @@
   "shortstack-server"
   'dired-mode
   '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
-  632
-  '(nil nil)
+  304
+  '(1 nil)
   t
   '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/")
+  nil
+  '((mark-ring (1 1841))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/todo-work.org"
+  "todo-work.org"
+  'org-mode
+  '(visual-line-mode override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode org-indent-mode)
+  5145
+  '(5031 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines))
+  '((mark-ring (5364 5025 5152 5031 5279 5266 5279 5279 5279 5279 5279 5268 5268 5268 5268 5268))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/feeds/_feed.haml"
+  "_feed.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1173
+  '(1137 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1137 1635 1445 752 5))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/_tab.html.haml"
+  "_tab.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  551
+  '(578 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2230 2072 1434 1448 1308 578 612 578))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/collections/_templates.scss"
+  "_templates.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  68
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "feeds"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  310
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/feeds/")
   nil
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
-  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/helpers/facebook/render_helper.rb"
-  "render_helper.rb"
-  'ruby-mode
-  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode ruby-block-mode dcon-minor-mode beacon-mode company-mode auto-revert-mode inf-ruby-minor-mode drag-stuff-mode)
-  1302
-  '(1326 nil)
+  nil
+  "member"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  556
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/themes/_theme.haml"
+  "_theme.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  564
+  '(1061 nil)
   nil
   nil
   '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
-  '((mark-ring (1326 1326 1290 1326 1290 1290 1290 1367 1290))))
+  '((mark-ring (1061 1083 1083 679 679 679 679 679 679))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/templates/_template.html.haml"
+  "_template.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1687
+  '(1023 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (972 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/templates/_table_body.html.haml"
+  "_table_body.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/_mydb.html.haml"
+  "_mydb.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  877
+  '(877 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (877 1))))
+
+(desktop-create-buffer 208
+  nil
+  "collections"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  668
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/collections/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/collections/_forms.scss"
+  "_forms.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  206
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/_asset_detail.html.haml"
+  "_asset_detail.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  160
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1666 1535 1 1 1666 1691 1673 1673 1672 1672 1672 1672 1672 1672 1 1075))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/collections/_media.scss"
+  "_media.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  350
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (342 344 344 70))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/index.html.haml"
+  "index.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  67
+  '(67 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (67))))
+
+(desktop-create-buffer 208
+  nil
+  "views"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  556
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/users/_create_login.html.haml"
+  "_create_login.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1552
+  '(1481 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/notes.org"
+  "notes.org"
+  'org-mode
+  '(visual-line-mode override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode org-indent-mode)
+  285527
+  '(285463 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines))
+  '((mark-ring (178104 34238 33991 33951 33909 33704 33655 1 32653 27820 35974 32774 24421 22099 19247))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/Mackup/.emacs.d/configs/bindings-setup.el"
+  "bindings-setup.el"
+  'emacs-lisp-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  8448
+  '(2921 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . prefer-utf-8-unix))
+  '((mark-ring (2867 2761 1 8366 8286 8290 8290 8290 8449 8449 8241 8239 8161 8449 8241 8449))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  17729
+  '(18157 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . prefer-utf-8-unix))
+  '((mark-ring (18157 18157 18157 18157 14744 18158 18157 18157 18157 18157 18157 18157 18157 18157 18157 18157))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/bootstrap/_tables.scss"
+  "_tables.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  719
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/collections/_campaigns.scss"
+  "_campaigns.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  312
+  '(321 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (321))))
+
+(desktop-create-buffer 208
+  nil
+  "working_tabs"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1254
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/_table_body.html.haml"
+  "_table_body.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/working_tabs/_table_head.html.haml"
+  "_table_head.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  386
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/shared/_footer.html.haml"
+  "_footer.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  139
+  '(174 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (174))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/images/Screen Shot 2017-06-07 at 1.44.12 PM.png"
+  "Screen Shot 2017-06-07 at 1.44.12 PM.png"
+  'image-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode git-gutter-mode undo-tree-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . no-conversion) (truncate-lines . t))
+  '((mark-ring nil)))
 
 (desktop-create-buffer 208
   nil
   "shortstack"
   'dired-mode
   '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
-  1068
-  '(nil nil)
+  673
+  '(1148 nil)
   t
   '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/")
+  nil
+  '((mark-ring (2579 1265 1265 1265 1201 1201 1201 1201 1265 1265 1265 1265 1265 1265 1265 1145))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/shortstack.org"
+  "shortstack.org"
+  'org-mode
+  '(visual-line-mode override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode org-indent-mode)
+  27642
+  '(27638 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines))
+  '((mark-ring (27638 27638 27638 27638 27638 27638 27733 27663 27952 1 1))))
+
+(desktop-create-buffer 208
+  nil
+  "org"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  737
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/org/")
   nil
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
-  "/Users/dylanconlin/.emacs.d/init.el"
-  "init.el"
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/helpers/widgets/widgets_helper.rb"
+  "widgets_helper.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1016
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "widgets"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  2858
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/models/widgets/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/safe_mode.html.erb"
+  "safe_mode.html.erb"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  56
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/controllers/facebook/render_controller.rb"
+  "render_controller.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  2191
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Downloads/Screen Shot 2017-06-07 at 11.34.30 AM.png"
+  "Screen Shot 2017-06-07 at 11.34.30 AM.png"
+  'image-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode undo-tree-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . no-conversion) (truncate-lines . t))
+  '((mark-ring (51457 43919 51457 1 51457 1 51457 51457 1 51457 51457 51457 43919 51457 1 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/Mackup/.emacs.d/configs/utilities-setup.el"
+  "utilities-setup.el"
   'emacs-lisp-mode
-  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode auto-revert-mode drag-stuff-mode)
-  22
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  2886
+  '(2888 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (3796 3796 3796 3796 3796 2885 2885 2885 2887 3796 3796 3796 3796 3796 3796 3796))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/views/facebook/render/foursquare_widget/_show_ajax.html.haml"
+  "_show_ajax.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1131
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/app/assets/javascripts/sst/asterisk.coffee"
+  "asterisk.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  243
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/Gemfile"
+  "Gemfile"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  54
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "dylanconlin"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  263
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/.projectile"
+  ".projectile"
+  'fundamental-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/Mackup/.emacs.d/.agignore"
+  ".agignore"
+  'fundamental-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  348
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/Mackup/.emacs.d/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/javascripts/knockout/custom_bindings/utility.js.coffee"
+  "utility.js.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  19272
+  '(18933 nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (18933 18933 9580 1 18933 18933))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/custom_bindings.coffee"
+  "custom_bindings.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1163
+  '(1098 nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  nil
+  "media_selector"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  541
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/media_selector/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "javascripts"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  655
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/shared/utility_bindings.coffee"
+  "utility_bindings.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  56
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/show.html.erb"
+  "show.html.erb"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/new.html.erb"
+  "new.html.erb"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/image.html.erb"
+  "image.html.erb"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/create.html.erb"
+  "create.html.erb"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/_upload_preview.html.haml"
+  "_upload_preview.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/_upload_bar.html.haml"
+  "_upload_bar.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/assets/selector.html.haml"
+  "selector.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(5211 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/analytics/custom_bindings.coffee"
+  "custom_bindings.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1861
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/.emacs.d/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/date.js"
+  "date.js"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "stylesheets"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  706
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/stylesheets/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/stylesheets/jquery.qtip.css"
+  "jquery.qtip.css"
+  'css-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(3173 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (3173))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/panels/_publisher_panel.html.haml"
+  "_publisher_panel.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  3340
+  '(351 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (351))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/views/knockout_templates/_premium_feature_template.html.haml"
+  "_premium_feature_template.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  49
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/text.org.gpg"
+  "text.org.gpg"
+  'org-mode
+  '(visual-line-mode override-global-mode projectile-mode yas-minor-mode anzu-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode org-indent-mode)
+  12899
+  '(12905 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines))
+  '((mark-ring (1 12867 19916 1 101 39 39496 200 1 6027 6004 6003 5992 5992 5992 5992))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/.emacs.d/spacemacs-light-dylan-theme.el"
+  "spacemacs-light-dylan-theme.el"
+  'emacs-lisp-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode)
+  1
   '(nil nil)
   nil
   nil
   '((buffer-file-coding-system . prefer-utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/campaign-code.org"
+  "campaign-code.org"
+  'org-mode
+  '(visual-line-mode override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode org-indent-mode)
+  27047
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/helpers/member_area_helper.rb"
+  "member_area_helper.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  4190
+  '(1739 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739 1739))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/_upgrade_banner.scss"
+  "_upgrade_banner.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  531
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (463 446 914 16 672 1 414))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/layouts/_upgrade_banner.html.haml"
+  "_upgrade_banner.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  182
+  '(223 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (200 200 200 197 197 200 1 532 363 363 363 363 321))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_db_fields/_submit_frequency.html.haml"
+  "_submit_frequency.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  109
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (715))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit_email_template.html.haml"
+  "edit_email_template.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  506
+  '(481 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (488 488 488 488 488 488 488 1 432 481 488))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/settings/_refer_a_friend.html.haml"
+  "_refer_a_friend.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  65
+  '(82 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (65 65 82 82 65 65 65 65 67 67 67 67 67 67 67 67))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_db_fields/_field_points.html.haml"
+  "_field_points.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  92
+  '(40 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (40 40 40 40 40 40 40 40 176 176 176 176 40 40 40 40))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/manager.js"
+  "manager.js"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  15886
+  '(9345 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (15884 15884 9345 15884 15884 15884 9345))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/layouts/application.html.haml"
+  "application.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  2511
+  '(21 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/application_controller.rb"
+  "application_controller.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  2255
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_db_fields/_form.html.haml"
+  "_form.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1366
+  '(1369 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1369 1344 1339 1333 1327 1344 1339 1351 1344 1339 1327 1328 1327 1341 1339 1345))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/models/my_db.rb"
+  "my_db.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  5084
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/public/javascripts/form_designer/designer.js"
+  "designer.js"
+  'web-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  38876
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/javascripts/resource_managers/my_dbs_resource_manager.coffee"
+  "my_dbs_resource_manager.coffee"
+  'coffee-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  5620
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 2) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit_email_responder.html.haml"
+  "edit_email_responder.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  95
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit.html.haml"
+  "edit.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  93
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_db_fields/_duplicates_email.html.haml"
+  "_duplicates_email.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  82
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/shared/dialogs/_resource_permissions_dialog.html.haml"
+  "_resource_permissions_dialog.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  2485
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/controllers/member/accounts_controller.rb"
+  "accounts_controller.rb"
+  'ruby-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode inf-ruby-minor-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  11066
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/assets/stylesheets/main/_buttons.scss"
+  "_buttons.scss"
+  'scss-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode aggressive-indent-mode drag-stuff-mode auto-revert-mode)
+  744
+  '(744 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (744 744 744 744 744 744))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/app/views/member/my_dbs/edit_integrations.html.haml"
+  "edit_integrations.html.haml"
+  'haml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode rainbow-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  861
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "shortstack_apps"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1097
+  '(1 nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/")
+  nil
+  '((mark-ring (1))))
+
+(desktop-create-buffer 208
+  nil
+  "tmp"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  357
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-style/tmp/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/docker-compose.override.yml"
+  "docker-compose.override.yml"
+  'yaml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  372
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (1 1 1 1 1 1 1 1 1 1 1 1 1 1))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-server/docker-compose.override_sample.yml"
+  "docker-compose.override_sample.yml"
+  'yaml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  69
+  '(56 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (30 373 1 373 266 30 49 65 56))))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack/docker-compose.override.yml"
+  "docker-compose.override.yml"
+  'yaml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  236
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "shortstack-api"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1647
+  '(nil nil)
+  t
+  '("/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/docker-compose.yml"
+  "docker-compose.yml"
+  'yaml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/docker-compose.override.yml"
+  "docker-compose.override.yml"
+  'yaml-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode flycheck-mode git-gutter-mode undo-tree-mode helm-mode smartparens-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "images"
+  'dired-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  361
+  '(402 nil)
+  t
+  '("/Users/dylanconlin/Dropbox/org/images/")
+  nil
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/dylanconlin/Dropbox/org/images/Screen Shot 2017-06-07 at 1.44.27 PM.png"
+  "Screen Shot 2017-06-07 at 1.44.27 PM.png"
+  'image-mode
+  '(override-global-mode projectile-mode yas-minor-mode anzu-mode git-gutter-mode undo-tree-mode helm-mode subword-mode dcon-minor-mode beacon-mode company-mode drag-stuff-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . no-conversion) (truncate-lines . t))
   '((mark-ring nil)))
 
