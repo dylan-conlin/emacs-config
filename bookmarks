@@ -39,9 +39,9 @@
  (position . 1913))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/org/todo-personal.org")
- (front-context-string . "** TODO taxes [3")
- (rear-context-string . "3-31 Fri 13:33]\n")
- (position . 154))
+ (front-context-string . "** TODO ross fro")
+ (rear-context-string . "5-10 Wed 09:44]\n")
+ (position . 945))
 ("bitbar-plugins"
  (filename . "~/Dropbox/bitbar-plugins/")
  (front-context-string)
@@ -163,10 +163,10 @@
  (rear-context-string)
  (position . 1))
 ("org"
- (filename . "~/Dropbox/org")
- (front-context-string . ";; fontify code ")
- (rear-context-string . "rsist 'history)\n")
- (position . 13759))
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/javascripts/knockout/view_models/widget_configuration/share.js.coffee")
+ (front-context-string . "platformData =\n ")
+ (rear-context-string . "linkedin'\n  ]\n  ")
+ (position . 212))
 ("private.xml"
  (filename . "~/Dropbox/Mackup/Library/Application Support/Karabiner/private.xml")
  (front-context-string . "<?xml version=\"1")

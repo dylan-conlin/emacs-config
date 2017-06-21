@@ -70,11 +70,6 @@ Otherwise, add the current
       nil
     t))
 
-(f-base (my-git-root))
-(f-this-file)
-(expand-file-name default-directory)
-
-
 
 (defun add-file-to-agignore ()
   (interactive)
@@ -227,7 +222,8 @@ Assumes that the frame is only split into two."
                             ("\x2019" . "'"))
                           nil beg end))
 
-(defun my-helm-yank-selection (arg)
+
+(defun helm-yank-selection (arg)
   "Set minibuffer contents to current display selection.
 With a prefix arg set to real value of current selection."
   (interactive "P")

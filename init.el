@@ -54,12 +54,16 @@
 
 ;; setup my packages
 (require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
+
 (cask-initialize)
 
 (require 'pallet)
 
 (eval-when-compile
   (require 'use-package))
+
+(use-package use-package-chords
+  :config (key-chord-mode 1))
 
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
@@ -255,10 +259,11 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :init
-  (global-undo-tree-mode))
+;; (use-package undo-tree
+;;   :diminish undo-tree-mode
+;;   :init
+;;   (global-undo-tree-mode))
+
 
 (use-package git-gutter
   :ensure t
@@ -512,11 +517,10 @@
     (setq org-log-done t)
     (setq org-todo-keywords
           '((sequence "TODO" "REVIEW" "DONE")))
-    ;; (setq org-todo-keyword-faces
-    ;;       '(("TODO" . "red3")
-    ;;         ("REVIEW" . "orange3")
-    ;;         ("DONE" . "green4")
-    ;;         ("ARCHIVED" .  "blue3")))
+    (setq org-todo-keyword-faces
+          '(
+            ("REVIEW" . "orange2")
+            ("ARCHIVED" .  "#3a81c3")))
     (setq org-startup-indented nil)
     (setq org-hide-leading-stars nil)
 
@@ -684,7 +688,13 @@
 
 (use-package beacon
   :config
-  (beacon-mode 1))
+  (beacon-mode 1)
+  :chords
+  (("jk" . beacon-blink)))
+
+(use-package col-highlight
+  :chords
+  (("df" . col-highlight-flash)))
 
 (use-package anzu
   :diminish anzu-mode
@@ -1113,7 +1123,7 @@
 (use-package company
   :diminish company-mode
   :config
-  (setq company-idle-delay 0.025)
+  (setq company-idle-delay 0.5)
   (company-quickhelp-mode 1)
   (setq company-frontends
         '(company-pseudo-tooltip-unless-just-one-frontend
@@ -1130,6 +1140,8 @@
   (define-key company-active-map (kbd "C-e") 'company-complete-selection)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "RET") nil)
   (custom-set-faces
    '(company-preview
      ((t (:foreground "darkgray" :underline t)))))
@@ -1158,7 +1170,7 @@
 ;;         telephone-line-evil-use-short-tag t)
 ;;   (telephone-line-mode 1))
 
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 
 (provide 'init)
 

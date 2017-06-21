@@ -152,10 +152,10 @@ _q_: cancel
 (bind-key "C-x g" 'browse-at-remote)
 (bind-key "C-x G" 'browse-at-remote/to-clipboard)
 
+;; (bind-key "C-/" 'undo-tree-undo)
+;; (bind-key "C-." 'undo-tree-redo)
+;; (bind-key "C-x u" 'undo-tree-visualize)
 (bind-key "C-/" 'undo)
-(bind-key "C-/" 'undo-tree-undo)
-(bind-key "C-." 'undo-tree-redo)
-(bind-key "C-x u" 'undo-tree-visualize)
 
 (bind-key "C-c o" 'other-frame)
 (bind-key "M-`" 'other-frame)
