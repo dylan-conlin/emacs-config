@@ -1154,7 +1154,7 @@
   (setq nyan-wavy-trail nil))
 
 (setq-default indicate-empty-lines t)
-
+(define-key isearch-mode-map (kbd "M-s j") 'avy-isearch)
 (use-package fold-dwim)
 
 (use-package aggressive-indent

@@ -92,6 +92,7 @@ _q_: cancel
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
 (bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")))
+(bind-key "H-w" '(lambda () (interactive) (find-file "~/Dropbox/org/todo-work.org")))
 (bind-key "H-o" '(lambda () (interactive) (find-file "~/Dropbox/org")))
 (bind-key "H-r" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-server")))
 (bind-key "H-d" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer")))
