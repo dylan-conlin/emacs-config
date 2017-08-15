@@ -62,7 +62,13 @@ Otherwise, add the current
                (user-error "current buffer not assoc with file")
              (buffer-file-name)))))
     (progn 
+      (message my-path)
       (kill-new my-path))))
+
+(defun copy-current-git-file-path ()
+  (interactive)
+  (message "%s" (current-git-file-path))
+  (kill-new (current-git-file-path)))
 
 (defun this-is-a-git-repo? ()
   (interactive)
@@ -88,7 +94,6 @@ Otherwise, add the current
           (message "Added!"))
       (progn
         (message "Not added.")))))
-
 
 
 (defun remove-file-from-agignore ()

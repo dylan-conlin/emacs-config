@@ -23,5 +23,5 @@ foreach(chrome.windows, function(window){
 if(nowPlaying[0]){
   console.log(nowPlaying[0]);
 } else {
-  console.log('no youtube tabs found');
+  // return nothing
 }

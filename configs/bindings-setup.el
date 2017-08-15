@@ -42,8 +42,9 @@
 (bind-key "C-c h" 'describe-key)
 
 (bind-key "C-c y" 'copy-full-path-to-kill-ring)
-(bind-key "C-x c y" 'rspec-test-at-current-line-number)
-;; (bind-key "C-x c y t" 'minitest-test-at-current-line-number)
+(bind-key "C-c Y" 'copy-current-git-file-path)
+(bind-key "C-x c r" 'rspec-test-at-current-line-number)
+(bind-key "C-x c m" 'minitest-test-at-current-line-number)
 (bind-key "C-c C-k" 'eval-buffer)
 
 ;; general text editing

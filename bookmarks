@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("shortstack-api"
+(("nginx-server-configs"
+ (filename . "/usr/local/etc/nginx/servers/")
+ (front-context-string . "asterisk.conf\n  ")
+ (rear-context-string . "87 May 10  2016 ")
+ (position . 248))
+("shortstack-api-client"
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api-client/")
+ (front-context-string)
+ (rear-context-string . "-client.gemspec\n")
+ (position . 1059))
+("shortstack-api"
  (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-api/")
  (front-context-string)
  (rear-context-string . "18  2016 vendor\n")
@@ -47,11 +57,6 @@
  (front-context-string)
  (rear-context-string . ":42 cmus.10s.sh\n")
  (position . 353))
-("work"
- (filename . "~/Dropbox/ss_vagrant/shortstack_apps/")
- (front-context-string . "shortstack-admin")
- (rear-context-string . "88 Mar 21 14:12 ")
- (position . 718))
 ("shortstack-admin"
  (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin/")
  (front-context-string . "config\n  -rw-r--")
@@ -73,10 +78,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo-work.org")
- (front-context-string . "** TODO See if w")
- (rear-context-string . "nnlr.com/7XSNxJ\n")
- (position . 2140))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** I purchased 1")
+ (rear-context-string . "8-11 Fri 11:01]\n")
+ (position . 294474))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

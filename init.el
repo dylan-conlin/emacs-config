@@ -72,22 +72,25 @@
 
 (key-chord-mode 1)
 
+(use-package dired
+  :chords (("hj" . wdired-change-to-wdired-mode)))
+
 ;; Remember the history of commands and searches
 ;; Extracted from spacemacs
-(use-package savehist
-  :init
-  (progn
-    ;; Minibuffer history
-    (setq savehist-file (concat user-emacs-directory "savehist")
-          enable-recursive-minibuffers t ; Allow commands in minibuffers
-          history-length 1000
-          savehist-additional-variables '(mark-ring
-                                          global-mark-ring
-                                          search-ring
-                                          regexp-search-ring
-                                          extended-command-history)
-          savehist-autosave-interval 60)
-    (savehist-mode t)))
+  (use-package savehist
+    :init
+    (progn
+      ;; Minibuffer history
+      (setq savehist-file (concat user-emacs-directory "savehist")
+            enable-recursive-minibuffers t ; Allow commands in minibuffers
+            history-length 1000
+            savehist-additional-variables '(mark-ring
+                                            global-mark-ring
+                                            search-ring
+                                            regexp-search-ring
+                                            extended-command-history)
+            savehist-autosave-interval 60)
+      (savehist-mode t)))
 
 ;; ;; Track recently opened files
 ;; (use-package recentf
@@ -177,19 +180,19 @@
          ("C-x m" . helm-execute-kmacro)
          ("M-r" . helm-register)))
 
-(use-package yasnippet
-  :diminish yas-minor-mode
-  :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
-  :bind
-  (("s-e" . yas-expand))
-  :init
-  (progn
-    (setq yas-verbosity 3)
-    (yas-global-mode 1)
-    )
-  ;;   :bind
-  ;;(("C-x j". helm-yas-complete))
-  )
+;; (use-package yasnippet
+;;   :diminish yas-minor-mode
+;;   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+;;   :bind
+;;   (("s-e" . yas-expand))
+;;   :init
+;;   (progn
+;;     (setq yas-verbosity 3)
+;;     (yas-global-mode 1)
+;;     )
+;;   ;;   :bind
+;;   ;;(("C-x j". helm-yas-complete))
+;;   )
 
 (use-package drag-stuff
   :diminish drag-stuff-mode
@@ -213,6 +216,7 @@
   :config
   ;; (load-theme 'spacemacs-light t)
   (load-theme 'spacemacs-light-dylan t)
+  
   ;; leuven faces
   ;; (custom-set-faces
   ;;  ;; custom-set-faces was added by Custom.
@@ -607,6 +611,7 @@
 ;; (setq debug-on-error t)
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
+
 ;; (require 'emms-setup)
 ;; (require 'emms-player-mplayer)
 ;; (emms-standard)
@@ -1167,11 +1172,14 @@
 ;;   (setq telephone-line-primary-right-separator 'telephone-line-abs-left
 ;;         telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
 ;;   (setq telephone-line-height 24
-;;         telephone-line-evil-use-short-tag t)
+;;         telephone-
+;;         line-evil-use-short-tag t)
 ;;   (telephone-line-mode 1))
 
 ;; (desktop-save-mode 1)
 
 (provide 'init)
+
+(point-undo)
 
 ;;; init.el ends here
