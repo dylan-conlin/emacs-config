@@ -98,7 +98,7 @@
  (rear-context-string)
  (position . 1))
 ("admin"
- (filename . "~/Dropbox/ss_vagrant/shortstack_apps")
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-admin")
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "44 Sep  9 15:29 ")
  (position . 296))
@@ -128,10 +128,10 @@
  (rear-context-string . "60 Oct 21  2014 ")
  (position . 299))
 ("shortstack"
- (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack/")
- (front-context-string . ".agignore\n  -rw-")
- (rear-context-string . "44 Oct 24 12:56 ")
- (position . 288))
+ (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")
+ (front-context-string . "          ;; (f-")
+ (rear-context-string . "-refile-targets\n")
+ (position . 17885))
 ("init"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "          '(\n   ")
@@ -168,7 +168,7 @@
  (rear-context-string)
  (position . 1))
 ("org"
- (filename . "~/Dropbox/ss_vagrant/shortstack_apps/shortstack-designer/app/assets/javascripts/knockout/view_models/widget_configuration/share.js.coffee")
+ (filename . "~/Dropbox/org")
  (front-context-string . "platformData =\n ")
  (rear-context-string . "linkedin'\n  ]\n  ")
  (position . 212))
