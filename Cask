@@ -248,6 +248,7 @@
 (depends-on "popwin")
 (depends-on "pos-tip")
 (depends-on "powerline")
+(depends-on "prettier-js")
 (depends-on "prodigy")
 (depends-on "professional-theme")
 (depends-on "projectile")
