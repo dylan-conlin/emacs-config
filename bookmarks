@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("nginx-server-configs"
+(("campaign-code.org"
+ (filename . "~/Dropbox/org/campaign-code.org")
+ (front-context-string . "* Campaign Code ")
+ (rear-context-string)
+ (position . 1))
+("client-build"
+ (filename . "~/Dropbox/side-sites/node-projects/client-builds/local-js-server/custom.js")
+ (front-context-string . "$(function() {\n ")
+ (rear-context-string)
+ (position . 1))
+("nginx-server-configs"
  (filename . "/usr/local/etc/nginx/servers/")
  (front-context-string . "asterisk.conf\n  ")
  (rear-context-string . "87 May 10  2016 ")

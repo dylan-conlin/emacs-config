@@ -310,6 +310,9 @@
                 (append flycheck-disabled-checkers
                         '(json-jsonlist)))
   
+  ;; spell check comments in code
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
   ;; use local eslint from node_modules before global
   ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
   ;; (defun my/use-eslint-from-node-modules ()
@@ -1181,5 +1184,7 @@
 (provide 'init)
 
 (point-undo)
+
+
 
 ;;; init.el ends here
