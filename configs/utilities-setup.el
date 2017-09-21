@@ -769,7 +769,8 @@ Including indent-buffer, which should not be called automatically on save."
                          helm-source-projectile-buffers-list
                          ;; helm-source-ls-git-status
                          helm-source-projectile-files-list
-                         helm-source-bookmarks)
+                         ;;helm-source-filtered-bookmarks
+                         )
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))
     (helm-projectless-search)))
@@ -782,7 +783,8 @@ Including indent-buffer, which should not be called automatically on save."
           (helm-make-source "Buffers" 'helm-source-buffers)))
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-                     helm-source-bookmarks)
+                     ;;helm-source-filtered-bookmarks
+                     )
           :buffer "*project(less)-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))
 

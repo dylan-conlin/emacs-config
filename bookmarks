@@ -59,9 +59,9 @@
  (position . 1913))
 ("org-refile-last-stored"
  (filename . "~/Dropbox/org/todo-personal.org")
- (front-context-string . "** TODO ross fro")
- (rear-context-string . "5-10 Wed 09:44]\n")
- (position . 945))
+ (front-context-string . "** TODO get my s")
+ (rear-context-string . "9-07 Thu 15:52]\n")
+ (position . 504))
 ("bitbar-plugins"
  (filename . "~/Dropbox/bitbar-plugins/")
  (front-context-string)
@@ -89,9 +89,9 @@
  (position . 2782))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** I purchased 1")
- (rear-context-string . "8-11 Fri 11:01]\n")
- (position . 294474))
+ (front-context-string . "** best resume e")
+ (rear-context-string . "\n#+END_SRC\n*** \n")
+ (position . 295719))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)
@@ -144,9 +144,9 @@
  (position . 17885))
 ("init"
  (filename . "~/.emacs.d/init.el")
- (front-context-string . "          '(\n   ")
- (rear-context-string . "-refile-targets\n")
- (position . 18146))
+ (front-context-string . "<button v-if=\"!e")
+ (rear-context-string . "tatus -->\n      ")
+ (position . 1028))
 ("utilities-setup.el"
  (filename . "~/.emacs.d/configs/utilities-setup.el")
  (front-context-string . "\n\n;; (eval-after")

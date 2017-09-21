@@ -20,18 +20,16 @@
 (bind-key "C-r" 'isearch-backward-regexp)
 (bind-key* "C-c SPC" 'rectangle-mark-mode)
 
-(bind-key "C-c y" 'helm-yas-complete)
 
 ;; window management
 (bind-key "C-x 2" '(lambda () (interactive) (message "try s-w")))
 (bind-key "C-x 3" '(lambda () (interactive) (message "try s-w")))
 
 
+(bind-key "s-s" 'ispell-word)
 (bind-key "s-w" 'delete-window)
 (bind-key "M-0" 'delete-window)
 (bind-key "C-x o" 'other-window)
-(bind-key "C-c u" 'crux-view-url)
-(bind-key "C-c i" 'crux-ispell-word-then-abbrev)
 (bind-key "C-x k" 'kill-current-buffer)
 (bind-key "C-x S-K" '(lambda () (interactive) (kill-current-buffer)(delete-window)))
 (bind-key "C-x r l" 'ruby-logger)
@@ -87,9 +85,10 @@ _q_: cancel
   ("q" nil :color red)
   )
 
-(bind-key "C-c r" 'hydra-dired-buffer-menu/body)
+(bind-key "s-<up>" 'org-move-subtree-up)
+(bind-key "s-<down>" 'org-move-subtree-down)
+
 (bind-key "C-x p l" 'paradox-list-packages)
-(bind-key "C-c d" 'insert-current-date)
 
 (bind-key "H-h" '(lambda () (interactive) (find-file "~/")))
 (bind-key "H-s" '(lambda () (interactive) (find-file "~/Dropbox/ss_vagrant/shortstack_apps/shortstack")))
@@ -159,7 +158,6 @@ _q_: cancel
 ;; (bind-key "C-x u" 'undo-tree-visualize)
 (bind-key "C-/" 'undo)
 
-(bind-key "C-c o" 'other-frame)
 (bind-key "M-`" 'other-frame)
 (bind-key "C-x C-v" 'global-visual-line-mode)
 
@@ -188,9 +186,6 @@ _q_: cancel
 
 (bind-key "C-o" 'open-line-above)
 
-;; (bind-key "M-a" 'mark-whole-buffer)
-(bind-key "M-T" 'my-tail)
-(bind-key "C-c m" 'view-echo-area-messages)
 
 (bind-key "s-=" (lambda () (interactive) (shell-command "hue lights all +25")))
 (bind-key "s--" (lambda () (interactive) (shell-command "hue lights all -25")))
@@ -247,9 +242,9 @@ _q_: cancel
 (define-key dcon-minor-mode-map (kbd "C-M-h") 'kill-whole-line)
 (define-key dcon-minor-mode-map (kbd "s-q") 'camel-snake-toggle-word-at-point)
 
-(define-key dcon-minor-mode-map (kbd "C-c C-s") '(lambda ()
-                                                   (interactive)
-                                                   (helm-do-ag "~/Dropbox/org/")))
+;; (define-key dcon-minor-mode-map (kbd "C-c C-s") '(lambda ()
+;;                                                    (interactive)
+;;                                                    (helm-do-ag "~/Dropbox/org/")))
 
 
 

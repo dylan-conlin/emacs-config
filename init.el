@@ -77,20 +77,20 @@
 
 ;; Remember the history of commands and searches
 ;; Extracted from spacemacs
-  (use-package savehist
-    :init
-    (progn
-      ;; Minibuffer history
-      (setq savehist-file (concat user-emacs-directory "savehist")
-            enable-recursive-minibuffers t ; Allow commands in minibuffers
-            history-length 1000
-            savehist-additional-variables '(mark-ring
-                                            global-mark-ring
-                                            search-ring
-                                            regexp-search-ring
-                                            extended-command-history)
-            savehist-autosave-interval 60)
-      (savehist-mode t)))
+(use-package savehist
+  :init
+  (progn
+    ;; Minibuffer history
+    (setq savehist-file (concat user-emacs-directory "savehist")
+          enable-recursive-minibuffers t ; Allow commands in minibuffers
+          history-length 1000
+          savehist-additional-variables '(mark-ring
+                                          global-mark-ring
+                                          search-ring
+                                          regexp-search-ring
+                                          extended-command-history)
+          savehist-autosave-interval 60)
+    (savehist-mode t)))
 
 ;; ;; Track recently opened files
 ;; (use-package recentf
@@ -138,6 +138,8 @@
     (use-package helm-projectile)
     (use-package helm-ls-git)
     (use-package helm-bind-key)
+    (use-package helm-bookmarks)
+    
     (setq helm-candidate-number-limit 100)
     ;; From https://gist.github.com/antifuchs/9238468
     (setq helm-idle-delay 0.0)         ; update fast sources immediately (doesn't).
@@ -249,7 +251,11 @@
 ;; font color and size
 ;; (set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
 
-(set-face-attribute 'default nil :family "Inconsolata" :height 150 :weight 'light)
+;; (set-face-attribute 'default nil :family "Inconsolata" :height 150 :weight 'normal)
+
+;; (set-face-attribute 'default nil :family "hasklig" :height 150 :weight 'normal)
+(set-face-attribute 'default nil :family "roboto mono" :height 150 :weight 'normal)
+;; (set-face-attribute 'default nil :family "source code pro" :height 150 :weight 'normal)
 
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
@@ -523,10 +529,10 @@
     ;; prettier appearance settings
     (setq org-log-done t)
     (setq org-todo-keywords
-          '((sequence "TODO" "REVIEW" "DONE")))
+          '((sequence "TODO" "REVW" "DONE")))
     (setq org-todo-keyword-faces
           '(
-            ("REVIEW" . "orange2")
+            ("REVW" . "orange2")
             ("ARCHIVED" .  "#3a81c3")))
     (setq org-startup-indented nil)
     (setq org-hide-leading-stars nil)
@@ -681,7 +687,7 @@
 (use-package vc-git)
 (use-package repository-root)
 
-(find-file "~/.emacs.d/init.el")
+(find-file "~/Dropbox/org/todo-work.org")
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
@@ -716,7 +722,9 @@
          ("\\.jinja\\'" . web-mode)
          ("\\.php\\'" . web-mode)
          (("\\.jsx$" . web-mode))
-         ("\\.js$" . web-mode))
+         ("\\.js$" . web-mode)
+         ("\\.vue$" . web-mode)
+         ("\\.xml$" . web-mode))
   :config
   ;; adjust indents for web-mode to 2 spaces
   (defun my-web-mode-hook ()
@@ -1188,3 +1196,4 @@
 
 
 ;;; init.el ends here
+(put 'upcase-region 'disabled nil)
