@@ -88,10 +88,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** best resume e")
- (rear-context-string . "\n#+END_SRC\n*** \n")
- (position . 295719))
+ (filename . "~/Dropbox/org/todo-personal.org")
+ (front-context-string . "** TODO Create a")
+ (rear-context-string . "-emacs-26-gcal/\n")
+ (position . 1218))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)
@@ -178,10 +178,10 @@
  (rear-context-string)
  (position . 1))
 ("org"
- (filename . "~/Dropbox/org")
- (front-context-string . "platformData =\n ")
- (rear-context-string . "linkedin'\n  ]\n  ")
- (position . 212))
+ (filename . "~/Dropbox/org/")
+ (front-context-string)
+ (rear-context-string . "odo.org_archive\n")
+ (position . 1707))
 ("private.xml"
  (filename . "~/Dropbox/Mackup/Library/Application Support/Karabiner/private.xml")
  (front-context-string . "<?xml version=\"1")

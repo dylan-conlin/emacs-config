@@ -138,7 +138,7 @@
     (use-package helm-projectile)
     (use-package helm-ls-git)
     (use-package helm-bind-key)
-    (use-package helm-bookmarks)
+    (require 'helm-bookmark)
     
     (setq helm-candidate-number-limit 100)
     ;; From https://gist.github.com/antifuchs/9238468
@@ -182,20 +182,6 @@
          ("C-x m" . helm-execute-kmacro)
          ("M-r" . helm-register)))
 
-;; (use-package yasnippet
-;;   :diminish yas-minor-mode
-;;   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
-;;   :bind
-;;   (("s-e" . yas-expand))
-;;   :init
-;;   (progn
-;;     (setq yas-verbosity 3)
-;;     (yas-global-mode 1)
-;;     )
-;;   ;;   :bind
-;;   ;;(("C-x j". helm-yas-complete))
-;;   )
-
 (use-package drag-stuff
   :diminish drag-stuff-mode
   :config
@@ -216,28 +202,14 @@
 
 (use-package color-theme
   :config
-  ;; (load-theme 'spacemacs-light t)
   (load-theme 'spacemacs-light-dylan t)
-  
-  ;; leuven faces
-  ;; (custom-set-faces
-  ;;  ;; custom-set-faces was added by Custom.
-  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;;  ;; Your init file should contain only one such instance.
-  ;;  ;; If there is more than one, they won't work right.
-  ;;  '(company-preview ((t (:foreground "darkgray" :underline t))))
-  ;;  '(font-lock-constant-face ((t (:foreground "DodgerBlue4"))))
-  ;;  '(font-lock-function-name-face ((t (:foreground "dark blue" :weight normal))))
-  ;;  '(helm-ls-git-added-copied-face ((t (:foreground "green4"))))
-  ;;  '(helm-ls-git-modified-and-staged-face ((t (:foreground "DarkGoldenrod4"))))
-  ;;  '(org-level-1 ((t (:background "white" :foreground "#3C3C3C" :overline nil :weight bold :height 1.3))))
-  ;;  '(org-level-2 ((t (:background "white" :foreground "#123555" :overline nil :weight bold :height 1.0))))
-  ;;  '(org-level-3 ((t (:background "white" :foreground "#123555" :weight bold :height 1.0))))
-  ;;  '(org-todo ((t (:background "white" :foreground "#D8ABA7" :weight bold))))
-  ;;  '(sp-show-pair-match-face ((t (:foreground "red2" :weight bold)))))
   )
-  
-  ;; Keep emacs Custom-settings in separate file
+
+(volatile-highlights-mode t)
+
+
+
+;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
@@ -251,10 +223,11 @@
 ;; font color and size
 ;; (set-face-attribute 'default nil :family "Operator Mono" :height 140 :weight 'light)
 
-;; (set-face-attribute 'default nil :family "Inconsolata" :height 150 :weight 'normal)
+(set-face-attribute 'default nil :family "Inconsolata" :height 150 :weight 'normal)
 
 ;; (set-face-attribute 'default nil :family "hasklig" :height 150 :weight 'normal)
-(set-face-attribute 'default nil :family "roboto mono" :height 150 :weight 'normal)
+;; (set-face-attribute 'default nil :family "roboto mono" :height 150 :weight 'normal)
+;; (set-face-attribute 'default nil :family "roboto mono" :height 150 :weight 'normal)
 ;; (set-face-attribute 'default nil :family "source code pro" :height 150 :weight 'normal)
 
 ;; font for all unicode characters
@@ -317,7 +290,7 @@
                         '(json-jsonlist)))
   
   ;; spell check comments in code
-  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  ;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
   ;; use local eslint from node_modules before global
   ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
@@ -385,7 +358,12 @@
    ("\\Rakefile\\'" . ruby-mode)
    ("\\Gemfile\\'" . ruby-mode)
    ("\\.gemspec\\'" . ruby-mode)
-   ("\\kwmrc\\'" . ruby-mode)))
+   ("\\kwmrc\\'" . ruby-mode))
+  :config
+  (add-hook 'ruby-mode-hook (lambda () (setq-local helm-dash-docsets '("Ruby")))))
+
+(setq helm-dash-browser-func 'eww)
+  
 
 (use-package inf-ruby
   :config
@@ -521,7 +499,7 @@
               (lambda ()
                 ;; (require 'flyspell-lazy)
                 (visual-line-mode nil)
-                (yas-global-mode nil)
+                (yas-global-mode nil) 
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))
@@ -663,10 +641,13 @@
 ;;          ("C-x p k" . emms-soulseek)))
 
 
-(use-package ledger-mode
-  :init
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))))
+;; (use-package ledger-mode
+;;   :init
+;;   (progn
+;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+;;     (autoload 'ledger-mode ledger-mode "A major mode for Ledger" t)
+;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+;;     ))
 
 ;; (setq x-select-enable-clipboard t
 ;;       x-select-enable-primary t
@@ -715,6 +696,9 @@
   :config
   (global-anzu-mode t))
 
+(use-package sh-mode
+  :mode (("\\.khdrc\\'" . sh-mode)))
+
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)
          ("\\.html\\.erb\\'" . web-mode)
@@ -726,12 +710,14 @@
          ("\\.vue$" . web-mode)
          ("\\.xml$" . web-mode))
   :config
+  ;; (setq web-mode-comment-formats (remove '("javascript" . "/*") web-mode-comment-formats))
+  (add-to-list 'web-mode-comment-formats '("javascript" . "//"))
   ;; adjust indents for web-mode to 2 spaces
   (defun my-web-mode-hook ()
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-attr-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)    
     ;; (setq web-mode-indent-style 2)
     )
   (add-hook 'web-mode-hook  'my-web-mode-hook)
@@ -805,6 +791,7 @@
 ;;   :bind
 ;;   (("C-g" . evil-escape)))
 
+(evil-surround-mode 1)
 
 ;; (require 'sublimity)
                                         ;(require 'sublimity-scroll)
@@ -825,8 +812,6 @@
 ;;      (add-to-list 'ac-modes 'cider-mode)
 ;;      (add-to-list 'ac-modes 'cider-repl-mode)))
 
-(autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
-(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 
 (unless (package-installed-p 'indium)
   (package-install 'indium))
@@ -1136,6 +1121,20 @@
 ;;   (bind-key "s" #'sort-lines selected-keymap)
 ;;   (bind-key "u" #'upcase-region selected-keymap))
 
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+  :bind
+  (("s-e" . yas-expand))
+  :init
+  (progn
+    (setq yas-verbosity 3)
+    (yas-global-mode 1)
+    )
+  ;;   :bind
+  ;;(("C-x j". helm-yas-complete))
+  )
+
 (use-package company
   :diminish company-mode
   :config
@@ -1160,9 +1159,8 @@
   (define-key company-active-map (kbd "RET") nil)
   (custom-set-faces
    '(company-preview
-     ((t (:foreground "darkgray" :underline t)))))
-  (global-company-mode)
-  (push 'company-robe company-backends))
+     ((t (:foreground "darkgray" :underline t))))))
+
 
 (use-package nyan-mode
   :config
@@ -1193,7 +1191,14 @@
 
 (point-undo)
 
+(defun refresh-khd ()
+  "Refresh khd config when .khdrc is saved."
+  (interactive)  
+  (if (f-same? (buffer-file-name) "/Users/dylanconlin/.khdrc")
+      (shell-command-to-string "khd -e \"reload\"")))
 
+(add-hook 'after-save-hook #'refresh-khd)
 
 ;;; init.el ends here
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

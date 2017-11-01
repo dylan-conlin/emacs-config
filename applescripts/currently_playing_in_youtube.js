@@ -21,7 +21,7 @@ foreach(chrome.windows, function(window){
 })
 
 if(nowPlaying[0]){
-  console.log(nowPlaying[0]);
+  this.console.log(nowPlaying[0]);
 } else {
   // return nothing
 }

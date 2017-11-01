@@ -767,9 +767,8 @@ Including indent-buffer, which should not be called automatically on save."
       (let ((helm-ff-transformer-show-only-basename nil))
         (helm :sources '(
                          helm-source-projectile-buffers-list
-                         ;; helm-source-ls-git-status
                          helm-source-projectile-files-list
-                         ;;helm-source-filtered-bookmarks
+                         helm-source-bookmarks
                          )
               :buffer "*project-search*"
               :prompt (projectile-prepend-project-name "pattern: ")))
@@ -783,7 +782,7 @@ Including indent-buffer, which should not be called automatically on save."
           (helm-make-source "Buffers" 'helm-source-buffers)))
   (let ((helm-ff-transformer-show-only-basename nil))
     (helm :sources '(helm-source-buffers-list
-                     ;;helm-source-filtered-bookmarks
+                     helm-source-bookmarks
                      )
           :buffer "*project(less)-search*"
           :prompt (projectile-prepend-project-name "pattern: "))))
@@ -1131,8 +1130,5 @@ minibuffer."
   "decode the region between START and END in current buffer."
   (interactive "r")
   (func-region start end #'org-link-unescape))
-
-
-
 
 (provide 'utilities-setup)
