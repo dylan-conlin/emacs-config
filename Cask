@@ -319,7 +319,6 @@
 (depends-on "sunny-day-theme")
 (depends-on "svg-mode-line-themes")
 (depends-on "swiper")
-(depends-on "swiper-helm")
 (depends-on "tablist")
 (depends-on "tango-2-theme")
 (depends-on "tango-plus-theme")

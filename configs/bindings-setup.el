@@ -287,6 +287,6 @@ _q_: cancel
 (unbind-key "s-1")
 (unbind-key "s-2")
 
-
+(key-chord-define-global "KK" 'helm-org-rifle-org-directory)
 
 (provide 'bindings-setup)
