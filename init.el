@@ -1,3 +1,4 @@
+fuckdude
 ;;; Code:
 (package-initialize)
 
@@ -32,6 +33,9 @@
 
 ;; prefer spaces over tabs
 (setq-default indent-tabs-mode nil)
+
+barker
+
 
 ;; (setq savehist-file "~/.emacs.d/savehist")
 ;; (savehist-mode 1)
@@ -202,8 +206,8 @@
 
 (use-package color-theme
   :config
-  (load-theme 'spacemacs-light-dylan t)
-  )
+  ;; (load-theme 'spacemacs-light-dylan t)
+  (load-theme 'leuven t))
 
 (volatile-highlights-mode t)
 
@@ -488,18 +492,19 @@
   (("C-S-n" . org-move-subtree-down)
    ("C-c c" . org-capture)
    ("C-c l" . org-capture-goto-last-stored)
-   ("C-c a" . org-agenda))
+   ("C-c a" . org-agenda)
+   )
   :init
   (progn
     (org-display-inline-images t t)
     (require 'org-install)
     (require 'org-crypt)
     (require 'gnus-async)
+    
     (add-hook 'org-mode-hook
               (lambda ()
                 ;; (require 'flyspell-lazy)
                 (visual-line-mode nil)
-                (yas-global-mode nil) 
                 ;; (flyspell-lazy-mode 1)
                 ;; (flyspell-mode 1)
                 ))
@@ -538,8 +543,8 @@
           '(
             ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
             ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
-            ("e" "Todo-Consulting" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Consulting") "* TODO %^{title} %^g \n %? \n%U")
-            ("c" "Code" entry (file+nheadline "~/Dropbox/org/campaign-code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ("e" "Todo-Builds" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Builds") "* TODO %^{title} %^g \n %? \n%U")
+            ("c" "Code" entry (file+headline "~/Dropbox/org/campaign-code.org" "Code") "* %^{title} %^g \n %? \n%U")
             ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
             ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
             ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
@@ -551,7 +556,7 @@
           '(
             ("~/Dropbox/org/todo-work.org" . (:level . 1))
             ("~/Dropbox/org/todo-personal.org" . (:level . 1))
-            ("~/Dropbox/org/todo-consulting.org" . (:level . 1))
+            ("~/Dropbox/org/todo-builds.org" . (:level . 1))
             ("~/Dropbox/org/notes.org" . (:level . 1))
             ("~/Dropbox/org/campaign-code.org" . (:level . 1))
             )
@@ -560,6 +565,7 @@
   :config
   
   )
+
 
 (setq org-clock-persist 'history)
 ;; fontify code in code blocks
@@ -720,6 +726,7 @@
     (setq web-mode-code-indent-offset 2)    
     ;; (setq web-mode-indent-style 2)
     )
+  (add-hook 'web-mode-hook (lambda () (setq-local helm-dash-docsets '("Javascript"))))
   (add-hook 'web-mode-hook  'my-web-mode-hook)
 
 
@@ -908,124 +915,6 @@
         whitespace-silent t
         whitespace-style '(face trailing lines space-before-tab empty)))
 
-;; ;;; Eshell-config
-;; ;;
-;; (use-package eshell
-;;   :init
-;;   (progn
-;;     ;; Eshell-prompt
-;;     (setq eshell-prompt-function
-;;           (lambda nil
-;;             (let ((pwd (eshell/pwd)))
-;;               (with-temp-buffer
-;;                 (let* ((default-directory (file-name-as-directory pwd))
-;;                        (proc (process-file
-;;                               "git" nil t nil
-;;                               "symbolic-ref" "HEAD" "--short"))
-;;                        (id (if (= (user-uid) 0) " # " " $ "))
-;;                        detached branch status)
-;;                   (unless (= proc 0)
-;;                     (erase-buffer)
-;;                     (setq detached t)
-;;                     (setq proc (process-file
-;;                                 "git" nil t nil
-;;                                 "rev-parse" "--short" "HEAD")))
-;;                   (if (= proc 0)
-;;                       (progn
-;;                         (setq branch (replace-regexp-in-string
-;;                                       "\n" "" (buffer-string)))
-;;                         (erase-buffer)
-;;                         (setq proc (process-file
-;;                                     "git" nil t nil "status" "--porcelain"))
-;;                         (setq status (pcase (buffer-string)
-;;                                        ((and str (guard (and (not (string= str ""))
-;;                                                              (= proc 0))))
-;;                                         (if (string-match "\\`[?]" str) "?" "*"))
-;;                                        (_ "")))
-;;                         (format "%s:(%s%s)%s"
-;;                                 (abbreviate-file-name pwd)
-;;                                 (propertize (format
-;;                                              "%s%s"
-;;                                              (if detached "detached@" "")
-;;                                              branch)
-;;                                             'face '((:foreground "red")))
-;;                                 (propertize status
-;;                                             'face `((:foreground
-;;                                                      ,(if (string= "?" status)
-;;                                                           "OrangeRed" "gold1"))))
-;;                                 id))
-;;                     (format "%s@%s:%s%s"
-;;                             (getenv "USER") (system-name)
-;;                             (abbreviate-file-name pwd) id)))))))
-
-;;     ;; Compatibility 24.2/24.3
-;;     (unless (fboundp 'eshell-pcomplete)
-;;       (defalias 'eshell-pcomplete 'pcomplete))
-;;     (unless (fboundp 'eshell-complete-lisp-symbol)
-;;       (defalias 'eshell-complete-lisp-symbol 'lisp-complete-symbol))
-
-;;     (add-hook 'eshell-mode-hook (lambda ()
-;;                                   (setq eshell-pwd-convert-function (lambda (f)
-;;                                                                       (if (file-equal-p (file-truename f) "/")
-;;                                                                           "/" f)))
-;;                                   ;; This is needed for eshell-command (otherwise initial history is empty).
-;;                                   (eshell-read-history eshell-history-file-name)
-;;                                   ;; Helm completion with pcomplete
-;;                                   (setq eshell-cmpl-ignore-case t
-;;                                         eshell-hist-ignoredups t)
-;;                                   (eshell-cmpl-initialize)
-;;                                   (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
-;;                                   ;; Helm lisp completion
-;;                                   (define-key eshell-mode-map [remap eshell-complete-lisp-symbol] 'helm-lisp-completion-at-point)
-;;                                   ;; Helm completion on eshell history.
-;;                                   (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
-;;                                   ;; Eshell prompt
-;;                                   (set-face-attribute 'eshell-prompt nil :foreground "DeepSkyBlue")))
-
-;;     ;; Eshell history size
-;;     (setq eshell-history-size 1000) ; Same as env var HISTSIZE.
-
-;;     ;; Eshell-banner
-;;     (setq eshell-banner-message (format "%s %s\nwith Emacs %s on %s"
-;;                                         (propertize
-;;                                          "Eshell session started on"
-;;                                          'face '((:foreground "Goldenrod")))
-;;                                         (propertize
-;;                                          (format-time-string "%c")
-;;                                          'face '((:foreground "magenta")))
-;;                                         (propertize emacs-version
-;;                                                     'face '((:foreground "magenta")))
-;;                                         (propertize
-;;                                          (with-temp-buffer
-;;                                            (call-process "uname" nil t nil "-r")
-;;                                            (buffer-string))
-;;                                          'face '((:foreground "magenta")))))
-
-;;     ;; Eshell-et-ansi-color
-;;     (ignore-errors
-;;       (dolist (i (list 'eshell-handle-ansi-color
-;;                        'eshell-handle-control-codes
-;;                        'eshell-watch-for-password-prompt))
-;;         (add-to-list 'eshell-output-filter-functions i)))
-
-;;     ;; Eshell-save-history-on-exit
-;;     ;; Possible values: t (always save), 'never, 'ask (default)
-;;     (setq eshell-save-history-on-exit t)
-
-    
-;;     ;; Eshell-visual
-;;     (setq eshell-term-name "eterm-color")
-;;     (with-eval-after-load "em-term"
-;;       (dolist (i '("tmux" "htop" "ipython" "alsamixer" "git-log"))
-;;         (add-to-list 'eshell-visual-commands i))))
-;;   :config
-;;   ;; Finally load eshell on startup.
-;;   (add-hook 'emacs-startup-hook (lambda ()
-;;                                   (let ((default-directory (getenv "HOME")))
-;;                                     (command-execute 'eshell)
-;;                                     (bury-buffer))))
-;;   (global-set-key (kbd "C-!") 'eshell-command))
-
 
 ;;; Shell
 ;;
@@ -1038,73 +927,6 @@
     (advice-add 'comint-send-eof :after 'comint--advice-send-eof))
   :bind (:map shell-mode-map
               ("M-p" . helm-comint-input-ring)))
-
-;;; Powerline
-;;
-;; (use-package powerline
-;;   :config
-;;   (progn
-;;     (defun tv/powerline-default-theme ()
-;;       "Setup the default mode-line."
-;;       (interactive)
-;;       (setq-default mode-line-format
-;;                     '("%e"
-;;                       (:eval
-;;                        (let* ((active (powerline-selected-window-active))
-;;                               (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-;;                               (mode-line (if active 'mode-line 'mode-line-inactive))
-;;                               (face1 (if active 'powerline-active1 'powerline-inactive1))
-;;                               (face2 (if active 'powerline-active2 'powerline-inactive2))
-;;                               (separator-left (intern (format "powerline-%s-%s"
-;;                                                               (powerline-current-separator)
-;;                                                               (car powerline-default-separator-dir))))
-;;                               (separator-right (intern (format "powerline-%s-%s"
-;;                                                                (powerline-current-separator)
-;;                                                                (cdr powerline-default-separator-dir))))
-;;                               (lhs (list (powerline-raw mode-line-remote mode-line 'l)
-;;                                          (powerline-raw "%*" mode-line 'l)
-;;                                          (when powerline-display-buffer-size
-;;                                            (powerline-buffer-size mode-line 'l))
-;;                                          (when powerline-display-mule-info
-;;                                            (powerline-raw mode-line-mule-info mode-line 'l))
-;;                                          (powerline-buffer-id mode-line-buffer-id 'l)
-;;                                          (when (and (boundp 'which-func-mode) which-func-mode)
-;;                                            (powerline-raw which-func-format nil 'l))
-;;                                          (powerline-raw " ")
-;;                                          (funcall separator-left mode-line face1)
-;;                                          (powerline-raw "%4l" face1 'l)
-;;                                          (powerline-raw ":" face1 'l)
-;;                                          (powerline-raw "%3c" face1 'r)
-;;                                          (funcall separator-left face1 mode-line)
-;;                                          (powerline-raw " ")
-;;                                          (powerline-raw "%6p" mode-line 'r)
-;;                                          (funcall separator-left mode-line face1)
-;;                                          (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
-;;                                            (powerline-raw erc-modified-channels-object face1 'l))
-;;                                          (powerline-major-mode face1 'l)
-;;                                          (powerline-process face1)
-;;                                          (powerline-minor-modes face1 'l)
-;;                                          (powerline-narrow face1 'l)
-;;                                          (powerline-raw " " face1)
-;;                                          (funcall separator-left face1 face2)
-;;                                          (powerline-vc face2 'r)
-;;                                          (when (bound-and-true-p nyan-mode)
-;;                                            (powerline-raw (list (nyan-create)) face2 'l))))
-;;                               (rhs (list (powerline-raw global-mode-string face2 'r)
-;;                                          (funcall separator-right face2 face1)
-;;                                          (unless window-system
-;;                                            (powerline-raw (char-to-string #xe0a1) face1 'l))
-;;                                          (when powerline-display-hud
-;;                                            (powerline-hud face2 face1)))))
-;;                          (concat (powerline-render lhs)
-;;                                  (powerline-fill face2 (powerline-width rhs))
-;;                                  (powerline-render rhs)))))))
-;;     (tv/powerline-default-theme)
-;;     (global-set-key [mode-line mouse-1] 'ignore)
-;;     (global-set-key [mode-line mouse-2] 'ignore)
-;;     (global-set-key [mode-line mouse-3] 'ignore)
-;;     (setq mode-line-default-help-echo nil))
-;;   :ensure t)
 
 ;; (use-package selected
 ;;   :defer 5
@@ -1121,19 +943,19 @@
 ;;   (bind-key "s" #'sort-lines selected-keymap)
 ;;   (bind-key "u" #'upcase-region selected-keymap))
 
-(use-package yasnippet
-  :diminish yas-minor-mode
-  :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
-  :bind
-  (("s-e" . yas-expand))
-  :init
-  (progn
-    (setq yas-verbosity 3)
-    (yas-global-mode 1)
-    )
-  ;;   :bind
-  ;;(("C-x j". helm-yas-complete))
-  )
+;; (use-package yasnippet
+;;   :diminish yas-minor-mode
+;;   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+;;   :bind
+;;   (("s-e" . yas-expand))
+;;   :init
+;;   (progn
+;;     (setq yas-verbosity 3)
+;;     (yas-global-mode 1)
+;;     )
+;;   ;;   :bind
+;;   ;;(("C-x j". helm-yas-complete))
+;;   )
 
 (use-package company
   :diminish company-mode
@@ -1167,7 +989,8 @@
   (nyan-mode)
   (setq nyan-wavy-trail nil))
 
-(setq-default indicate-empty-lines t)
+(setq-default indicate-empty-lines nil)
+
 (define-key isearch-mode-map (kbd "M-s j") 'avy-isearch)
 (use-package fold-dwim)
 

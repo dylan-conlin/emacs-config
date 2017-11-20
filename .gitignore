@@ -30,3 +30,4 @@ recentf~
 savehist
 .last-opened-file
 eshell/
+.flycheck_init.el

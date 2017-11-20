@@ -53,10 +53,10 @@
 
 
 
-(bind-key "C-q" 'backward-kill-word)
+;; (bind-key "C-q" 'backward-kill-word)
 ;; (bind-key* "M-p" 'backward-paragraph)
 ;; (bind-key* "M-n" 'forward-paragraph)
-(define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
+;; (define-key key-translation-map (kbd "C-q") (kbd "C-<backspace>"))
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
 
@@ -145,10 +145,10 @@ _q_: cancel
 (bind-key "C-x g" 'browse-at-remote)
 (bind-key "C-x G" 'browse-at-remote/to-clipboard)
 
-;; (bind-key "C-/" 'undo-tree-undo)
-;; (bind-key "C-." 'undo-tree-redo)
-;; (bind-key "C-x u" 'undo-tree-visualize)
-(bind-key "C-/" 'undo)
+(bind-key "C-/" 'undo-tree-undo)
+(bind-key "C-." 'undo-tree-redo)
+(bind-key "C-x u" 'undo-tree-visualize)
+;; (bind-key "C-/" 'undo)
 
 (bind-key "M-`" 'other-frame)
 (bind-key "C-x C-v" 'global-visual-line-mode)
