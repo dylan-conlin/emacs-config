@@ -1,4 +1,3 @@
-fuckdude
 ;;; Code:
 (package-initialize)
 
@@ -33,9 +32,6 @@ fuckdude
 
 ;; prefer spaces over tabs
 (setq-default indent-tabs-mode nil)
-
-barker
-
 
 ;; (setq savehist-file "~/.emacs.d/savehist")
 ;; (savehist-mode 1)
@@ -367,7 +363,7 @@ barker
   (add-hook 'ruby-mode-hook (lambda () (setq-local helm-dash-docsets '("Ruby")))))
 
 (setq helm-dash-browser-func 'eww)
-  
+
 
 (use-package inf-ruby
   :config
