@@ -7,3 +7,5 @@
 #HttpOnly_.google.com	TRUE	/	FALSE	1473465267	NID	77=ZyPvq1yp2O2OnDxOqroV2OsbGNqJGs4d0fYAoqoyniJOqyH-MNosBRI75V09UOpVymx3hktNW-rVQvB4EaFtUtcwTbVscJhrP9WP1pHQ-e9qCh3aNau75nWGPHX-We4fvxvgSqOOIBO-0A
 #HttpOnly_.textbelt.com	TRUE	/	FALSE	1494521116	__cfduid	d24812c60b0991b0e5550f39bcab3e7721462985116
 www.4clojure.com	FALSE	/	FALSE	0	ring-session	29bf2fc7-07f2-4551-b809-6e031b34c305
+#HttpOnly_.kraken.com	TRUE	/	FALSE	1544154511	__cfduid	d5543267492432c5ce43d3afaf59808e31512618511
+#HttpOnly_.coinmarketcap.com	TRUE	/	TRUE	1544159620	__cfduid	d67774847a51bebc46f14d7c6bde7d4691512623620

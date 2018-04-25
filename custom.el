@@ -21,7 +21,6 @@
  '(ansi-term-color-vector
    [unspecified "#ffffff" "#ed6a43" "#183691" "#795da3" "#795da3" "#a71d5d" "#795da3" "#333333"] t)
  '(auto-image-file-mode t)
- '(avy-timeout-seconds 0.25)
  '(aw-background t)
  '(battery-mode-line-format " %p")
  '(beacon-blink-when-focused t)
@@ -127,7 +126,6 @@ static char *note[] = {
  '(global-git-gutter-mode t)
  '(global-hl-line-mode nil)
  '(global-linum-mode nil)
- '(global-undo-tree-mode nil)
  '(gnus-logo-colors (quote ("#1ec1c4" "#bababa")) t)
  '(gnus-mode-line-image-cache
    (quote
@@ -196,7 +194,7 @@ static char *gnus-pointer[] = {
  '(helm-mode t)
  '(helm-persistent-action-use-special-display nil)
  '(helm-quick-update t t)
- '(helm-recentf-fuzzy-match nil t)
+ '(helm-recentf-fuzzy-match nil)
  '(helm-reuse-last-window-split-state t)
  '(helm-swoop-pre-input-function
    (quote
@@ -287,7 +285,7 @@ static char *gnus-pointer[] = {
  '(package-build-verbose nil)
 '(package-selected-packages
 (quote
- (fontawesome helm-tramp swiper-helm dynamic-spaces evil volatile-highlights tao-theme ssass-mode vue-mode org-attach-screenshot helm-org-rifle org-recent-headings prettier-js pacmacs suggest json-navigator helpful col-highlight counsel-spotify telephone-line spacemacs-theme persp-mode-projectile-bridge robe aggressive-indent terminal-here dakrone-light-theme company-inf-ruby fold-dwim company-quickhelp selected 4clojure redo+ undohist expand-region indium paredit lastpass dumb-jump flycheck-rust rust-mode helm-spotify-plus evil-nerd-commenter evil-surround projectile-ripgrep ripgrep beacon hacker-typer autothemer xwidgete docker crux goto-last-change all-the-icons-dired rjsx-mode anzu zop-to-char zonokai-theme zenburn-theme zen-and-art-theme yaml-mode window-purpose win-switch which-key web-mode warm-night-theme wanderlust waher-theme visual-regexp vimrc-mode vi-tilde-fringe vagrant-tramp use-package underwater-theme ujelly-theme ubuntu-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tommyh-theme tern-auto-complete tangotango-theme tango-plus-theme tango-2-theme svg-mode-line-themes sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme speed-type sparkline spaceline spacegray-theme soundklaus soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smooth-scroll smex smart-mode-line-powerline-theme slime simple-httpd shell-pop seti-theme scss-mode sass-mode rvm ruby-test-mode ruby-hash-syntax ruby-block reverse-theme restclient request-deferred rainbow-mode rails-log-mode purple-haze-theme professional-theme prodigy point-undo planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-projectile persp-mode per-buffer-theme pdf-tools pastels-on-dark-theme paradox pallet organic-green-theme org-journal org-beautify-theme olivetti oldlace-theme occidental-theme obsidian-theme nyan-mode nvm nodejs-repl noctilux-theme niflheim-theme neotree naquadah-theme names mustang-theme multiple-cursors multi-eshell monokai-theme monochrome-theme molokai-theme moe-theme minitest minimal-theme material-theme mark-multiple lush-theme lua-mode litable light-soap-theme leuven-theme ledger-mode kurecolor kite key-chord jsx-mode json-mode js2-mode jazz-theme jade-mode itail ir-black-theme inkpot-theme inf-ruby indent-guide import-js httprepl heroku-theme hemisu-theme helm-themes helm-swoop helm-projectile helm-package helm-open-github helm-mu helm-ls-git helm-itunes helm-hoogle helm-gtags helm-fuzzier helm-flycheck helm-flx helm-emms helm-descbinds helm-dash helm-commandlinefu helm-cmd-t helm-circe helm-bind-key helm-ag hc-zenburn-theme guide-key gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-contacts golden-ratio gmail-message-mode gitignore-mode github-clone github-browse-file git-timemachine git-gutter git-gutter+ gist gandalf-theme fzf focus flymake-coffee flycheck-tip flycheck-pos-tip flatui-theme flatland-theme firebelly-theme fastdef exec-path-from-shell espresso-theme eshell-did-you-mean esh-help ert-runner ert-expectations emms-player-mpv elmacro el-pocket eimp edit-server drag-stuff dracula-theme dockerfile-mode django-theme distinguished-theme display-theme discover-my-major direx dired-subtree dired-sort dired-single dired-ranger dired-rainbow dired-details+ dired+ dash-at-point darkmine-theme darkburn-theme darcula-theme dakrone-theme cyberpunk-theme cus-edit+ cursor-chg crontab-mode counsel corral comment-dwim-2 color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme cherry-blossom-theme calmer-forest-theme busybee-theme bubbleberry-theme browse-at-remote bongo bm birds-of-paradise-plus-theme basic-theme base16-theme badger-theme auto-package-update auto-indent-mode auto-compile atom-dark-theme arduino-mode apropospriate-theme applescript-mode anti-zenburn-theme ample-zen-theme ample-theme alert alect-themes ahungry-theme ag afternoon-theme adaptive-wrap ace-window ac-helm ac-cider)))
+ (evil-magit evil-mc evil-matchit evil-escape helm-rg helm-swoop quelpa idle-highlight-mode fontawesome helm-tramp swiper-helm dynamic-spaces evil volatile-highlights tao-theme ssass-mode vue-mode org-attach-screenshot helm-org-rifle org-recent-headings prettier-js pacmacs suggest json-navigator helpful col-highlight counsel-spotify telephone-line spacemacs-theme persp-mode-projectile-bridge robe aggressive-indent terminal-here dakrone-light-theme company-inf-ruby fold-dwim company-quickhelp selected 4clojure redo+ undohist expand-region indium paredit lastpass dumb-jump flycheck-rust rust-mode helm-spotify-plus evil-nerd-commenter evil-surround projectile-ripgrep ripgrep beacon hacker-typer autothemer xwidgete docker crux goto-last-change all-the-icons-dired rjsx-mode anzu zop-to-char zonokai-theme zenburn-theme zen-and-art-theme yaml-mode window-purpose win-switch which-key web-mode warm-night-theme wanderlust waher-theme visual-regexp vimrc-mode vi-tilde-fringe vagrant-tramp use-package underwater-theme ujelly-theme ubuntu-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tommyh-theme tern-auto-complete tangotango-theme tango-plus-theme tango-2-theme svg-mode-line-themes sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme speed-type sparkline spaceline spacegray-theme soundklaus soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smooth-scroll smex smart-mode-line-powerline-theme slime simple-httpd shell-pop seti-theme scss-mode sass-mode rvm ruby-test-mode ruby-hash-syntax ruby-block reverse-theme restclient request-deferred rainbow-mode rails-log-mode purple-haze-theme professional-theme prodigy point-undo planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-projectile persp-mode per-buffer-theme pdf-tools pastels-on-dark-theme paradox pallet organic-green-theme org-journal org-beautify-theme olivetti oldlace-theme occidental-theme obsidian-theme nyan-mode nvm nodejs-repl noctilux-theme niflheim-theme neotree naquadah-theme names mustang-theme multiple-cursors multi-eshell monokai-theme monochrome-theme molokai-theme moe-theme minitest minimal-theme material-theme mark-multiple lush-theme lua-mode litable light-soap-theme leuven-theme ledger-mode kurecolor kite key-chord jsx-mode json-mode js2-mode jazz-theme jade-mode itail ir-black-theme inkpot-theme inf-ruby indent-guide import-js httprepl heroku-theme hemisu-theme helm-themes helm-projectile helm-package helm-open-github helm-mu helm-ls-git helm-itunes helm-hoogle helm-gtags helm-fuzzier helm-flycheck helm-flx helm-emms helm-descbinds helm-dash helm-commandlinefu helm-cmd-t helm-circe helm-bind-key helm-ag hc-zenburn-theme guide-key gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-contacts golden-ratio gmail-message-mode gitignore-mode github-clone github-browse-file git-timemachine git-gutter git-gutter+ gist gandalf-theme fzf focus flymake-coffee flycheck-tip flycheck-pos-tip flatui-theme flatland-theme firebelly-theme fastdef exec-path-from-shell espresso-theme eshell-did-you-mean esh-help ert-runner ert-expectations emms-player-mpv elmacro el-pocket eimp edit-server drag-stuff dracula-theme dockerfile-mode django-theme distinguished-theme display-theme discover-my-major direx dired-subtree dired-sort dired-single dired-ranger dired-rainbow dired-details+ dired+ dash-at-point darkmine-theme darkburn-theme darcula-theme dakrone-theme cyberpunk-theme cus-edit+ cursor-chg crontab-mode counsel corral comment-dwim-2 color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme cherry-blossom-theme calmer-forest-theme busybee-theme bubbleberry-theme browse-at-remote bongo bm birds-of-paradise-plus-theme basic-theme base16-theme badger-theme auto-package-update auto-indent-mode auto-compile atom-dark-theme arduino-mode apropospriate-theme applescript-mode anti-zenburn-theme ample-zen-theme ample-theme alert alect-themes ahungry-theme ag afternoon-theme adaptive-wrap ace-window ac-helm ac-cider)))
  '(paradox-automatically-star nil)
  '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
  '(pos-tip-use-relative-coordinates t)
@@ -315,13 +313,13 @@ static char *gnus-pointer[] = {
  '(sml/inactive-background-color "#dfe4ea")
  '(sml/inactive-foreground-color "#34495e")
  '(sml/replacer-regexp-list nil)
+ '(sp-highlight-pair-overlay nil)
  '(sp-hybrid-kill-excessive-whitespace t)
  '(sp-show-pair-delay 0)
  '(sp-show-pair-from-inside t)
  '(sp-undo-pairs-separately t)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
- '(undo-tree-enable-undo-in-region nil)
  '(vc-annotate-background "#ecf0f1")
 '(vc-annotate-color-map
 (quote
@@ -357,17 +355,19 @@ static char *gnus-pointer[] = {
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#655370" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Inconsolata"))))
  '(beacon-fallback-background ((t (:background "dark red"))))
+ '(bold ((t (:foreground "black" :weight bold))))
  '(company-preview ((t (:foreground "darkgray" :underline t))))
  '(font-lock-constant-face ((t (:foreground "firebrick"))))
  '(fringe ((t (:background "snow2"))))
  '(git-gutter:added ((t (:inherit default :foreground "green3" :weight bold))))
  '(helm-source-header ((t (:inherit bold :background "#fbf8ef" :foreground "#6c4173" :weight bold))))
+ '(idle-highlight ((t (:background "LightYellow1"))))
  '(org-date ((t (:foreground "#715ab1" :underline t :height 0.75))))
  '(org-done ((t (:background "#DBFFDB" :foreground "#3A993A" :box (:line-width 1 :color "#BBBBBB") :weight bold))))
  '(org-hide ((t (:foreground "white"))))
  '(org-level-2 ((t (:inherit bold :background "#E5F4FB" :foreground "#655370" :overline "gray88" :weight normal :height 1.2))))
  '(org-level-3 ((t (:foreground "dark slate gray" :weight normal :height 1.1))))
  '(org-special-keyword ((t (:foreground "#6c3163" :height 0.75))))
- '(org-tag ((t (:foreground "dark gray" :weight bold))))
+ '(org-tag ((t (:background "#e6d4bb" :foreground "gray44" :slant italic :weight bold))))
  '(org-todo ((t (:inherit bold :background "#f6f1e1" :foreground "red3"))))
  '(web-mode-html-tag-face ((t (:foreground "forest green")))))

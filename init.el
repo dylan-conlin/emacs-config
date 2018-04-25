@@ -38,11 +38,6 @@
 
 (setq history-length t)
 (setq history-delete-duplicates t)
-;; (setq savehist-save-minibuffer-history 1)
-;; (setq savehist-additional-variables
-;;       '(kill-ring
-;;         search-ring
-;;         regexp-search-ring))
 
 ;; group backup files together to prevent clutter
 (setq backup-directory-alist '(("." . "~/.emacs.d/.saves")))
@@ -67,10 +62,23 @@
 
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
-(recentf-mode 1)
-(setq recentf-max-menu-items 500)
 
 (key-chord-mode 1)
+
+(use-package idle-highlight-mode
+  :init (progn
+          (idle-highlight-mode 1)
+          ;; highlight words
+          (add-hook 'prog-mode-hook (lambda () (idle-highlight-mode t)))))
+
+
+(use-package recentf
+  :commands recentf-mode
+  :defer 2
+  :config
+  (progn 
+    (recentf-mode t)
+    (setq-default recentf-max-saved-items 1000)))
 
 (use-package dired
   :chords (("hj" . wdired-change-to-wdired-mode)))
@@ -92,16 +100,6 @@
           savehist-autosave-interval 60)
     (savehist-mode t)))
 
-;; ;; Track recently opened files
-;; (use-package recentf
-;;   :config
-;;   (progn
-;;     (setq recentf-max-saved-items 1000
-;;           recentf-max-menu-items 25)
-;;     (recentf-mode 1)
-;;     (after 'helm
-;;       (global-set-key (kbd "C-x C-r") 'helm-recentf))))
-
 (use-package winner
   :if (not noninteractive)
   :defer 5
@@ -111,6 +109,7 @@
   (winner-mode 1))
 
 (use-package uniquify)
+
 
 ;; (use-package auto-complete
 ;;   :diminish auto-complete-mode
@@ -124,6 +123,31 @@
 ;;   :bind
 ;;   (("C-<up>" . ac-quick-help-scroll-up)
 ;;    ("C-<down>" . ac-quick-help-scroll-down)))
+
+
+(use-package company
+  :diminish company-mode
+  :config
+  (setq company-global-modes '(not org-mode))
+  (setq company-idle-delay 0.3)
+  
+  (setq company-frontends
+        '(company-pseudo-tooltip-unless-just-one-frontend
+          company-preview-frontend
+          company-echo-metadata-frontend))
+  (setq company-require-match 'never)
+  (setq company-auto-complete nil)
+  (setq company-require-match nil)
+  (define-key company-active-map [tab] 'company-select-next-if-tooltip-visible-or-complete-selection)
+  (define-key company-active-map (kbd "C-i") 'company-complete-selection)
+  (define-key company-active-map (kbd "C-e") 'company-complete-selection)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "RET") nil)
+  (custom-set-faces
+   '(company-preview
+     ((t (:foreground "darkgray" :underline t))))))
 
 (use-package projectile
   :diminish projectile-mode
@@ -139,32 +163,37 @@
     (use-package helm-ls-git)
     (use-package helm-bind-key)
     (require 'helm-bookmark)
+    (use-package helm-fuzzier)
     
-    (setq helm-candidate-number-limit 100)
-    ;; From https://gist.github.com/antifuchs/9238468
-    (setq helm-idle-delay 0.0)         ; update fast sources immediately (doesn't).
-    (setq helm-input-idle-delay 0.01)  ; this actually updates things reeeelatively quickly.
-    (setq helm-quick-update t)
-    (setq helm-adaptive-mode nil)
-    (setq helm-bookmark-show-location t)
-    (setq helm-M-x-requires-pattern nil)
-    (setq helm-ff-skip-boring-files t)
-    (setq helm-buffer-max-length 30)
-    (setq helm-ff-file-name-history-use-recentf t)
-    (setq helm-M-x-fuzzy-match nil)
-    (setq helm-buffers-fuzzy-matching nil
-          helm-recentf-fuzzy-match    nil)
-    (setq helm-semantic-fuzzy-match nil
-          helm-imenu-fuzzy-match    nil)
     
-    (helm-mode 1)
-    )
+    
+    (setq helm-candidate-number-limit 100
+          ;; From https://gist.github.com/antifuchs/9238468
+          helm-idle-delay 0.0         ; update fast sources immediately (doesn't).
+          helm-input-idle-delay 0.01  ; this actually updates things reeeelatively quickly.
+          helm-quick-update t
+          helm-adaptive-mode nil
+          helm-bookmark-show-location t
+          helm-M-x-requires-pattern nil
+          helm-ff-skip-boring-files t
+          helm-buffer-max-length 30
+          helm-ff-file-name-history-use-recentf t
+          helm-M-x-fuzzy-match nil
+          helm-buffers-fuzzy-matching nil
+          helm-recentf-fuzzy-match    nil
+          helm-semantic-fuzzy-match nil
+          helm-imenu-fuzzy-match    nil
+          helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s"
+          helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+    
+    (helm-fuzzier-mode 1)
+    (helm-mode 1))
   :bind (("C-x C-f" . helm-find-files)
          ("C-x l" . helm-ls-git-ls)
          ("C-x a" . helm-apropos)
          ("M-x" . helm-M-x)
          ("M-k" . my-helm-project-search)
-         ("M-K" . my-helm-do-ag)
+         ("M-K" . helm-do-ag-project-root)
          ("C-c M-K" . helm-do-ag)
          ("C-c p p" . helm-projectile-switch-project)
          ("C-x b" . helm-projectless-search)
@@ -195,8 +224,8 @@
 (use-package multiple-cursors
   :bind
   (("s-n" . mc/mark-next-like-this)
-   ("s-P" . mc/unmark-next-like-this)
    ("s-p" . mc/mark-previous-like-this)
+   ("s-P" . mc/unmark-next-like-this)
    ("s-N" . mc/unmark-previous-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
@@ -205,9 +234,7 @@
   ;; (load-theme 'spacemacs-light-dylan t)
   (load-theme 'leuven t))
 
-(volatile-highlights-mode t)
-
-
+(volatile-highlights-mode nil)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -242,29 +269,21 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;; (use-package undo-tree
-;;   :diminish undo-tree-mode
-;;   :init
-;;   (global-undo-tree-mode))
-
-
 (use-package git-gutter
   :ensure t
   :diminish git-gutter-mode
+  :commands (global-git-gutter-mode git-gutter-mode)
   :init
-  ;; (progn
-  ;;   (customize-set-variable 'git-gutter:update-interval 2) ; Activate live update timer.
-  ;;   (setq git-gutter:hide-gutter t)
-  ;;   ) ; Always a 0 width margin when no changes.)
-  :config
-  (global-git-gutter-mode)
-  (global-set-key "\C-x\C-\\" 'goto-last-change)
-  ;; (git-gutter:linum-setup)
+  (progn
+    (global-git-gutter-mode t))
   :bind
   (("C-x C-n" . my-next-edit)
    ("C-x C-p" . my-previous-edit)
    ("C-x C-r" . git-gutter:revert-hunk)
-   ("C-x C-d" . git-gutter:popup-hunk)))
+   ("C-x C-d" . git-gutter:popup-hunk))
+  )
+
+
 
 (use-package flycheck
   :config
@@ -304,18 +323,21 @@
   ;;     (when (and eslint (file-executable-p eslint))
   ;;       (setq-local flycheck-javascript-eslint-executable eslint))))
   ;;(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  (global-flycheck-mode -1)
   )
 
-(use-package helm-swoop
-  :config
-  (progn
-    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
-  :bind
-  (("M-i" . helm-swoop)
-   ("M-I" . helm-swoop-back-to-last-point)
-   ("C-c M-i" . helm-multi-swoop)
-   ("C-x M-i" . helm-multi-swoop-all)))
+;; (use-package helm-swoop
+;;   :config
+;;   (progn
+;;     (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;;     (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
+;;   :bind
+;;   (("M-i" . helm-swoop)
+;;    ("M-I" . helm-swoop-back-to-last-point)
+;;    ("C-c M-i" . helm-multi-swoop)
+;;    ("C-x M-i" . helm-multi-swoop-all)))
+
+
 
 (use-package expand-region
   :config
@@ -333,13 +355,11 @@
 
 (use-package js2-mode
   :mode
-  (;("\\.js\\'" . js2-mode)
-                                        ;("\\.jsx$" . js2-mode)
-   )
+  (("\\.js\\'" . js2-mode))
   :interpreter "node"
   ;; :no-require t
   :config
-  (setq-default js2-global-externs '("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
+  (setq-default js2-global-externs '("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "$" "_" "SST" "moment" "tab_config"))
   (setq-default js2-basic-offset 2)
   (js2-imenu-extras-setup))
 
@@ -483,84 +503,7 @@
 ;;   ;; Enable lastpass custom auth-source
 ;;   (lastpass-auth-source-enable))
 
-(use-package org
-  :bind
-  (("C-S-n" . org-move-subtree-down)
-   ("C-c c" . org-capture)
-   ("C-c l" . org-capture-goto-last-stored)
-   ("C-c a" . org-agenda)
-   )
-  :init
-  (progn
-    (org-display-inline-images t t)
-    (require 'org-install)
-    (require 'org-crypt)
-    (require 'gnus-async)
-    
-    (add-hook 'org-mode-hook
-              (lambda ()
-                ;; (require 'flyspell-lazy)
-                (visual-line-mode nil)
-                ;; (flyspell-lazy-mode 1)
-                ;; (flyspell-mode 1)
-                ))
 
-    ;; prettier appearance settings
-    (setq org-log-done t)
-    (setq org-todo-keywords
-          '((sequence "TODO" "REVW" "DONE")))
-    (setq org-todo-keyword-faces
-          '(
-            ("REVW" . "orange2")
-            ("ARCHIVED" .  "#3a81c3")))
-    (setq org-startup-indented nil)
-    (setq org-hide-leading-stars nil)
-
-    ;; behavior settings
-    (setq org-use-fast-todo-selection t)
-
-    ;; setup org path
-    (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
-
-    ;; setup files agenda is aware of
-    (setq my-org-agenda-files
-          (f-entries "~/Dropbox/org/" (lambda (file) (not (s-matches? ".git" file)))))
-    ;; (setq org-agenda-files '(
-    ;;                          ;; "~/Dropbox/org/code.org"
-    ;;                          "~/Dropbox/org/notes.org"
-    ;;                          "~/Dropbox/org/shortstack.org"
-    ;;                          ;; "~/Dropbox/org/journal.org"
-    ;;                          "~/Dropbox/org/todo-personal.org"
-    ;;                          "~/Dropbox/org/todo-work.org"
-    ;;                          "~/Dropbox/org/todo-consulting.org"
-    ;;                          "~/Dropbox/org/campaign-code.org"
-    ;;                          ))
-    (setq org-capture-templates
-          '(
-            ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
-            ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
-            ("e" "Todo-Builds" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Builds") "* TODO %^{title} %^g \n %? \n%U")
-            ("c" "Code" entry (file+headline "~/Dropbox/org/campaign-code.org" "Code") "* %^{title} %^g \n %? \n%U")
-            ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
-            ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
-            ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
-            ;; ("l" "Ledger entries")
-            ;; ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
-            ))
-    (setq org-refile-targets
-          ;; (f-entries "~/Dropbox/org/" (lambda (file) file))
-          '(
-            ("~/Dropbox/org/todo-work.org" . (:level . 1))
-            ("~/Dropbox/org/todo-personal.org" . (:level . 1))
-            ("~/Dropbox/org/todo-builds.org" . (:level . 1))
-            ("~/Dropbox/org/notes.org" . (:level . 1))
-            ("~/Dropbox/org/campaign-code.org" . (:level . 1))
-            )
-          )
-    )
-  :config
-  
-  )
 
 
 (setq org-clock-persist 'history)
@@ -669,7 +612,86 @@
 (use-package hydras)
 (use-package vc-git)
 (use-package repository-root)
+(use-package org
+  :bind
+  (("C-S-n" . org-move-subtree-down)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-capture-goto-last-stored)
+   ("C-c a" . org-agenda)
+   )
+  :init
+  (progn
+    (org-display-inline-images t t)
+    (setq org-src-tab-acts-natively t)
+    (require 'org-install)
+    (require 'org-crypt)
+    (require 'gnus-async)
+    (require 'org-expiry)
+    
+    (setq org-duration-format (quote h:mm))
+    (add-hook 'org-mode-hook
+              (lambda ()
+                ;; (require 'flyspell-lazy)
+                (visual-line-mode nil)
+                ;; (flyspell-lazy-mode 1)
+                ;; (flyspell-mode 1)
+                ))
+    
+    ;; (add-hook 'org-insert-heading-hook 
+    ;;           #'(lambda()
+    ;;               (save-excursion
+    ;;                 (org-back-to-heading)
+    ;;                 (org-expiry-insert-created))))
+    
 
+    ;; prettier appearance settings
+    (setq org-log-done t)
+    (setq org-todo-keywords
+          '((sequence "TODO" "REVW" "DONE")))
+    (setq org-todo-keyword-faces
+          '(
+            ("REVW" . "orange2")
+            ("ARCHIVED" .  "#3a81c3")))
+    (setq org-startup-indented nil)
+    (setq org-hide-leading-stars nil)
+
+    ;; behavior settings
+    (setq org-use-fast-todo-selection t)
+
+    ;; setup org path
+    (setq org-default-notes-file (expand-file-name "~/Dropbox/org/notes.org"))
+
+    ;; setup files agenda is aware of
+    (setq my-org-agenda-files
+          (f-entries "~/Dropbox/org/" (lambda (file) (not (s-matches? ".git" file)))))
+    (setq org-capture-templates
+          '(
+            ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/todo-work.org" "Work") "* TODO %^{title} %^g \n %? \n%U")
+            ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/todo-personal.org" "Personal") "* TODO %^{title} %^g \n %? \n%U")
+            ("e" "Todo-Builds" entry (file+headline "~/Dropbox/org/todo-consulting.org" "Builds") "* TODO %^{title} %^g \n %? \n%U")
+            ("c" "Code" entry (file+headline "~/Dropbox/org/campaign-code.org" "Code") "* %^{title} %^g \n %? \n%U")
+            ("s" "Shortstack Environment" entry (file+headline "~/Dropbox/org/shortstack.org" "Shortstack Environment") "* %^{title} %^g \n %? \n%U")
+            ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes") "* %^{title} %^g \n %? \n%U")
+            ;; ("r" "Secret" entry (file+headline "~/Dropbox/org/secrets.org" "Secrets") "* %^{title} %^g \n %? \n%U")
+            ;; ("j" "Journal" entry (file+headline "~/Dropbox/org/journal.org" "Journal") "* %^{title} %^g \n %? \n%U")
+            ;; ("l" "Ledger entries")
+            ;; ("lc" "Cash" plain (file "~/Dropbox/org/main.ledger") "%(org-read-date) * %^{Payee} Expenses:%^{Account} %^{Amount}")
+            ))
+    (setq org-refile-targets
+          ;; (f-entries "~/Dropbox/org/" (lambda (file) file))
+          '(
+            ("~/Dropbox/org/todo-work.org" . (:level . 1))
+            ("~/Dropbox/org/todo-personal.org" . (:level . 1))
+            ("~/Dropbox/org/todo-builds.org" . (:level . 1))
+            ("~/Dropbox/org/notes.org" . (:level . 1))
+            ("~/Dropbox/org/campaign-code.org" . (:level . 1))
+            ("~/Dropbox/org/shortstack.org" . (:level . 1))
+            )
+          )
+    )
+  :config
+  
+  )
 (find-file "~/Dropbox/org/todo-work.org")
 
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
@@ -708,26 +730,31 @@
          ("\\.jinja\\'" . web-mode)
          ("\\.php\\'" . web-mode)
          (("\\.jsx$" . web-mode))
-         ("\\.js$" . web-mode)
+         ;; ("\\.js$" . web-mode)
          ("\\.vue$" . web-mode)
          ("\\.xml$" . web-mode))
   :config
-  ;; (setq web-mode-comment-formats (remove '("javascript" . "/*") web-mode-comment-formats))
-  (add-to-list 'web-mode-comment-formats '("javascript" . "//"))
-  ;; adjust indents for web-mode to 2 spaces
-  (defun my-web-mode-hook ()
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-attr-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)    
-    ;; (setq web-mode-indent-style 2)
-    )
-  (add-hook 'web-mode-hook (lambda () (setq-local helm-dash-docsets '("Javascript"))))
-  (add-hook 'web-mode-hook  'my-web-mode-hook)
-
-
-  (setq web-mode-content-types-alist
-        '(("jsx" . "\\.js[x]?\\'"))))
+  
+  (progn
+    ;; (setq web-mode-comment-style 2)
+    ;; (setq-default web-mode-comment-formats
+    ;;               '(("javascript" . "//")))
+    
+    ;; (setq-default web-mode-comment-formats (remove '("javascript" . "/*") web-mode-comment-formats))
+    ;; (add-to-list 'web-mode-comment-formats '("javascript" . "//"))
+    ;; adjust indents for web-mode to 2 spaces
+    (defun my-web-mode-hook ()
+      (setq web-mode-markup-indent-offset 2)
+      (setq web-mode-attr-indent-offset 2)
+      (setq web-mode-css-indent-offset 2)
+      (setq web-mode-code-indent-offset 2)    
+      ;; (setq web-mode-indent-style 2)
+      )
+    (add-hook 'web-mode-hook (lambda () (setq-local helm-dash-docsets '("Javascript"))))
+    (add-hook 'web-mode-hook  'my-web-mode-hook)
+    
+    ;; (setq web-mode-content-types-alist
+    ;;       '(("jsx" . "\\.js[x]?\\'")))))
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
@@ -792,7 +819,7 @@
 ;;   (global-evil-mc-mode)
 ;;   (evilnc-default-hotkeys)
 ;;   :bind
-;;   (("C-g" . evil-escape)))
+;;   (("C-g" . <escape>)))
 
 (evil-surround-mode 1)
 
@@ -939,6 +966,7 @@
 ;;   (bind-key "s" #'sort-lines selected-keymap)
 ;;   (bind-key "u" #'upcase-region selected-keymap))
 
+;; (mine)
 ;; (use-package yasnippet
 ;;   :diminish yas-minor-mode
 ;;   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
@@ -953,32 +981,16 @@
 ;;   ;;(("C-x j". helm-yas-complete))
 ;;   )
 
-(use-package company
-  :diminish company-mode
-  :config
-  (setq company-idle-delay 0.5)
-  (company-quickhelp-mode 1)
-  (setq company-frontends
-        '(company-pseudo-tooltip-unless-just-one-frontend
-          company-preview-frontend
-          company-echo-metadata-frontend))
-  (setq company-require-match 'never)
-  (setq company-auto-complete nil)
-  (setq company-require-match nil)
-  ;; (setq company-frontends '(company-echo-metadata-frontend
-  ;;                           company-pseudo-tooltip-unless-just-one-frontend-with-delay
-  ;;                           company-preview-frontend))
-  (define-key company-active-map [tab] 'company-select-next-if-tooltip-visible-or-complete-selection)
-  (define-key company-active-map (kbd "C-i") 'company-complete-selection)
-  (define-key company-active-map (kbd "C-e") 'company-complete-selection)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-active-map (kbd "<return>") nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (custom-set-faces
-   '(company-preview
-     ((t (:foreground "darkgray" :underline t))))))
-
+;; (use-package yasnippet
+;;   :functions yas-global-mode yas-expand
+;;   :diminish yas-minor-mode
+;;   :defer 5
+;;   :config
+;;   (defvar dotfiles-dir)
+;;   (yas-global-mode t)
+;;   (setq yas-verbosity 3)
+;;   (load (concat dotfiles-dir "init-snippets.el"))
+;;   (define-key yas-minor-mode-map (kbd "M-/") 'hippie-expand))
 
 (use-package nyan-mode
   :config
@@ -1021,3 +1033,6 @@
 ;;; init.el ends here
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(global-undo-tree-mode -1)
+

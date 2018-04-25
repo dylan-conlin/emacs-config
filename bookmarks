@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("todo-builds.org"
+(("ss-image-processor"
+ (filename . "~/Dropbox/side-sites/ruby-projects/work-projects/ss-image-processor/")
+ (front-context-string . "app\n  drwxr-xr-x")
+ (rear-context-string . "06 Oct 26 14:12 ")
+ (position . 895))
+(".cvimrc"
+ (filename . "~/Dropbox/Mackup/.cvimrc")
+ (front-context-string . "!\n\nlet mapleader")
+ (rear-context-string)
+ (position . 10))
+("nginx-servers"
+ (filename . "/usr/local/etc/nginx/servers/")
+ (front-context-string . "shortstack-email")
+ (rear-context-string . "47 Aug  3 14:35 ")
+ (position . 620))
+("coinfetch.org"
+ (filename . "~/Dropbox/org/coinfetch.org")
+ (front-context-string . "* coinfetch\n#+BE")
+ (rear-context-string)
+ (position . 1))
+("instant-win-app"
+ (filename . "~/Dropbox/side-sites/ruby-projects/work-projects/instant-win-app/")
+ (front-context-string . ".bundle\n  -rw-r-")
+ (rear-context-string . "02 Sep 25 10:43 ")
+ (position . 304))
+("todo-builds.org"
  (filename . "~/Dropbox/org/todo-builds.org")
  (front-context-string . "* Builds\n** TODO")
  (rear-context-string)
@@ -63,10 +88,10 @@
  (rear-context-string . "4 09:44 webpack\n")
  (position . 1913))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/todo-personal.org")
- (front-context-string . "** TODO get my s")
- (rear-context-string . "9-07 Thu 15:52]\n")
- (position . 504))
+ (filename . "~/Dropbox/org/todo-builds.org")
+ (front-context-string . "** DONE Smuckers")
+ (rear-context-string . "m/apps/5466836\n\n")
+ (position . 5921))
 ("bitbar-plugins"
  (filename . "~/Dropbox/bitbar-plugins/")
  (front-context-string)
@@ -93,10 +118,10 @@
  (rear-context-string . "x-list-packages)")
  (position . 2782))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/todo-consulting.org")
- (front-context-string . "** TODO Smuckers")
- (rear-context-string)
- (position . 10))
+ (filename . "~/Dropbox/org/campaign-code.org")
+ (front-context-string . "** font size fun")
+ (rear-context-string . "2-27 Tue 10:43]\n")
+ (position . 65596))
 ("node-projects"
  (filename . "~/Dropbox/side-sites/node-projects/")
  (front-context-string)

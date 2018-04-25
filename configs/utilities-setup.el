@@ -750,10 +750,6 @@ Including indent-buffer, which should not be called automatically on save."
        (helm-projectile-recentf)
      (helm-recentf)))
 
-(defun my-helm-do-ag ()
-  (interactive)
-  (helm-do-ag-project-root))
-
 (defun my-helm-project-search ()
   "Use projectile with Helm instead of ido."
   (interactive)
@@ -1132,5 +1128,20 @@ minibuffer."
   (func-region start end #'org-link-unescape))
 
 
+;; this fixes a bug in helm-swoop. There's probably a better way to apply this...
+(defun helm-swoop--split-window-default ($buf &optional resume)
+  "Split window according to `helm-swoop-split-with-multiple-windows'
+ and `helm-swoop-split-direction' settings."
+  (if helm-swoop-split-with-multiple-windows
+      (funcall helm-swoop-split-direction)
+    (when (one-window-p)
+      (funcall helm-swoop-split-direction)))
+  (other-window 1)
+  (switch-to-buffer $buf))
+
+(defcustom helm-swoop-split-window-function #'helm-swoop--split-window-default
+  "Function to use as `helm-display-function'."
+  :group 'helm-swoop
+  :type 'function)
 
 (provide 'utilities-setup)
