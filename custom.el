@@ -194,48 +194,42 @@ static char *gnus-pointer[] = {
  '(helm-mode t)
  '(helm-persistent-action-use-special-display nil)
  '(helm-quick-update t t)
- '(helm-recentf-fuzzy-match nil)
+ '(helm-recentf-fuzzy-match nil t)
  '(helm-reuse-last-window-split-state t)
- '(helm-swoop-pre-input-function
-   (quote
-    #[0 "\300\301!\207"
-        [thing-at-point symbol]
-        2 "
-(fn)"]))
- '(helm-swoop-speed-or-color t)
+ '(helm-swoop-use-fuzzy-match t)
  '(helm-truncate-lines t t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
-(--map
- (solarized-color-blend it "#fdf6e3" 0.25)
- (quote
-  ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#586e75")
-'(highlight-tail-colors
-(quote
- (("#eee8d5" . 0)
-  ("#B4C342" . 20)
-  ("#69CABF" . 30)
-  ("#69B7F0" . 50)
-  ("#DEB542" . 60)
-  ("#F2804F" . 70)
-  ("#F771AC" . 85)
-  ("#eee8d5" . 100))))
-'(hl-bg-colors
-(quote
- ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
-'(hl-fg-colors
-(quote
- ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(highlight-tail-colors
+   (quote
+    (("#eee8d5" . 0)
+     ("#B4C342" . 20)
+     ("#69CABF" . 30)
+     ("#69B7F0" . 50)
+     ("#DEB542" . 60)
+     ("#F2804F" . 70)
+     ("#F771AC" . 85)
+     ("#eee8d5" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
  '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")))
  '(hl-sexp-background-color "#efebe9")
  '(ido-ubiquitous-fallback-completing-read-function (quote completing-read-default))
  '(indicate-buffer-boundaries nil)
  '(isearch-lazy-highlight t)
-'(js2-global-externs
-(quote
- ("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "SSMGR")))
+ '(js2-global-externs
+   (quote
+    ("describe" "it" "module" "require" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "SSMGR")))
  '(js2-include-node-externs t)
  '(js2-indent-switch-body t)
  '(js2-missing-semi-one-line-override t)
@@ -257,22 +251,22 @@ static char *gnus-pointer[] = {
  '(neo-smart-open t)
  '(neo-theme (quote ascii))
  '(neo-window-width 35)
-'(newsticker-url-list
-(quote
- (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
-'(org-agenda-files
-(quote
- ("~/Dropbox/org/notes.org" "~/Dropbox/org/shortstack.org")))
+ '(newsticker-url-list
+   (quote
+    (("dissolve" "http://thedissolve.com/feeds/reviews/essential/" nil nil nil))))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/org/notes.org" "~/Dropbox/org/shortstack.org")))
  '(org-auto-align-tags nil)
-'(org-babel-load-languages
-(quote
- ((emacs-lisp . t)
-  (ruby . t)
-  (js . t)
-  (clojure . t)
-  (sql . t)
-  (gnuplot . t)
-  (sh . t))))
+ '(org-babel-load-languages
+   (quote
+    ((emacs-lisp . t)
+     (ruby . t)
+     (js . t)
+     (clojure . t)
+     (sql . t)
+     (gnuplot . t)
+     (sh . t))))
  '(org-default-notes-file "~/Dropbox/org/notes.org")
  '(org-directory "~/Dropbox/org/")
  '(org-from-is-user-regexp "\\<Dylan Conlin\\>")
@@ -283,9 +277,9 @@ static char *gnus-pointer[] = {
  '(org-startup-indented t)
  '(org-tags-column 0)
  '(package-build-verbose nil)
-'(package-selected-packages
-(quote
- (evil-magit evil-mc evil-matchit evil-escape helm-rg helm-swoop quelpa idle-highlight-mode fontawesome helm-tramp swiper-helm dynamic-spaces evil volatile-highlights tao-theme ssass-mode vue-mode org-attach-screenshot helm-org-rifle org-recent-headings prettier-js pacmacs suggest json-navigator helpful col-highlight counsel-spotify telephone-line spacemacs-theme persp-mode-projectile-bridge robe aggressive-indent terminal-here dakrone-light-theme company-inf-ruby fold-dwim company-quickhelp selected 4clojure redo+ undohist expand-region indium paredit lastpass dumb-jump flycheck-rust rust-mode helm-spotify-plus evil-nerd-commenter evil-surround projectile-ripgrep ripgrep beacon hacker-typer autothemer xwidgete docker crux goto-last-change all-the-icons-dired rjsx-mode anzu zop-to-char zonokai-theme zenburn-theme zen-and-art-theme yaml-mode window-purpose win-switch which-key web-mode warm-night-theme wanderlust waher-theme visual-regexp vimrc-mode vi-tilde-fringe vagrant-tramp use-package underwater-theme ujelly-theme ubuntu-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tommyh-theme tern-auto-complete tangotango-theme tango-plus-theme tango-2-theme svg-mode-line-themes sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme speed-type sparkline spaceline spacegray-theme soundklaus soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smooth-scroll smex smart-mode-line-powerline-theme slime simple-httpd shell-pop seti-theme scss-mode sass-mode rvm ruby-test-mode ruby-hash-syntax ruby-block reverse-theme restclient request-deferred rainbow-mode rails-log-mode purple-haze-theme professional-theme prodigy point-undo planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-projectile persp-mode per-buffer-theme pdf-tools pastels-on-dark-theme paradox pallet organic-green-theme org-journal org-beautify-theme olivetti oldlace-theme occidental-theme obsidian-theme nyan-mode nvm nodejs-repl noctilux-theme niflheim-theme neotree naquadah-theme names mustang-theme multiple-cursors multi-eshell monokai-theme monochrome-theme molokai-theme moe-theme minitest minimal-theme material-theme mark-multiple lush-theme lua-mode litable light-soap-theme leuven-theme ledger-mode kurecolor kite key-chord jsx-mode json-mode js2-mode jazz-theme jade-mode itail ir-black-theme inkpot-theme inf-ruby indent-guide import-js httprepl heroku-theme hemisu-theme helm-themes helm-projectile helm-package helm-open-github helm-mu helm-ls-git helm-itunes helm-hoogle helm-gtags helm-fuzzier helm-flycheck helm-flx helm-emms helm-descbinds helm-dash helm-commandlinefu helm-cmd-t helm-circe helm-bind-key helm-ag hc-zenburn-theme guide-key gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-contacts golden-ratio gmail-message-mode gitignore-mode github-clone github-browse-file git-timemachine git-gutter git-gutter+ gist gandalf-theme fzf focus flymake-coffee flycheck-tip flycheck-pos-tip flatui-theme flatland-theme firebelly-theme fastdef exec-path-from-shell espresso-theme eshell-did-you-mean esh-help ert-runner ert-expectations emms-player-mpv elmacro el-pocket eimp edit-server drag-stuff dracula-theme dockerfile-mode django-theme distinguished-theme display-theme discover-my-major direx dired-subtree dired-sort dired-single dired-ranger dired-rainbow dired-details+ dired+ dash-at-point darkmine-theme darkburn-theme darcula-theme dakrone-theme cyberpunk-theme cus-edit+ cursor-chg crontab-mode counsel corral comment-dwim-2 color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme cherry-blossom-theme calmer-forest-theme busybee-theme bubbleberry-theme browse-at-remote bongo bm birds-of-paradise-plus-theme basic-theme base16-theme badger-theme auto-package-update auto-indent-mode auto-compile atom-dark-theme arduino-mode apropospriate-theme applescript-mode anti-zenburn-theme ample-zen-theme ample-theme alert alect-themes ahungry-theme ag afternoon-theme adaptive-wrap ace-window ac-helm ac-cider)))
+ '(package-selected-packages
+   (quote
+    (evil-magit evil-mc evil-matchit evil-escape helm-rg helm-swoop quelpa idle-highlight-mode fontawesome helm-tramp swiper-helm dynamic-spaces evil volatile-highlights tao-theme ssass-mode vue-mode org-attach-screenshot helm-org-rifle org-recent-headings prettier-js pacmacs suggest json-navigator helpful col-highlight counsel-spotify telephone-line spacemacs-theme persp-mode-projectile-bridge robe aggressive-indent terminal-here dakrone-light-theme company-inf-ruby fold-dwim company-quickhelp selected 4clojure redo+ undohist expand-region indium paredit lastpass dumb-jump flycheck-rust rust-mode helm-spotify-plus evil-nerd-commenter evil-surround projectile-ripgrep ripgrep beacon hacker-typer autothemer xwidgete docker crux goto-last-change all-the-icons-dired rjsx-mode anzu zop-to-char zonokai-theme zenburn-theme zen-and-art-theme yaml-mode window-purpose win-switch which-key web-mode warm-night-theme wanderlust waher-theme visual-regexp vimrc-mode vi-tilde-fringe vagrant-tramp use-package underwater-theme ujelly-theme ubuntu-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tommyh-theme tern-auto-complete tangotango-theme tango-plus-theme tango-2-theme svg-mode-line-themes sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme speed-type sparkline spaceline spacegray-theme soundklaus soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smooth-scroll smex smart-mode-line-powerline-theme slime simple-httpd shell-pop seti-theme scss-mode sass-mode rvm ruby-test-mode ruby-hash-syntax ruby-block reverse-theme restclient request-deferred rainbow-mode rails-log-mode purple-haze-theme professional-theme prodigy point-undo planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-projectile persp-mode per-buffer-theme pdf-tools pastels-on-dark-theme paradox pallet organic-green-theme org-journal org-beautify-theme olivetti oldlace-theme occidental-theme obsidian-theme nyan-mode nvm nodejs-repl noctilux-theme niflheim-theme neotree naquadah-theme names mustang-theme multiple-cursors multi-eshell monokai-theme monochrome-theme molokai-theme moe-theme minitest minimal-theme material-theme mark-multiple lush-theme lua-mode litable light-soap-theme leuven-theme ledger-mode kurecolor kite key-chord jsx-mode json-mode js2-mode jazz-theme jade-mode itail ir-black-theme inkpot-theme inf-ruby indent-guide import-js httprepl heroku-theme hemisu-theme helm-themes helm-projectile helm-package helm-open-github helm-mu helm-ls-git helm-itunes helm-hoogle helm-gtags helm-fuzzier helm-flycheck helm-flx helm-emms helm-descbinds helm-dash helm-commandlinefu helm-cmd-t helm-circe helm-bind-key helm-ag hc-zenburn-theme guide-key gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-contacts golden-ratio gmail-message-mode gitignore-mode github-clone github-browse-file git-timemachine git-gutter git-gutter+ gist gandalf-theme fzf focus flymake-coffee flycheck-tip flycheck-pos-tip flatui-theme flatland-theme firebelly-theme fastdef exec-path-from-shell espresso-theme eshell-did-you-mean esh-help ert-runner ert-expectations emms-player-mpv elmacro el-pocket eimp edit-server drag-stuff dracula-theme dockerfile-mode django-theme distinguished-theme display-theme discover-my-major direx dired-subtree dired-sort dired-single dired-ranger dired-rainbow dired-details+ dired+ dash-at-point darkmine-theme darkburn-theme darcula-theme dakrone-theme cyberpunk-theme cus-edit+ cursor-chg crontab-mode counsel corral comment-dwim-2 color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme cherry-blossom-theme calmer-forest-theme busybee-theme bubbleberry-theme browse-at-remote bongo bm birds-of-paradise-plus-theme basic-theme base16-theme badger-theme auto-package-update auto-indent-mode auto-compile atom-dark-theme arduino-mode apropospriate-theme applescript-mode anti-zenburn-theme ample-zen-theme ample-theme alert alect-themes ahungry-theme ag afternoon-theme adaptive-wrap ace-window ac-helm ac-cider)))
  '(paradox-automatically-star nil)
  '(paradox-github-token "9935f1b73d570a20fc348650741f836587963731")
  '(pos-tip-use-relative-coordinates t)
@@ -321,28 +315,28 @@ static char *gnus-pointer[] = {
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
  '(vc-annotate-background "#ecf0f1")
-'(vc-annotate-color-map
-(quote
- ((30 . "#e74c3c")
-  (60 . "#c0392b")
-  (90 . "#e67e22")
-  (120 . "#d35400")
-  (150 . "#f1c40f")
-  (180 . "#d98c10")
-  (210 . "#2ecc71")
-  (240 . "#27ae60")
-  (270 . "#1abc9c")
-  (300 . "#16a085")
-  (330 . "#2492db")
-  (360 . "#0a74b9"))))
+ '(vc-annotate-color-map
+   (quote
+    ((30 . "#e74c3c")
+     (60 . "#c0392b")
+     (90 . "#e67e22")
+     (120 . "#d35400")
+     (150 . "#f1c40f")
+     (180 . "#d98c10")
+     (210 . "#2ecc71")
+     (240 . "#27ae60")
+     (270 . "#1abc9c")
+     (300 . "#16a085")
+     (330 . "#2492db")
+     (360 . "#0a74b9"))))
  '(vc-annotate-very-old-color "#0a74b9")
  '(web-mode-attr-indent-offset nil)
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)
  '(web-mode-markup-indent-offset 2)
-'(weechat-color-list
-(quote
- (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
+ '(weechat-color-list
+   (quote
+    (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
  '(whitespace-line-column 300)
  '(win-switch-feedback-background-color "green"))
 

@@ -60,8 +60,8 @@
 (use-package use-package-chords
   :config (key-chord-mode 1))
 
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
+(require 'diminish)
+(require 'bind-key)
 
 (key-chord-mode 1)
 
@@ -121,16 +121,81 @@
 ;;           ac-delay 0.025
 ;;           ac-quick-help-delay 0.25))
 ;;   :bind
-;;   (("C-<up>" . ac-quick-help-scroll-up)
+;;   (
+;;    ("C-<up>" . ac-quick-help-scroll-up)
 ;;    ("C-<down>" . ac-quick-help-scroll-down)))
 
+;; (use-package auto-complete
+;;   :commands auto-complete-mode
+;;   :init
+;;   (progn
+;;     (auto-complete-mode t))
+;;   :config
+;;   (progn 
+;;     (define-key ac-complete-mode-map "\C-n" 'ac-next)
+;;     (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;;     (use-package auto-complete-config)
+;;     (ac-set-trigger-key "TAB")
+;;     (ac-config-default)
+;;     (setq ac-delay 0.02)
+;;     (setq ac-use-menu-map t)
+;;     (setq ac-menu-height 50)
+;;     (setq ac-quick-help-delay 0.25)
+;;     (setq ac-comphist-file  "~/.emacs.d/ac-comphist.dat")
+;;     (setq ac-ignore-case nil)
+;;     (setq ac-dwim  t)
+;;     (setq ac-fuzzy-enable t)
+;;     (setq ac-modes '(js3-mode
+;;                      emacs-lisp-mode
+;;                      lisp-mode
+;;                      lisp-interaction-mode
+;;                      slime-repl-mode
+;;                      c-mode
+;;                      cc-mode
+;;                      c++-mode
+;;                      go-mode
+;;                      java-mode
+;;                      eclim-mode
+;;                      malabar-mode
+;;                      clojure-mode
+;;                      clojurescript-mode
+;;                      scala-mode
+;;                      scheme-mode
+;;                      ocaml-mode
+;;                      tuareg-mode
+;;                      coq-mode
+;;                      haskell-mode
+;;                      agda-mode
+;;                      agda2-mode
+;;                      perl-mode
+;;                      cperl-mode
+;;                      python-mode
+;;                      ruby-mode
+;;                      enh-ruby-mode
+;;                      lua-mode
+;;                      ecmascript-mode
+;;                      javascript-mode
+;;                      js-mode
+;;                      js2-mode
+;;                      php-mode
+;;                      css-mode
+;;                      makefile-mode
+;;                      sh-mode
+;;                      fortran-mode
+;;                      f90-mode
+;;                      ada-mode
+;;                      xml-mode
+;;                      sgml-mode
+;;                      ts-mode
+;;                      sclang-mode
+;;                      verilog-mode))))
 
 (use-package company
   :diminish company-mode
   :config
   (setq company-global-modes '(not org-mode))
-  (setq company-idle-delay 0.3)
-  
+  (setq company-idle-delay 0.2)
+
   (setq company-frontends
         '(company-pseudo-tooltip-unless-just-one-frontend
           company-preview-frontend
@@ -393,24 +458,6 @@
                '("docker-pry" . "docker-compose run web bundle exec pry") t)
   (setq inf-ruby-default-implementation "docker-irb"))
 
-;; (use-package robe-mode
-;;   :init
-;;   (add-hook 'ruby-mode-hook 'robe-mode)
-;;   :config
-;;   (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
-;;     (rvm-activate-corresponding-ruby)))
-
-;; (use-package ruby-block
-;;   :diminish ruby-block-mode
-;;   :config
-;;   (ruby-block-mode t)
-;;   ;; do overlay
-;;   (setq ruby-block-highlight-toggle 'overlay)
-;;   ;; display to minibuffer
-;;   (setq ruby-block-highlight-toggle 'minibuffer)
-;;   ;; display to minibuffer and do overlay
-;;   (setq ruby-block-highlight-toggle t))
-
 (use-package coffee-mode
   :config
   ;; aggressive indent fucks with coffee mode indentation.
@@ -495,16 +542,6 @@
                 ;; (flyspell-mode 1)
                 ))))
 
-;; (use-package lastpass
-;;   :config
-;;   ;; Set lastpass user
-;;   (setq lastpass-user "dylan.conlin@gmail.com")
-;;   (setq lastpass-multifactor-use-passcode t)
-;;   ;; Enable lastpass custom auth-source
-;;   (lastpass-auth-source-enable))
-
-
-
 
 (setq org-clock-persist 'history)
 ;; fontify code in code blocks
@@ -525,83 +562,8 @@
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-;; (add-to-list 'load-path "~/.emacs.d/emms/")
-;; (add-to-list 'load-path "~/usr/local/bin/mp3info/")
-;; (add-to-list 'load-path "~/bin/tmsu")
-
-;; (require 'emms-setup)
-;; (emms-standard)
-;; (emms-default-players)
-;; (setq emms-source-file-default-directory "~/Music/")
-;; (setq emms-player-mplayer-command-name "/usr/local/bin/mplayer")
-;; (setq emms-player-list '(emms-player-mplayer
-;;                          emms-player-mpg321
-;;                          emms-player-mpd))
-
-;; (setq emms-info-auto-update t)
-;; (setq emms-info-asynchronously t)
-;; (setq debug-on-error t)
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
-
-;; (require 'emms-setup)
-;; (require 'emms-player-mplayer)
-;; (emms-standard)
-;; (emms-default-players)
-;; (emms-playing-time-enable-display)
-;; (define-emms-simple-player mplayer '(file url)
-;;   (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
-;;                 ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
-;;                 ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
-;;   "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
-;; (require 'emms-playing-time)
-;; (emms-playing-time 1)
-;; (emms-cache-enable)
-
-
-;; (use-package emms
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (require 'emms-setup)
-;;     (require 'emms-player-mpd)
-;;     (require 'emms-player-vlc)
-;;     (require 'emms-browser)
-;;     (require 'emms-history)
-;;     (require 'emms-info-libtag)
-;;     (require 'emms-mark)
-;;     (setq emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
-;;     (add-to-list 'emms-player-list 'emms-player-mpd)
-;;     (emms-standard)
-;;     (emms-default-players)
-;;     (setq emms-info-functions '(emms-info-libtag))
-;;     (define-emms-simple-player mplayer '(file url)
-;;       (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
-;;                     ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
-;;                     ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
-;;       "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
-;;     (setq emms-track-description-function 'fg-emms-track-description)
-;;     (emms-history-load))
-;;   :bind (("C-x p e" . emms)
-;;          ("C-x p k" . emms-soulseek)))
-
-
-;; (use-package ledger-mode
-;;   :init
-;;   (progn
-;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-;;     (autoload 'ledger-mode ledger-mode "A major mode for Ledger" t)
-;;     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-;;     ))
-
-;; (setq x-select-enable-clipboard t
-;;       x-select-enable-primary t
-;;       save-interprogram-paste-before-kill t
-;;       apropos-do-all t
-;;       mouse-yank-at-point t
-;;       require-final-newline t
-;;       ediff-window-setup-function 'ediff-setup-windows-plain
-;;       save-place-file (concat user-emacs-directory "places"))
 
 ;; Set up load path
 (add-to-list 'load-path "~/.emacs.d/configs/")
@@ -734,7 +696,6 @@
          ("\\.vue$" . web-mode)
          ("\\.xml$" . web-mode))
   :config
-  
   (progn
     ;; (setq web-mode-comment-style 2)
     ;; (setq-default web-mode-comment-formats
@@ -751,7 +712,7 @@
       ;; (setq web-mode-indent-style 2)
       )
     (add-hook 'web-mode-hook (lambda () (setq-local helm-dash-docsets '("Javascript"))))
-    (add-hook 'web-mode-hook  'my-web-mode-hook)
+    (add-hook 'web-mode-hook  'my-web-mode-hook)))
     
     ;; (setq web-mode-content-types-alist
     ;;       '(("jsx" . "\\.js[x]?\\'")))))
@@ -775,22 +736,19 @@
 (setq debug-on-error nil)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
+;; one line at a time
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;; don't accelerate scrolling
+(setq mouse-wheel-progressive-speed nil)
 
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-;; (when (locate-library "edit-server")
-;;   (require 'edit-server)
-;;   (setq edit-server-new-frame nil)
-;;   (edit-server-start))
+;; scroll window under mouse
+(setq mouse-wheel-follow-mouse 't)
 
 (crux-reopen-as-root-mode)
 
+(require 'prettier-js)
 
-;; (require 'prettier-js)
 ;; (add-hook 'js-mode-hook
 ;;           (lambda ()
 ;;             (add-hook 'before-save-hook 'jscodefmt-before-save)))
@@ -823,55 +781,34 @@
 
 (evil-surround-mode 1)
 
-;; (require 'sublimity)
-                                        ;(require 'sublimity-scroll)
-;; (require 'sublimity-map)
-;; ;; (require 'sublimity-attractive)
-;; (sublimity-mode 1)
-;; (setq sublimity-scroll-weight 5
-;;       sublimity-scroll-drift-length 20)
+;; (unless (package-installed-p 'indium)
+;;   (package-install 'indium))
+
+;; (use-package indium)
 
 
-
-;; (require 'ac-cider)
-;; (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-;; (add-hook 'cider-mode-hook 'ac-cider-setup)
-;; (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-;; (eval-after-load "auto-complete"
-;;   '(progn
-;;      (add-to-list 'ac-modes 'cider-mode)
-;;      (add-to-list 'ac-modes 'cider-repl-mode)))
-
-
-(unless (package-installed-p 'indium)
-  (package-install 'indium))
-
-(use-package indium)
-
-;;; Golden-ratio
-;;
-(use-package golden-ratio
-  :disabled t
-  :diminish golden-ratio-mode
-  :init
-  (progn
-    (add-hook 'ediff-before-setup-windows-hook (lambda () (golden-ratio-mode -1)))
-    (add-hook 'ediff-quit-hook (lambda () (golden-ratio-mode 1))))
-  :config
-  (progn
-    (defun helm/running-p () helm-alive-p)
-    (defun tv/ispell-running-p ()
-      (and (boundp 'ispell-choices-buffer)
-           (get-buffer ispell-choices-buffer)))
-    (setq golden-ratio-inhibit-functions     '(helm/running-p tv/ispell-running-p))
-    (setq golden-ratio-exclude-buffer-regexp '("\\`\\*[Hh]elm.*\\*\\'"))
-    (setq golden-ratio-exclude-buffer-names  '("*Org Select*"))
-    (setq golden-ratio-exclude-modes         '(ediff-mode calendar-mode wget-mode))
-    (setq golden-ratio-recenter              t)
-    (golden-ratio-mode 1)))
+;; (use-package golden-ratio
+;;   :disabled t
+;;   :diminish golden-ratio-mode
+;;   :init
+;;   (progn
+;;     (add-hook 'ediff-before-setup-windows-hook (lambda () (golden-ratio-mode -1)))
+;;     (add-hook 'ediff-quit-hook (lambda () (golden-ratio-mode 1))))
+;;   :config
+;;   (progn
+;;     (defun helm/running-p () helm-alive-p)
+;;     (defun tv/ispell-running-p ()
+;;       (and (boundp 'ispell-choices-buffer)
+;;            (get-buffer ispell-choices-buffer)))
+;;     (setq golden-ratio-inhibit-functions     '(helm/running-p tv/ispell-running-p))
+;;     (setq golden-ratio-exclude-buffer-regexp '("\\`\\*[Hh]elm.*\\*\\'"))
+;;     (setq golden-ratio-exclude-buffer-names  '("*Org Select*"))
+;;     (setq golden-ratio-exclude-modes         '(ediff-mode calendar-mode wget-mode))
+;;     (setq golden-ratio-recenter              t)
+;;     (golden-ratio-mode 1)))
 
 ;;; Whitespace-mode
-;;
+
 (use-package whitespace
   :diminish (global-whitespace-mode
              whitespace-mode
@@ -938,7 +875,6 @@
         whitespace-silent t
         whitespace-style '(face trailing lines space-before-tab empty)))
 
-
 ;;; Shell
 ;;
 (use-package shell
@@ -951,22 +887,6 @@
   :bind (:map shell-mode-map
               ("M-p" . helm-comint-input-ring)))
 
-;; (use-package selected
-;;   :defer 5
-;;   :diminish selected-minor-mode
-;;   :config
-;;   (selected-global-mode 1)
-
-;;   (bind-key "q" #'selected-off selected-keymap)
-;;   (bind-key "[" #'align-entire selected-keymap)
-;;   (bind-key "f" #'fill-region selected-keymap)
-;;   (bind-key "U" #'unfill-region selected-keymap)
-;;   (bind-key "d" #'downcase-region selected-keymap)
-;;   (bind-key "r" #'reverse-region selected-keymap)
-;;   (bind-key "s" #'sort-lines selected-keymap)
-;;   (bind-key "u" #'upcase-region selected-keymap))
-
-;; (mine)
 ;; (use-package yasnippet
 ;;   :diminish yas-minor-mode
 ;;   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
@@ -1007,18 +927,7 @@
   (aggressive-indent-global-mode 1))
 
 
-;; (use-package telephone-line
-;;   :config
-;;   (setq telephone-line-primary-right-separator 'telephone-line-abs-left
-;;         telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
-;;   (setq telephone-line-height 24
-;;         telephone-
-;;         line-evil-use-short-tag t)
-;;   (telephone-line-mode 1))
 
-;; (desktop-save-mode 1)
-
-(provide 'init)
 
 (point-undo)
 
@@ -1036,3 +945,8 @@
 
 (global-undo-tree-mode -1)
 
+
+
+
+
+(provide 'init)

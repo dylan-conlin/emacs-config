@@ -26,7 +26,7 @@
 (bind-key "C-x 3" '(lambda () (interactive) (message "try s-w")))
 
 
-(bind-key "M-i" 'helm-swoop)
+(bind-key "M-i" 'helm-swoop-without-pre-input)
 (bind-key "s-s" 'ispell-word)
 (bind-key "s-w" 'delete-window)
 (bind-key "M-0" 'delete-window)
